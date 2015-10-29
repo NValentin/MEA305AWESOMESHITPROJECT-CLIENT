@@ -1,9 +1,12 @@
 package mainGame;
 
+import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.newdawn.slick.*;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 
 public class Main extends BasicGame
 {
@@ -18,7 +21,9 @@ public class Main extends BasicGame
 	
 	public static Image butt;
 	public static Image doge;
-	
+    public static Image menuBackground;
+
+    MainMenu menu;
 	GameMap map;
 	
 	public Main(String gamename)
@@ -31,7 +36,9 @@ public class Main extends BasicGame
 	{
 		butt = new Image("resources/butt.png");
 		doge = new Image("resources/doge.png");
+        menuBackground = new Image("resources/menuBackground.jpg");
 		map = new GameMap(GameWindowWidth, GameWindowHeight, 13, 10, GameWindowOffset);
+        menu = new MainMenu();
 	}
 
 	@Override
@@ -45,7 +52,8 @@ public class Main extends BasicGame
 	{
 		//butt.draw(50, 50, _screenWidth-100, _screenHeight-100);
 		//butt.setFilter(Image.FILTER_LINEAR);
-		map.render(gc, g);
+		//map.render(gc, g);
+        menu.render(gc, g);
 		
 	}
 

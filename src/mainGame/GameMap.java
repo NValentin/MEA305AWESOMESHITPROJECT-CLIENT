@@ -16,13 +16,17 @@ public class GameMap
 
 	private Shape[][] mapGrid;
 	private int tileSize = 50;
-	private int offSet = tileSize*2;
+	private int tileHeight = tileSize*2;
+    private float tileWidth = (float) Math.sqrt(3)/2 * tileHeight;
 
 	private int startX = Main.ScreenWidth/10;
 	private int startY = Main.ScreenHeight/10;
 
 	Image tile; 
-	
+
+	/*
+
+	 */
 	GameMap()
 	{
 		mapGrid = new Shape[7][7];
@@ -30,7 +34,7 @@ public class GameMap
 		{
 			for (int j = 0; j < 7; j++)
 			{
-				mapGrid[i][j] = addTile(offSet*(i)+startX, offSet*(j)+startY);
+				mapGrid[i][j] = addTile(tileWidth*(i)+startX, tileHeight*(j)+startY);
 			}
 		}
 	}
@@ -41,7 +45,7 @@ public class GameMap
 
 		for (int i = 0; i < 6; i++)
 		{
-			float angle_deg = 60 * i;
+			float angle_deg = 60 * i + 30;
 			float angle_rad = (float) Math.PI / 180 * angle_deg;
 
 			tmp.addPoint((int) (centerX + tileSize * Math.cos(angle_rad)),

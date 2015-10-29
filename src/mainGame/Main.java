@@ -24,6 +24,7 @@ public class Main extends BasicGame
 
     MainMenu menu;
 	GameMap map;
+
 	
 	public Main(String gamename)
 	{

@@ -34,7 +34,7 @@ public class GUI_Navigator extends JFrame implements ActionListener{
     JButton B_start = new JButton("Start Game");
     JButton B_host_back = new JButton("Back");
     JLabel L_host_headlines = new JLabel("Host Game");
-    ArrayList<LobbyPlayers> players = new ArrayList<LobbyPlayers>();
+    ArrayList<LobbyPlayers> players = new ArrayList<>();
     //------|ect.|--------------------------------------------------
     String[] panels = {"mainMenu", "options", "host", "playing"};
 

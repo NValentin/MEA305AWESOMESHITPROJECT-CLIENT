@@ -15,51 +15,24 @@ public class GameMap
 {
 	Random rand = new Random();
 
-	private Point[] centerPoints;
-	
-	char[] tiles;
-	char[][] Map;
-	
-	int offset;
-	
-	int tilesWide;
-	int tilesHigh;
-	
-	int tileWidth;
-	int tileHeight;
+	private Point[] _centerPoints;
+	private Shape[] _tiles;
 
 	Image tile; 
 	
-	GameMap(int width, int height, int tilesWide, int tilesHigh, int offset, Shape[] hexes)
+	GameMap(Shape[] hexes)
 	{
-		centerPoints = new Point[19];
-		centerPoints[0] = new Point(100, 100);
+		_centerPoints = new Point[19];
+		_centerPoints[0] = new Point(100, 100);
+
+		for (Shape tiles : _tiles)
+			createTile(_centerPoints[0].getCenterX(), _centerPoints[0].getCenterY(), (Polygon) (tiles));
 
 		for (Shape shape : hexes)
 		{
 			Polygon tmp = (Polygon) shape;
 			createTile(50,50, tmp);
 		}
-
-		this.tilesWide = tilesWide;
-		this.tilesHigh = tilesHigh;
-		this.offset = offset;
-		
-		tileWidth = width/tilesWide;
-		tileHeight = height/tilesHigh;
-		
-		tiles = new char[] {'0', 'D'};
-		
-		Map = new char[tilesWide][tilesHigh];
-		for (int i = 0; i < tilesWide; i++)
-		{
-			for(int j = 0; j < tilesHigh; j++)
-			{
-				Map[i][j] = returnTileType();
-			}
-		}
-		
-		
 	}
 
 	void createTile(float centerX, float centerY, Polygon hex)
@@ -91,31 +64,7 @@ public class GameMap
 	
 	void render(GameContainer gc, Graphics g) throws SlickException
 	{
-		int xPos, yPos;
-		char arrayContent;
-		
-		for (int i = 0; i < tilesWide; i++)
-		{
-			for(int j = 0; j < tilesHigh; j++)
-			{
-				xPos = i;
-				yPos = j;
-				
-				arrayContent = Map[xPos][yPos];
-				if (arrayContent == '0')
-				{
-					tile = Main.butt;
-					tile.draw(xPos*tileWidth+offset, yPos*tileHeight+offset, 
-							tileWidth, tileHeight);
-				}
-				else if (arrayContent == 'D')
-				{
-					tile = Main.doge;
-					tile.draw(xPos*tileWidth+offset, yPos*tileHeight+offset, 
-							tileWidth, tileHeight);
-				}
-			}
-		}
+
 	}
 
 }

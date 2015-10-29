@@ -35,9 +35,9 @@ public class GameMap
 		centerPoints = new Point[19];
 		centerPoints[0] = new Point(100, 100);
 
-		for (int i = 0; i < hexes.length; i++)
+		for (Shape shape : hexes)
 		{
-			Polygon tmp = (Polygon) hexes[i];
+			Polygon tmp = (Polygon) shape;
 			createTile(50,50, tmp);
 		}
 

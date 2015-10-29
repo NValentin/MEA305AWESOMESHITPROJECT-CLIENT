@@ -15,36 +15,52 @@ public class GameMap
 {
 	Random rand = new Random();
 
+
 	private Point[] _centerPoints;
 	private Shape[] _tiles;
+	private byte tileSize = 30;
 
 	Image tile; 
 	
-	GameMap(Shape[] hexes)
+	GameMap()
 	{
 		_centerPoints = new Point[19];
-		_centerPoints[0] = new Point(100, 100);
+		createCenterPoints();
+		for (Point point : _centerPoints)
+			System.out.print(point.getCenterX()+" "+point.getCenterY());
 
-		for (Shape tiles : _tiles)
-			createTile(_centerPoints[0].getCenterX(), _centerPoints[0].getCenterY(), (Polygon) (tiles));
+		_tiles = new Shape[19];
+		for (int i = 0; i < _centerPoints.length; i++)
+			_tiles[i] = new Polygon();
 
-		for (Shape shape : hexes)
+		for (int i = 0; i < _tiles.length; i++)
 		{
-			Polygon tmp = (Polygon) shape;
-			createTile(50,50, tmp);
+			Polygon tmp = (Polygon) _tiles[i];
+			createTile(_centerPoints[i].getCenterX(), _centerPoints[i].getCenterY(), tmp);
 		}
+	}
+
+	void createCenterPoints()
+	{
+		int centerPointX = Main.GameWindowWidth/2;
+		int centerPointY = Main.GameWindowHeight/2;
+
+		for (int i = 0; i < _centerPoints.length; i++)
+		{
+			_centerPoints[i] = new Point(centerPointX+(tileSize*2*i), centerPointY);
+		}
+
 	}
 
 	void createTile(float centerX, float centerY, Polygon hex)
 	{
 			for (int i = 0; i < 6; i++)
 			{
-				float size = 30;
 				float angle_deg = 60 * i;
 				float angle_rad = (float) Math.PI / 180 * angle_deg;
 
-				hex.addPoint((int) (centerX + size * Math.cos(angle_rad)),
-						(int) (centerY + size * Math.sin(angle_rad)));
+				hex.addPoint((int) (centerX + tileSize * Math.cos(angle_rad)),
+						(int) (centerY + tileSize * Math.sin(angle_rad)));
 			}
 	}
 	
@@ -64,7 +80,11 @@ public class GameMap
 	
 	void render(GameContainer gc, Graphics g) throws SlickException
 	{
-
+		for (Shape tile : _tiles)
+		{
+			g.draw(tile);
+			g.fill(tile);
+		}
 	}
 
 }

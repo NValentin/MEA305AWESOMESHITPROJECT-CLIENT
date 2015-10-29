@@ -23,9 +23,7 @@ public class Main extends BasicGame
     public static Image menuBackground;
 
     MainMenu menu;
-
 	GameMap map;
-	public Shape[] hexagons;
 	
 	public Main(String gamename)
 	{
@@ -35,17 +33,14 @@ public class Main extends BasicGame
 	@Override
 	public void init(GameContainer gc) throws SlickException 
 	{
-		menu = new MainMenu();
-
+		//Initialize Resources
 		butt = new Image("resources/butt.png");
 		doge = new Image("resources/doge.png");
-        //menuBackground = new Image("resources/menuBackground.jpg");
+		menuBackground = new Image("resources/menuBackground.jpg");
 
-		hexagons = new Shape[19];
-		for (int i = 0; i < hexagons.length; i++)
-			hexagons[i] = new Polygon();
-
-		map = new GameMap(GameWindowWidth, GameWindowHeight, 13, 10, GameWindowOffset, hexagons);
+		//Initialize Class-Objects
+		menu = new MainMenu();
+		map = new GameMap();
 	}
 
 	@Override
@@ -57,15 +52,9 @@ public class Main extends BasicGame
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException
 	{
-		//butt.draw(50, 50, _screenWidth-100, _screenHeight-100);
-		//butt.setFilter(Image.FILTER_LINEAR);
-		//map.render(gc, g);
-        //menu.render(gc, g);
-		
-		//map.render(gc, g);
+		//menu.render(gc, g);
+		map.render(gc, g);
 
-		for (int i = 0; i < hexagons.length; i++)
-			g.draw(hexagons[i]);
 
 	}
 

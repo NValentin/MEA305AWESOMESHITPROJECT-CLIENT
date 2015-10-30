@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
-      <change type="DELETED" beforePath="E:\Programming\Github\MEA305AWESOMESHITPROJECT-CLIENT\out\production\MEA305AWESOMESHITPROJECT-CLIENT\mainGame\GUI_Navigator.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Programming\Github\MEA305AWESOMESHITPROJECT-CLIENT\out\production\MEA305AWESOMESHITPROJECT-CLIENT\mainGame\LobbyPlayers.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Main.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" afterPath="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -27,6 +24,9 @@
     <disable_hints />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="E:\Programming\Github\MEA305AWESOMESHITPROJECT-CLIENT\exportToHTML" />
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="MEA305AWESOMESHITPROJECT-CLIENT" />
   </component>
@@ -35,11 +35,9 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mainGame/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="100" max-vertical-offset="1326">
-              <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -47,12 +45,12 @@
       <file leaf-file-name="PlayingWindow.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mainGame/PlayingWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.72131145" vertical-offset="172" max-vertical-offset="1496">
-              <caret line="36" column="9" selection-start-line="0" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.7770492" vertical-offset="1090" max-vertical-offset="1751">
+              <caret line="92" column="49" selection-start-line="92" selection-start-column="49" selection-end-line="92" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1345#1346#0" expanded="true" />
-                <element signature="e#1373#1374#0" expanded="true" />
+                <element signature="e#1517#1518#0" expanded="true" />
+                <element signature="e#1545#1546#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -509,7 +507,7 @@
       <workItem from="1446137115331" duration="1013000" />
       <workItem from="1446205294237" duration="1344000" />
       <workItem from="1446209281834" duration="146000" />
-      <workItem from="1446213332309" duration="3219000" />
+      <workItem from="1446213332309" duration="5693000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed to work with IntelliJ">
       <created>1446114969140</created>
@@ -553,11 +551,17 @@
       <option name="project" value="LOCAL" />
       <updated>1446213363189</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added turnboard, resourcesBar">
+      <created>1446216918250</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1446216918250</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14591000" />
+    <option name="totallyTimeSpent" value="17065000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -641,7 +645,8 @@
     <MESSAGE value="Redid most of GameMap" />
     <MESSAGE value="Redid some of" />
     <MESSAGE value="Added PlayingWindow Class, thats it" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added PlayingWindow Class, thats it" />
+    <MESSAGE value="Added turnboard, resourcesBar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added turnboard, resourcesBar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -658,9 +663,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -686,9 +689,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -714,9 +715,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -742,9 +741,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -770,9 +767,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -790,9 +785,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="47" column="55" selection-start-line="47" selection-start-column="55" selection-end-line="47" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -810,9 +803,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -836,22 +827,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="202" max-vertical-offset="1326">
-          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/util/ResourceLoader.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34700856" vertical-offset="681" max-vertical-offset="1343">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/PlayingWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72131145" vertical-offset="172" max-vertical-offset="1496">
-          <caret line="36" column="9" selection-start-line="0" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7770492" vertical-offset="1090" max-vertical-offset="1751">
+          <caret line="92" column="49" selection-start-line="92" selection-start-column="49" selection-end-line="92" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1345#1346#0" expanded="true" />
-            <element signature="e#1373#1374#0" expanded="true" />
+            <element signature="e#1517#1518#0" expanded="true" />
+            <element signature="e#1545#1546#0" expanded="true" />
           </folding>
         </state>
       </provider>

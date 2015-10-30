@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Kingo\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\src\mainGame\GUI_Navigator.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Kingo\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\src\mainGame\LobbyPlayers.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/GUI_Navigator.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/GUI_Navigator.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Main.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -498,7 +496,7 @@
       <workItem from="1446132183316" duration="4400000" />
       <workItem from="1446137115331" duration="1013000" />
       <workItem from="1446205294237" duration="1344000" />
-      <workItem from="1446209281834" duration="140000" />
+      <workItem from="1446209281834" duration="146000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed to work with IntelliJ">
       <created>1446114969140</created>
@@ -530,11 +528,17 @@
       <option name="project" value="LOCAL" />
       <updated>1446209317722</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Redid some of">
+      <created>1446209426179</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1446209426179</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11366000" />
+    <option name="totallyTimeSpent" value="11372000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />

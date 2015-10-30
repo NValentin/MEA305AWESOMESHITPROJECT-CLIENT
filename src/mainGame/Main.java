@@ -10,13 +10,13 @@ import org.newdawn.slick.Image;
 
 public class Main extends BasicGame
 {
-	public static final int ScreenWidth = 640;
-	public static final int ScreenHeight = 480;
+	public static final int ScreenWidth = 800;
+	public static final int ScreenHeight = 800;
 	
 	public static final int GameWindowWidth = ScreenWidth-100;
 	public static final int GameWindowHeight = ScreenHeight-100;
 	
-	public static final int GameWindowOffset = 50;
+	public static final int GameWindowOffset = 100;
 	
 	public static Image butt;
 	public static Image doge;
@@ -24,6 +24,7 @@ public class Main extends BasicGame
 
     MainMenu menu;
 	GameMap map;
+
 	
 	public Main(String gamename)
 	{
@@ -52,7 +53,7 @@ public class Main extends BasicGame
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException
 	{
-		//menu.render(gc, g);
+		menu.render(gc, g);
 		map.render(gc, g);
 
 

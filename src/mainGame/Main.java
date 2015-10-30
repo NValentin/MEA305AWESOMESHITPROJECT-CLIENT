@@ -24,6 +24,7 @@ public class Main extends BasicGame
 
     MainMenu menu;
 	GameMap map;
+	GUI_Navigator gui;
 
 	
 	public Main(String gamename)
@@ -38,6 +39,7 @@ public class Main extends BasicGame
 		butt = new Image("resources/butt.png");
 		doge = new Image("resources/doge.png");
 		menuBackground = new Image("resources/menuBackground.jpg");
+		gui = new GUI_Navigator();
 
 		//Initialize Class-Objects
 		menu = new MainMenu();

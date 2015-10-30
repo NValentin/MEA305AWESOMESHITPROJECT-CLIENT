@@ -10,6 +10,12 @@ import java.util.ArrayList;
  * Created by Kingo on 29-10-2015.
  */
 public class GUI_Navigator extends JFrame implements ActionListener{
+
+    public static void main(String[] args) {
+        GUI_Navigator gui = new GUI_Navigator();
+    }
+
+
     //------|Navigator|------------------------------------------------
     JPanel main = new JPanel(null);
     CardLayout cardLayout = new CardLayout();

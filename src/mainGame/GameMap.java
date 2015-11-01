@@ -1,32 +1,14 @@
 package mainGame;
 
-import java.util.Random;
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Point;
-import org.newdawn.slick.geom.Polygon;
 import org.newdawn.slick.geom.Shape;
 
 public class GameMap
 {
-	Random rand = new Random();
-
 	private Shape[][] mapGrid;
-	private int tileSize = 50;
-	private int tileHeight = tileSize*2;
-    private float tileWidth = (float) Math.sqrt(3)/2 * tileHeight;
 
-	private int startX = Main.ScreenWidth/10;
-	private int startY = Main.ScreenHeight/10;
-
-	Image tile; 
-
-	/*
-
-	 */
 	GameMap()
 	{
 		mapGrid = new Shape[7][7];
@@ -34,38 +16,9 @@ public class GameMap
 		{
 			for (int j = 0; j < 7; j++)
 			{
-				mapGrid[i][j] = addTile(tileWidth*(i)+startX, tileHeight*(j)+startY);
+				mapGrid[i][j] = new Tile(Main.ScreenWidth/2, Main.ScreenHeight/2, 'G');
 			}
 		}
-	}
-
-	private Polygon addTile(float centerX, float centerY)
-	{
-		Polygon tmp = new Polygon();
-
-		for (int i = 0; i < 6; i++)
-		{
-			float angle_deg = 60 * i + 30;
-			float angle_rad = (float) Math.PI / 180 * angle_deg;
-
-			tmp.addPoint((int) (centerX + tileSize * Math.cos(angle_rad)),
-					(int) (centerY + tileSize * Math.sin(angle_rad)));
-		}
-		return tmp;
-	}
-	
-	char returnTileType()
-	{
-		int tmpNum = rand.nextInt(2);
-		
-		char tileType = '0';
-		
-		if(tmpNum == 0)
-			tileType = '0';
-		else if (tmpNum == 1)
-			tileType = 'D';
-		
-		return tileType;
 	}
 	
 	void render(GameContainer gc, Graphics g) throws SlickException
@@ -74,8 +27,8 @@ public class GameMap
 		{
 			for (int j = 0; j < 7; j++)
 			{
-				g.draw(mapGrid[i][j]);
-				g.fill(mapGrid[i][j]);
+                Tile tile = (Tile) mapGrid[i][j];
+				g.texture(tile, tile.returnTextureByType(), true);
 			}
 		}
 	}

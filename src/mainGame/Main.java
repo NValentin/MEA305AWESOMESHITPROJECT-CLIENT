@@ -17,9 +17,8 @@ public class Main extends BasicGame
 	public static final int GameWindowHeight = ScreenHeight-100;
 	
 	public static final int GameWindowOffset = 100;
-	
-	public static Image butt;
-	public static Image doge;
+
+	public static Texture texture;
     public static Image menuBackground;
 
     MainMenu menu;
@@ -35,8 +34,8 @@ public class Main extends BasicGame
 	public void init(GameContainer gc) throws SlickException 
 	{
 		//Initialize Resources
-		butt = new Image("resources/butt.png");
-		doge = new Image("resources/doge.png");
+		texture = new Texture();
+
 		menuBackground = new Image("resources/menuBackground.jpg");
 
 		//Initialize Class-Objects

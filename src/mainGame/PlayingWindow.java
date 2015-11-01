@@ -1,8 +1,12 @@
 package mainGame;
 
+import javafx.scene.input.MouseButton;
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+
+import javax.swing.*;
 
 
 /**
@@ -13,11 +17,18 @@ public class PlayingWindow extends BasicGame{
     int[] numbers = new int[] {0, 1, 2, 4};
     int turn = 1;
     Image buildingCost = null;
+    Image tradeWindow = null;
+    Image accept = null;
+    Image decline = null;
     Image[] cards = new Image[4];
+    boolean trading = false;
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
         buildingCost = new Image("resources/Buildingcost.jpg");
+        tradeWindow =  new Image("resources/tradeWindow.png");
+        accept = new Image("resources/Accept.png");
+        decline = new Image("resources/Decline.png");
         for (int i = 1; i <= cards.length; i++) {
             cards[i-1] = new Image("resources/Cards/"+i+".jpg");
         }
@@ -37,6 +48,16 @@ public class PlayingWindow extends BasicGame{
         }
         if (input.isKeyPressed(Input.KEY_4)) {
             turn = 3;
+        }
+        int mousePosX = Mouse.getX();
+        int mousePosY = Mouse.getY();
+        if ((mousePosX > 610 && mousePosX < 660) && (mousePosY > 530 && mousePosY < 580)) {
+            if (Mouse.isButtonDown(0))
+            System.out.println("Accept pressed");
+        }
+        if ((mousePosX > 720 && mousePosX < 770) && (mousePosY > 530 && mousePosY < 580)) {
+            if (Mouse.isButtonDown(0))
+            System.out.println("Decline pressed");
         }
     }
 
@@ -90,8 +111,11 @@ public class PlayingWindow extends BasicGame{
 
     public void Trade(boolean boo, String _name, Graphics graphics) {
         if (boo) {
-            graphics.drawRect(600, 290, 180, 45);
-            graphics.drawString(_name + " wants to trade", 600, 290);
+            tradeWindow.draw(590, 510, 200, 75);
+            graphics.drawString(_name + " wants to trade", 590, 510);
+            accept.draw(610, 530, 50, 50);
+            decline.draw(720, 530, 50, 50);
+            trading = true;
         }
     }
 }

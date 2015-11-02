@@ -25,6 +25,9 @@ public class PlayingWindow extends BasicGameState{
     boolean tradeWindow = false;
     int [] resources = new int[5];
 
+    GameMap map;
+    public static Texture textures;
+
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         buildingCost = new Image("resources/Buildingcost.jpg");
@@ -33,6 +36,9 @@ public class PlayingWindow extends BasicGameState{
         for (int i = 1; i <= cards.length; i++) {
             //cards[i-1] = new Image("resources/Cards/"+i+".jpg");
         }
+
+        map = new GameMap();
+        textures = new Texture(this.getID());
     }
 
     @Override

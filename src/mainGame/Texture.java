@@ -2,6 +2,7 @@ package mainGame;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 
 /**
  * Created by Niels on 01-11-2015.
@@ -12,14 +13,16 @@ public class Texture
     private Image doge;
 
     //Actually Used Textures
-    private Image grassTex;
+    SpriteSheet tileSprites;
 
-    Texture() throws SlickException
+    Texture(int ID) throws SlickException
     {
-        butt = new Image("resources/butt.png");
-        doge = new Image("resources/doge.png");
-
-        grassTex = new Image("resources/grass.png");
+        if (ID == 3)
+        {
+            tileSprites = new SpriteSheet("resources/hexagonTerrain_sheet.png", 120, 140, 2);
+            butt = new Image("resources/butt.png");
+            doge = new Image("resources/doge.png");
+        }
     }
 
     public Image getButt()
@@ -34,6 +37,6 @@ public class Texture
 
     public Image getGrassTex()
     {
-        return grassTex;
+        return tileSprites.getSprite(5, 1);
     }
 }

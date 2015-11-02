@@ -46,13 +46,13 @@ public class Tile extends Polygon
         switch (tileType)
         {
             case ('G'):
-                tmpTexture = Main.texture.getGrassTex();
+                tmpTexture = PlayingWindow.textures.getGrassTex();
                 break;
             case ('R'):
-                tmpTexture = Main.texture.getDoge();
+                tmpTexture = PlayingWindow.textures.getDoge();
                 break;
             default:
-                tmpTexture = Main.texture.getButt();
+                tmpTexture = PlayingWindow.textures.getButt();
                 break;
         }
 

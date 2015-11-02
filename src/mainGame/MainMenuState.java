@@ -10,7 +10,7 @@ public class MainMenuState extends BasicGameState {
 
 
     public static Image menuBackground;
-    public static Image buttonTex;
+    public static Image button;
 
     Button create;
     Button join;
@@ -24,14 +24,18 @@ public class MainMenuState extends BasicGameState {
     int joinY = (int)(Main.ScreenHeight*0.55f);
     int exitX = Main.ScreenWidth/2-sizeX/2;
     int exitY = (int)(Main.ScreenHeight*0.8f);
-    Color button = new Color(50,50,50);
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
             throws SlickException {
 
         menuBackground = new Image("resources/menuBackground.jpg");
-        buttonTex = new Image("resources/TemplateButton.jpg");
+        button = new Image("resources/TemplateButton.jpg");
+
+        create = new Button(createX,createY,sizeX,sizeY, button);
+        join = new Button(joinX,joinY,sizeX,sizeY, button);
+        exit = new Button(exitX,exitY,sizeX,sizeY, button);
+
     }
 
     @Override
@@ -51,11 +55,14 @@ public class MainMenuState extends BasicGameState {
         if(create.isWithin()){
             stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
         }
+
         if(join.isWithin()){
             stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
         }
+
         if(exit.isWithin()){
             System.exit(0);
+
         }
     }
 
@@ -64,11 +71,21 @@ public class MainMenuState extends BasicGameState {
             throws SlickException {
 
         menuBackground.draw(0,0,Main.ScreenWidth,Main.ScreenHeight);
+        create.draw();
+        join.draw();
+        exit.draw();
 
-        create = new Button(createX,createY,sizeX,sizeY,buttonTex);
-        join = new Button(joinX,joinY,sizeX,sizeY,buttonTex);
-        exit = new Button(exitX,exitY,sizeX,sizeY,buttonTex);
 
+
+        /*g.drawRect(createX,createY,sizeX,sizeY);
+        g.drawString("Create Game",createX+Main.ScreenWidth*0.02f,createY+Main.ScreenHeight*0.04f);
+
+        g.drawRect(joinX,joinY,sizeX,sizeY);
+        g.drawString("Join Game",joinX+Main.ScreenWidth*0.02f,joinY+Main.ScreenHeight*0.04f);
+
+        g.drawRect(exitX,exitY,sizeX,sizeY);
+        g.drawString("Close Application",exitX+Main.ScreenWidth*0.02f,exitY+Main.ScreenHeight*0.04f);
+        */
     }
 
     @Override

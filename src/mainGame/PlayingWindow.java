@@ -1,8 +1,11 @@
 package mainGame;
 
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.command.MouseButtonControl;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -16,55 +19,6 @@ public class PlayingWindow extends BasicGameState{
     int turn = 1;
     Image buildingCost = null;
     Image[] cards = new Image[4];
-
-    /*public static void main(String[] args) throws SlickException {
-        AppGameContainer appGameContainer = new AppGameContainer(new PlayingWindow());
-        appGameContainer.setDisplayMode(800, 600, false);
-        appGameContainer.start();
-    } */
-
-    public void PlayerList (Graphics graphics, String[] _names, int turn) {
-        graphics.drawString("Players:", 45, 40);
-        graphics.drawLine(40, 60, 180, 60);
-        graphics.drawRect(35, 35, 150, 200);
-        for (int i = 0; i < 4; i++) {
-            graphics.drawString(i+1 + ") " + _names[i], 45, 70 + 25*i);
-        }
-        graphics.drawRect(40, 67 + 25*turn, 140, 25);
-    }
-
-    public void ResourceBar (Graphics graphics, int wool, int stone, int wood, int clay, int hay) {
-        graphics.drawRect(200, 10, 500, 25);
-        graphics.drawString("Wood: " + wood, 205, 13);
-        graphics.drawString("Stone: " + stone, 305, 13);
-        graphics.drawString("Wool: " + wool, 405, 13);
-        graphics.drawString("Clay: " + clay, 505, 13);
-        graphics.drawString("Hay: " + hay, 605, 13);
-        graphics.drawLine(300, 10, 300, 35);
-        graphics.drawLine(400, 10, 400, 35);
-        graphics.drawLine(500, 10, 500, 35);
-        graphics.drawLine(600, 10, 600, 35);
-    }
-
-    public void CardHolder(int[] cardId) {
-        for (int i = 0; i < cardId.length; i++) {
-            //cards[i].draw(100 + 55*i, 500, 100, 200);
-        }
-    }
-
-    public void Trade(boolean boo, String _name, Graphics graphics) {
-        if (boo) {
-            graphics.drawRect(580, 290, 210, 50);
-            graphics.drawString(_name + " wants to trade", 585, 290);
-            graphics.drawRect(650, 310, 25, 25);
-            graphics.drawRect(700, 310, 25, 25);
-        }
-    }
-
-    @Override
-    public int getID() {
-        return 3;
-    }
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
@@ -98,5 +52,65 @@ public class PlayingWindow extends BasicGameState{
         if (input.isKeyPressed(Input.KEY_4)) {
             turn = 3;
         }
+        if (Mouse.getX() > 645 && Mouse.getX() < 670 && Mouse.getY() > 265 && Mouse.getY() < 290) {
+            //System.out.println("Within Accept");
+            if (Mouse.isButtonDown(0)) {
+                System.out.println("Accept");
+            }
+        }
+        if (Mouse.getX() > 700 && Mouse.getX() < 725 && Mouse.getY() > 265 && Mouse.getY() < 290) {
+            //System.out.println("Within Decline");
+            if (Mouse.isButtonDown(0)) {
+                System.out.println("Decline");
+            }
+        }
+    }
+
+    public void PlayerList (Graphics graphics, String[] _names, int turn) {
+        graphics.drawString("Players:", 45, 40);
+        graphics.drawLine(40, 60, 180, 60);
+        graphics.drawRect(35, 35, 150, 200);
+        for (int i = 0; i < 4; i++) {
+            graphics.drawString(i+1 + ") " + _names[i], 45, 70 + 25*i);
+        }
+        graphics.drawRect(40, 67 + 25*turn, 140, 25);
+    }
+
+    public void ResourceBar (Graphics graphics, int wool, int stone, int wood, int clay, int hay) {
+        graphics.drawRect(200, 10, 500, 25);
+        graphics.drawString("Wood: " + wood, 205, 13);
+        graphics.drawString("Stone: " + stone, 305, 13);
+        graphics.drawString("Wool: " + wool, 405, 13);
+        graphics.drawString("Clay: " + clay, 505, 13);
+        graphics.drawString("Hay: " + hay, 605, 13);
+        graphics.drawLine(300, 10, 300, 35);
+        graphics.drawLine(400, 10, 400, 35);
+        graphics.drawLine(500, 10, 500, 35);
+        graphics.drawLine(600, 10, 600, 35);
+    }
+
+    public void CardHolder(int[] cardId) {
+        for (int i = 0; i < cardId.length; i++) {
+            //cards[i].draw(100 + 55*i, 500, 100, 200);
+        }
+    }
+
+    public void Trade(boolean boo, String _name, Graphics graphics) {
+        if (boo) {
+            graphics.setColor(new Color(0, 0, 0));
+            graphics.fill(new Rectangle(580, 290, 210, 50));
+            graphics.setColor(new Color(255, 255, 255));
+            //graphics.drawRect(580, 290, 210, 50);
+            graphics.drawString(_name + " wants to trade", 585, 290);
+            graphics.drawRect(645, 310, 25, 25);
+            graphics.drawRect(700, 310, 25, 25);
+            graphics.drawString("A", 652, 313);
+            graphics.drawString("D", 707, 313);
+        }
+    }
+
+    @Override
+    public int getID() {
+        return 3;
     }
 }

@@ -63,7 +63,7 @@ public class PlayingWindow extends BasicGameState{
 
     @Override
     public int getID() {
-        return 0;
+        return 3;
     }
 
     @Override

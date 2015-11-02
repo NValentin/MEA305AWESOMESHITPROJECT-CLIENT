@@ -33,6 +33,12 @@ public class PlayingWindow extends BasicGameState{
         buildingCost = new Image("resources/Buildingcost.jpg");
         increase_button = new Image("resources/increase.png");
         decrease_button = new Image("resources/decrease.png");
+        accept = new Button(645, 310, 25, 25, new Image("resources/accept.png"));
+        decline = new Button(700, 310, 25, 25, new Image("resources/decline.png"));
+        for (int i = 0; i < 5; i ++) {
+            buttons[i] = new Button(290, 170 + 20 * i, 20, 20, increase_button);
+            buttons[i+5] = new Button(320, 170 + 20 * i, 20, 20, decrease_button);
+        }
         for (int i = 1; i <= cards.length; i++) {
             //cards[i-1] = new Image("resources/Cards/"+i+".jpg");
         }
@@ -104,8 +110,8 @@ public class PlayingWindow extends BasicGameState{
             graphics.setColor(Color.white);
             graphics.drawRect(580, 290, 210, 50);
             graphics.drawString(_name + " wants to trade", 585, 290);
-            accept = new Button(645, 310, 25, 25, new Image("resources/accept.png"));
-            decline = new Button(700, 310, 25, 25, new Image("resources/decline.png"));
+            accept.draw();
+            decline.draw();
             if (accept.isWithin()) {
                 System.out.println("Accept");
                 tradeWindow = true;
@@ -126,9 +132,8 @@ public class PlayingWindow extends BasicGameState{
             g.drawString(_name + " wants to trade", 210, 120);
             g.drawString("Your offer", 210, 150);
             g.drawString(_name + "'s offer", 210, 340);
-            for (int i = 0; i < 5; i ++) {
-                buttons[i] = new Button(290, 170 + 20 * i, 20, 20, increase_button);
-                buttons[i+5] = new Button(320, 170 + 20 * i, 20, 20, decrease_button);
+            for (int i = 0; i < 10; i ++) {
+                buttons[i].draw();
             }
             for (int i = 0; i < 5; i ++) {
                 if (buttons[i].isWithin())

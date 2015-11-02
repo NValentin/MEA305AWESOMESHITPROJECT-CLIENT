@@ -13,6 +13,7 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class PlayingWindow extends BasicGameState{
     String[] names = new String [] {"Fred", "George", "Ron", "Ginny"};
+    int[] numbers = new int[] {0, 1, 2, 4};
     int turn = 1;
     Image buildingCost = null;
     Image increase_button, decrease_button, accept_button, decline_button;
@@ -58,6 +59,9 @@ public class PlayingWindow extends BasicGameState{
         Trade(trade, names[turn], graphics);
         TradeWindow(tradeWindow, names[turn], graphics);
         OfferWindow(offerWindow, names[turn], graphics);
+
+
+        map.render(gameContainer, graphics);
     }
 
     @Override

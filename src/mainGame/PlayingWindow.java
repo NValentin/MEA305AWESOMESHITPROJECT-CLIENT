@@ -4,7 +4,6 @@ import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.command.MouseButtonControl;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -19,6 +18,7 @@ public class PlayingWindow extends BasicGameState{
     int turn = 1;
     Image buildingCost = null;
     Image[] cards = new Image[4];
+    Button button;
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
@@ -52,17 +52,8 @@ public class PlayingWindow extends BasicGameState{
         if (input.isKeyPressed(Input.KEY_4)) {
             turn = 3;
         }
-        if (Mouse.getX() > 645 && Mouse.getX() < 670 && Mouse.getY() > 265 && Mouse.getY() < 290) {
-            //System.out.println("Within Accept");
-            if (Mouse.isButtonDown(0)) {
+        if (button.isWithin()) {
                 System.out.println("Accept");
-            }
-        }
-        if (Mouse.getX() > 700 && Mouse.getX() < 725 && Mouse.getY() > 265 && Mouse.getY() < 290) {
-            //System.out.println("Within Decline");
-            if (Mouse.isButtonDown(0)) {
-                System.out.println("Decline");
-            }
         }
     }
 
@@ -95,17 +86,18 @@ public class PlayingWindow extends BasicGameState{
         }
     }
 
-    public void Trade(boolean boo, String _name, Graphics graphics) {
+    public void Trade(boolean boo, String _name, Graphics graphics) throws SlickException{
         if (boo) {
             graphics.setColor(new Color(0, 0, 0));
             graphics.fill(new Rectangle(580, 290, 210, 50));
             graphics.setColor(new Color(255, 255, 255));
             //graphics.drawRect(580, 290, 210, 50);
             graphics.drawString(_name + " wants to trade", 585, 290);
-            graphics.drawRect(645, 310, 25, 25);
+            /*graphics.drawRect(645, 310, 25, 25);
             graphics.drawRect(700, 310, 25, 25);
             graphics.drawString("A", 652, 313);
-            graphics.drawString("D", 707, 313);
+            graphics.drawString("D", 707, 313);*/
+            button = new Button(645, 310, 25, 25, new Image("resources/accept.png"));
         }
     }
 

@@ -18,7 +18,7 @@ public class Main extends StateBasedGame
 	public static final int GameWindowWidth = ScreenWidth-100;
 	public static final int GameWindowHeight = ScreenHeight-100;
 	
-	public static final int GameWindowOffset = 100;
+	public static final int GameWindowOffset = 50;
 
 	public static Texture texture;
     /*

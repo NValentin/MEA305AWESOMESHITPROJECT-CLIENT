@@ -28,6 +28,9 @@ public class CreateLobbyState extends BasicGameState {
             stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
             System.out.println("Joined Lobby");
         }
+        if(gameContainer.getInput().isKeyPressed(Input.KEY_ESCAPE)){
+            stateBasedGame.enterState(0, new FadeOutTransition(), new FadeInTransition());
+        }
 
     }
 

@@ -25,6 +25,14 @@ public class Button {
         pressed = false;
     }
 
+    public Button(int x, int y, int sizeX, int sizeY) {
+        this.x = x;
+        this.y = y;
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+        pressed = false;
+    }
+
     public boolean isWithin() {
         int posX = Mouse.getX();
         int posY = Mouse.getY();
@@ -35,5 +43,4 @@ public class Button {
             } else {return false; }
         } else {return false; }
     }
-
 }

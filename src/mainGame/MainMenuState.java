@@ -6,22 +6,24 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
-/**
- * Created by Bjørn on 01-11-2015.
- */
 public class MainMenuState extends BasicGameState {
 
 
     public static Image menuBackground;
+    public static Image buttonTex;
 
-    float sizeX = Main.ScreenWidth/4;
-    float sizeY = Main.ScreenHeight/10;
-    float createX = Main.ScreenWidth/2-sizeX/2;
-    float createY = Main.ScreenHeight*0.4f;
-    float joinX = Main.ScreenWidth/2-sizeX/2;
-    float joinY = Main.ScreenHeight*0.55f;
-    float exitX = Main.ScreenWidth/2-sizeX/2;
-    float exitY = Main.ScreenHeight*0.7f;
+    Button create;
+    Button join;
+    Button exit;
+
+    int sizeX = Main.ScreenWidth/4;
+    int sizeY = Main.ScreenHeight/10;
+    int createX = Main.ScreenWidth/2-sizeX/2;
+    int createY = (int)(Main.ScreenHeight*0.4f);
+    int joinX = Main.ScreenWidth/2-sizeX/2;
+    int joinY = (int)(Main.ScreenHeight*0.55f);
+    int exitX = Main.ScreenWidth/2-sizeX/2;
+    int exitY = (int)(Main.ScreenHeight*0.8f);
     Color button = new Color(50,50,50);
 
     @Override
@@ -29,7 +31,7 @@ public class MainMenuState extends BasicGameState {
             throws SlickException {
 
         menuBackground = new Image("resources/menuBackground.jpg");
-
+        buttonTex = new Image("resources/TemplateButton.jpg");
     }
 
     @Override
@@ -46,6 +48,15 @@ public class MainMenuState extends BasicGameState {
             System.out.println("Joined Lobby");
         }
 
+        if(create.isWithin()){
+            stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
+        }
+        if(join.isWithin()){
+            stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+        }
+        if(exit.isWithin()){
+            System.exit(0);
+        }
     }
 
     @Override
@@ -54,16 +65,9 @@ public class MainMenuState extends BasicGameState {
 
         menuBackground.draw(0,0,Main.ScreenWidth,Main.ScreenHeight);
 
-
-        g.drawRect(createX,createY,sizeX,sizeY);
-        g.drawString("Create Game",createX+Main.ScreenWidth*0.02f,createY+Main.ScreenHeight*0.04f);
-
-        g.drawRect(joinX,joinY,sizeX,sizeY);
-        g.drawString("Join Game",joinX+Main.ScreenWidth*0.02f,joinY+Main.ScreenHeight*0.04f);
-
-        g.drawRect(exitX,exitY,sizeX,sizeY);
-        g.drawString("Close Application",exitX+Main.ScreenWidth*0.02f,exitY+Main.ScreenHeight*0.04f);
-
+        create = new Button(createX,createY,sizeX,sizeY,buttonTex);
+        join = new Button(joinX,joinY,sizeX,sizeY,buttonTex);
+        exit = new Button(exitX,exitY,sizeX,sizeY,buttonTex);
 
     }
 

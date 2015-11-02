@@ -23,6 +23,7 @@ public class PlayingWindow extends BasicGameState{
     Button[] buttons = new Button[10];
     boolean trade = true;
     boolean tradeWindow = false;
+    int [] resources = new int[5];
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
@@ -120,8 +121,20 @@ public class PlayingWindow extends BasicGameState{
             g.drawString("Your offer", 210, 150);
             g.drawString(_name + "'s offer", 210, 340);
             for (int i = 0; i < 5; i ++) {
-                buttons[i] = new Button()
+                buttons[i] = new Button(290, 170 + 20 * i, 20, 20, increase_button);
+                buttons[i+5] = new Button(320, 170 + 20 * i, 20, 20, decrease_button);
             }
+            for (int i = 0; i < 5; i ++) {
+                if (buttons[i].isWithin())
+                    resources[i] ++;
+                if (buttons[i+5].isWithin())
+                    resources[i] --;
+            }
+            g.drawString("Wool:  " + resources[0], 210, 170);
+            g.drawString("Stone: " + resources[1], 210, 190);
+            g.drawString("Wood:  " + resources[2], 210, 210);
+            g.drawString("Clay:  " + resources[3], 210, 230);
+            g.drawString("Wheat: " + resources[4], 210, 250);
         }
     }
 

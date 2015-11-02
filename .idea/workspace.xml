@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/decline.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/decrease.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/increase.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/Button.java" afterPath="$PROJECT_DIR$/src/mainGame/Button.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" afterPath="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -56,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Button.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Button.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mainGame/Button.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.6359102">
+              <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,15 +90,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayingWindow.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayingWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mainGame/PlayingWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.59408605">
-              <caret line="30" column="62" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
+            <state vertical-scroll-proportion="-2.862069">
+              <caret line="124" column="44" selection-start-line="124" selection-start-column="44" selection-end-line="124" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4667#4668#0" expanded="true" />
-                <element signature="e#4691#4692#0" expanded="true" />
+                <element signature="e#5361#5362#0" expanded="true" />
+                <element signature="e#5385#5386#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -181,8 +179,8 @@
         <option value="$PROJECT_DIR$/src/mainGame/JoinLobbyState.java" />
         <option value="$PROJECT_DIR$/src/mainGame/Main.java" />
         <option value="$PROJECT_DIR$/src/mainGame/MainMenuState.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/Button.java" />
         <option value="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/Button.java" />
       </list>
     </option>
   </component>
@@ -626,7 +624,7 @@
       <workItem from="1446452912870" duration="2789000" />
       <workItem from="1446455760647" duration="125000" />
       <workItem from="1446455894420" duration="22000" />
-      <workItem from="1446455966100" duration="5984000" />
+      <workItem from="1446455966100" duration="7312000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed to work with IntelliJ">
       <created>1446114969140</created>
@@ -706,11 +704,17 @@
       <option name="project" value="LOCAL" />
       <updated>1446459761792</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Starting doing the tradewindow">
+      <created>1446461974030</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1446461974030</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35444000" />
+    <option name="totallyTimeSpent" value="36772000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -796,7 +800,8 @@
     <MESSAGE value="Changed to StateBasedGame" />
     <MESSAGE value="Implemented Button Class" />
     <MESSAGE value="Added the button class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the button class" />
+    <MESSAGE value="Starting doing the tradewindow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Starting doing the tradewindow" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -875,8 +880,8 @@
           <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4667#4668#0" expanded="true" />
-            <element signature="e#4691#4692#0" expanded="true" />
+            <element signature="e#5361#5362#0" expanded="true" />
+            <element signature="e#5385#5386#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -955,8 +960,8 @@
           <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4667#4668#0" expanded="true" />
-            <element signature="e#4691#4692#0" expanded="true" />
+            <element signature="e#5361#5362#0" expanded="true" />
+            <element signature="e#5385#5386#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1005,8 +1010,8 @@
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4667#4668#0" expanded="true" />
-            <element signature="e#4691#4692#0" expanded="true" />
+            <element signature="e#5361#5362#0" expanded="true" />
+            <element signature="e#5385#5386#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1055,8 +1060,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4667#4668#0" expanded="true" />
-            <element signature="e#4691#4692#0" expanded="true" />
+            <element signature="e#5361#5362#0" expanded="true" />
+            <element signature="e#5385#5386#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1275,24 +1280,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/Button.java">
+    <entry file="file://$PROJECT_DIR$/src/mainGame/PlayingWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+        <state vertical-scroll-proportion="-2.862069">
+          <caret line="124" column="44" selection-start-line="124" selection-start-column="44" selection-end-line="124" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5361#5362#0" expanded="true" />
+            <element signature="e#5385#5386#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/PlayingWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/mainGame/Button.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59408605">
-          <caret line="30" column="62" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.6359102">
+          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4667#4668#0" expanded="true" />
-            <element signature="e#4691#4692#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -28,7 +28,7 @@ public class Button {
         int posX = Mouse.getX();
         int posY = Mouse.getY();
         //System.out.println("Height: " + (ScreenWidth - x - sizeX) + " Width: " + (ScreenHeight-y-sizeY));
-        if (Mouse.isButtonDown(0)) {
+        if (Mouse(0)) {
             if (posX > x && posX < x + sizeX && posY > ScreenHeight - y - sizeY && posY < ScreenHeight - y) {
                 return true;
             } else {return false; }

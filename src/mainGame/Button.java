@@ -14,6 +14,7 @@ public class Button {
     int sizeX;
     int sizeY;
     int ScreenHeight = Main.ScreenHeight;
+    Image texture;
     boolean pressed;
 
     public Button(int x, int y, int sizeX, int sizeY, Image texture) {
@@ -21,23 +22,36 @@ public class Button {
         this.y = y;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
+        this.texture = texture;
+        this.pressed = false;
+    }
+
+    public void draw() {
         texture.draw(x, y, sizeX, sizeY);
-        pressed = true;
     }
 
     public boolean isWithin() {
         int posX = Mouse.getX();
         int posY = Mouse.getY();
-        if (!Mouse.isButtonDown(0))
-            pressed = false;
-        if (Mouse.isButtonDown(0)) {
-            if (posX > x && posX < x + sizeX && posY > ScreenHeight - y - sizeY && posY < ScreenHeight - y) {
-                if (pressed) {
-                    pressed = false;
-                    return true;
-                } else {return false; }
-            } else {return false; }
-        } else {return false; }
-    }
 
+        if (!Mouse.isButtonDown(0))
+            pressed = true;
+        if (pressed) {
+            if (Mouse.isButtonDown(0)) {
+                System.out.println(pressed);
+                pressed = false;
+                if (posX > x && posX < x + sizeX && posY > ScreenHeight - y - sizeY && posY < ScreenHeight - y) {
+                    System.out.println("Now pressing");
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
+

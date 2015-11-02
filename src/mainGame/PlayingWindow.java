@@ -38,8 +38,8 @@ public class PlayingWindow extends BasicGameState{
         acceptOffer = new Button(210, 280, 100, 25, new Image("resources/acceptOffer.png"));
         declineOffer = new Button(450, 280, 100, 25, new Image("resources/declineOffer.png"));
         counterOffer = new Button(335, 280, 100, 25, new Image("resources/counterOffer.png"));
-        accept = new Button(645, 310, 25, 25, accept_button);
-        decline = new Button(700, 310, 25, 25, decline_button);
+        accept = new Button(645, 570, 25, 25, accept_button);
+        decline = new Button(700, 570, 25, 25, decline_button);
         for (int i = 0; i < 5; i ++) {
             buttons[i] = new Button(290, 170 + 20 * i, 20, 20, increase_button);
             buttons[i+5] = new Button(530, 170 + 20 * i, 20, 20, increase_button);
@@ -53,15 +53,13 @@ public class PlayingWindow extends BasicGameState{
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
+        map.render(gameContainer, graphics);
         PlayerList(graphics, names, turn);
         ResourceBar(graphics, 100, 100, 100, 100, 100);
         buildingCost.draw(593, 345, 200, 250);
         Trade(trade, names[turn], graphics);
         TradeWindow(tradeWindow, names[turn], graphics);
         OfferWindow(offerWindow, names[turn], graphics);
-
-
-        map.render(gameContainer, graphics);
     }
 
     @Override
@@ -107,10 +105,10 @@ public class PlayingWindow extends BasicGameState{
     public void Trade(boolean boo, String _name, Graphics graphics) throws SlickException{
         if (boo) {
             graphics.setColor(Color.black);
-            graphics.fill(new Rectangle(580, 290, 210, 50));
+            graphics.fill(new Rectangle(580, 550, 210, 50));
             graphics.setColor(Color.white);
-            graphics.drawRect(580, 290, 210, 50);
-            graphics.drawString(_name + " wants to trade", 585, 290);
+            graphics.drawRect(580, 550, 210, 50);
+            graphics.drawString(_name + " wants to trade", 585, 550);
             accept.draw();
             decline.draw();
             if (accept.isWithin()) {
@@ -167,6 +165,7 @@ public class PlayingWindow extends BasicGameState{
                 tradeWindow = false;
                 offerWindow = true;
             }
+            g.setColor(Color.white);
         }
     }
 
@@ -207,6 +206,7 @@ public class PlayingWindow extends BasicGameState{
                 offerWindow = false;
                 trade =  true;
             }
+            g.setColor(Color.white);
         }
     }
 

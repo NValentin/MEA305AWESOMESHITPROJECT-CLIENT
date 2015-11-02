@@ -3,6 +3,7 @@ package mainGame;
 import org.lwjgl.Sys;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Rectangle;
 
 /**
  * Created by Bjørn on 02-11-2015.
@@ -46,10 +47,8 @@ public class Button {
             pressed = true;
         if (pressed) {
             if (Mouse.isButtonDown(0)) {
-                System.out.println(pressed);
                 pressed = false;
                 if (posX > x && posX < x + sizeX && posY > ScreenHeight - y - sizeY && posY < ScreenHeight - y) {
-                    System.out.println("Now pressing");
                     return true;
                 } else {
                     return false;

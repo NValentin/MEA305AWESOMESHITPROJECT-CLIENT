@@ -1,6 +1,5 @@
 package mainGame;
 
-import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -18,11 +17,18 @@ public class PlayingWindow extends BasicGameState{
     int turn = 1;
     Image buildingCost = null;
     Image[] cards = new Image[4];
-    Button button;
+    Image increase_button;
+    Image decrease_button;
+    Button accept, decline;
+    Button[] buttons = new Button[10];
+    boolean trade = true;
+    boolean tradeWindow = false;
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         buildingCost = new Image("resources/Buildingcost.jpg");
+        increase_button = new Image("resources/increase.png");
+        decrease_button = new Image("resources/decrease.png");
         for (int i = 1; i <= cards.length; i++) {
             //cards[i-1] = new Image("resources/Cards/"+i+".jpg");
         }
@@ -34,7 +40,8 @@ public class PlayingWindow extends BasicGameState{
         ResourceBar(graphics, 100, 100, 100, 100, 100);
         buildingCost.draw(593, 345, 200, 250);
         CardHolder(numbers);
-        Trade(true, names[1], graphics);
+        Trade(trade, names[turn], graphics);
+        TradeWindow(tradeWindow, names[turn], graphics);
     }
 
     @Override
@@ -52,9 +59,6 @@ public class PlayingWindow extends BasicGameState{
         if (input.isKeyPressed(Input.KEY_4)) {
             turn = 3;
         }
-        if (button.isWithin()) {
-                System.out.println("Accept");
-        }
     }
 
     public void PlayerList (Graphics graphics, String[] _names, int turn) {
@@ -67,13 +71,13 @@ public class PlayingWindow extends BasicGameState{
         graphics.drawRect(40, 67 + 25*turn, 140, 25);
     }
 
-    public void ResourceBar (Graphics graphics, int wool, int stone, int wood, int clay, int hay) {
+    public void ResourceBar (Graphics graphics, int wool, int stone, int wood, int clay, int wheat) {
         graphics.drawRect(200, 10, 500, 25);
         graphics.drawString("Wood: " + wood, 205, 13);
         graphics.drawString("Stone: " + stone, 305, 13);
         graphics.drawString("Wool: " + wool, 405, 13);
         graphics.drawString("Clay: " + clay, 505, 13);
-        graphics.drawString("Hay: " + hay, 605, 13);
+        graphics.drawString("Wheat: " + wheat, 605, 13);
         graphics.drawLine(300, 10, 300, 35);
         graphics.drawLine(400, 10, 400, 35);
         graphics.drawLine(500, 10, 500, 35);
@@ -88,16 +92,36 @@ public class PlayingWindow extends BasicGameState{
 
     public void Trade(boolean boo, String _name, Graphics graphics) throws SlickException{
         if (boo) {
-            graphics.setColor(new Color(0, 0, 0));
+            graphics.setColor(Color.black);
             graphics.fill(new Rectangle(580, 290, 210, 50));
-            graphics.setColor(new Color(255, 255, 255));
-            //graphics.drawRect(580, 290, 210, 50);
+            graphics.setColor(Color.white);
+            graphics.drawRect(580, 290, 210, 50);
             graphics.drawString(_name + " wants to trade", 585, 290);
-            /*graphics.drawRect(645, 310, 25, 25);
-            graphics.drawRect(700, 310, 25, 25);
-            graphics.drawString("A", 652, 313);
-            graphics.drawString("D", 707, 313);*/
-            button = new Button(645, 310, 25, 25, new Image("resources/accept.png"));
+            accept = new Button(645, 310, 25, 25, new Image("resources/accept.png"));
+            decline = new Button(700, 310, 25, 25, new Image("resources/decline.png"));
+            if (accept.isWithin()) {
+                System.out.println("Accept");
+                tradeWindow = true;
+                trade = false;
+            }
+            if (decline.isWithin()) {
+                System.out.println("Decline");
+                trade = false;
+            }
+        }
+    }
+
+    public void TradeWindow(boolean boo, String _name, Graphics g) {
+        if (boo) {
+            g.setColor(Color.white);
+            g.fill(new Rectangle(200, 100, 300, 400));
+            g.setColor(Color.black);
+            g.drawString(_name + " wants to trade", 210, 120);
+            g.drawString("Your offer", 210, 150);
+            g.drawString(_name + "'s offer", 210, 340);
+            for (int i = 0; i < 5; i ++) {
+                buttons[i] = new Button()
+            }
         }
     }
 
@@ -105,4 +129,5 @@ public class PlayingWindow extends BasicGameState{
     public int getID() {
         return 3;
     }
+
 }

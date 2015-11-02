@@ -13,7 +13,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Main extends StateBasedGame
 {
 	public static final int ScreenWidth = 800;
-	public static final int ScreenHeight = 800;
+	public static final int ScreenHeight = 600;
 	
 	public static final int GameWindowWidth = ScreenWidth-100;
 	public static final int GameWindowHeight = ScreenHeight-100;
@@ -68,5 +68,6 @@ public class Main extends StateBasedGame
         this.addState(new MainMenuState());
         this.addState(new CreateLobbyState());
         this.addState(new JoinLobbyState());
+		this.addState(new PlayingWindow());
     }
 }

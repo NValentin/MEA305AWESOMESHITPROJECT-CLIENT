@@ -25,7 +25,7 @@ public class JoinLobbyState extends BasicGameState {
             throws SlickException {
 
         if(gameContainer.getInput().isKeyPressed(Input.KEY_C)) {
-            stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
+            stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
             System.out.println("Created Lobby");
         }
 

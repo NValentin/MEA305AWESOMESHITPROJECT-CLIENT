@@ -23,7 +23,7 @@ public class MainMenuState extends BasicGameState {
     int joinX = Main.ScreenWidth/2-sizeX/2;
     int joinY = (int)(Main.ScreenHeight*0.55f);
     int exitX = Main.ScreenWidth/2-sizeX/2;
-    int exitY = (int)(Main.ScreenHeight*0.8f);
+    int exitY = (int)(Main.ScreenHeight*0.85f);
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
@@ -49,7 +49,7 @@ public class MainMenuState extends BasicGameState {
 
         if(gameContainer.getInput().isKeyPressed(Input.KEY_J)){
             stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
-            System.out.println("Joined Lobby");
+            System.out.println("Entered Lobby");
         }
 
         if(create.isWithin()){
@@ -74,18 +74,6 @@ public class MainMenuState extends BasicGameState {
         create.draw();
         join.draw();
         exit.draw();
-
-
-
-        /*g.drawRect(createX,createY,sizeX,sizeY);
-        g.drawString("Create Game",createX+Main.ScreenWidth*0.02f,createY+Main.ScreenHeight*0.04f);
-
-        g.drawRect(joinX,joinY,sizeX,sizeY);
-        g.drawString("Join Game",joinX+Main.ScreenWidth*0.02f,joinY+Main.ScreenHeight*0.04f);
-
-        g.drawRect(exitX,exitY,sizeX,sizeY);
-        g.drawString("Close Application",exitX+Main.ScreenWidth*0.02f,exitY+Main.ScreenHeight*0.04f);
-        */
     }
 
     @Override

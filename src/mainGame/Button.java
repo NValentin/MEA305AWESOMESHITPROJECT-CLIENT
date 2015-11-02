@@ -1,9 +1,7 @@
 package mainGame;
 
-import org.lwjgl.Sys;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
-import org.newdawn.slick.geom.Rectangle;
 
 /**
  * Created by Bjørn on 02-11-2015.

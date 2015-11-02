@@ -13,17 +13,16 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class PlayingWindow extends BasicGameState{
     String[] names = new String [] {"Fred", "George", "Ron", "Ginny"};
-    int[] numbers = new int[] {0, 1, 2, 4};
     int turn = 1;
     Image buildingCost = null;
-    Image[] cards = new Image[4];
-    Image increase_button;
-    Image decrease_button;
+    Image increase_button, decrease_button, accept_button, decline_button;
     Button accept, decline;
-    Button[] buttons = new Button[10];
+    Button acceptOffer, declineOffer, counterOffer;
+    Button[] buttons = new Button[20];
     boolean trade = true;
     boolean tradeWindow = false;
-    int [] resources = new int[5];
+    boolean offerWindow = false;
+    int [] resources = new int[10];
 
     GameMap map;
     public static Texture textures;
@@ -33,14 +32,18 @@ public class PlayingWindow extends BasicGameState{
         buildingCost = new Image("resources/Buildingcost.jpg");
         increase_button = new Image("resources/increase.png");
         decrease_button = new Image("resources/decrease.png");
-        accept = new Button(645, 310, 25, 25, new Image("resources/accept.png"));
-        decline = new Button(700, 310, 25, 25, new Image("resources/decline.png"));
+        accept_button = new Image("resources/accept.png");
+        decline_button = new Image("resources/decline.png");
+        acceptOffer = new Button(210, 280, 100, 25, new Image("resources/acceptOffer.png"));
+        declineOffer = new Button(450, 280, 100, 25, new Image("resources/declineOffer.png"));
+        counterOffer = new Button(335, 280, 100, 25, new Image("resources/counterOffer.png"));
+        accept = new Button(645, 310, 25, 25, accept_button);
+        decline = new Button(700, 310, 25, 25, decline_button);
         for (int i = 0; i < 5; i ++) {
             buttons[i] = new Button(290, 170 + 20 * i, 20, 20, increase_button);
-            buttons[i+5] = new Button(320, 170 + 20 * i, 20, 20, decrease_button);
-        }
-        for (int i = 1; i <= cards.length; i++) {
-            //cards[i-1] = new Image("resources/Cards/"+i+".jpg");
+            buttons[i+5] = new Button(530, 170 + 20 * i, 20, 20, increase_button);
+            buttons[i+10] = new Button(320, 170 + 20 * i, 20, 20, decrease_button);
+            buttons[i+15] = new Button(560, 170 + 20 * i, 20, 20, decrease_button);
         }
 
         map = new GameMap();
@@ -52,9 +55,9 @@ public class PlayingWindow extends BasicGameState{
         PlayerList(graphics, names, turn);
         ResourceBar(graphics, 100, 100, 100, 100, 100);
         buildingCost.draw(593, 345, 200, 250);
-        CardHolder(numbers);
         Trade(trade, names[turn], graphics);
         TradeWindow(tradeWindow, names[turn], graphics);
+        OfferWindow(offerWindow, names[turn], graphics);
     }
 
     @Override
@@ -97,12 +100,6 @@ public class PlayingWindow extends BasicGameState{
         graphics.drawLine(600, 10, 600, 35);
     }
 
-    public void CardHolder(int[] cardId) {
-        for (int i = 0; i < cardId.length; i++) {
-            //cards[i].draw(100 + 55*i, 500, 100, 200);
-        }
-    }
-
     public void Trade(boolean boo, String _name, Graphics graphics) throws SlickException{
         if (boo) {
             graphics.setColor(Color.black);
@@ -127,18 +124,62 @@ public class PlayingWindow extends BasicGameState{
     public void TradeWindow(boolean boo, String _name, Graphics g) {
         if (boo) {
             g.setColor(Color.white);
-            g.fill(new Rectangle(200, 100, 300, 400));
+            g.fill(new Rectangle(200, 100, 400, 300));
             g.setColor(Color.black);
             g.drawString(_name + " wants to trade", 210, 120);
-            g.drawString("Your offer", 210, 150);
-            g.drawString(_name + "'s offer", 210, 340);
-            for (int i = 0; i < 10; i ++) {
+            g.drawString(_name + "'s offer", 210, 150);
+            /*for (int i = 0; i < 10; i ++) {
                 buttons[i].draw();
-            }
-            for (int i = 0; i < 5; i ++) {
+            } */
+            /*for (int i = 0; i < 5; i ++) {
                 if (buttons[i].isWithin())
                     resources[i] ++;
-                if (buttons[i+5].isWithin())
+                if (buttons[i+5].isWithin() && resources[i] > 0)
+                    resources[i] --;
+            } */
+            g.drawString("Wool:  " + resources[0], 210, 170);
+            g.drawString("Stone: " + resources[1], 210, 190);
+            g.drawString("Wood:  " + resources[2], 210, 210);
+            g.drawString("Clay:  " + resources[3], 210, 230);
+            g.drawString("Wheat: " + resources[4], 210, 250);
+            g.drawString("for", 350, 210);
+            g.drawString("Wool:  " + resources[5], 450, 170);
+            g.drawString("Stone: " + resources[6], 450, 190);
+            g.drawString("Clay:  " + resources[8], 450, 210);
+            g.drawString("Wheat: " + resources[9], 450, 230);
+            g.drawString("Wood:  " + resources[7], 450, 250);
+            acceptOffer.draw();
+            declineOffer.draw();
+            counterOffer.draw();
+            if (acceptOffer.isWithin()) {
+                tradeWindow = false;
+                trade = true;
+            }
+            if (declineOffer.isWithin()) {
+                tradeWindow = false;
+                trade = true;
+            }
+            if (counterOffer.isWithin()) {
+                tradeWindow = false;
+                offerWindow = true;
+            }
+        }
+    }
+
+    public void OfferWindow(boolean boo, String _name, Graphics g) {
+        if (boo) {
+            g.setColor(Color.white);
+            g.fill(new Rectangle(200, 100, 400, 300));
+            g.setColor(Color.black);
+            g.drawString("You offer to " + _name, 210, 120);
+            g.drawString("Your offer", 210, 150);
+            for (int i = 0; i < 20; i ++) {
+                buttons[i].draw();
+            }
+            for (int i = 0; i < 10; i ++) {
+                if (buttons[i].isWithin())
+                    resources[i] ++;
+                if (buttons[i+10].isWithin() && resources[i] > 0)
                     resources[i] --;
             }
             g.drawString("Wool:  " + resources[0], 210, 170);
@@ -146,6 +187,22 @@ public class PlayingWindow extends BasicGameState{
             g.drawString("Wood:  " + resources[2], 210, 210);
             g.drawString("Clay:  " + resources[3], 210, 230);
             g.drawString("Wheat: " + resources[4], 210, 250);
+            g.drawString("for", 350, 210);
+            g.drawString("Wool:  " + resources[5], 450, 170);
+            g.drawString("Stone: " + resources[6], 450, 190);
+            g.drawString("Clay:  " + resources[7], 450, 210);
+            g.drawString("Wheat: " + resources[8], 450, 230);
+            g.drawString("Wood:  " + resources[9], 450, 250);
+            acceptOffer.draw();
+            declineOffer.draw();
+            if (acceptOffer.isWithin()) {
+                offerWindow = false;
+                trade =  true;
+            }
+            if (declineOffer.isWithin()) {
+                offerWindow = false;
+                trade =  true;
+            }
         }
     }
 

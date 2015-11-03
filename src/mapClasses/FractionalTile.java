@@ -1,4 +1,4 @@
-package mainGame;
+package mapClasses;
 
 import java.util.ArrayList;
 

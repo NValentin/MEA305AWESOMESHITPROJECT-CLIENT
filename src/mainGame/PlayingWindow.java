@@ -1,5 +1,6 @@
 package mainGame;
 
+import mapClasses.GameMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;

@@ -1,12 +1,9 @@
-package mainGame;
+package mapClasses;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
+import mainGame.PlayingWindow;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Polygon;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by Niels on 01-11-2015.

@@ -1,4 +1,4 @@
-package mainGame;
+package mapClasses;
 
 import org.newdawn.slick.geom.Point;
 

@@ -1,4 +1,4 @@
-package mainGame;
+package mapClasses;
 
 /**
  * Created by Niels on 02-11-2015.

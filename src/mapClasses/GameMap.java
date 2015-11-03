@@ -1,12 +1,11 @@
-package mainGame;
+package mapClasses;
 
-import org.lwjgl.Sys;
+import mainGame.Main;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.geom.Polygon;
-import org.newdawn.slick.geom.Shape;
 
 import java.util.ArrayList;
 
@@ -19,7 +18,7 @@ public class GameMap
     private int tileHeight = tileSize * 2;
     private float tileWidth = (float) Math.sqrt(3) / 2 * tileHeight;
 
-    GameMap()
+    public GameMap()
     {
         mapLayout = new Layout(Layout.pointy,
                 new Point(tileSize, tileSize),
@@ -37,7 +36,7 @@ public class GameMap
         }
     }
 
-    void render(GameContainer gc, Graphics g) throws SlickException
+    public void render(GameContainer gc, Graphics g) throws SlickException
     {
         for (Tile tile : map)
         {

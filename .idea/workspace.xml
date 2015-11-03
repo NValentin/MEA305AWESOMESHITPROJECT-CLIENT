@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/CreateLobbyState.java" afterPath="$PROJECT_DIR$/src/mainGame/CreateLobbyState.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/JoinLobbyState.java" afterPath="$PROJECT_DIR$/src/mainGame/JoinLobbyState.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -45,8 +45,8 @@
       <file leaf-file-name="MainMenuState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mainGame/MainMenuState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1394">
-              <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1394">
+              <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -62,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreateLobbyState.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CreateLobbyState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mainGame/CreateLobbyState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.94847775" vertical-offset="972" max-vertical-offset="1615">
-              <caret line="81" column="100" selection-start-line="81" selection-start-column="100" selection-end-line="81" selection-end-column="100" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="474" max-vertical-offset="1615">
+              <caret line="39" column="107" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="107" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2993#2994#0" expanded="true" />
@@ -76,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JoinLobbyState.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="JoinLobbyState.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mainGame/JoinLobbyState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1020">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6018735" vertical-offset="559" max-vertical-offset="1037">
+              <caret line="52" column="133" selection-start-line="52" selection-start-column="133" selection-end-line="52" selection-end-column="133" />
               <folding />
             </state>
           </provider>
@@ -172,12 +172,12 @@
         <option value="$PROJECT_DIR$/src/mainGame/MainMenu.java" />
         <option value="$PROJECT_DIR$/src/mainGame/Main.java" />
         <option value="$PROJECT_DIR$/src/mainGame/Button.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/JoinLobbyState.java" />
         <option value="$PROJECT_DIR$/src/mainGame/MainMenuState.java" />
         <option value="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
         <option value="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" />
         <option value="$PROJECT_DIR$/src/mainGame/SQLiteJDBC.java" />
         <option value="$PROJECT_DIR$/src/mainGame/CreateLobbyState.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/JoinLobbyState.java" />
       </list>
     </option>
   </component>
@@ -611,7 +611,7 @@
       <workItem from="1446475335922" duration="83000" />
       <workItem from="1446538359540" duration="437000" />
       <workItem from="1446539572943" duration="1033000" />
-      <workItem from="1446544091403" duration="123000" />
+      <workItem from="1446544091403" duration="903000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed to work with IntelliJ">
       <created>1446114969140</created>
@@ -727,11 +727,17 @@
       <option name="project" value="LOCAL" />
       <updated>1446475362305</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Textbox, hey!">
+      <created>1446544221667</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1446544221667</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48469000" />
+    <option name="totallyTimeSpent" value="49249000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1378" height="780" extended-state="0" />
@@ -1197,26 +1203,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/JoinLobbyState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/Button.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/MainMenuState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -1254,15 +1244,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/MainMenuState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1394">
+          <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/CreateLobbyState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.94847775" vertical-offset="972" max-vertical-offset="1615">
-          <caret line="81" column="100" selection-start-line="81" selection-start-column="100" selection-end-line="81" selection-end-column="100" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="474" max-vertical-offset="1615">
+          <caret line="39" column="107" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="107" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2993#2994#0" expanded="true" />
             <element signature="e#3017#3018#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/JoinLobbyState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6018735" vertical-offset="559" max-vertical-offset="1037">
+          <caret line="52" column="133" selection-start-line="52" selection-start-column="133" selection-end-line="52" selection-end-column="133" />
+          <folding />
         </state>
       </provider>
     </entry>

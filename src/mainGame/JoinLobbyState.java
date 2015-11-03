@@ -45,11 +45,12 @@ public class JoinLobbyState extends BasicGameState {
     }
 
     @Override
-    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics)
+    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g)
             throws SlickException {
-        graphics.drawString("Join the Lobby!", 100, 100);
+        g.drawString("Join the Lobby!", 100, 100);
         menuBackground.draw(0,0,Main.ScreenWidth,Main.ScreenHeight);
         back.draw();
+        g.drawString("PLAYERS \n \n  Fred \n  George \n  Ginny \n  Ron", Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f));
 
     }
 

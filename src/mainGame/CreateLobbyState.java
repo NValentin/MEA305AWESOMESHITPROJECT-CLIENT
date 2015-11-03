@@ -79,7 +79,7 @@ public class CreateLobbyState extends BasicGameState {
         forward.draw();
         ok.draw();
         name.render(gc, g);
-        g.drawString("Your name: "+playerName,Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f));
+        g.drawString("Your name: "+playerName,Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.5f));
 
     }
 

@@ -9,34 +9,15 @@ import org.newdawn.slick.SpriteSheet;
  */
 public class Texture
 {
-    private Image butt;
-    private Image doge;
-
     //Actually Used Textures
-    SpriteSheet tileSprites;
+    public static SpriteSheet tileSprites;
+    public static Image butt;
+    public static Image doge;
 
     Texture(int ID) throws SlickException
     {
-        if (ID == 3)
-        {
-            tileSprites = new SpriteSheet("resources/hexagonTerrain_sheet.png", 120, 140, 2);
-            butt = new Image("resources/butt.png");
-            doge = new Image("resources/doge.png");
-        }
-    }
-
-    public Image getButt()
-    {
-        return butt;
-    }
-
-    public Image getDoge()
-    {
-        return doge;
-    }
-
-    public Image getGrassTex()
-    {
-        return tileSprites.getSprite(5, 1);
+        tileSprites = new SpriteSheet("resources/hexagonTerrain_sheet.png", 120, 140, 2);
+        butt = new Image("resources/butt.png");
+        doge = new Image("resources/doge.png");
     }
 }

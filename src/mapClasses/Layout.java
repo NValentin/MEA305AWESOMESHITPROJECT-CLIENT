@@ -59,7 +59,7 @@ class Layout
         for (int i = 0; i < 6; i++)
         {
             Point offset = Layout.hexCornerOffset(layout, i);
-            corners.add(new Point(center.getX() + offset.getY(), center.getY() + offset.getY()));
+            corners.add(new Point(center.getX() + offset.getX(), center.getY() + offset.getY()));
         }
         return corners;
     }

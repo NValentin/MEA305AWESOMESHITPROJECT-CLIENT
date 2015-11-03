@@ -1,7 +1,9 @@
 package mapClasses;
 
 import mainGame.PlayingWindow;
+import mainGame.Texture;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
 import java.util.ArrayList;
 
@@ -10,12 +12,7 @@ import java.util.ArrayList;
  */
 public class Tile
 {
-    private char tileType;
-
-    private float centerX, centerY;
-    private int tileSize;
-
-    //float centerX, float centerY, int tileSize, char tileType
+    private String tileType;
 
     Tile(int q, int r, int s)
     {
@@ -23,13 +20,7 @@ public class Tile
         this.r = r;
         this. s = s;
 
-        this.tileType = tileType;
-
-        this.centerX = centerX;
-        this.centerY = centerY;
-        this.tileSize = tileSize;
-
-        //createCorners();
+        tileType = "default";
     }
     public final int q;
     public final int r;
@@ -64,7 +55,7 @@ public class Tile
 
     static public Tile diagonalNeighbor(Tile tile, int direction)
     {
-        return Tile.add(tile, tile.diagonals.get(direction));
+        return Tile.add(tile, Tile.diagonals.get(direction));
     }
 
     static public int length(Tile tile)
@@ -76,32 +67,46 @@ public class Tile
     {
         return Tile.length(Tile.subtract(a, b));
     }
-    /*
-    private void createCorners()
+
+    public void setTileType(String tileType)
     {
-        for (int i = 0; i < 6; i++)
-        {
-            float angle_deg = 60 * i + 30;
-            float angle_rad = (float) Math.PI / 180 * angle_deg;
+        this.tileType = tileType;
+    }
 
-            this.addPoint((int) (centerX + tileSize * Math.cos(angle_rad)),
-                    (int) (centerY + tileSize * Math.sin(angle_rad)));
-        }
-    } */
+    public String getTileType()
+    {
+        return tileType;
+    }
 
-    public Image returnTextureByType()
+    public Image returnTextureByType() throws SlickException
     {
         Image tmpTexture;
+
         switch (tileType)
         {
-            case ('G'):
-                tmpTexture = PlayingWindow.textures.getGrassTex();
+            case ("Grain"):
+                tmpTexture = Texture.tileSprites.getSprite(0, 3);
                 break;
-            case ('R'):
-                tmpTexture = PlayingWindow.textures.getDoge();
+            case ("Lumber"):
+                tmpTexture = Texture.tileSprites.getSprite(1, 3);
+                break;
+            case ("Wool"):
+                tmpTexture = Texture.tileSprites.getSprite(3, 3);
+                break;
+            case ("Ore"):
+                tmpTexture = Texture.tileSprites.getSprite(4, 3);
+                break;
+            case ("Brick"):
+                tmpTexture = Texture.tileSprites.getSprite(5, 3);
+                break;
+            case ("Desert"):
+                tmpTexture = Texture.tileSprites.getSprite(2, 5);
+                break;
+            case ("Water"):
+                tmpTexture = Texture.doge;
                 break;
             default:
-                tmpTexture = PlayingWindow.textures.getButt();
+                tmpTexture = Texture.butt;
                 break;
         }
         return tmpTexture;

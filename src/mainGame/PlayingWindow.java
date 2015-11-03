@@ -1,5 +1,6 @@
 package mainGame;
 
+import mapClasses.GameMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -30,6 +31,9 @@ public class PlayingWindow extends BasicGameState{
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+        textures = new Texture(this.getID());
+        map = new GameMap();
+
         buildingCost = new Image("resources/Buildingcost.jpg");
         increase_button = new Image("resources/increase.png");
         decrease_button = new Image("resources/decrease.png");
@@ -46,14 +50,11 @@ public class PlayingWindow extends BasicGameState{
             buttons[i+10] = new Button(320, 170 + 20 * i, 20, 20, decrease_button);
             buttons[i+15] = new Button(560, 170 + 20 * i, 20, 20, decrease_button);
         }
-
-        map = new GameMap();
-        textures = new Texture(this.getID());
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        map.render(gameContainer, graphics);
+        map.render(graphics);
         PlayerList(graphics, names, turn);
         ResourceBar(graphics, 100, 100, 100, 100, 100);
         buildingCost.draw(593, 345, 200, 250);

@@ -7,10 +7,20 @@ import java.util.ArrayList;
  * Created by Kingo on 03-Nov-15.
  */
 public class SQLiteJDBC {
-    public static void main( String args[] )
-    {
-        Connection c = null;
-        Statement stmt = null;
+    Connection c;
+    Statement stmt;
+    int cardID;
+    int type;
+    String headline;
+    String text;
+    int imageID;
+
+    public SQLiteJDBC() {
+        c = null;
+        stmt = null;
+    }
+
+    public void GetInfo(int id) {
         try {
             Class.forName("org.sqlite.JDBC");
             c = getASingleConnection();
@@ -20,17 +30,13 @@ public class SQLiteJDBC {
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery( "SELECT * FROM cardsDB;" );
             while (rs.next()) {
-                int id  = rs.getInt(1);
-                int type = rs.getInt(2);
-                String headline = rs.getString(3);
-                String text = rs.getString(4);
-                int image = rs.getInt(5);
-                System.out.println( "ID = " + id );
-                System.out.println( "Type = " + type );
-                System.out.println( "Headline = " + headline );
-                System.out.println( "Text = " + text );
-                System.out.println( "Image ID = " + image );
-                System.out.println();
+                if (rs.getInt(1) == id) {
+                    cardID = rs.getInt(1);
+                    type = rs.getInt(2);
+                    headline = rs.getString(3);
+                    text = rs.getString(4);
+                    imageID = rs.getInt(5);
+                }
             }
             rs.close();
             stmt.close();
@@ -40,9 +46,6 @@ public class SQLiteJDBC {
             System.exit(0);
         }
         System.out.println("Operation done successfully!");
-    }
-
-    public SQLiteJDBC() {
     }
 
 
@@ -56,12 +59,13 @@ public class SQLiteJDBC {
         return c;
     }
 
-    private ArrayList<String> getMulti(Connection c, String cardName) {
+
+    /*private ArrayList<String> getMulti(Connection c, String cardName) {
         assert c != null;
         ArrayList<String> strArr = new ArrayList<>();
         try {
 
-            String query = "SELECT * FROM cards WHERE CardName = ?";
+            String query = "SELECT * FROM cards WHERE CardN = ?";
             PreparedStatement ps = c.prepareStatement(query);
             ps.setString(1, cardName);
             ResultSet rs = ps.executeQuery();
@@ -79,5 +83,5 @@ public class SQLiteJDBC {
             e.printStackTrace();
         }
         return strArr;
-    }
+    } */
 }

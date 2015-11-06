@@ -2,9 +2,6 @@ package mapClasses;
 
 import java.util.ArrayList;
 
-/**
- * Created by Niels on 02-11-2015.
- */
 class FractionalTile
 {
     public FractionalTile(double q, double r, double s)

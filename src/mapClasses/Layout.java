@@ -4,9 +4,6 @@ import org.newdawn.slick.geom.Point;
 
 import java.util.ArrayList;
 
-/**
- * Created by Niels on 02-11-2015.
- */
 class Layout
 {
     public Layout(Orientation orientation, Point size, Point origin)
@@ -31,7 +28,6 @@ class Layout
         return new Point((float) x + origin.getX(), (float) y + origin.getY());
     }
 
-
     static public FractionalTile pixelToHex(Layout layout, Point p)
     {
         Orientation M = layout.orientation;
@@ -42,7 +38,6 @@ class Layout
         double r = M.b2 * pt.getX() + M.b3 * pt.getY();
         return new FractionalTile(q, r, -q - r);
     }
-
 
     static public Point hexCornerOffset(Layout layout, int corner)
     {
@@ -63,6 +58,5 @@ class Layout
         }
         return corners;
     }
-
 }
 

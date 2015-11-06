@@ -20,14 +20,6 @@ public class GameMap
     private ArrayList<Tile> map;
     private static Layout mapLayout;
 
-    /*
-    Four (4) Fields (Grain Resource) Hexes.
-Four (4) Forest (Lumber Resource) Hexes.
-Four (4) Pasture (Wool Resource) Hexes.
-Three (3) Mountains (Ore Resource) Hexes.
-Three (3) Hills (Brick Resource) Hexes.
-One (1) Desert (No Resource) Hex.
-     */
     public GameMap()
     {
         int tileSize = 40;

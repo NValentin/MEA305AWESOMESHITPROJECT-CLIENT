@@ -1,8 +1,5 @@
 package mapClasses;
 
-/**
- * Created by Niels on 02-11-2015.
- */
 class OffsetCoord
 {
     public OffsetCoord(int col, int row)

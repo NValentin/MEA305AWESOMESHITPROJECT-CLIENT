@@ -1,15 +1,11 @@
 package mapClasses;
 
-import mainGame.PlayingWindow;
 import mainGame.Texture;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import java.util.ArrayList;
 
-/**
- * Created by Niels on 01-11-2015.
- */
 public class Tile
 {
     private String tileType;

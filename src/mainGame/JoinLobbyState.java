@@ -1,6 +1,7 @@
 package mainGame;
 
 import org.newdawn.slick.*;
+import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -15,8 +16,15 @@ public class JoinLobbyState extends BasicGameState {
     public static Image button;
     int sizeX = Main.ScreenWidth/4;
     int sizeY = Main.ScreenHeight/10;
+    TextBoxBase chatBox;
 
     Button back;
+    Button ok;
+
+    TextField chat;
+    String chatText = "";
+
+    Font font;
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
@@ -26,6 +34,13 @@ public class JoinLobbyState extends BasicGameState {
         button = new Image("resources/TemplateButton.jpg");
 
         back = new Button(Main.ScreenWidth/2-sizeX/2,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
+        ok =  new Button(Main.ScreenWidth/2+sizeX/2-sizeX/3, (int)(Main.ScreenHeight*0.55f)+sizeY+10, sizeX/3, sizeY/3, button);
+
+        font = new TrueTypeFont(new java.awt.Font("Verdana",
+                java.awt.Font.PLAIN, 24), true);
+
+        chatBox = new TextBoxBase();
+        chat = new TextField(gameContainer, font, Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.35f), sizeX, (int)(sizeY*0.7));
 
     }
 
@@ -42,15 +57,28 @@ public class JoinLobbyState extends BasicGameState {
             stateBasedGame.enterState(0, new FadeOutTransition(), new FadeInTransition());
         }
 
+        if((gameContainer.getInput().isKeyPressed(Input.KEY_ENTER)||ok.isWithin()) && chat.getText()!="") {
+            chatText = chat.getText();
+            chatBox.newMessage(chatText,"ME");
+            chat.setText("");
+        }
+        if(gameContainer.getInput().isKeyPressed(Input.KEY_T)) {
+            chatBox.newMessage("THIS IS NOT REALLY WORKING, IS IT? Does it actually at least split the lines? I don't know how much text I have to add in order to find out..","ME");
+        }
     }
 
     @Override
-    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g)
+    public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g)
             throws SlickException {
         g.drawString("Join the Lobby!", 100, 100);
         menuBackground.draw(0,0,Main.ScreenWidth,Main.ScreenHeight);
         back.draw();
-        g.drawString("PLAYERS \n \n  Fred \n  George \n  Ginny \n  Ron", Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f));
+        //g.drawString("PLAYERS \n \n  Fred \n  George \n  Ginny \n  Ron", Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f));
+
+
+        ok.draw();
+        chatBox.render(g, gc);
+        chat.render(gc, g);
 
     }
 

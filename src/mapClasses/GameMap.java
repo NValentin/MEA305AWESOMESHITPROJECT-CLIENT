@@ -1,18 +1,13 @@
 package mapClasses;
 
 import mainGame.Main;
-import mainGame.PlayingWindow;
-import mainGame.Texture;
-import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.geom.Polygon;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 
 public class GameMap
 {
@@ -46,6 +41,11 @@ public class GameMap
                         "Brick", "Brick", "Brick",
                         "Desert"));
         Collections.shuffle(listOfTileTypes);
+
+        Integer [] yieldNumbers = {2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12};
+        ArrayList<Integer> listOfYieldNumbers = new ArrayList<>(Arrays.asList(yieldNumbers));
+        Collections.shuffle(listOfYieldNumbers);
+
         for (Tile tile : map)
         {
             if(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3)
@@ -58,6 +58,12 @@ public class GameMap
                     type = listOfTileTypes.remove(listOfTileTypes.size() - 1);
                 }
                 tile.setTileType(type);
+
+                if (!listOfYieldNumbers.isEmpty())
+                {
+                    int yieldNum =  listOfYieldNumbers.remove(listOfYieldNumbers.size() - 1);
+                    tile.setYieldNumber(yieldNum);
+                }
             }
         }
     }
@@ -74,6 +80,13 @@ public class GameMap
             Image tmpTexture = tile.returnTextureByType();
             g.texture(tmpPoly, tmpTexture, true);
             tmpTexture.setFilter(Image.FILTER_LINEAR);
+            if (tile.getYieldNumber() != 0)
+            {
+                g.drawString(String.valueOf(tile.getYieldNumber()),
+                        Layout.hexToPixel(mapLayout, tile).getX() - 6,
+                        Layout.hexToPixel(mapLayout, tile).getY() - 8
+                );
+            }
         }
     }
 }

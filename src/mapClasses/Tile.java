@@ -3,12 +3,16 @@ package mapClasses;
 import mainGame.Texture;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Circle;
+import org.newdawn.slick.geom.Point;
+import org.newdawn.slick.geom.Shape;
 
 import java.util.ArrayList;
 
 public class Tile
 {
     private String tileType;
+    private int yieldNumber;
 
     Tile(int q, int r, int s)
     {
@@ -17,6 +21,7 @@ public class Tile
         this. s = s;
 
         tileType = "default";
+        yieldNumber = 0;
     }
     public final int q;
     public final int r;
@@ -69,9 +74,11 @@ public class Tile
         this.tileType = tileType;
     }
 
-    public String getTileType()
+    public void setYieldNumber(int yieldNumber) {this.yieldNumber = yieldNumber; }
+
+    public int getYieldNumber()
     {
-        return tileType;
+        return yieldNumber;
     }
 
     public Image returnTextureByType() throws SlickException

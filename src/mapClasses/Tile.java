@@ -3,9 +3,6 @@ package mapClasses;
 import mainGame.Texture;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Circle;
-import org.newdawn.slick.geom.Point;
-import org.newdawn.slick.geom.Shape;
 
 import java.util.ArrayList;
 

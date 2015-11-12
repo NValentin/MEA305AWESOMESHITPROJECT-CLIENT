@@ -34,13 +34,12 @@ public class JoinLobbyState extends BasicGameState {
         button = new Image("resources/TemplateButton.jpg");
 
         back = new Button(Main.ScreenWidth/2-sizeX/2,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
-        ok =  new Button(Main.ScreenWidth/2+sizeX/2-sizeX/3, (int)(Main.ScreenHeight*0.55f)+sizeY+10, sizeX/3, sizeY/3, button);
 
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 18), true);
 
         chatBox = new TextBoxBase();
-        chat = new TextField(gameContainer, font, 0, Main.ScreenHeight-sizeY/2, sizeX, sizeY/2);
+        chat = new TextField(gameContainer, font, 0, Main.ScreenHeight-sizeY/2-5, sizeX, sizeY/2);
 
     }
 
@@ -57,7 +56,7 @@ public class JoinLobbyState extends BasicGameState {
             stateBasedGame.enterState(0, new FadeOutTransition(), new FadeInTransition());
         }
 
-        if((gameContainer.getInput().isKeyPressed(Input.KEY_ENTER)||ok.isWithin()) && chat.getText()!="") {
+        if(gameContainer.getInput().isKeyPressed(Input.KEY_ENTER) && chat.getText()!="") {
             chatText = chat.getText();
             chatBox.newMessage(chatText,"ME");
             chat.setText("");

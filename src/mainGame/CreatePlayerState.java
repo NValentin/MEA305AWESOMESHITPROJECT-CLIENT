@@ -11,7 +11,7 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 
-public class CreateLobbyState extends BasicGameState {
+public class CreatePlayerState extends BasicGameState {
 
     public static Image menuBackground;
     public static Image button;
@@ -22,8 +22,8 @@ public class CreateLobbyState extends BasicGameState {
     Button forward;
     Button ok;
 
-    TextField name;
-    String playerName = "";
+    TextField nameField;
+    Player player;
 
     Font font;
 
@@ -34,10 +34,12 @@ public class CreateLobbyState extends BasicGameState {
         menuBackground = new Image("resources/menuBackground.jpg");
         button = new Image("resources/TemplateButton.jpg");
 
+        player = new Player("");
+
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 24), true);
 
-        name = new TextField(gameContainer, font, Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.55f), sizeX, (int)(sizeY*0.7));
+        nameField = new TextField(gameContainer, font, Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.55f), sizeX, (int)(sizeY*0.7));
 
         back = new Button(Main.ScreenWidth/2-sizeX-10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
         forward = new Button(Main.ScreenWidth/2+10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
@@ -61,10 +63,10 @@ public class CreateLobbyState extends BasicGameState {
             stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
         }
 
-        if((gameContainer.getInput().isKeyPressed(Input.KEY_ENTER)||ok.isWithin()) && name.getText()!=""){
-            playerName = name.getText();
-            name.setText("");
-            System.out.println(playerName);
+        if((gameContainer.getInput().isKeyPressed(Input.KEY_ENTER)||ok.isWithin()) && nameField.getText()!=""){
+            player.name = nameField.getText();
+            nameField.setText("");
+            System.out.println(player.name);
 
         }
 
@@ -73,13 +75,13 @@ public class CreateLobbyState extends BasicGameState {
     @Override
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g)
             throws SlickException {
-        g.drawString("Create a Lobby!",100,100);
+        g.drawString("Create a name!",100,100);
         menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         back.draw();
         forward.draw();
         ok.draw();
-        name.render(gc, g);
-        g.drawString("Your name: "+playerName,Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.5f));
+        nameField.render(gc, g);
+        g.drawString("Your name: "+player.name,Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.5f));
 
     }
 

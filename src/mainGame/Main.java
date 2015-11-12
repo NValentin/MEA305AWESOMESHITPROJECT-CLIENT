@@ -26,7 +26,7 @@ public class Main extends StateBasedGame
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
         this.addState(new MainMenuState());
-        this.addState(new CreateLobbyState());
+        this.addState(new CreatePlayerState());
         this.addState(new JoinLobbyState());
 		this.addState(new PlayingWindow());
     }

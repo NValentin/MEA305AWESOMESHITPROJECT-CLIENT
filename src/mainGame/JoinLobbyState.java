@@ -37,10 +37,10 @@ public class JoinLobbyState extends BasicGameState {
         ok =  new Button(Main.ScreenWidth/2+sizeX/2-sizeX/3, (int)(Main.ScreenHeight*0.55f)+sizeY+10, sizeX/3, sizeY/3, button);
 
         font = new TrueTypeFont(new java.awt.Font("Verdana",
-                java.awt.Font.PLAIN, 24), true);
+                java.awt.Font.PLAIN, 18), true);
 
         chatBox = new TextBoxBase();
-        chat = new TextField(gameContainer, font, Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.35f), sizeX, (int)(sizeY*0.7));
+        chat = new TextField(gameContainer, font, 0, Main.ScreenHeight-sizeY/2, sizeX, sizeY/2);
 
     }
 
@@ -62,21 +62,19 @@ public class JoinLobbyState extends BasicGameState {
             chatBox.newMessage(chatText,"ME");
             chat.setText("");
         }
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_T)) {
-            chatBox.newMessage("THIS IS NOT REALLY WORKING, IS IT? Does it actually at least split the lines? I don't know how much text I have to add in order to find out..","ME");
-        }
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g)
             throws SlickException {
         g.drawString("Lobby", 100, 100);
-        menuBackground.draw(0,0,Main.ScreenWidth,Main.ScreenHeight);
+        menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         back.draw();
-        //g.drawString("PLAYERS \n \n  Fred \n  George \n  Ginny \n  Ron", Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f));
+        g.drawRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f), 100, 50);
+        g.drawString("PLAYERS \n \n  Fred \n  George \n  Ginny \n  Ron", Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f));
 
 
-        ok.draw();
+        //ok.draw();
         chatBox.render(g, gc);
         chat.render(gc, g);
 

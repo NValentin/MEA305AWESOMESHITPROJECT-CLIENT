@@ -1,8 +1,6 @@
 package mainGame;
 
 import java.awt.Font;
-import java.util.List;
-import java.util.ArrayList;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Graphics;
@@ -19,7 +17,7 @@ public class TextBoxBase{
     int line = 0;
     int size = 0;
     int chatLength = 10;
-    static final int TEXTBOXLENGTH = 25;
+    static final int TEXTBOXWIDTH = 25;
 
     String textToRender[];
     String oldText[] = new String[chatLength];
@@ -52,7 +50,7 @@ public class TextBoxBase{
         int mark = 0;
         personTalking = name;
 
-        size = text.length()/TEXTBOXLENGTH;
+        size = text.length()/TEXTBOXWIDTH;
         //System.out.println("text length= "+text.length());
         //System.out.println("Size= "+size);
         textToRender = new String[size+10];
@@ -60,7 +58,7 @@ public class TextBoxBase{
 
         for (int x = 0; x < text.length(); x++){
             System.out.println(x);
-            if (x > mark+TEXTBOXLENGTH){
+            if (x > mark+TEXTBOXWIDTH){
                 int newMark = x;
                 System.out.println("x is bigger than mark+TBLength");
 
@@ -86,12 +84,12 @@ public class TextBoxBase{
                     }
                 }
 
-                textToRender[mark/TEXTBOXLENGTH] = text.substring(mark, newMark);
-                System.out.println(textToRender[mark/TEXTBOXLENGTH]);
-                textToRender[(mark/TEXTBOXLENGTH)+1] = "";
-                System.out.println(textToRender[(mark/TEXTBOXLENGTH)+1]);
-                textToRender[(mark/TEXTBOXLENGTH)+2] = "";
-                System.out.println(textToRender[(mark/TEXTBOXLENGTH)+2]);
+                textToRender[mark/TEXTBOXWIDTH] = text.substring(mark, newMark);
+                System.out.println(textToRender[mark/TEXTBOXWIDTH]);
+                textToRender[(mark/TEXTBOXWIDTH)+1] = "";
+                System.out.println(textToRender[(mark/TEXTBOXWIDTH)+1]);
+                textToRender[(mark/TEXTBOXWIDTH)+2] = "";
+                System.out.println(textToRender[(mark/TEXTBOXWIDTH)+2]);
 
                 mark = newMark;
             }else{
@@ -100,7 +98,7 @@ public class TextBoxBase{
                     //System.out.println("Case 3");
 
 
-                    textToRender[(mark/TEXTBOXLENGTH)] = text.substring(mark, text.length());
+                    textToRender[(mark/TEXTBOXWIDTH)] = text.substring(mark, text.length());
                     //System.out.println(textToRender[mark/TEXTBOXLENGTH]);
 
                     for (int i = chatLength-1; i>0; i--){

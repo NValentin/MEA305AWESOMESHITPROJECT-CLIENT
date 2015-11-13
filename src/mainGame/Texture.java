@@ -3,6 +3,7 @@ package mainGame;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.state.GameState;
 
 public class Texture
 {
@@ -11,10 +12,33 @@ public class Texture
     public static Image butt;
     public static Image doge;
 
-    Texture(int ID) throws SlickException
+    public static Image menuBackground;
+    public static Image button;
+
+    Texture() throws SlickException
     {
-        tileSprites = new SpriteSheet("resources/Hexagon.png", 120, 140, 3);
         butt = new Image("resources/butt.png");
         doge = new Image("resources/doge.png");
+    }
+    void initMainMenuStateTextures()
+    {
+        try
+        {
+            menuBackground = new Image("resources/menuBackground.jpg");
+            button = new Image("resources/TemplateButton.jpg");
+        } catch (SlickException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    void initPlayingWindowTextures()
+    {
+        try
+        {
+            tileSprites = new SpriteSheet("resources/tileTexture_Sheet.png", 120, 140, 3);
+        } catch (SlickException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

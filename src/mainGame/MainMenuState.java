@@ -6,11 +6,9 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
-public class MainMenuState extends BasicGameState {
-
-
-    public static Image menuBackground;
-    public static Image button;
+public class MainMenuState extends BasicGameState
+{
+    Texture textures;
 
     Button create;
     Button join;
@@ -26,15 +24,14 @@ public class MainMenuState extends BasicGameState {
     int exitY = (int)(Main.ScreenHeight*0.85f);
 
     @Override
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
-            throws SlickException {
+    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException
+    {
+        textures = new Texture();
+        textures.initMainMenuStateTextures();
 
-        menuBackground = new Image("resources/menuBackground.jpg");
-        button = new Image("resources/TemplateButton.jpg");
-
-        create = new Button(createX,createY,sizeX,sizeY, button);
-        join = new Button(joinX,joinY,sizeX,sizeY, button);
-        exit = new Button(exitX,exitY,sizeX,sizeY, button);
+        create = new Button(createX,createY,sizeX,sizeY, Texture.button);
+        join = new Button(joinX,joinY,sizeX,sizeY, Texture.button);
+        exit = new Button(exitX,exitY,sizeX,sizeY, Texture.button);
 
     }
 
@@ -70,7 +67,7 @@ public class MainMenuState extends BasicGameState {
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g)
             throws SlickException {
 
-        menuBackground.draw(0,0,Main.ScreenWidth,Main.ScreenHeight);
+        Texture.menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         create.draw();
         join.draw();
         exit.draw();

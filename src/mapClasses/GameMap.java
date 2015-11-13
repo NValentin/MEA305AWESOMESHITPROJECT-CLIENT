@@ -1,7 +1,7 @@
 package mapClasses;
 
 import mainGame.Main;
-import mainGame.PlayingWindow;
+import org.lwjgl.Sys;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -9,7 +9,7 @@ import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.geom.Polygon;
 
 import java.util.*;
-import mainGame.PlayingWindow;
+
 
 public class GameMap
 {
@@ -19,10 +19,10 @@ public class GameMap
 
     public GameMap()
     {
-        int tileSize = 40;
+        int tileSize = 60;
         mapLayout = new Layout(Layout.pointy,
                 new Point(tileSize, tileSize),
-                new Point(Main.ScreenWidth/2, Main.ScreenHeight/2));
+                new Point(Main.ScreenWidth / 2, Main.ScreenHeight / 2));
 
         map = new ArrayList<>();
         for (int q = -3; q <= 3; q++)
@@ -31,7 +31,7 @@ public class GameMap
             int r2 = Math.min(3, -q + 3);
             for (int r = r1; r <= r2; r++)
             {
-                map.add(new Tile(q, r, -q-r));
+                map.add(new Tile(q, r, -q - r));
             }
         }
         ArrayList<String> listOfTileTypes = new ArrayList<>(
@@ -44,28 +44,38 @@ public class GameMap
                         "Desert"));
         Collections.shuffle(listOfTileTypes);
 
-        Integer [] yieldNumbers = {2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12};
+        Integer[] yieldNumbers = {2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12};
         ArrayList<Integer> listOfYieldNumbers = new ArrayList<>(Arrays.asList(yieldNumbers));
         Collections.shuffle(listOfYieldNumbers);
 
         for (Tile tile : map)
         {
-            if(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3)
+            if (Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3)
             {
                 tile.setTileType("Water");
-            } else {
+            } else
+            {
                 String type = "Default";
+                tile.setTileType(type);
+
                 if (!listOfTileTypes.isEmpty())
                 {
                     type = listOfTileTypes.remove(listOfTileTypes.size() - 1);
+                    tile.setTileType(type);
                 }
-                tile.setTileType(type);
 
                 if (!listOfYieldNumbers.isEmpty())
                 {
-                    int yieldNum =  listOfYieldNumbers.remove(listOfYieldNumbers.size() - 1);
+                    int yieldNum = listOfYieldNumbers.remove(listOfYieldNumbers.size() - 1);
                     tile.setYieldNumber(yieldNum);
                 }
+            }
+        }
+        for (Tile tile : map)
+        {
+            if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
+            {
+                System.out.println(tile.getTileType());
             }
         }
     }

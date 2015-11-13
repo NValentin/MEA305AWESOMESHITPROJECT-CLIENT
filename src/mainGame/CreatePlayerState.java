@@ -26,7 +26,7 @@ public class CreatePlayerState extends BasicGameState {
 
     TextField nameField;
 
-    String playerName;
+    String playerName = "";
 
     Font font;
 

@@ -71,6 +71,11 @@ public class Tile
         this.tileType = tileType;
     }
 
+    public String getTileType()
+    {
+        return tileType;
+    }
+
     public void setYieldNumber(int yieldNumber) {this.yieldNumber = yieldNumber; }
 
     public int getYieldNumber()

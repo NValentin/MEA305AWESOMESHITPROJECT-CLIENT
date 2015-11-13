@@ -5,7 +5,6 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -13,7 +12,10 @@ import org.newdawn.slick.state.StateBasedGame;
 /**
  * Created by Kingo on 30-10-2015.
  */
-public class PlayingWindow extends BasicGameState{
+public class PlayingWindow extends BasicGameState
+{
+    Texture textures;
+    
     int theWidth = Main.ScreenWidth;
     int theHeight = Main.ScreenHeight;
     String[] names = new String [] {"Fred", "George", "Ron", "Ginny"};
@@ -29,11 +31,12 @@ public class PlayingWindow extends BasicGameState{
     int [] resources = new int[10];
 
     GameMap map;
-    public static Texture textures;
 
     @Override
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        textures = new Texture(this.getID());
+    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException
+    {
+        textures = new Texture();
+        textures.initPlayingWindowTextures();
         map = new GameMap();
 
         buildingCost = new Image("resources/Buildingcost.jpg");
@@ -63,7 +66,6 @@ public class PlayingWindow extends BasicGameState{
         Trade(trade, names[turn], graphics);
         TradeWindow(tradeWindow, names[turn], graphics);
         OfferWindow(offerWindow, names[turn], graphics);
-        ChatWindow(gameContainer, graphics);
     }
 
     @Override
@@ -207,14 +209,6 @@ public class PlayingWindow extends BasicGameState{
             g.setColor(Color.white);
         }
     }
-
-    public void ChatWindow (GameContainer gameContainer, Graphics graphics) {
-        Font f_chat = new TrueTypeFont(new java.awt.Font("Verdana", java.awt.Font.PLAIN, 12), true);
-        graphics.fill(new Rectangle(10, 390, 200, 200));
-        TextField chat_textfield = new TextField(gameContainer, f_chat, 10, 550, 200, 40);
-        chat_textfield.render(gameContainer, graphics);
-    }
-
     @Override
     public int getID() {
         return 3;

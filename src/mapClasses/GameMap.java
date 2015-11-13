@@ -1,6 +1,7 @@
 package mapClasses;
 
 import mainGame.Main;
+import mainGame.PlayingWindow;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -8,6 +9,7 @@ import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.geom.Polygon;
 
 import java.util.*;
+import mainGame.PlayingWindow;
 
 public class GameMap
 {

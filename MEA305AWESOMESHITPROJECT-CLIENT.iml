@@ -10,5 +10,6 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="sqlite-jdbc-3.8.11.2" level="project" />
     <orderEntry type="library" name="kryonet-2.21-all" level="project" />
+    <orderEntry type="library" name="kryonet-2.21-all" level="project" />
   </component>
 </module>

@@ -58,7 +58,7 @@ public class JoinLobbyState extends BasicGameState {
 
         if(gameContainer.getInput().isKeyPressed(Input.KEY_ENTER) && chat.getText()!="") {
             chatText = chat.getText();
-            chatBox.newMessage(chatText,"ME");
+            chatBox.newMessage(chatText,TextBoxBase.personTalking);
             chat.setText("");
         }
     }

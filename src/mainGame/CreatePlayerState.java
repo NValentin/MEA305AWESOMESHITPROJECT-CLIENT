@@ -63,6 +63,7 @@ public class CreatePlayerState extends BasicGameState {
         if(forward.isWithin() && playerName != ""){
             stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
             PlayerStats.name = playerName;
+            TextBoxBase.personTalking = playerName;
         }
 
         if((gameContainer.getInput().isKeyPressed(Input.KEY_ENTER)||ok.isWithin()) && nameField.getText()!=""){

@@ -9,8 +9,6 @@ public class Main extends StateBasedGame
 
 	public static final int ScreenWidth = 1280;
 	public static final int ScreenHeight = 720;
-    static GameClient gameClient = new GameClient();
-    static Thread server = new Thread();
 	
 	public Main(String gameName)
 	{

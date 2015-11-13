@@ -37,6 +37,11 @@ public class Button {
         pressed = false;
     }
 
+    public void SetPos(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public boolean isWithin() {
         int posX = Mouse.getX();
         int posY = Mouse.getY();

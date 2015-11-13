@@ -1,12 +1,16 @@
 package mainGame;
 
+import Network.GameClient;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Main extends StateBasedGame
 {
+
 	public static final int ScreenWidth = 1280;
 	public static final int ScreenHeight = 720;
+    static GameClient gameClient = new GameClient();
+    static Thread server = new Thread();
 	
 	public Main(String gameName)
 	{
@@ -19,6 +23,8 @@ public class Main extends StateBasedGame
 
         appgc.setDisplayMode(ScreenWidth, ScreenHeight, false);
         appgc.setAlwaysRender(true);
+
+        (new Thread(new GameClient())).start();
 
 		appgc.start();
 	}

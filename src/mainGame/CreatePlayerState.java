@@ -1,5 +1,7 @@
 package mainGame;
 
+import Network.GameClient;
+import Network.PlayerStats;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.Graphics;
@@ -23,7 +25,8 @@ public class CreatePlayerState extends BasicGameState {
     Button ok;
 
     TextField nameField;
-    Player player;
+
+    String playerName;
 
     Font font;
 
@@ -33,8 +36,6 @@ public class CreatePlayerState extends BasicGameState {
 
         menuBackground = new Image("resources/menuBackground.jpg");
         button = new Image("resources/TemplateButton.jpg");
-
-        player = new Player("");
 
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 24), true);
@@ -59,14 +60,15 @@ public class CreatePlayerState extends BasicGameState {
             stateBasedGame.enterState(0, new FadeOutTransition(), new FadeInTransition());
         }
 
-        if(forward.isWithin()){
+        if(forward.isWithin() && playerName != ""){
             stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+            PlayerStats.name = playerName;
         }
 
         if((gameContainer.getInput().isKeyPressed(Input.KEY_ENTER)||ok.isWithin()) && nameField.getText()!=""){
-            player.name = nameField.getText();
+            playerName = nameField.getText();
             nameField.setText("");
-            System.out.println(player.name);
+            System.out.println(playerName);
 
         }
 
@@ -81,7 +83,7 @@ public class CreatePlayerState extends BasicGameState {
         forward.draw();
         ok.draw();
         nameField.render(gc, g);
-        g.drawString("Your name: "+player.name,Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.5f));
+        g.drawString("Your name: "+playerName,Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.5f));
 
     }
 

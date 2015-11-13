@@ -6,7 +6,7 @@ import com.esotericsoftware.kryonet.Connection;
 public class PlayerStats {
 
     public int ID;
-    public String Name;
+    static public String name = "";
     int point = 0;
     int knights_played = 0;
     int length_of_road = 0;
@@ -45,10 +45,10 @@ public class PlayerStats {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 }

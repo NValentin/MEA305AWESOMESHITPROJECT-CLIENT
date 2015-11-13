@@ -2,17 +2,20 @@ package Network;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import mainGame.CreatePlayerState;
+
 import java.io.IOException;
 
 public class Network extends Listener {
 
     Client client;
-    String ip = "localhost";
+    String ip = "192.168.0.100";
     int port = 23820;
 
     public void connect() {
         client = new Client();
         client.getKryo().register(PlayerStats.class);
+        client.getKryo().register(CreatePlayerState.class);
         client.addListener(this);
 
         client.start();

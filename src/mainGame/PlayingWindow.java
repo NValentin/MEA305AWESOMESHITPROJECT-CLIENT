@@ -21,10 +21,10 @@ public class PlayingWindow extends BasicGameState
     String[] names = new String [] {"Fred", "George", "Ron", "Ginny"};
     int turn = 1;
     Image buildingCost = null;
-    Image increase_button, decrease_button, accept_button, decline_button, acceptOffer_button, declineOffer_button, counterOffer_button;
     Button accept, decline;
     Button acceptOffer, declineOffer, counterOffer;
     Button[] buttons = new Button[20];
+    Button[] trade_buttons = new Button[4];
     boolean trade = true;
     boolean tradeWindow = false;
     boolean offerWindow = false;
@@ -39,23 +39,19 @@ public class PlayingWindow extends BasicGameState
         textures.initPlayingWindowTextures();
         map = new GameMap();
         buildingCost = new Image("resources/Buildingcost.jpg");
-        increase_button = new Image("resources/increase.png");
-        decrease_button = new Image("resources/decrease.png");
-        accept_button = new Image("resources/accept.png");
-        decline_button = new Image("resources/decline.png");
-        acceptOffer_button = new Image("resources/acceptOffer.png");
-        declineOffer_button = new Image("resources/declineOffer.png");
-        counterOffer_button = new Image("resources/counterOffer.png");
-        accept = new Button(theWidth - 155, theHeight - 30, 25, 25, accept_button);
-        decline = new Button(theWidth - 100, theHeight - 30, 25, 25, decline_button);
-        acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, acceptOffer_button);
-        declineOffer = new Button(theWidth / 2 + 50, theHeight / 2 + 30, 100, 25, declineOffer_button);
-        counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, counterOffer_button);
+        accept = new Button(theWidth - 155, theHeight - 30, 25, 25, new Image("resources/accept.png"));
+        decline = new Button(theWidth - 100, theHeight - 30, 25, 25, new Image("resources/decline.png"));
+        acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, new Image("resources/acceptOffer.png"));
+        declineOffer = new Button(theWidth / 2 + 50, theHeight / 2 + 30, 100, 25, new Image("resources/declineOffer.png"));
+        counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, new Image("resources/counterOffer.png"));
+        for (int i = 0; i < trade_buttons.length; i ++) {
+            trade_buttons[i] = new Button(0, 0, 0, 0, new Image("resources/trade.png"));
+        }
         for (int i = 0; i < 5; i++) {
-            buttons[i] = new Button(theWidth / 2 - 110, theHeight / 2 - 80 + 20 * i, 20, 20, increase_button);
-            buttons[i + 5] = new Button(theWidth / 2 + 130, theHeight / 2 - 80 + 20 * i, 20, 20, increase_button);
-            buttons[i + 10] = new Button(theWidth / 2 - 80, theHeight / 2 - 80 + 20 * i, 20, 20, decrease_button);
-            buttons[i + 15] = new Button(theWidth / 2 + 160, theHeight / 2 - 80 + 20 * i, 20, 20, decrease_button);
+            buttons[i] = new Button(theWidth / 2 - 110, theHeight / 2 - 80 + 20 * i, 20, 20, new Image("resources/increase.png"));
+            buttons[i + 5] = new Button(theWidth / 2 + 130, theHeight / 2 - 80 + 20 * i, 20, 20, new Image("resources/increase.png"));
+            buttons[i + 10] = new Button(theWidth / 2 - 80, theHeight / 2 - 80 + 20 * i, 20, 20, new Image("resources/decrease.png"));
+            buttons[i + 15] = new Button(theWidth / 2 + 160, theHeight / 2 - 80 + 20 * i, 20, 20, new Image("resources/decrease.png"));
         }
     }
 
@@ -68,6 +64,7 @@ public class PlayingWindow extends BasicGameState
         Trade(theWidth - 215, theHeight - 55, trade, names[turn], graphics);
         TradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, tradeWindow, names[turn], graphics);
         OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, offerWindow, names[turn], graphics);
+        MakeTradeWindow(500, 200, graphics, names);
     }
 
     @Override
@@ -174,6 +171,24 @@ public class PlayingWindow extends BasicGameState
             }
             g.setColor(Color.white);
         }
+    }
+
+    public void MakeTradeWindow(int x, int y, Graphics g, String[] _names) {
+        g.setColor(Color.white);
+        g.fill(new Rectangle(x, y, 200, 150));
+        g.setColor(Color.black);
+        g.drawString("Trade with: ", x + 10, y + 10);
+        g.drawLine(x, y + 30, x + 200, y + 30);
+        for (int i = 0; i < _names.length; i ++) {
+            g.drawString(_names[i], x + 10, y + 40 + 25 * i);
+            trade_buttons[i].SetPos(x + 100, y + 40 + 25 * i);
+            trade_buttons[i].draw();
+            if (trade_buttons[i].isWithin()) {
+                offerWindow = true;
+                trade = false;
+            }
+        }
+        g.setColor(Color.white);
     }
 
     public void OfferWindow(int x, int y, boolean boo, String _name, Graphics g) {

@@ -8,14 +8,14 @@ import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.gui.TextField;
 
 public class TextBoxBase{
     TrueTypeFont trueTypeFont;
     Image textBox;
 
-    int size = 0;
     int chatLength = 10;
-    static final int TEXTBOXWIDTH = 25;
+    static final int TEXTBOXWIDTH = 30;
 
     String textToRender[];
     String oldText[];
@@ -23,45 +23,56 @@ public class TextBoxBase{
 
     public TextBoxBase(){
         try{
-            trueTypeFont = new TrueTypeFont(new Font("Verdana", Font.BOLD, 14), true);
+            trueTypeFont = new TrueTypeFont(new Font("Verdana", Font.BOLD, 12), true);
             textBox = new Image("resources/butt.png");
         }catch(SlickException e){}
+
+
+        textToRender = new String[3];
+        oldText = new String[chatLength];
     }
 
     public void render(Graphics g, GameContainer gc){
 
-        //textBox.draw(5, Main.ScreenHeight/2, Main.ScreenWidth/4-5, Main.ScreenHeight);
+        g.setColor(new Color(50,50,50,200));
+        g.fillRect(5, Main.ScreenHeight/2, Main.ScreenWidth/5, Main.ScreenHeight);
+        g.setColor(Color.white);
 
         try{
-            trueTypeFont.drawString(10, Main.ScreenHeight-80, personTalking+": "+textToRender[0], Color.black);
-            trueTypeFont.drawString(10, Main.ScreenHeight-60, textToRender[1] , Color.black);
-            trueTypeFont.drawString(10, Main.ScreenHeight-40, textToRender[2] , Color.black);
+            trueTypeFont.drawString(10, Main.ScreenHeight-100, textToRender[0], Color.white);
+            trueTypeFont.drawString(10, Main.ScreenHeight-80, textToRender[1] , Color.white);
+            trueTypeFont.drawString(10, Main.ScreenHeight-60, textToRender[2] , Color.white);
 
-            /*for (int i = 0; i < chatLength; i++){
+            for (int i = 0; i < chatLength; i++){
 
-                trueTypeFont.drawString(10, Main.ScreenHeight - 100 - 20 * i, oldText[i], Color.black);
-            }*/
+                trueTypeFont.drawString(10, Main.ScreenHeight - 120 - 20 * i, oldText[i], Color.white);
+            }
             }catch(Exception e){}
         }
 
-    public void newMessage(String text, String name){
+    public void newMessage(String chatText, String name){
+        updateOldMessages();
         int mark = 0;
         int mark2 = 0;
         personTalking = name;
+        String text = name+": "+chatText;
 
-        size = text.length()/TEXTBOXWIDTH;
-        textToRender = new String[size+10];
-        oldText = new String[chatLength];
+        if(text.length()<=TEXTBOXWIDTH) { // If there is only one line of text
 
-        if(text.length()<TEXTBOXWIDTH) {
             textToRender[0] = text;
             textToRender[1] = "";
             textToRender[2] = "";
 
-        } else if (text.length()>TEXTBOXWIDTH && text.length()<TEXTBOXWIDTH*2) {
-            if (text.charAt(TEXTBOXWIDTH) != ' ') {
-                for (int i = TEXTBOXWIDTH; i< TEXTBOXWIDTH*2; i++) {
-                    if (text.charAt(i)==' ') {
+
+        } else if (text.length()>TEXTBOXWIDTH && text.length()<=TEXTBOXWIDTH*2) { // If there are two lines of text
+            //if (text.charAt(TEXTBOXWIDTH) != ' ') {
+                for (int i = TEXTBOXWIDTH; i<= text.length(); i++) {
+                    if (i==text.length()){
+                        textToRender[0] = text.substring(0,text.length());
+                        textToRender[1] = "";
+                        textToRender[2] = "";
+                    }
+                    else if (text.charAt(i)==' ') {
                         mark = i;
                         textToRender[0] = text.substring(0,mark);
                         textToRender[1] = text.substring(mark+1,text.length());
@@ -69,10 +80,10 @@ public class TextBoxBase{
                         break;
                     }
                 }
-            }
+            //}
 
-        } else if (text.length()>TEXTBOXWIDTH*2) {
-            if (text.charAt(TEXTBOXWIDTH) != ' ') {
+        } else if (text.length()>TEXTBOXWIDTH*2) { // If there are three or more lines of text
+            //if (text.charAt(TEXTBOXWIDTH) != ' ') {
                 for (int i = TEXTBOXWIDTH; i < TEXTBOXWIDTH * 2; i++) {
                     if (text.charAt(i) == ' ') {
                         mark = i;
@@ -80,66 +91,54 @@ public class TextBoxBase{
                         break;
                     }
                 }
-            }
-            if (text.charAt(mark + TEXTBOXWIDTH) != ' ') {
-                for (int i = mark + TEXTBOXWIDTH; i < TEXTBOXWIDTH * 3; i++) {
-                    if (text.charAt(i) == ' ') {
+            //}
+            //if (text.charAt(mark + TEXTBOXWIDTH) != ' ') {
+                for (int i = mark + TEXTBOXWIDTH; i <= text.length(); i++) {
+                    if (i==text.length()){
+                        textToRender[1] = text.substring(mark+1,text.length());
+                        textToRender[2] = "";
+                        break;
+                    }
+                    else if (text.charAt(i) == ' ') {
                         mark2 = i;
                         textToRender[1] = text.substring(mark+1,mark2);
-                        textToRender[2] = text.substring(mark2+1, text.length());
+                        if(text.length()<mark2+1+TEXTBOXWIDTH){
+                            textToRender[2] = text.substring(mark2+1, text.length());
+                        } else if(text.length()>mark2+1+TEXTBOXWIDTH){
+                            textToRender[2] = text.substring(mark2+1, mark2+1+TEXTBOXWIDTH);
+                        }
                         break;
                     }
                 }
-            }
-            //textToRender[0] = text.substring(0,mark);
-            //textToRender[1] = text.substring(mark+1,mark2);
-            //textToRender[2] = text.substring(mark2+1, text.length());
-        }
-
-
-        /*for (int x = 0; x < text.length(); x++){
-            if (x > mark+TEXTBOXWIDTH){
-                int newMark = x;
-
-                if (text.charAt(x) != ' ' && newMark == x){
-                    System.out.println("Case 1");
-                    for (int a = x; a < text.length(); a++){
-                        if (text.charAt(a) == ' '){
-                            newMark = a;
-                            break;
-                        }
-                    }
-                }
-
-                if (text.charAt(x) != ' ' && newMark == x){
-                    System.out.println("Case 2");
-                    for (int a = x; a > mark; a--){
-                        if (text.charAt(a) == ' '){
-                            newMark = a;
-                            break;
-                        }
-                    }
-                }
-
-                textToRender[mark/TEXTBOXWIDTH] = text.substring(mark, newMark);
-                textToRender[(mark/TEXTBOXWIDTH)+1] = "";
-                textToRender[(mark/TEXTBOXWIDTH)+2] = "";
-
-                mark = newMark;
-            }else if (mark+50 > text.length()){
-                    //System.out.println("Mark+50 is higher than text length");
-                    System.out.println("Case 3");
-
-
-                    textToRender[(mark/TEXTBOXWIDTH)] = text.substring(mark, text.length());
-                    //System.out.println(textToRender[mark/TEXTBOXLENGTH]);
-
-                    for (int i = chatLength-1; i>0; i--){
-                        oldText[i] = oldText[i-1];
-                        System.out.println(oldText[i]);
-                    }
-                    oldText[0] = textToRender[0];
-                    break;
-                }*/
+            //}
         }
     }
+
+    public void updateOldMessages(){
+         if(textToRender[1] == ""){ //If there was one line of text..
+            for (int i = chatLength-1; i>0; i--){
+                oldText[i] = oldText[i-1];
+            }
+
+            oldText[0] = textToRender[0];
+
+        } else if(textToRender[1] != "" && textToRender[2] == ""){ // If there was two lines of text..
+             for (int i = chatLength-1; i>1; i--){
+                 oldText[i] = oldText[i-2];
+             }
+
+            oldText[1] = textToRender[0];
+            oldText[0] = textToRender[1];
+
+        } else if(textToRender[2] != ""){ // If there was three lines of text..
+
+             for (int i = chatLength-1; i>2; i--){
+                 oldText[i] = oldText[i-3];
+             }
+
+            oldText[2] = textToRender[0];
+            oldText[1] = textToRender[1];
+            oldText[0] = textToRender[2];
+        }
+    }
+}

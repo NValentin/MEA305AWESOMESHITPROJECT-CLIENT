@@ -19,7 +19,6 @@ public class JoinLobbyState extends BasicGameState {
     TextBoxBase chatBox;
 
     Button back;
-    Button ok;
 
     TextField chat;
     String chatText = "";
@@ -39,7 +38,7 @@ public class JoinLobbyState extends BasicGameState {
                 java.awt.Font.PLAIN, 18), true);
 
         chatBox = new TextBoxBase();
-        chat = new TextField(gameContainer, font, 0, Main.ScreenHeight-sizeY/2-5, sizeX, sizeY/2);
+        chat = new TextField(gameContainer, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
 
     }
 
@@ -69,11 +68,10 @@ public class JoinLobbyState extends BasicGameState {
         g.drawString("Lobby", 100, 100);
         menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         back.draw();
-        g.drawRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f), 100, 50);
         g.drawString("PLAYERS \n \n  Fred \n  George \n  Ginny \n  Ron", Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f));
 
 
-        //ok.draw();
+        //g.setColor(Color.white);
         chatBox.render(g, gc);
         chat.render(gc, g);
 

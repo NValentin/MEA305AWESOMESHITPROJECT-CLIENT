@@ -65,7 +65,7 @@ public class JoinLobbyState extends BasicGameState {
         }
         if(forward.isWithin()) {
             PlayerStats.lobbyReady = true;
-            SharedData.lobbyReady[1] = true;
+            //SharedData.lobbyReady[1] = true;
         }
     }
 

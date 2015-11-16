@@ -4,10 +4,7 @@
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/JoinLobbyState.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/JoinLobbyState.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/CreatePlayerState.java" afterPath="$PROJECT_DIR$/src/mainGame/CreatePlayerState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/GameClient.java" afterPath="$PROJECT_DIR$/src/Network/GameClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/JoinLobbyState.java" afterPath="$PROJECT_DIR$/src/mainGame/JoinLobbyState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/Network.java" afterPath="$PROJECT_DIR$/src/Network/Network.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/PlayerStats.java" afterPath="$PROJECT_DIR$/src/Network/PlayerStats.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -61,25 +58,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JoinLobbyState.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JoinLobbyState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mainGame/JoinLobbyState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44951922" vertical-offset="1530" max-vertical-offset="2176">
-              <caret line="101" column="44" selection-start-line="101" selection-start-column="44" selection-end-line="101" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="2176">
+              <caret line="67" column="14" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4294#4295#0" expanded="true" />
-                <element signature="e#4318#4319#0" expanded="true" />
+                <element signature="e#4296#4297#0" expanded="true" />
+                <element signature="e#4320#4321#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreatePlayerState.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CreatePlayerState.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mainGame/CreatePlayerState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="710" max-vertical-offset="1513">
-              <caret line="66" column="45" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.6829837" vertical-offset="778" max-vertical-offset="1479">
+              <caret line="73" column="9" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -176,8 +173,8 @@
         <option value="$PROJECT_DIR$/src/Network/Network.java" />
         <option value="$PROJECT_DIR$/src/Network/GameClient.java" />
         <option value="$PROJECT_DIR$/src/Network/PlayerStats.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/CreatePlayerState.java" />
         <option value="$PROJECT_DIR$/src/mainGame/JoinLobbyState.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/CreatePlayerState.java" />
       </list>
     </option>
   </component>
@@ -716,7 +713,7 @@
       <workItem from="1447418286554" duration="99000" />
       <workItem from="1447604942281" duration="93000" />
       <workItem from="1447605067748" duration="14165000" />
-      <workItem from="1447660195690" duration="9311000" />
+      <workItem from="1447660195690" duration="9507000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed to work with IntelliJ">
       <created>1446114969140</created>
@@ -898,11 +895,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447665199583</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Server/client stuff 2">
+      <created>1447669697343</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1447669697343</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110946000" />
+    <option name="totallyTimeSpent" value="111142000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -981,7 +984,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Can now display hexagons" />
     <MESSAGE value="Redid most of GameMap" />
     <MESSAGE value="Redid some of" />
     <MESSAGE value="Added PlayingWindow Class, thats it" />
@@ -1006,7 +1008,8 @@
     <MESSAGE value="Chatbox stuff" />
     <MESSAGE value="Chatbox finally working!" />
     <MESSAGE value="Server/client stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Server/client stuff" />
+    <MESSAGE value="Server/client stuff 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Server/client stuff 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1402,23 +1405,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/CreatePlayerState.java">
+    <entry file="file://$PROJECT_DIR$/src/mainGame/JoinLobbyState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="710" max-vertical-offset="1513">
-          <caret line="66" column="45" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="2176">
+          <caret line="67" column="14" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4296#4297#0" expanded="true" />
+            <element signature="e#4320#4321#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/JoinLobbyState.java">
+    <entry file="file://$PROJECT_DIR$/src/mainGame/CreatePlayerState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44951922" vertical-offset="1530" max-vertical-offset="2176">
-          <caret line="101" column="44" selection-start-line="101" selection-start-column="44" selection-end-line="101" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4294#4295#0" expanded="true" />
-            <element signature="e#4318#4319#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.6829837" vertical-offset="778" max-vertical-offset="1479">
+          <caret line="73" column="9" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>

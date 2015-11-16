@@ -1,5 +1,6 @@
 package mainGame;
 
+import Network.PlayerStats;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
@@ -68,11 +69,32 @@ public class JoinLobbyState extends BasicGameState {
         g.drawString("Lobby", 100, 100);
         menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         back.draw();
-        g.drawString("PLAYERS \n \n  Fred \n  George \n  Ginny \n  Ron", Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f));
+        g.setColor(Color.white);
+        g.drawString("PLAYERS:", Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f));
 
-
-        //g.setColor(Color.white);
-        chatBox.render(g, gc);
+        g.setColor(new Color(50,50,50,200));
+        if(SharedData.lobbyReady[0]){
+            g.setColor(new Color(0,100,0,200));
+        }
+        g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+20,sizeX,40);
+        g.setColor(new Color(50,50,50,200));
+        if(SharedData.lobbyReady[1]){
+            g.setColor(new Color(0,100,0,200));
+        }
+        g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+60,sizeX,40);
+        g.setColor(new Color(50,50,50,200));
+        if(SharedData.lobbyReady[2]){
+            g.setColor(new Color(0,100,0,200));
+        }
+        g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+100,sizeX,40);
+        g.setColor(new Color(50,50,50,200));
+        if(SharedData.lobbyReady[3]){
+            g.setColor(new Color(0,100,0,200));
+        }
+        g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+140,sizeX,40);
+        //+SharedData.names[0] + "\n  "+SharedData.names[1]+" \n  "+SharedData.names[2]+" \n  "+SharedData.names[3]
+                //g.setColor(Color.white);
+                chatBox.render(g, gc);
         chat.render(gc, g);
 
     }

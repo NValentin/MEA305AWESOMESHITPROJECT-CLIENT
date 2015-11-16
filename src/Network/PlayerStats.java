@@ -5,14 +5,15 @@ import com.esotericsoftware.kryonet.Connection;
 
 public class PlayerStats {
 
-    public int ID;
-    static public String name = "";
+    public static int ID;
+    public static String name = "";
     int point = 0;
     int knights_played = 0;
     int length_of_road = 0;
     int resources_on_hand = 0;
     public Connection c;
     public int TEMPpoint=1;
+    boolean lobbyReady = false;
 
 
     PlayerStats(){

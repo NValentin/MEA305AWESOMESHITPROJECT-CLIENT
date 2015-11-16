@@ -20,6 +20,7 @@ public class JoinLobbyState extends BasicGameState {
     TextBoxBase chatBox;
 
     Button back;
+    Button forward;
 
     TextField chat;
     String chatText = "";
@@ -33,7 +34,8 @@ public class JoinLobbyState extends BasicGameState {
         menuBackground = new Image("resources/menuBackground.jpg");
         button = new Image("resources/TemplateButton.jpg");
 
-        back = new Button(Main.ScreenWidth/2-sizeX/2,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
+        back = new Button(Main.ScreenWidth/2-sizeX-10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
+        forward = new Button(Main.ScreenWidth/2+10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
 
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 18), true);
@@ -61,6 +63,10 @@ public class JoinLobbyState extends BasicGameState {
             chatBox.newMessage(chatText,TextBoxBase.personTalking);
             chat.setText("");
         }
+        if(forward.isWithin()) {
+            PlayerStats.lobbyReady = true;
+            SharedData.lobbyReady[1] = true;
+        }
     }
 
     @Override
@@ -69,32 +75,42 @@ public class JoinLobbyState extends BasicGameState {
         g.drawString("Lobby", 100, 100);
         menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         back.draw();
+        forward.draw();
         g.setColor(Color.white);
         g.drawString("PLAYERS:", Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f));
+//+SharedData.names[0] + "\n  "+SharedData.names[1]+" \n  "+SharedData.names[2]+" \n  "+SharedData.names[3]
 
+        //Draw player box 1
         g.setColor(new Color(50,50,50,200));
         if(SharedData.lobbyReady[0]){
             g.setColor(new Color(0,100,0,200));
         }
         g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+20,sizeX,40);
+        //Draw player box 2
         g.setColor(new Color(50,50,50,200));
         if(SharedData.lobbyReady[1]){
             g.setColor(new Color(0,100,0,200));
         }
         g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+60,sizeX,40);
+        //Draw player box 3
         g.setColor(new Color(50,50,50,200));
         if(SharedData.lobbyReady[2]){
             g.setColor(new Color(0,100,0,200));
         }
         g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+100,sizeX,40);
+        //Draw player box 4
         g.setColor(new Color(50,50,50,200));
         if(SharedData.lobbyReady[3]){
             g.setColor(new Color(0,100,0,200));
         }
         g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+140,sizeX,40);
-        //+SharedData.names[0] + "\n  "+SharedData.names[1]+" \n  "+SharedData.names[2]+" \n  "+SharedData.names[3]
-                //g.setColor(Color.white);
-                chatBox.render(g, gc);
+        //Draw names
+        g.setColor(Color.white);
+        for (int i=0; i<4;i++){
+            g.drawString(SharedData.names[i], Main.ScreenWidth/2-sizeX/2+10, (int)(Main.ScreenHeight*0.45f)+30+40*i);
+        }
+        g.setColor(Color.white);
+        chatBox.render(g, gc);
         chat.render(gc, g);
 
     }

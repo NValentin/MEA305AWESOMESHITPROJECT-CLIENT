@@ -1,13 +1,14 @@
 package Network;
 
 import com.esotericsoftware.kryonet.Listener;
+import com.esotericsoftware.minlog.Log;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class GameClient extends Listener implements Runnable{
 
-    static PlayerStats playerStats = new PlayerStats();
+    //static PlayerStats playerStats = new PlayerStats();
     static Network network = new Network();
     static Map<Integer, PlayerStats> players = new HashMap<Integer, PlayerStats>();
     static boolean nameSent = false;
@@ -16,6 +17,7 @@ public class GameClient extends Listener implements Runnable{
     public void run(){
 
         network.connect();
+        Log.set(Log.LEVEL_DEBUG);
 
         while(true) {
             update();
@@ -25,19 +27,18 @@ public class GameClient extends Listener implements Runnable{
     }
 
     public static void update(){
-        playerStats.update();
+        PlayerStats.update();
 
-        if(playerStats.TEMPpoint != playerStats.point){
+        if(PlayerStats.TEMPpoint != PlayerStats.point){
             PlayerStats Ppacket = new PlayerStats();
-            //Ppacket.point = playerStats.point;
             network.client.sendUDP(Ppacket);
 
-            playerStats.TEMPpoint = playerStats.point;
+            PlayerStats.TEMPpoint = PlayerStats.point;
 
         }
         if(PlayerStats.name != "" && nameSent == false){
-            PlayerStats Ppacket = new PlayerStats();
-            network.client.sendUDP(Ppacket);
+            //PlayerStats Ppacket = new PlayerStats();
+            network.client.sendUDP(/*Ppacket*/PlayerStats.name);
             nameSent=true;
         }
     }

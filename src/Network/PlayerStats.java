@@ -7,13 +7,13 @@ public class PlayerStats {
 
     public static int ID;
     public static String name = "";
-    int point = 0;
+    static int point = 1000;
     int knights_played = 0;
     int length_of_road = 0;
     int resources_on_hand = 0;
     public Connection c;
-    public int TEMPpoint=1;
-    boolean lobbyReady = false;
+    public static int TEMPpoint=1;
+    public static boolean lobbyReady = false;
 
 
     PlayerStats(){
@@ -32,7 +32,7 @@ public class PlayerStats {
 
         return false;
     }
-    public void update(){
+    public static void update(){
 
     }
 

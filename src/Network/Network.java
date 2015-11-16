@@ -3,6 +3,7 @@ import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import mainGame.CreatePlayerState;
+import mainGame.SharedData;
 
 import java.io.IOException;
 
@@ -13,9 +14,11 @@ public class Network extends Listener {
     int port = 23820;
 
     public void connect() {
-        client = new Client();
+        client = new Client(16384,2048);
         client.getKryo().register(PlayerStats.class);
-        client.getKryo().register(CreatePlayerState.class);
+        client.getKryo().register(int[].class);
+        client.getKryo().register(SharedData.class);
+
         client.addListener(this);
 
         client.start();

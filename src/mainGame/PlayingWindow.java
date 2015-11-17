@@ -30,6 +30,7 @@ public class PlayingWindow extends BasicGameState
     boolean offerWindow = false;
     int[] currentResources = new int[5];
     int [] resources = new int[10];
+    GatheringResources gathering;
 
     GameMap map;
 
@@ -39,6 +40,7 @@ public class PlayingWindow extends BasicGameState
         textures = new Texture();
         textures.initPlayingWindowTextures();
         map = new GameMap();
+        gathering = new GatheringResources(map);
 
         buildingCost = new Image("resources/Buildingcost.jpg");
         accept = new Button(theWidth - 155, theHeight - 30, 25, 25, new Image("resources/accept.png"));
@@ -61,7 +63,7 @@ public class PlayingWindow extends BasicGameState
     public void render(GameContainer gc, StateBasedGame stateBG, Graphics g) throws SlickException {
         map.render(g);
         PlayerList(35, 35, g, names, turn);
-        ResourceBar(200, 10, g, 100, 100, 100, 100, 100);
+        ResourceBar(200, 10, g, currentResources[0], currentResources[1], currentResources[2], currentResources[3], currentResources[4]);
         buildingCost.draw(theWidth - 205, theHeight - 255, 200, 250);
         Trade(theWidth - 215, theHeight - 55, trade, names[turn], g);
         TradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, tradeWindow, names[turn], g);
@@ -214,6 +216,9 @@ public class PlayingWindow extends BasicGameState
                     resources[i]++;
                 if (buttons[i + 10].isWithin() && resources[i] > 0)
                     resources[i]--;
+            }
+            for (int i = 0; i < 5; i++) {
+                resources[i] = currentResources[i];
             }
             g.drawString("Wool:  " + resources[0], x + 10, y + 70);
             g.drawString("Stone: " + resources[1], x + 10, y + 90);

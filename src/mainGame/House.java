@@ -3,6 +3,7 @@ package mainGame;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.geom.Shape;
@@ -12,18 +13,37 @@ public class House
 
     private Boolean isCity;
     private Color buildingColor;
-    private Point centerPoint;
+    private Circle houseCircle;
+    private Image tex;
 
-    public House(float centerPointX, float centerPointY, Color buildingColor)
+
+    public House(Circle circle, Color buildingColor)
     {
         isCity = false;
-        centerPoint = new Point(centerPointX, centerPointY);
+        houseCircle = circle;
         this.buildingColor = buildingColor;
     }
 
     public void render(Graphics g)
     {
-        Circle houseC = new Circle(centerPoint.getX(), centerPoint.getCenterY(), 10);
-        g.texture(houseC, Texture.doge, true);
+        g.setColor(buildingColor);
+        g.texture(houseCircle, this.getTexture(), true);
+        g.setColor(Color.white);
+    }
+
+    private Image getTexture()
+    {
+        if (isCity)
+        {
+            return Texture.butt;
+        } else
+        {
+            return Texture.doge;
+        }
+    }
+
+    public void upgradeHouse()
+    {
+        isCity = true;
     }
 }

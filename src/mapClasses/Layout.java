@@ -51,7 +51,7 @@ class Layout
     {
         ArrayList<Point> corners = new ArrayList<Point>(){{}};
         Point center = Layout.hexToPixel(layout, h);
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i <= 6; i++)
         {
             Point offset = Layout.hexCornerOffset(layout, i);
             corners.add(new Point(center.getX() + offset.getX(), center.getY() + offset.getY()));

@@ -3,6 +3,7 @@ package mapClasses;
 import mainGame.House;
 import mainGame.Main;
 import mainGame.Road;
+import org.lwjgl.Sys;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -14,30 +15,39 @@ import java.util.*;
 
 public class GameMap
 {
+    private static Layout mapLayout;
     private ArrayList<Tile> map;
 
-    private ArrayList<Point> housePlots;
+    private ArrayList<Circle> housePlots;
     private ArrayList<House> houses;
 
     private ArrayList<Line> roadPlots;
     private ArrayList<Road> roads;
 
-    private static Layout mapLayout;
-
     public GameMap()
     {
+        Random randNum = new Random();
         buildMap(55, Layout.pointy);
         findHousePlots();
         findRoadPlots();
 
         houses = new ArrayList<>();
-        if (!housePlots.isEmpty())
-        for (Point point : housePlots)
-            houses.add(new House(point.getX(), point.getY(), new Color(Color.blue)));
+
+        /// JUST FOR TESTING
+
+        for (Circle circle : housePlots)
+            houses.add(new House(circle, new Color(randNum.nextInt(255), randNum.nextInt(255), randNum.nextInt(255))));
+
+        for (int i = 0; i < houses.size() - 1; i += 2)
+            houses.get(i).upgradeHouse();
 
         roads = new ArrayList<>();
         for (Line line : roadPlots)
-            roads.add(new Road(line, new Color(Color.blue)));
+            roads.add(new Road(line, new Color(randNum.nextInt(255), randNum.nextInt(255), randNum.nextInt(255))));
+
+
+        this.debugTileInfo();
+        ///
     }
 
     private void findHousePlots()
@@ -51,11 +61,17 @@ public class GameMap
                 ArrayList<Point> centerPoints = Layout.polygonCorners(mapLayout, tile);
                 for (Point point : centerPoints)
                 {
-                    if (!housePlots.contains(point))
-                        housePlots.add(point);
+                    Circle tmpCircle = new Circle(point.getX(), point.getY(), 10);
+                    if (!housePlots.contains(tmpCircle))
+                        housePlots.add(tmpCircle);
                 }
             }
         }
+    }
+
+    public void addHouse(Circle circle, Color playerColor)
+    {
+        houses.add(new House(circle, playerColor));
     }
 
     private void findRoadPlots()
@@ -66,17 +82,21 @@ public class GameMap
             if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
             {
                 ArrayList<Point> tmpPlots = Layout.polygonCorners(mapLayout, tile);
-                for (int i = 0; i < tmpPlots.size()-1; i++)
+                for (int i = 0; i < tmpPlots.size() - 1; i++)
                 {
                     Line l = new Line(tmpPlots.get(i).getX(), tmpPlots.get(i).getY(),
-                            tmpPlots.get(i+1).getX(), tmpPlots.get(i+1).getY());
+                            tmpPlots.get(i + 1).getX(), tmpPlots.get(i + 1).getY());
 
                     if (!roadPlots.contains(l))
-                        roadPlots.add(new Line(tmpPlots.get(i).getX(), tmpPlots.get(i).getY(),
-                                tmpPlots.get(i+1).getX(), tmpPlots.get(i+1).getY()));
+                        roadPlots.add(l);
                 }
             }
         }
+    }
+
+    public void addRoad(Line roadLine, Color playerColor)
+    {
+        roads.add(new Road(roadLine, playerColor));
     }
 
     private void buildMap(int tileSize, Orientation orientation)
@@ -100,7 +120,7 @@ public class GameMap
 
     private void assignTileVariables()
     {
-        Integer[] yieldNumbers = {2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12};
+        Integer[] yieldNumbers = {2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12};
         ArrayList<Integer> listOfYieldNumbers = new ArrayList<>(Arrays.asList(yieldNumbers));
         Collections.shuffle(listOfYieldNumbers);
 
@@ -134,9 +154,11 @@ public class GameMap
 
                 if (!listOfYieldNumbers.isEmpty())
                 {
-                    int yieldNum = listOfYieldNumbers.remove(listOfYieldNumbers.size() - 1);
                     if (!tile.getTileType().equalsIgnoreCase("desert"))
+                    {
+                        int yieldNum = listOfYieldNumbers.remove(listOfYieldNumbers.size() - 1);
                         tile.setYieldNumber(yieldNum);
+                    }
                 }
             }
         }
@@ -183,5 +205,16 @@ public class GameMap
             house.render(g);
         }
 
+    }
+
+    private void debugTileInfo()
+    {
+        for (Tile tile : map)
+        {
+            if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 ||Math.abs(tile.s) == 3))
+                System.out.println("Tile: " + tile.q + ", " + tile.r + ", " + tile.s +
+                        " : Got number: " + tile.getYieldNumber() +
+                        " : and Type: " + tile.getTileType());
+        }
     }
 }

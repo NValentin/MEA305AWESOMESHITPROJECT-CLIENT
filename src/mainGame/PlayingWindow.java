@@ -57,15 +57,15 @@ public class PlayingWindow extends BasicGameState
     }
 
     @Override
-    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        map.render(graphics);
-        PlayerList(35, 35, graphics, names, turn);
-        ResourceBar(200, 10, graphics, 100, 100, 100, 100, 100);
+    public void render(GameContainer gc, StateBasedGame stateBG, Graphics g) throws SlickException {
+        map.render(g);
+        PlayerList(35, 35, g, names, turn);
+        ResourceBar(200, 10, g, 100, 100, 100, 100, 100);
         buildingCost.draw(theWidth - 205, theHeight - 255, 200, 250);
-        Trade(theWidth - 215, theHeight - 55, trade, names[turn], graphics);
-        TradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, tradeWindow, names[turn], graphics);
-        OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, offerWindow, names[turn], graphics);
-        MakeTradeWindow(Main.ScreenWidth-200, 200, graphics, names);
+        Trade(theWidth - 215, theHeight - 55, trade, names[turn], g);
+        TradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, tradeWindow, names[turn], g);
+        OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, offerWindow, names[turn], g);
+        MakeTradeWindow(Main.ScreenWidth-200, 200, g, names);
     }
 
     @Override

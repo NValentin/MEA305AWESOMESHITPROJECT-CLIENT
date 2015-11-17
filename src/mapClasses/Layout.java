@@ -12,6 +12,7 @@ class Layout
         this.size = size;
         this.origin = origin;
     }
+
     public final Orientation orientation;
     public final Point size;
     public final Point origin;
@@ -49,7 +50,9 @@ class Layout
 
     static public ArrayList<Point> polygonCorners(Layout layout, Tile h)
     {
-        ArrayList<Point> corners = new ArrayList<Point>(){{}};
+        ArrayList<Point> corners = new ArrayList<Point>()
+        {{
+            }};
         Point center = Layout.hexToPixel(layout, h);
         for (int i = 0; i <= 6; i++)
         {

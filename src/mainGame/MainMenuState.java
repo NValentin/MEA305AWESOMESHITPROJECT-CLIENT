@@ -8,65 +8,63 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class MainMenuState extends BasicGameState
 {
-    Texture textures;
+    private Button create;
+    private Button join;
+    private Button exit;
 
-    Button create;
-    Button join;
-    Button exit;
-
-    int sizeX = Main.ScreenWidth/4;
-    int sizeY = Main.ScreenHeight/10;
-    int createX = Main.ScreenWidth/2-sizeX/2;
-    int createY = (int)(Main.ScreenHeight*0.4f);
-    int joinX = Main.ScreenWidth/2-sizeX/2;
-    int joinY = (int)(Main.ScreenHeight*0.55f);
-    int exitX = Main.ScreenWidth/2-sizeX/2;
-    int exitY = (int)(Main.ScreenHeight*0.85f);
+    int sizeX = Main.ScreenWidth / 4;
+    int sizeY = Main.ScreenHeight / 10;
 
     @Override
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException
+    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
     {
-        textures = new Texture();
+        Texture textures = new Texture();
         textures.initMainMenuStateTextures();
 
-        create = new Button(createX,createY,sizeX,sizeY, Texture.button);
-        join = new Button(joinX,joinY,sizeX,sizeY, Texture.button);
-        exit = new Button(exitX,exitY,sizeX,sizeY, Texture.button);
-
+        create = new Button(Main.ScreenWidth / 2 - sizeX / 2, (int) (Main.ScreenHeight * 0.4f),
+                sizeX, sizeY, Texture.buttonTemplate);
+        join = new Button(Main.ScreenWidth / 2 - sizeX / 2, (int) (Main.ScreenHeight * 0.55f),
+                sizeX, sizeY, Texture.buttonTemplate);
+        exit = new Button(Main.ScreenWidth / 2 - sizeX / 2, (int) (Main.ScreenHeight * 0.85f),
+                sizeX, sizeY, Texture.buttonTemplate);
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i)
-            throws SlickException {
+    public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException
+    {
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_C)) {
-            stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
+        if (gc.getInput().isKeyPressed(Input.KEY_C))
+        {
+            sbg.enterState(1, new FadeOutTransition(), new FadeInTransition());
             System.out.println("Created Lobby");
         }
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_J)){
-            stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+        if (gc.getInput().isKeyPressed(Input.KEY_J))
+        {
+            sbg.enterState(2, new FadeOutTransition(), new FadeInTransition());
             System.out.println("Entered Lobby");
         }
 
-        if(create.isWithin()){
-            stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
+        if (create.isWithin())
+        {
+            sbg.enterState(1, new FadeOutTransition(), new FadeInTransition());
         }
 
-        if(join.isWithin()){
-            stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+        if (join.isWithin())
+        {
+            sbg.enterState(2, new FadeOutTransition(), new FadeInTransition());
         }
 
-        if(exit.isWithin()){
+        if (exit.isWithin())
+        {
             System.exit(0);
 
         }
     }
 
     @Override
-    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g)
-            throws SlickException {
-
+    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
+    {
         Texture.menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         create.draw();
         join.draw();
@@ -74,7 +72,8 @@ public class MainMenuState extends BasicGameState
     }
 
     @Override
-    public int getID() {
+    public int getID()
+    {
         return 0;
     }
 }

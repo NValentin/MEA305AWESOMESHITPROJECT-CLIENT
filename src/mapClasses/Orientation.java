@@ -14,6 +14,7 @@ class Orientation
         this.b3 = b3;
         this.start_angle = start_angle;
     }
+
     public final double f0;
     public final double f1;
     public final double f2;

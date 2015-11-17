@@ -14,8 +14,6 @@ public class House
     private Boolean isCity;
     private Color buildingColor;
     private Circle houseCircle;
-    private Image tex;
-
 
     public House(Circle circle, Color buildingColor)
     {

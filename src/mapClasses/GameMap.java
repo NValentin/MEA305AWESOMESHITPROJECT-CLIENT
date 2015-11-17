@@ -211,7 +211,7 @@ public class GameMap
     {
         for (Tile tile : map)
         {
-            if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 ||Math.abs(tile.s) == 3))
+            if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
                 System.out.println("Tile: " + tile.q + ", " + tile.r + ", " + tile.s +
                         " : Got number: " + tile.getYieldNumber() +
                         " : and Type: " + tile.getTileType());

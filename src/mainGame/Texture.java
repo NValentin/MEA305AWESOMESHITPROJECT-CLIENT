@@ -4,6 +4,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.GameState;
+import org.newdawn.slick.state.StateBasedGame;
 
 public class Texture
 {
@@ -13,7 +14,7 @@ public class Texture
     public static Image doge;
 
     public static Image menuBackground;
-    public static Image button;
+    public static Image buttonTemplate;
 
     Texture() throws SlickException
     {
@@ -25,7 +26,8 @@ public class Texture
         try
         {
             menuBackground = new Image("resources/menuBackground.jpg");
-            button = new Image("resources/TemplateButton.jpg");
+            buttonTemplate = new Image("resources/TemplateButton.jpg");
+
         } catch (SlickException e)
         {
             e.printStackTrace();

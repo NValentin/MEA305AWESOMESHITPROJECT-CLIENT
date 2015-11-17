@@ -44,7 +44,9 @@ class FractionalTile
     static public ArrayList<Tile> tileLinedraw(Tile a, Tile b)
     {
         int N = Tile.distance(a, b);
-        ArrayList<Tile> results = new ArrayList<Tile>(){{}};
+        ArrayList<Tile> results = new ArrayList<Tile>()
+        {{
+            }};
         double step = 1.0 / Math.max(N, 1);
         for (int i = 0; i <= N; i++)
         {

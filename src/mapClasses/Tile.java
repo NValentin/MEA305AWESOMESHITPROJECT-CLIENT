@@ -15,11 +15,12 @@ public class Tile
     {
         this.q = q;
         this.r = r;
-        this. s = s;
+        this.s = s;
 
         tileType = "default";
         yieldNumber = 0;
     }
+
     public final int q;
     public final int r;
     public final int s;
@@ -58,7 +59,7 @@ public class Tile
 
     static public int length(Tile tile)
     {
-        return (int)((Math.abs(tile.q) + Math.abs(tile.r) + Math.abs(tile.s)) / 2);
+        return (int) ((Math.abs(tile.q) + Math.abs(tile.r) + Math.abs(tile.s)) / 2);
     }
 
     static public int distance(Tile a, Tile b)
@@ -76,7 +77,10 @@ public class Tile
         return tileType;
     }
 
-    public void setYieldNumber(int yieldNumber) {this.yieldNumber = yieldNumber; }
+    public void setYieldNumber(int yieldNumber)
+    {
+        this.yieldNumber = yieldNumber;
+    }
 
     public int getYieldNumber()
     {

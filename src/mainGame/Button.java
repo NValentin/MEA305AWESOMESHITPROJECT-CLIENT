@@ -10,7 +10,7 @@ import org.newdawn.slick.Image;
 import java.awt.*;
 
 /**
- * Created by Bjørn on 02-11-2015.
+ * Created by Kingo on 02-11-2015.
  */
 public class Button {
 

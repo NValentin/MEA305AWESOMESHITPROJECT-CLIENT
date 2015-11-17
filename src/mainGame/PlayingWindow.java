@@ -38,6 +38,7 @@ public class PlayingWindow extends BasicGameState
         textures = new Texture();
         textures.initPlayingWindowTextures();
         map = new GameMap();
+
         buildingCost = new Image("resources/Buildingcost.jpg");
         accept = new Button(theWidth - 155, theHeight - 30, 25, 25, new Image("resources/accept.png"));
         decline = new Button(theWidth - 100, theHeight - 30, 25, 25, new Image("resources/decline.png"));
@@ -64,7 +65,7 @@ public class PlayingWindow extends BasicGameState
         Trade(theWidth - 215, theHeight - 55, trade, names[turn], graphics);
         TradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, tradeWindow, names[turn], graphics);
         OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, offerWindow, names[turn], graphics);
-        MakeTradeWindow(500, 200, graphics, names);
+        MakeTradeWindow(Main.ScreenWidth-200, 200, graphics, names);
     }
 
     @Override

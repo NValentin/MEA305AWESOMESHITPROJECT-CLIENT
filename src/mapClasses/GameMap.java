@@ -1,26 +1,87 @@
 package mapClasses;
 
+import mainGame.House;
 import mainGame.Main;
-import org.lwjgl.Sys;
+import mainGame.Road;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Point;
-import org.newdawn.slick.geom.Polygon;
+import org.newdawn.slick.geom.*;
 
 import java.util.*;
 
 
 public class GameMap
 {
-
     private ArrayList<Tile> map;
+
+    private ArrayList<Point> housePlots;
+    private ArrayList<House> houses;
+
+    private ArrayList<Line> roadPlots;
+    private ArrayList<Road> roads;
+
     private static Layout mapLayout;
 
     public GameMap()
     {
-        int tileSize = 60;
-        mapLayout = new Layout(Layout.pointy,
+        buildMap(55, Layout.pointy);
+        findHousePlots();
+        findRoadPlots();
+
+        houses = new ArrayList<>();
+        if (!housePlots.isEmpty())
+        for (Point point : housePlots)
+            houses.add(new House(point.getX(), point.getY(), new Color(Color.blue)));
+
+        roads = new ArrayList<>();
+        for (Line line : roadPlots)
+            roads.add(new Road(line, new Color(Color.blue)));
+    }
+
+    private void findHousePlots()
+    {
+        housePlots = new ArrayList<>();
+
+        for (Tile tile : map)
+        {
+            if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
+            {
+                ArrayList<Point> centerPoints = Layout.polygonCorners(mapLayout, tile);
+                for (Point point : centerPoints)
+                {
+                    if (!housePlots.contains(point))
+                        housePlots.add(point);
+                }
+            }
+        }
+    }
+
+    private void findRoadPlots()
+    {
+        roadPlots = new ArrayList<>();
+        for (Tile tile : map)
+        {
+            if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
+            {
+                ArrayList<Point> tmpPlots = Layout.polygonCorners(mapLayout, tile);
+                for (int i = 0; i < tmpPlots.size()-1; i++)
+                {
+                    Line l = new Line(tmpPlots.get(i).getX(), tmpPlots.get(i).getY(),
+                            tmpPlots.get(i+1).getX(), tmpPlots.get(i+1).getY());
+
+                    if (!roadPlots.contains(l))
+                        roadPlots.add(new Line(tmpPlots.get(i).getX(), tmpPlots.get(i).getY(),
+                                tmpPlots.get(i+1).getX(), tmpPlots.get(i+1).getY()));
+                }
+            }
+        }
+    }
+
+    private void buildMap(int tileSize, Orientation orientation)
+    {
+        mapLayout = new Layout(orientation,
                 new Point(tileSize, tileSize),
                 new Point(Main.ScreenWidth / 2, Main.ScreenHeight / 2));
 
@@ -34,6 +95,15 @@ public class GameMap
                 map.add(new Tile(q, r, -q - r));
             }
         }
+        assignTileVariables();
+    }
+
+    private void assignTileVariables()
+    {
+        Integer[] yieldNumbers = {2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12};
+        ArrayList<Integer> listOfYieldNumbers = new ArrayList<>(Arrays.asList(yieldNumbers));
+        Collections.shuffle(listOfYieldNumbers);
+
         ArrayList<String> listOfTileTypes = new ArrayList<>(
                 Arrays.<String>asList(
                         "Grain", "Grain", "Grain", "Grain",
@@ -44,10 +114,6 @@ public class GameMap
                         "Desert"));
         Collections.shuffle(listOfTileTypes);
 
-        Integer[] yieldNumbers = {2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12};
-        ArrayList<Integer> listOfYieldNumbers = new ArrayList<>(Arrays.asList(yieldNumbers));
-        Collections.shuffle(listOfYieldNumbers);
-
         for (Tile tile : map)
         {
             if (Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3)
@@ -55,29 +121,36 @@ public class GameMap
                 tile.setTileType("Water");
             } else
             {
-                String type = "Default";
-                tile.setTileType(type);
+                String type = tile.getTileType();
 
-                if (!listOfTileTypes.isEmpty())
+                if (tile.getTileType().equalsIgnoreCase("Default"))
                 {
-                    type = listOfTileTypes.remove(listOfTileTypes.size() - 1);
-                    tile.setTileType(type);
+                    if (!listOfTileTypes.isEmpty())
+                    {
+                        type = listOfTileTypes.remove(listOfTileTypes.size() - 1);
+                        tile.setTileType(type);
+                    }
                 }
 
                 if (!listOfYieldNumbers.isEmpty())
                 {
                     int yieldNum = listOfYieldNumbers.remove(listOfYieldNumbers.size() - 1);
-                    tile.setYieldNumber(yieldNum);
+                    if (!tile.getTileType().equalsIgnoreCase("desert"))
+                        tile.setYieldNumber(yieldNum);
                 }
             }
         }
+    }
+
+    public ArrayList tilesYieldingResource(int diceRoll)
+    {
+        ArrayList<Tile> resourceYieldingTiles = new ArrayList<>();
         for (Tile tile : map)
         {
-            if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
-            {
-                System.out.println(tile.getTileType());
-            }
+            if (tile.getYieldNumber() == diceRoll)
+                resourceYieldingTiles.add(tile);
         }
+        return resourceYieldingTiles;
     }
 
     public void render(Graphics g) throws SlickException
@@ -100,5 +173,15 @@ public class GameMap
                 );
             }
         }
+        for (Road road : roads)
+        {
+            road.render(g);
+        }
+
+        for (House house : houses)
+        {
+            house.render(g);
+        }
+
     }
 }

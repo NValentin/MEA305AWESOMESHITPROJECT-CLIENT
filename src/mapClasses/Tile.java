@@ -107,6 +107,9 @@ public class Tile
             case ("Desert"):
                 tmpTexture = Texture.tileSprites.getSprite(2, 0);
                 break;
+            case ("Harbour"):
+                tmpTexture = Texture.doge;
+                break;
             case ("Water"):
                 tmpTexture = Texture.tileSprites.getSprite(5, 0);
                 break;

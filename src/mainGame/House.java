@@ -1,13 +1,29 @@
 package mainGame;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
-import java.awt.*;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.geom.Circle;
+import org.newdawn.slick.geom.Point;
+import org.newdawn.slick.geom.Shape;
 
-public class House {
+public class House
+{
 
-    Boolean isCity = false;
+    private Boolean isCity;
+    private Color buildingColor;
+    private Point centerPoint;
 
-    House (Color c, int locX, int locY) {
+    public House(float centerPointX, float centerPointY, Color buildingColor)
+    {
+        isCity = false;
+        centerPoint = new Point(centerPointX, centerPointY);
+        this.buildingColor = buildingColor;
+    }
+
+    public void render(Graphics g)
+    {
+        Circle houseC = new Circle(centerPoint.getX(), centerPoint.getCenterY(), 10);
+        g.texture(houseC, Texture.doge, true);
     }
 }

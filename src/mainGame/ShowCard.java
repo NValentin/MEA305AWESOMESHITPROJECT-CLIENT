@@ -13,8 +13,6 @@ public class ShowCard {
     int ScreenHeight = Main.ScreenHeight;
     int ScreenWidth = Main.ScreenWidth;
     Graphics g;
-    Card card;
-    SQLiteJDBC sqLiteJDBC;
 
     ShowCard(int id, int _x, int _y, int _sizeX, int _sizeY, Graphics g) {
         this.x = _x;

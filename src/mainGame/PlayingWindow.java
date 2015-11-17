@@ -28,6 +28,7 @@ public class PlayingWindow extends BasicGameState
     boolean trade = true;
     boolean tradeWindow = false;
     boolean offerWindow = false;
+    int[] currentResources = new int[5];
     int [] resources = new int[10];
 
     GameMap map;
@@ -240,6 +241,8 @@ public class PlayingWindow extends BasicGameState
             g.setColor(Color.white);
         }
     }
+
+    public void
 
     @Override
     public int getID() {

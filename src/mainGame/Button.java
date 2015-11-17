@@ -2,6 +2,12 @@ package mainGame;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Font;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+
+import java.awt.*;
 
 /**
  * Created by Bjørn on 02-11-2015.
@@ -15,6 +21,8 @@ public class Button {
     int ScreenHeight = Main.ScreenHeight;
     Image texture;
     boolean pressed;
+    Font font;
+    int fontSize = 50;
 
     public Button(int x, int y, int sizeX, int sizeY, Image texture) {
         this.x = x;
@@ -23,6 +31,18 @@ public class Button {
         this.sizeY = sizeY;
         this.texture = texture;
         this.pressed = false;
+        font = new TrueTypeFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, fontSize), true);
+    }
+
+    public Button(int x, int y, int sizeX, int sizeY, Image texture, int fontSize) {
+        this.x = x;
+        this.y = y;
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+        this.texture = texture;
+        this.pressed = false;
+        this.fontSize = fontSize;
+        font = new TrueTypeFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, fontSize), true);
     }
 
     public void draw() {
@@ -40,6 +60,13 @@ public class Button {
     public void SetPos(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public void AddText(Graphics g, String text) {
+        g.setColor(Color.black);
+        g.setFont(font);
+        font.drawString(x + sizeX/2f - font.getWidth(text)/2f, y + sizeY/2f - font.getHeight(text)/2f, text);
+        g.setColor(Color.white);
     }
 
     public boolean isWithin() {

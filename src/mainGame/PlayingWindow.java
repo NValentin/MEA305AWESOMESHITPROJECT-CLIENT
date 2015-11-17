@@ -242,8 +242,6 @@ public class PlayingWindow extends BasicGameState
         }
     }
 
-    public void
-
     @Override
     public int getID() {
         return 3;

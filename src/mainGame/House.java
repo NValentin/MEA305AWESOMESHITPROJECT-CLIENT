@@ -44,4 +44,9 @@ public class House
     {
         isCity = true;
     }
+
+    public Circle getHouseCircle()
+    {
+        return houseCircle;
+    }
 }

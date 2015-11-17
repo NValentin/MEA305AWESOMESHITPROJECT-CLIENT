@@ -4,10 +4,8 @@ import mainGame.House;
 import mainGame.Main;
 import mainGame.Road;
 import org.lwjgl.Sys;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.lwjgl.input.Mouse;
+import org.newdawn.slick.*;
 import org.newdawn.slick.geom.*;
 
 import java.util.*;
@@ -17,6 +15,7 @@ public class GameMap
 {
     private static Layout mapLayout;
     private ArrayList<Tile> map;
+    private int mapTileSize = 55;
 
     private ArrayList<Circle> housePlots;
     private ArrayList<House> houses;
@@ -27,16 +26,18 @@ public class GameMap
     public GameMap()
     {
         Random randNum = new Random();
-        buildMap(55, Layout.pointy);
+        buildMap(mapTileSize, Layout.pointy);
         findHousePlots();
         findRoadPlots();
 
         houses = new ArrayList<>();
 
         /// JUST FOR TESTING
+        for (int i = 0; i < housePlots.size()-1; i++)
+        {
+             houses.add(new House(housePlots.get(i), new Color(randNum.nextInt(255), randNum.nextInt(255), randNum.nextInt(255))));
+        }
 
-        for (Circle circle : housePlots)
-            houses.add(new House(circle, new Color(randNum.nextInt(255), randNum.nextInt(255), randNum.nextInt(255))));
 
         for (int i = 0; i < houses.size() - 1; i += 2)
             houses.get(i).upgradeHouse();
@@ -46,7 +47,7 @@ public class GameMap
             roads.add(new Road(line, new Color(randNum.nextInt(255), randNum.nextInt(255), randNum.nextInt(255))));
 
 
-        this.debugTileInfo();
+        //this.debugTileInfo();
         ///
     }
 
@@ -194,6 +195,8 @@ public class GameMap
                         Layout.hexToPixel(mapLayout, tile).getY() - 8
                 );
             }
+
+
         }
         for (Road road : roads)
         {

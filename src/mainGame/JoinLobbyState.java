@@ -82,33 +82,33 @@ public class JoinLobbyState extends BasicGameState {
 
         //Draw player box 1
         g.setColor(new Color(50,50,50,200));
-        if(SharedData.lobbyReady[0]){
+        if(PlayerStats.lobbyReadyAll[0]){
             g.setColor(new Color(0,100,0,200));
         }
         g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+20,sizeX,40);
         //Draw player box 2
         g.setColor(new Color(50,50,50,200));
-        if(SharedData.lobbyReady[1]){
+        if(PlayerStats.lobbyReadyAll[1]){
             g.setColor(new Color(0,100,0,200));
         }
         g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+60,sizeX,40);
         //Draw player box 3
         g.setColor(new Color(50,50,50,200));
-        if(SharedData.lobbyReady[2]){
+        if(PlayerStats.lobbyReadyAll[2]){
             g.setColor(new Color(0,100,0,200));
         }
         g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+100,sizeX,40);
         //Draw player box 4
         g.setColor(new Color(50,50,50,200));
-        if(SharedData.lobbyReady[3]){
+        if(PlayerStats.lobbyReadyAll[3]){
             g.setColor(new Color(0,100,0,200));
         }
         g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+140,sizeX,40);
         //Draw names
         g.setColor(Color.white);
-        for (int i=0; i<4;i++){
+        /*for (int i=0; i<4;i++){
             g.drawString(SharedData.names[i], Main.ScreenWidth/2-sizeX/2+10, (int)(Main.ScreenHeight*0.45f)+30+40*i);
-        }
+        }*/
         g.setColor(Color.white);
         chatBox.render(g, gc);
         chat.render(gc, g);

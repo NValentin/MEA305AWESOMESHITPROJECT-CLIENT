@@ -2,6 +2,7 @@ package Network;
 
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.minlog.Log;
+import mainGame.SharedPlayerStats;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,19 +27,20 @@ public class GameClient extends Listener implements Runnable{
         //System.exit(0);
     }
 
-    public static void update(){
-        PlayerStats.update();
+    public void update(){
 
         if(PlayerStats.TEMPpoint != PlayerStats.point){
-            PlayerStats Ppacket = new PlayerStats();
-            network.client.sendUDP(Ppacket);
+            SharedPlayerStats sps = new SharedPlayerStats();
+            sps.updateStats();
+            network.client.sendUDP(sps);
 
             PlayerStats.TEMPpoint = PlayerStats.point;
 
         }
         if(PlayerStats.name != "" && nameSent == false){
-            //PlayerStats Ppacket = new PlayerStats();
-            network.client.sendUDP(/*Ppacket*/PlayerStats.name);
+            SharedPlayerStats sps = new SharedPlayerStats();
+            sps.updateStats();
+            network.client.sendUDP(sps);
             nameSent=true;
         }
     }

@@ -7,13 +7,14 @@ import mainGame.SharedData;
 import mainGame.SharedPlayerStats;
 
 import java.io.IOException;
+import java.net.InetAddress;
 
 public class Network extends Listener {
 
     Client client;
-    String ip = "192.168.0.100";
     int port = 23820;
     SharedData data;
+    InetAddress ip;
 
     public void connect() {
         client = new Client(16384,2048);
@@ -26,6 +27,7 @@ public class Network extends Listener {
 
         client.addListener(this);
 
+        ip = client.discoverHost(port,port);
         client.start();
         try {
             client.connect(5000, ip, port, port);
@@ -47,8 +49,12 @@ public class Network extends Listener {
         }
         if (o instanceof SharedData){
             data = (SharedData) o;
-            PlayerStats.names = data.names;
+            data.updateStats();
+            //PlayerStats.names = data.names;
             System.out.println("ARE U PRINTIN HERE??");
+            for (int i =0; i<PlayerStats.names.length; i++){
+                System.out.println(PlayerStats.names[i]);
+            }
         }
     }
 }

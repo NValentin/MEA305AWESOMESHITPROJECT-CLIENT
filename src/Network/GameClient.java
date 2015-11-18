@@ -12,7 +12,7 @@ public class GameClient extends Listener implements Runnable{
     //static PlayerStats playerStats = new PlayerStats();
     static Network network = new Network();
     static Map<Integer, PlayerStats> players = new HashMap<Integer, PlayerStats>();
-    static boolean nameSent = false;
+    boolean nameSent = false;
 
     @Override
     public void run(){
@@ -28,7 +28,19 @@ public class GameClient extends Listener implements Runnable{
     }
 
     public void update(){
-
+        updatePlayerName();
+        updatePlayerPoints();
+    }
+    void updatePlayerName(){
+        if(!PlayerStats.name.matches("") && !nameSent) {
+            System.out.println("PlayerStats.name is not null, SEND STUFF");
+            SharedPlayerStats sps = new SharedPlayerStats();
+            sps.updateStats();
+            network.client.sendUDP(sps);
+            nameSent = true;
+        }
+    }
+    void updatePlayerPoints(){
         if(PlayerStats.TEMPpoint != PlayerStats.point){
             SharedPlayerStats sps = new SharedPlayerStats();
             sps.updateStats();
@@ -36,12 +48,6 @@ public class GameClient extends Listener implements Runnable{
 
             PlayerStats.TEMPpoint = PlayerStats.point;
 
-        }
-        if(PlayerStats.name != "" && nameSent == false){
-            SharedPlayerStats sps = new SharedPlayerStats();
-            sps.updateStats();
-            network.client.sendUDP(sps);
-            nameSent=true;
         }
     }
 }

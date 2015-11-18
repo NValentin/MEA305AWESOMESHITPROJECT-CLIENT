@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/Tile.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/Tile.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/CreatePlayerState.java" afterPath="$PROJECT_DIR$/src/mainGame/CreatePlayerState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/GameClient.java" afterPath="$PROJECT_DIR$/src/Network/GameClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/Network.java" afterPath="$PROJECT_DIR$/src/Network/Network.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/PlayerStats.java" afterPath="$PROJECT_DIR$/src/Network/PlayerStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/SharedData.java" afterPath="$PROJECT_DIR$/src/mainGame/SharedData.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -719,7 +714,7 @@
       <workItem from="1447758886946" duration="7310000" />
       <workItem from="1447766278921" duration="35000" />
       <workItem from="1447846494140" duration="5664000" />
-      <workItem from="1447852193023" duration="351000" />
+      <workItem from="1447852193023" duration="411000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed to work with IntelliJ">
       <created>1446114969140</created>
@@ -925,11 +920,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447846877581</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Server/client stuff 2.3">
+      <created>1447852553088</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1447852553088</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132899000" />
+    <option name="totallyTimeSpent" value="132959000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -1008,7 +1009,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added PlayingWindow Class, thats it" />
     <MESSAGE value="Added turnboard, resourcesBar" />
     <MESSAGE value="Made Tile Class, made Texture Class." />
     <MESSAGE value="Changed to StateBasedGame" />
@@ -1033,7 +1033,8 @@
     <MESSAGE value="Server/client stuff 2" />
     <MESSAGE value="Server/client stuff 2.1" />
     <MESSAGE value="Server/client stuff 2.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Server/client stuff 2.2" />
+    <MESSAGE value="Server/client stuff 2.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Server/client stuff 2.3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

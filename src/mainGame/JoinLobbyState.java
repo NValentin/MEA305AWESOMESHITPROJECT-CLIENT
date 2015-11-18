@@ -106,9 +106,9 @@ public class JoinLobbyState extends BasicGameState {
         g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+140,sizeX,40);
         //Draw names
         g.setColor(Color.white);
-        /*for (int i=0; i<4;i++){
-            g.drawString(SharedData.names[i], Main.ScreenWidth/2-sizeX/2+10, (int)(Main.ScreenHeight*0.45f)+30+40*i);
-        }*/
+        for (int i=0; i<4;i++){
+            g.drawString(PlayerStats.names[i], Main.ScreenWidth/2-sizeX/2+10, (int)(Main.ScreenHeight*0.45f)+30+40*i);
+        }
         g.setColor(Color.white);
         chatBox.render(g, gc);
         chat.render(gc, g);

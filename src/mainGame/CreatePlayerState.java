@@ -69,7 +69,6 @@ public class CreatePlayerState extends BasicGameState {
         if((gameContainer.getInput().isKeyPressed(Input.KEY_ENTER)||ok.isWithin()) && nameField.getText()!=""){
             playerName = nameField.getText();
             nameField.setText("");
-            //System.out.println(playerName);
         }
     }
 

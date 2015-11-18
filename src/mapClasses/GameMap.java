@@ -77,7 +77,7 @@ public class GameMap
             houses.add(new House(circle, playerColor));
         } else
         {
-            System.out.println("cant place house");
+            //push message to user, that they can not build their desired house.
         }
     }
 

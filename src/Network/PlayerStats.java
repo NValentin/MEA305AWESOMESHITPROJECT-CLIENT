@@ -12,7 +12,7 @@ public class PlayerStats {
     public static int length_of_road = 0;
     public static int resources_on_hand = 0;
     public Connection c;
-    public static int TEMPpoint=1;
+    public static int TEMPpoint=0;
     public static boolean lobbyReady = false;
 
     public static String[] names = new String[]{" "," "," "," "};
@@ -20,7 +20,7 @@ public class PlayerStats {
     public static int[] knightsPlayed = new int[]{0,0,0,0};
     public static int[] resourcesOnHand = new int[]{0,0,0,0};
     public static boolean[] lobbyReadyAll = new boolean[]{false,false,false,false};
-    public static int longestRoad;
+    public static int [] longestRoad = new int[]{0,0,0,0};
     public static int turn;
 
 

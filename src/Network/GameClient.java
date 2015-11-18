@@ -30,6 +30,7 @@ public class GameClient extends Listener implements Runnable{
     public void update(){
         updatePlayerName();
         updatePlayerPoints();
+        updateLobbyReady();
     }
     void updatePlayerName(){
         if(!PlayerStats.name.matches("") && !nameSent) {
@@ -48,6 +49,14 @@ public class GameClient extends Listener implements Runnable{
 
             PlayerStats.TEMPpoint = PlayerStats.point;
 
+        }
+    }
+    void updateLobbyReady(){
+        if(PlayerStats.lobbyReady==true){
+            SharedPlayerStats sps = new SharedPlayerStats();
+            sps.updateStats();
+            network.client.sendUDP(sps);
+            PlayerStats.lobbyReady=false;
         }
     }
 }

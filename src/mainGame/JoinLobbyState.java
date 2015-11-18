@@ -49,7 +49,7 @@ public class JoinLobbyState extends BasicGameState {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i)
             throws SlickException {
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_C)) {
+        if(gameContainer.getInput().isKeyPressed(Input.KEY_C) || PlayerStats.StartGame) {
             stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
             System.out.println("Created Lobby");
         }
@@ -78,7 +78,6 @@ public class JoinLobbyState extends BasicGameState {
         forward.draw();
         g.setColor(Color.white);
         g.drawString("PLAYERS:", Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f));
-//+SharedData.names[0] + "\n  "+SharedData.names[1]+" \n  "+SharedData.names[2]+" \n  "+SharedData.names[3]
 
         //Draw player box 1
         g.setColor(new Color(50,50,50,200));

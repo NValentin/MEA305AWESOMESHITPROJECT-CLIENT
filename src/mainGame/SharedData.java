@@ -13,6 +13,7 @@ public class SharedData {
     public boolean[] lobbyReadyAll = new boolean[]{false,false,false,false};
     public int longestRoad[] = new int[]{0,0,0,0};
     public int turn;
+    public boolean StartGame = false;
 
     public SharedData(){
 
@@ -26,6 +27,7 @@ public class SharedData {
         PlayerStats.lobbyReadyAll = lobbyReadyAll;
         PlayerStats.longestRoad = longestRoad;
         PlayerStats.turn = turn;
+        PlayerStats.StartGame = StartGame;
 
     }
 }

@@ -22,6 +22,7 @@ public class PlayerStats {
     public static boolean[] lobbyReadyAll = new boolean[]{false,false,false,false};
     public static int [] longestRoad = new int[]{0,0,0,0};
     public static int turn;
+    public static boolean StartGame;
 
 
 

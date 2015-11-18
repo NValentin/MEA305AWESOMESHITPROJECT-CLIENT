@@ -51,6 +51,7 @@ public class Network extends Listener {
             data = (SharedData) o;
             data.updateStats();
             PlayerStats.names = data.names;
+            PlayerStats.lobbyReadyAll = data.lobbyReadyAll;
             System.out.println("ARE U PRINTIN HERE??");
             for (int i =0; i<PlayerStats.names.length; i++){
                 System.out.println(PlayerStats.names[i]);

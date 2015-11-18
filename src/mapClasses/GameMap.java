@@ -15,7 +15,6 @@ public class GameMap
 {
     private static Layout mapLayout;
     private ArrayList<Tile> map;
-    private int mapTileSize = 55;
 
     private ArrayList<Circle> housePlots;
     private ArrayList<House> houses;
@@ -26,6 +25,7 @@ public class GameMap
     public GameMap()
     {
         Random randNum = new Random();
+        int mapTileSize = 55;
         buildMap(mapTileSize, Layout.pointy);
         findHousePlots();
         findRoadPlots();
@@ -35,7 +35,7 @@ public class GameMap
         /// JUST FOR TESTING
         for (int i = 0; i < housePlots.size()-1; i++)
         {
-             houses.add(new House(housePlots.get(i), new Color(randNum.nextInt(255), randNum.nextInt(255), randNum.nextInt(255))));
+             addHouse(housePlots.get(i), new Color(randNum.nextInt(255), randNum.nextInt(255), randNum.nextInt(255)));
         }
 
 
@@ -72,7 +72,13 @@ public class GameMap
 
     public void addHouse(Circle circle, Color playerColor)
     {
-        houses.add(new House(circle, playerColor));
+        if (canPlaceHouse(circle))
+        {
+            houses.add(new House(circle, playerColor));
+        } else
+        {
+            System.out.println("cant place house");
+        }
     }
 
     private void findRoadPlots()
@@ -176,6 +182,20 @@ public class GameMap
         return resourceYieldingTiles;
     }
 
+    private boolean canPlaceHouse(Circle desiredHousePlot)
+    {
+        boolean state = false;
+        if (houses.isEmpty())
+            state = true;
+
+        for (House house : houses)
+        {
+            state = new Vector2f(house.getHouseCircle().getCenterX(), house.getHouseCircle().getCenterY()).distance(
+                    new Vector2f(desiredHousePlot.getCenterX(), desiredHousePlot.getCenterY())) > 60;
+        }
+        return state;
+    }
+
     public void render(Graphics g) throws SlickException
     {
         for (Tile tile : map)
@@ -195,8 +215,6 @@ public class GameMap
                         Layout.hexToPixel(mapLayout, tile).getY() - 8
                 );
             }
-
-
         }
         for (Road road : roads)
         {

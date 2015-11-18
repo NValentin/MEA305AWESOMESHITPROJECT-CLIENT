@@ -10,6 +10,7 @@ public class Texture
 {
     //Actually Used Textures
     public static SpriteSheet tileSprites;
+    public static SpriteSheet cardSprites;
     public static Image butt;
     public static Image doge;
 
@@ -38,6 +39,7 @@ public class Texture
         try
         {
             tileSprites = new SpriteSheet("resources/tileTexture_Sheet.png", 120, 140, 3);
+            cardSprites = new SpriteSheet("resources/tileTexture_sheet.png", 256, 432, 0);
         } catch (SlickException e)
         {
             e.printStackTrace();

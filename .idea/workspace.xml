@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/TemplateButton.jpg" afterPath="$PROJECT_DIR$/resources/TemplateButton.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/allCards_sheet.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/Texture.java" afterPath="$PROJECT_DIR$/src/mainGame/Texture.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -59,19 +60,12 @@
         <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+              <caret line="92" column="17" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="17" />
               <folding>
                 <element signature="method#findHousePlots#0;class#GameMap#0" expanded="false" />
                 <element signature="method#assignTileVariables#0;class#GameMap#0" expanded="false" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TemplateButton.jpg" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/TemplateButton.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -121,11 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Texture.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Texture.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mainGame/Texture.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+            <state vertical-scroll-proportion="1.2758621">
+              <caret line="41" column="90" selection-start-line="41" selection-start-column="90" selection-end-line="41" selection-end-column="90" />
               <folding />
             </state>
           </provider>
@@ -178,7 +172,6 @@
         <option value="$PROJECT_DIR$/src/mainGame/House.java" />
         <option value="$PROJECT_DIR$/src/mapClasses/Layout.java" />
         <option value="$PROJECT_DIR$/src/mainGame/MainMenuState.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/Texture.java" />
         <option value="$PROJECT_DIR$/src/mainGame/Button.java" />
         <option value="$PROJECT_DIR$/src/mainGame/ShowCard.java" />
         <option value="$PROJECT_DIR$/src/Network/GatheringResources.java" />
@@ -186,6 +179,7 @@
         <option value="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" />
         <option value="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
         <option value="$PROJECT_DIR$/src/mainGame/JoinLobbyState.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/Texture.java" />
       </list>
     </option>
   </component>
@@ -832,7 +826,7 @@
       <workItem from="1447660210841" duration="9527000" />
       <workItem from="1447748703974" duration="7464000" />
       <workItem from="1447757914370" duration="6827000" />
-      <workItem from="1447845874510" duration="2996000" />
+      <workItem from="1447845874510" duration="3784000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed to work with IntelliJ">
       <created>1446114969140</created>
@@ -1020,11 +1014,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447848392241</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="made ugly buttontemplate to replace the other ugly button template, but this one has no text.">
+      <created>1447848901676</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1447848901676</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111711000" />
+    <option name="totallyTimeSpent" value="112499000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1100,7 +1100,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Redid most of GameMap" />
     <MESSAGE value="Redid some of" />
     <MESSAGE value="Added PlayingWindow Class, thats it" />
     <MESSAGE value="Added turnboard, resourcesBar" />
@@ -1125,7 +1124,8 @@
     <MESSAGE value="Deleted SQLite database and classes + library" />
     <MESSAGE value="Fixed show card class" />
     <MESSAGE value="Made a check for valid house placement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made a check for valid house placement" />
+    <MESSAGE value="made ugly buttontemplate to replace the other ugly button template, but this one has no text." />
+    <option name="LAST_COMMIT_MESSAGE" value="made ugly buttontemplate to replace the other ugly button template, but this one has no text." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1485,14 +1485,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/Texture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Network/GameClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1531,10 +1523,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/TemplateButton.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+          <caret line="92" column="17" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="17" />
           <folding>
             <element signature="method#findHousePlots#0;class#GameMap#0" expanded="false" />
             <element signature="method#assignTileVariables#0;class#GameMap#0" expanded="false" />
@@ -1542,9 +1539,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/TemplateButton.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/src/mainGame/Texture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2758621">
+          <caret line="41" column="90" selection-start-line="41" selection-start-column="90" selection-end-line="41" selection-end-column="90" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>

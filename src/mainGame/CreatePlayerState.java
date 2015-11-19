@@ -50,7 +50,7 @@ public class CreatePlayerState extends BasicGameState {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i)
             throws SlickException {
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_J)){
+        if(gameContainer.getInput().isKeyPressed(Input.KEY_2)){
             stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
             System.out.println("Joined Lobby");
         }

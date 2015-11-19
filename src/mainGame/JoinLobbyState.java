@@ -17,6 +17,7 @@ public class JoinLobbyState extends BasicGameState {
     int sizeX = Main.ScreenWidth/4;
     int sizeY = Main.ScreenHeight/10;
     TextBoxBase chatBox;
+    boolean checkIfReady = false;
 
     Button back;
     Button forward;
@@ -48,7 +49,7 @@ public class JoinLobbyState extends BasicGameState {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i)
             throws SlickException {
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_C) || PlayerStats.StartGame) {
+        if(gameContainer.getInput().isKeyPressed(Input.KEY_3) || PlayerStats.StartGame) {
             stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
         }
 
@@ -61,8 +62,9 @@ public class JoinLobbyState extends BasicGameState {
             chatBox.newMessage(chatText,PlayerStats.name);
             chat.setText("");
         }
-        if(forward.isWithin()) {
-            PlayerStats.lobbyReady = true;
+        if(forward.isWithin() && !checkIfReady) {
+            PlayerStats.lobbyReady=true;
+            checkIfReady = true;
         }
     }
 

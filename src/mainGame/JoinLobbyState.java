@@ -1,6 +1,5 @@
 package mainGame;
 
-import Network.PlayerStats;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
@@ -51,7 +50,6 @@ public class JoinLobbyState extends BasicGameState {
 
         if(gameContainer.getInput().isKeyPressed(Input.KEY_C) || PlayerStats.StartGame) {
             stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
-            System.out.println("Created Lobby");
         }
 
         if(gameContainer.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isWithin()){
@@ -60,12 +58,11 @@ public class JoinLobbyState extends BasicGameState {
 
         if(gameContainer.getInput().isKeyPressed(Input.KEY_ENTER) && chat.getText()!="") {
             chatText = chat.getText();
-            chatBox.newMessage(chatText,TextBoxBase.personTalking);
+            chatBox.newMessage(chatText,PlayerStats.name);
             chat.setText("");
         }
         if(forward.isWithin()) {
             PlayerStats.lobbyReady = true;
-            //SharedData.lobbyReady[1] = true;
         }
     }
 

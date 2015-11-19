@@ -19,7 +19,6 @@ public class TextBoxBase{
 
     String textToRender[];
     String oldText[];
-    static String personTalking = "";
 
     public TextBoxBase(){
         try{
@@ -39,9 +38,9 @@ public class TextBoxBase{
         g.setColor(Color.white);
 
         try{
-            trueTypeFont.drawString(10, Main.ScreenHeight-100, textToRender[0], Color.white);
-            trueTypeFont.drawString(10, Main.ScreenHeight-80, textToRender[1] , Color.white);
-            trueTypeFont.drawString(10, Main.ScreenHeight-60, textToRender[2] , Color.white);
+            trueTypeFont.drawString(10, Main.ScreenHeight-100, PlayerStats.textToRender[0], Color.white);
+            trueTypeFont.drawString(10, Main.ScreenHeight-80, PlayerStats.textToRender[1] , Color.white);
+            trueTypeFont.drawString(10, Main.ScreenHeight-60, PlayerStats.textToRender[2] , Color.white);
 
             for (int i = 0; i < chatLength; i++){
 
@@ -54,7 +53,6 @@ public class TextBoxBase{
         updateOldMessages();
         int mark = 0;
         int mark2 = 0;
-        personTalking = name;
         String text = name+": "+chatText;
 
         if(text.length()<=TEXTBOXWIDTH) { // If there is only one line of text
@@ -112,6 +110,8 @@ public class TextBoxBase{
                 }
             //}
         }
+        PlayerStats.textPackage = textToRender;
+        PlayerStats.textReady = true;
     }
 
     public void updateOldMessages(){

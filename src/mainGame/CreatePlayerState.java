@@ -1,7 +1,5 @@
 package mainGame;
 
-import Network.GameClient;
-import Network.PlayerStats;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.Graphics;
@@ -63,7 +61,6 @@ public class CreatePlayerState extends BasicGameState {
         if(forward.isWithin() && playerName != ""){
             stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
             PlayerStats.name = playerName;
-            TextBoxBase.personTalking = playerName;
         }
 
         if((gameContainer.getInput().isKeyPressed(Input.KEY_ENTER)||ok.isWithin()) && nameField.getText()!=""){

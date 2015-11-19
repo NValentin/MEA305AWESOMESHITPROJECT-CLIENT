@@ -1,11 +1,11 @@
-package mainGame;
+package Network;
 
-import Network.PlayerStats;
+import mainGame.PlayerStats;
 
 /**
  * Created by Bjørn on 16-11-2015.
  */
-public class SharedData {
+public class ServerData {
     public String[] names = new String[]{"","","",""};
     public int[] points = new int[]{0,0,0,0};
     public int[] knightsPlayed = new int[]{0,0,0,0};
@@ -14,12 +14,12 @@ public class SharedData {
     public int longestRoad[] = new int[]{0,0,0,0};
     public int turn;
     public boolean StartGame = false;
+    public String[] textToRender = new String[]{"","",""};
 
-    public SharedData(){
-
+    public ServerData(){
     }
 
-    public void updateStats(){
+    public void unpack(){
         PlayerStats.names = names;
         PlayerStats.points = points;
         PlayerStats.knightsPlayed = knightsPlayed;
@@ -28,6 +28,7 @@ public class SharedData {
         PlayerStats.longestRoad = longestRoad;
         PlayerStats.turn = turn;
         PlayerStats.StartGame = StartGame;
+        PlayerStats.textToRender = textToRender;
 
     }
 }

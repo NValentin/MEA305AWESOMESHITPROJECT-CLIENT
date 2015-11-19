@@ -1,8 +1,8 @@
-package mainGame;
+package Network;
 
-import Network.PlayerStats;
+import mainGame.PlayerStats;
 
-public class SharedPlayerStats {
+public class ClientData {
     public int nsID;
     public String nsname;
     public int nspoint;
@@ -10,18 +10,12 @@ public class SharedPlayerStats {
     public int nslength_of_road;
     public int nsresources_on_hand;
     public boolean nslobbyReady;
+    public String[] nstextPackage = new String[3];
 
-    public SharedPlayerStats(){
-        nsID = this.nsID;
-        nsname = this.nsname;
-        nspoint = this.nspoint;
-        nsknights_played = this.nsknights_played;
-        nslength_of_road = this.nslength_of_road;
-        nsresources_on_hand = this.nsresources_on_hand;
-        nslobbyReady = this.nslobbyReady;
+    public ClientData(){
     }
 
-    public void updateStats(){
+    public void pack(){
         nsID = PlayerStats.ID;
         nsname = PlayerStats.name;
         nspoint = PlayerStats.point;
@@ -29,6 +23,7 @@ public class SharedPlayerStats {
         nslength_of_road = PlayerStats.length_of_road;
         nsresources_on_hand = PlayerStats.resources_on_hand;
         nslobbyReady = PlayerStats.lobbyReady;
+        nstextPackage = PlayerStats.textPackage;
     }
 
 }

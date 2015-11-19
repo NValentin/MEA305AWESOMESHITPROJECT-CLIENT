@@ -2,7 +2,7 @@ package Network;
 
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.minlog.Log;
-import mainGame.SharedPlayerStats;
+import mainGame.PlayerStats;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,31 +31,40 @@ public class GameClient extends Listener implements Runnable{
         updatePlayerName();
         updatePlayerPoints();
         updateLobbyReady();
+        updateChat();
     }
     void updatePlayerName(){
         if(!PlayerStats.name.matches("") && !nameSent) {
             System.out.println("PlayerStats.name is not null, SEND STUFF");
-            SharedPlayerStats sps = new SharedPlayerStats();
-            sps.updateStats();
-            network.client.sendUDP(sps);
+            ClientData clientData = new ClientData();
+            clientData.pack();
+            network.client.sendUDP(clientData);
             nameSent = true;
         }
     }
+    void updateChat(){
+        if(PlayerStats.textReady){
+            ClientData clientData = new ClientData();
+            clientData.pack();
+            network.client.sendUDP(clientData);
+            PlayerStats.textReady = false;
+        }
+    }
+
     void updatePlayerPoints(){
         if(PlayerStats.TEMPpoint != PlayerStats.point){
-            SharedPlayerStats sps = new SharedPlayerStats();
-            sps.updateStats();
-            network.client.sendUDP(sps);
+            ClientData clientData = new ClientData();
+            clientData.pack();
+            network.client.sendUDP(clientData);
 
             PlayerStats.TEMPpoint = PlayerStats.point;
-
         }
     }
     void updateLobbyReady(){
-        if(PlayerStats.lobbyReady==true){
-            SharedPlayerStats sps = new SharedPlayerStats();
-            sps.updateStats();
-            network.client.sendUDP(sps);
+        if(PlayerStats.lobbyReady){
+            ClientData clientData = new ClientData();
+            clientData.pack();
+            network.client.sendUDP(clientData);
             PlayerStats.lobbyReady=false;
         }
     }

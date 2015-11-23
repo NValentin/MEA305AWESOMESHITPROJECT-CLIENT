@@ -1,10 +1,10 @@
 package mapClasses;
 
+import Network.Network;
 import mainGame.House;
 import mainGame.Main;
+import mainGame.PlayerStats;
 import mainGame.Road;
-import org.lwjgl.Sys;
-import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.*;
 
@@ -33,9 +33,9 @@ public class GameMap
         houses = new ArrayList<>();
 
         /// JUST FOR TESTING
-        for (int i = 0; i < housePlots.size()-1; i++)
+        for (int i = 0; i < housePlots.size() - 1; i++)
         {
-             addHouse(housePlots.get(i), new Color(randNum.nextInt(255), randNum.nextInt(255), randNum.nextInt(255)));
+            addHouse(housePlots.get(i), PlayerStats.getPlayerColor());
         }
 
 
@@ -44,7 +44,7 @@ public class GameMap
 
         roads = new ArrayList<>();
         for (Line line : roadPlots)
-            roads.add(new Road(line, new Color(randNum.nextInt(255), randNum.nextInt(255), randNum.nextInt(255))));
+            addRoad(line, PlayerStats.getPlayerColor());
 
 
         //this.debugTileInfo();
@@ -122,10 +122,16 @@ public class GameMap
                 map.add(new Tile(q, r, -q - r));
             }
         }
-        assignTileVariables();
+        if (Network.isConnected)
+        {
+            assignTileVariablesFromServer();
+        } else
+        {
+            assignTileVariablesFromLocal();
+        }
     }
 
-    private void assignTileVariables()
+    private void assignTileVariablesFromLocal()
     {
         Integer[] yieldNumbers = {2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12};
         ArrayList<Integer> listOfYieldNumbers = new ArrayList<>(Arrays.asList(yieldNumbers));
@@ -140,6 +146,41 @@ public class GameMap
                         "Brick", "Brick", "Brick",
                         "Desert"));
         Collections.shuffle(listOfTileTypes);
+
+        for (Tile tile : map)
+        {
+            if (Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3)
+            {
+                tile.setTileType("Water");
+            } else
+            {
+                String type = tile.getTileType();
+
+                if (tile.getTileType().equalsIgnoreCase("Default"))
+                {
+                    if (!listOfTileTypes.isEmpty())
+                    {
+                        type = listOfTileTypes.remove(listOfTileTypes.size() - 1);
+                        tile.setTileType(type);
+                    }
+                }
+
+                if (!listOfYieldNumbers.isEmpty())
+                {
+                    if (!tile.getTileType().equalsIgnoreCase("desert"))
+                    {
+                        int yieldNum = listOfYieldNumbers.remove(listOfYieldNumbers.size() - 1);
+                        tile.setYieldNumber(yieldNum);
+                    }
+                }
+            }
+        }
+    }
+
+    private void assignTileVariablesFromServer()
+    {
+        ArrayList<String> listOfTileTypes = Network.serverListOfTypes;
+        ArrayList<Integer> listOfYieldNumbers = Network.serverListOfYieldNumbers;
 
         for (Tile tile : map)
         {
@@ -218,11 +259,13 @@ public class GameMap
         }
         for (Road road : roads)
         {
+            road.setRoadColor(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
             road.render(g);
         }
 
         for (House house : houses)
         {
+            house.setBuildingColor(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
             house.render(g);
         }
 

@@ -1,6 +1,7 @@
 package mainGame;
 
 import com.esotericsoftware.kryonet.Connection;
+import org.newdawn.slick.Color;
 
 public class PlayerStats {
 
@@ -33,5 +34,28 @@ public class PlayerStats {
 
     public PlayerStats(){
 
+    }
+
+    public static Color getPlayerColor()
+    {
+        Color playerColor = Color.pink;
+        switch (ID)
+        {
+            case(1):
+                playerColor = Color.blue;
+                break;
+            case(2):
+                playerColor = Color.red;
+                break;
+            case (3):
+                playerColor = Color.white;
+                break;
+            case (4):
+                playerColor = Color.orange;
+                break;
+            default:
+                break;
+        }
+        return playerColor;
     }
 }

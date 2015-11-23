@@ -12,6 +12,17 @@ public class House
 {
 
     private Boolean isCity;
+
+    public Color getBuildingColor()
+    {
+        return buildingColor;
+    }
+
+    public void setBuildingColor(Color buildingColor)
+    {
+        this.buildingColor = buildingColor;
+    }
+
     private Color buildingColor;
     private Circle houseCircle;
 

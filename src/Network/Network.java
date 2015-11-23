@@ -7,6 +7,7 @@ import mainGame.PlayerStats;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.ArrayList;
 
 public class Network extends Listener {
 
@@ -14,6 +15,10 @@ public class Network extends Listener {
     int port = 23820;
     ServerData serverData;
     InetAddress ip;
+
+    public static Boolean isConnected = false;
+    public static ArrayList<String> serverListOfTypes;
+    public static ArrayList<Integer> serverListOfYieldNumbers;
 
     public void connect() {
         client = new Client(16384,2048);
@@ -30,6 +35,7 @@ public class Network extends Listener {
         client.start();
         try {
             client.connect(5000, ip, port, port);
+            isConnected = true;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,6 +61,12 @@ public class Network extends Listener {
                 //System.out.println(PlayerStats.names[i]);
                 System.out.println(PlayerStats.ID);
             }
+        }
+        if (o instanceof ServerData)
+        {
+            serverData = (ServerData) o;
+            serverListOfTypes = serverData.listOfTileTypes;
+            serverListOfYieldNumbers = serverData.listOfYieldNumbers;
         }
     }
 }

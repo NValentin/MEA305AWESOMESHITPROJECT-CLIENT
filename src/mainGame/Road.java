@@ -8,6 +8,17 @@ public class Road
 {
 
     Line roadLine;
+
+    public Color getRoadColor()
+    {
+        return roadColor;
+    }
+
+    public void setRoadColor(Color roadColor)
+    {
+        this.roadColor = roadColor;
+    }
+
     Color roadColor;
 
     public Road(Line roadLine, Color roadColor)

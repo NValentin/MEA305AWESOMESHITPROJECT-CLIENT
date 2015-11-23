@@ -104,7 +104,7 @@ public class PlayingWindow extends BasicGameState
     public void render(GameContainer gc, StateBasedGame stateBG, Graphics g) throws SlickException {
         if (buildMap)
         {
-            map.createMap();
+            map.GameMapGameMap();
             buildMap = false;
         }
         map.render(g);

@@ -5,11 +5,11 @@ import mainGame.House;
 import mainGame.Main;
 import mainGame.PlayerStats;
 import mainGame.Road;
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.*;
 
 import java.util.*;
-
 
 public class GameMap
 {
@@ -27,7 +27,7 @@ public class GameMap
         Random randNum = new Random();
     }
 
-    public void createMap()
+    public void GameMapGameMap()
     {
         int mapTileSize = 55;
         buildMap(mapTileSize, Layout.pointy);
@@ -35,7 +35,9 @@ public class GameMap
         findRoadPlots();
 
         houses = new ArrayList<>();
+        roads = new ArrayList<>();
 
+        /*
         /// JUST FOR TESTING
         for (int i = 0; i < housePlots.size() - 1; i++)
         {
@@ -46,13 +48,12 @@ public class GameMap
         for (int i = 0; i < houses.size() - 1; i += 2)
             houses.get(i).upgradeHouse();
 
-        roads = new ArrayList<>();
         for (Line line : roadPlots)
             addRoad(line, PlayerStats.getPlayerColor());
 
 
         //this.debugTileInfo();
-        ///
+        /// */
     }
 
     private void findHousePlots()
@@ -126,13 +127,15 @@ public class GameMap
                 map.add(new Tile(q, r, -q - r));
             }
         }
-        if (Network.isConnected)
-        {
-            assignTileVariablesFromServer();
-        } else
+        if (!Network.isConnected)
         {
             assignTileVariablesFromLocal();
+        } else
+        {
+            assignTileVariablesFromServer();
         }
+
+
     }
 
     private void assignTileVariablesFromLocal()
@@ -261,18 +264,37 @@ public class GameMap
                 );
             }
         }
-        for (Road road : roads)
+
+        for (Circle c : housePlots)
         {
-            road.setRoadColor(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
-            road.render(g);
+            if (c.contains(Mouse.getX(), Main.ScreenHeight-Mouse.getY()))
+                g.fill(c);
+            else
+                g.draw(c);
+        }
+        for (Line l : roadPlots)
+        {
+
+            g.draw(l);
         }
 
-        for (House house : houses)
+        if (!roads.isEmpty())
         {
-            house.setBuildingColor(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
-            house.render(g);
+            for (Road road : roads)
+            {
+                road.setRoadColor(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
+                road.render(g);
+            }
         }
 
+        if (!houses.isEmpty())
+        {
+            for (House house : houses)
+            {
+                house.setBuildingColor(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
+                house.render(g);
+            }
+        }
     }
 
     private void debugTileInfo()

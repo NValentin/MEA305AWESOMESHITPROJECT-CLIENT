@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Part of DIY Hex-library from Author of: http://www.redblobgames.com/grids/hexagons/
  * Methods are derived directly from library, documentation comments if not.
  */
-public class Hex
+class Hex
 {
     /**
      * A hex have cubical coordinates, instead of pixel coordinates, to better understand where each hex is

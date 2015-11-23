@@ -29,7 +29,9 @@ public class GameClient extends Listener implements Runnable{
     }
 
     public void update(){
-        updatePlayerName();
+        if (!nameSent){
+            updatePlayerName();
+        }
         updatePlayerPoints();
         if(!lobbyReady){
             updateLobbyReady();
@@ -38,7 +40,7 @@ public class GameClient extends Listener implements Runnable{
         updateChat();
     }
     void updatePlayerName(){
-        if(!PlayerStats.name.matches("") && !nameSent) {
+        if(!PlayerStats.name.matches("")) {
             System.out.println("PlayerStats.name is not null, SEND STUFF");
             ClientData clientData = new ClientData();
             clientData.pack();

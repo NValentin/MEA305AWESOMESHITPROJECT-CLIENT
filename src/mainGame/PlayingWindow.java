@@ -5,6 +5,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -18,7 +19,7 @@ public class PlayingWindow extends BasicGameState
     
     int theWidth = Main.ScreenWidth;
     int theHeight = Main.ScreenHeight;
-    String[] names = new String [] {"Fred", "George", "Ron", "Ginny"};
+    //String[] names = new String [] {"Fred", "George", "Ron", "Ginny"};
     int turn = 1;
     Image buildingCost = null;
     Button accept, decline;
@@ -34,6 +35,14 @@ public class PlayingWindow extends BasicGameState
 
     GameMap map;
     boolean buildMap = true;
+
+    int sizeX = Main.ScreenWidth/4;
+    int sizeY = Main.ScreenHeight/10;
+
+    TextBoxBase chatBox;
+    TextField chat;
+    String chatText = "";
+    Font font;
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException
@@ -58,23 +67,11 @@ public class PlayingWindow extends BasicGameState
             buttons[i + 10] = new Button(theWidth / 2 - 80, theHeight / 2 - 80 + 20 * i, 20, 20, new Image("resources/decrease.png"));
             buttons[i + 15] = new Button(theWidth / 2 + 160, theHeight / 2 - 80 + 20 * i, 20, 20, new Image("resources/decrease.png"));
         }
-    }
 
-    @Override
-    public void render(GameContainer gc, StateBasedGame stateBG, Graphics g) throws SlickException {
-        if (buildMap)
-        {
-            map.createMap();
-            buildMap = false;
-        }
-        map.render(g);
-        PlayerList(35, 35, g, names, turn);
-        ResourceBar(200, 10, g, currentResources[0], currentResources[1], currentResources[2], currentResources[3], currentResources[4]);
-        buildingCost.draw(theWidth - 205, theHeight - 255, 200, 250);
-        Trade(theWidth - 215, theHeight - 55, trade, names[turn], g);
-        TradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, tradeWindow, names[turn], g);
-        OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, offerWindow, names[turn], g);
-        MakeTradeWindow(Main.ScreenWidth-200, 200, g, names);
+        font = new TrueTypeFont(new java.awt.Font("Verdana",
+                java.awt.Font.PLAIN, 12), true);
+        chatBox = new TextBoxBase();
+        chat = new TextField(gameContainer, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
     }
 
     @Override
@@ -95,6 +92,33 @@ public class PlayingWindow extends BasicGameState
         if (input.isKeyPressed(Input.KEY_5)) {
             trade = true;
         }
+
+        if(gameContainer.getInput().isKeyPressed(Input.KEY_ENTER) && chat.getText()!="") {
+            chatText = chat.getText();
+            chatBox.newMessage(chatText, PlayerStats.name);
+            chat.setText("");
+        }
+    }
+
+    @Override
+    public void render(GameContainer gc, StateBasedGame stateBG, Graphics g) throws SlickException {
+        if (buildMap)
+        {
+            map.createMap();
+            buildMap = false;
+        }
+        map.render(g);
+        PlayerList(35, 35, g, PlayerStats.names, turn);
+        ResourceBar(200, 10, g, currentResources[0], currentResources[1], currentResources[2], currentResources[3], currentResources[4]);
+        buildingCost.draw(theWidth - 205, theHeight - 255, 200, 250);
+        Trade(theWidth - 215, theHeight - 55, trade, PlayerStats.names[turn], g);
+        TradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, tradeWindow, PlayerStats.names[turn], g);
+        OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, offerWindow, PlayerStats.names[turn], g);
+        MakeTradeWindow(Main.ScreenWidth-200, 200, g, PlayerStats.names);
+
+        g.setColor(Color.white);
+        chatBox.render(g, gc);
+        chat.render(gc, g);
     }
 
     public void PlayerList (int x, int y, Graphics graphics, String[] _names, int turn) {

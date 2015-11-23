@@ -16,16 +16,15 @@ public class JoinLobbyState extends BasicGameState {
     public static Image button;
     int sizeX = Main.ScreenWidth/4;
     int sizeY = Main.ScreenHeight/10;
-    TextBoxBase chatBox;
     boolean checkIfReady = false;
     float countdown;
 
     Button back;
     Button forward;
 
+    TextBoxBase chatBox;
     TextField chat;
     String chatText = "";
-
     Font font;
 
     @Override
@@ -39,8 +38,7 @@ public class JoinLobbyState extends BasicGameState {
         forward = new Button(Main.ScreenWidth/2+10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
 
         font = new TrueTypeFont(new java.awt.Font("Verdana",
-                java.awt.Font.PLAIN, 18), true);
-
+                java.awt.Font.PLAIN, 12), true);
         chatBox = new TextBoxBase();
         chat = new TextField(gameContainer, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
 

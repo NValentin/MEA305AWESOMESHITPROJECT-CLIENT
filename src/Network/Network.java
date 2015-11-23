@@ -61,8 +61,6 @@ public class Network extends Listener {
             //PlayerStats.names = receivedPacket.names;
             //PlayerStats.lobbyReadyAll = receivedPacket.lobbyReadyAll;
             for (int i =0; i<PlayerStats.names.length; i++){
-                //System.out.println(PlayerStats.names[i]);
-                System.out.println(PlayerStats.ID);
             }
         }
         if (o instanceof ServerData)

@@ -33,6 +33,7 @@ public class PlayingWindow extends BasicGameState
     GatheringResources gathering;
 
     GameMap map;
+    boolean buildMap = true;
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException
@@ -61,6 +62,11 @@ public class PlayingWindow extends BasicGameState
 
     @Override
     public void render(GameContainer gc, StateBasedGame stateBG, Graphics g) throws SlickException {
+        if (buildMap)
+        {
+            map.createMap();
+            buildMap = false;
+        }
         map.render(g);
         PlayerList(35, 35, g, names, turn);
         ResourceBar(200, 10, g, currentResources[0], currentResources[1], currentResources[2], currentResources[3], currentResources[4]);

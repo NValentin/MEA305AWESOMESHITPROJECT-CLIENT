@@ -25,6 +25,10 @@ public class GameMap
     public GameMap()
     {
         Random randNum = new Random();
+    }
+
+    public void createMap()
+    {
         int mapTileSize = 55;
         buildMap(mapTileSize, Layout.pointy);
         findHousePlots();

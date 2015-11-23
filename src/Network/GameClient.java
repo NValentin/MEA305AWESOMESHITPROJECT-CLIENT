@@ -13,6 +13,7 @@ public class GameClient extends Listener implements Runnable{
     static Network network = new Network();
     static Map<Integer, PlayerStats> players = new HashMap<Integer, PlayerStats>();
     boolean nameSent = false;
+    boolean lobbyReady = false;
 
     @Override
     public void run(){
@@ -30,7 +31,10 @@ public class GameClient extends Listener implements Runnable{
     public void update(){
         updatePlayerName();
         updatePlayerPoints();
-        updateLobbyReady();
+        if(!lobbyReady){
+            updateLobbyReady();
+        }
+
         updateChat();
     }
     void updatePlayerName(){
@@ -65,6 +69,7 @@ public class GameClient extends Listener implements Runnable{
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);
+            lobbyReady = true;
         }
     }
 }

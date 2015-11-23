@@ -52,9 +52,8 @@ public class JoinLobbyState extends BasicGameState {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i)
             throws SlickException {
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_3) /*|| PlayerStats.StartGame*/) {
+        if(gameContainer.getInput().isKeyPressed(Input.KEY_3)) {
             PlayerStats.StartGame=true;
-                //stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
         }
 
         if(gameContainer.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isWithin()){
@@ -71,7 +70,7 @@ public class JoinLobbyState extends BasicGameState {
             checkIfReady = true;
         }
         if(PlayerStats.StartGame) {
-            countdown -= 0.0015f;
+            countdown -= 0.0012f;
             if (countdown < 0.5f) {
                 stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
             }

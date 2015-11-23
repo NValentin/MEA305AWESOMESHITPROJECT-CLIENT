@@ -1,5 +1,6 @@
 package mainGame;
 
+import Network.GameClient;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.Graphics;

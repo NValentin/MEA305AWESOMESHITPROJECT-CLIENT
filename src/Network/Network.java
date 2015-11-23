@@ -28,6 +28,9 @@ public class Network extends Listener {
         client.getKryo().register(ClientData.class);
         client.getKryo().register(boolean[].class);
         client.getKryo().register(String[].class);
+        client.getKryo().register(ArrayList.class);
+        client.getKryo().register(Integer.class);
+        client.getKryo().register(Integer[].class);
 
         client.addListener(this);
 

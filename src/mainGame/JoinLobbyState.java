@@ -18,6 +18,7 @@ public class JoinLobbyState extends BasicGameState {
     int sizeY = Main.ScreenHeight/10;
     TextBoxBase chatBox;
     boolean checkIfReady = false;
+    float countdown;
 
     Button back;
     Button forward;
@@ -43,14 +44,17 @@ public class JoinLobbyState extends BasicGameState {
         chatBox = new TextBoxBase();
         chat = new TextField(gameContainer, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
 
+        countdown = 6f;
+
     }
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i)
             throws SlickException {
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_3) || PlayerStats.StartGame) {
-            stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+        if(gameContainer.getInput().isKeyPressed(Input.KEY_3) /*|| PlayerStats.StartGame*/) {
+            PlayerStats.StartGame=true;
+                //stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
         }
 
         if(gameContainer.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isWithin()){
@@ -65,6 +69,12 @@ public class JoinLobbyState extends BasicGameState {
         if(forward.isWithin() && !checkIfReady) {
             PlayerStats.lobbyReady=true;
             checkIfReady = true;
+        }
+        if(PlayerStats.StartGame) {
+            countdown -= 0.0015f;
+            if (countdown < 0.5f) {
+                stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+            }
         }
     }
 
@@ -111,9 +121,10 @@ public class JoinLobbyState extends BasicGameState {
         chatBox.render(g, gc);
         chat.render(gc, g);
 
-    }
+        if(PlayerStats.StartGame){
+                g.drawString("Game Starts in "+(int)countdown, Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+200);
 
-    void gameStart(){
+        }
 
     }
 

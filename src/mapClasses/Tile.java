@@ -6,87 +6,75 @@ import org.newdawn.slick.SlickException;
 
 import java.util.ArrayList;
 
-public class Tile
+/**
+ * This "Tile"-class, extends class Hex, from the DIY Hex Library from author of:
+ * http://www.redblobgames.com/grids/hexagons/ and add additional specific functionality to Hexes, so they can be used
+ * as tiles in the game.
+ */
+public class Tile extends Hex
 {
+    //Tile variables, for their individual type and number
     private String tileType;
     private int yieldNumber;
 
+    /**
+     * A tile have cubical coordinates, instead of pixel coordinates, to better understand where each tile is
+     * in "grid-space". Its parameters represents XYZ, but in 2D space.
+     * @param q represents X.
+     * @param r represents Y.
+     * @param s represents Z.
+     */
     Tile(int q, int r, int s)
     {
-        this.q = q;
-        this.r = r;
-        this.s = s;
+        super(q, r, s);
 
         tileType = "default";
         yieldNumber = 0;
     }
 
-    public final int q;
-    public final int r;
-    public final int s;
-
-    static public Tile add(Tile a, Tile b)
-    {
-        return new Tile(a.q + b.q, a.r + b.r, a.s + b.s);
-    }
-
-    static public Tile subtract(Tile a, Tile b)
-    {
-        return new Tile(a.q - b.q, a.r - b.r, a.s - b.s);
-    }
-
-    static public Tile scale(Tile a, int k)
-    {
-        return new Tile(a.q * k, a.r * k, a.s * k);
-    }
-
-    static public ArrayList<Tile> diagonals = new ArrayList<Tile>()
-    {
-        {
-            add(new Tile(2, -1, -1));
-            add(new Tile(1, -2, 1));
-            add(new Tile(-1, -1, 2));
-            add(new Tile(-2, 1, 1));
-            add(new Tile(-1, 2, -1));
-            add(new Tile(1, 1, -2));
-        }
-    };
-
-    static public Tile diagonalNeighbor(Tile tile, int direction)
-    {
-        return Tile.add(tile, Tile.diagonals.get(direction));
-    }
-
-    static public int length(Tile tile)
-    {
-        return (int) ((Math.abs(tile.q) + Math.abs(tile.r) + Math.abs(tile.s)) / 2);
-    }
-
-    static public int distance(Tile a, Tile b)
-    {
-        return Tile.length(Tile.subtract(a, b));
-    }
-
+    /**
+     * Sets a tiles TileType. (corresponding to the desired texture)
+     * @param tileType input string of tileType, can be Grain, Wool, Brick, Wood, Harbour, Ore, Desert, and Water.
+     */
     public void setTileType(String tileType)
     {
         this.tileType = tileType;
     }
 
+    /**
+     * Gets a tile's TileType
+     * @return returns String with its TileType.
+     */
     public String getTileType()
     {
         return tileType;
     }
 
+    /**
+     * Set a Tile's yieldNumber, the number a tile gets that when rolled in the game, it will yield resource on.
+     * @param yieldNumber int var, that should be from 2-12, as it has to be rolled from 2 dice.
+     */
     public void setYieldNumber(int yieldNumber)
     {
         this.yieldNumber = yieldNumber;
     }
 
+    /**
+     * returns a tile's yieldnumber.
+     * @return returns int of yieldNumber (int between 2-12)
+     */
     public int getYieldNumber()
     {
         return yieldNumber;
     }
 
+    /**
+     * Method for fetching correct texture in Texture class, from a tile's TileType. if input string, does not match
+     * it defaults to a texture that is not part of the game.
+     * @return Image from a spriteSheet, tileSprites in Texture.
+     * @throws SlickException
+     * @see Image Slick2D doc.
+     */
     public Image returnTextureByType() throws SlickException
     {
         Image tmpTexture;

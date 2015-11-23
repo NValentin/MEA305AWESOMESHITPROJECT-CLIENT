@@ -12,10 +12,11 @@ public class ServerData {
     public int[] resourcesOnHand = new int[]{0,0,0,0};
     public boolean[] lobbyReadyAll = new boolean[]{false,false,false,false};
     public int longestRoad[] = new int[]{0,0,0,0};
-    public int turn;
+    public int turn, dice1, dice2;
     public boolean StartGame = false;
     public String[] textToRender = new String[]{"","",""};
     public String[] oldText = new String[10];
+    public int ID;
 
     public ServerData(){
     }
@@ -30,6 +31,7 @@ public class ServerData {
         PlayerStats.StartGame = StartGame;
         PlayerStats.textToRender = textToRender;
         PlayerStats.oldText = oldText;
+        PlayerStats.ID = ID;
 
     }
 }

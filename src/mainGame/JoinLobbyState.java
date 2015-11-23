@@ -113,6 +113,10 @@ public class JoinLobbyState extends BasicGameState {
 
     }
 
+    void gameStart(){
+
+    }
+
     @Override
     public int getID() {
         return 2;

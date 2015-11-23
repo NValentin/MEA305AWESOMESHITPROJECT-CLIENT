@@ -14,9 +14,10 @@ public class PlayerStats {
     public static int resources_on_hand = 0;
     public static int TEMPpoint=0;
     public static boolean lobbyReady = false;
-    public static boolean textReady = false;
+    public static boolean textSent = false;
     public static String[] textPackage = new String[3];
     public static String[] textToRender = new String[3];
+    public static String[] oldText = new String[10];
 
     //Stats for all players
     public static String[] names = new String[]{" "," "," "," "};

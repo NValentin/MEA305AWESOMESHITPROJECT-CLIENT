@@ -8,7 +8,6 @@ import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.gui.TextField;
 
 public class TextBoxBase{
     TrueTypeFont trueTypeFont;
@@ -44,7 +43,7 @@ public class TextBoxBase{
 
             for (int i = 0; i < chatLength; i++){
 
-                trueTypeFont.drawString(10, Main.ScreenHeight - 120 - 20 * i, oldText[i], Color.white);
+                trueTypeFont.drawString(10, Main.ScreenHeight - 120 - 20 * i, PlayerStats.oldText[i], Color.white);
             }
             }catch(Exception e){}
         }
@@ -111,7 +110,7 @@ public class TextBoxBase{
             //}
         }
         PlayerStats.textPackage = textToRender;
-        PlayerStats.textReady = true;
+        PlayerStats.textSent = true;
     }
 
     public void updateOldMessages(){

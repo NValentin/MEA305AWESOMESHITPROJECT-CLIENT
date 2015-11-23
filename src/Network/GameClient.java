@@ -43,11 +43,11 @@ public class GameClient extends Listener implements Runnable{
         }
     }
     void updateChat(){
-        if(PlayerStats.textReady){
+        if(PlayerStats.textSent){
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);
-            PlayerStats.textReady = false;
+            PlayerStats.textSent = false;
         }
     }
 

@@ -15,10 +15,10 @@ public class ServerData {
     public int turn;
     public boolean StartGame = false;
     public String[] textToRender = new String[]{"","",""};
+    public String[] oldText = new String[10];
 
     public ServerData(){
     }
-
     public void unpack(){
         PlayerStats.names = names;
         PlayerStats.points = points;
@@ -29,6 +29,7 @@ public class ServerData {
         PlayerStats.turn = turn;
         PlayerStats.StartGame = StartGame;
         PlayerStats.textToRender = textToRender;
+        PlayerStats.oldText = oldText;
 
     }
 }

@@ -65,7 +65,6 @@ public class GameClient extends Listener implements Runnable{
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);
-            PlayerStats.lobbyReady=false;
         }
     }
 }

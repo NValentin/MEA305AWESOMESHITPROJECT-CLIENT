@@ -41,8 +41,7 @@ public class Button {
         this.sizeY = sizeY;
         this.texture = texture;
         this.pressed = false;
-        this.fontSize = fontSize;
-        font = new TrueTypeFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, fontSize), true);
+        this.font = new TrueTypeFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, fontSize), true);
     }
 
     public void draw() {
@@ -62,11 +61,8 @@ public class Button {
         this.y = y;
     }
 
-    public void AddText(Graphics g, String text, Color color) {
-        g.setColor(Color.black);
-        g.setFont(font);
-        font.drawString(x + sizeX/2f - font.getWidth(text)/2f, y + sizeY/2f - font.getHeight(text)/2f, text);
-        g.setColor(Color.white);
+    public void AddText(String text, Color color) {
+        font.drawString(x + sizeX/2f - font.getWidth(text) / 2f, y + sizeY / 2f - font.getHeight(text) / 2f, text, color);
     }
 
     public boolean isWithin() {

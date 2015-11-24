@@ -81,8 +81,11 @@ public class JoinLobbyState extends BasicGameState {
         g.drawString("Lobby", 100, 100);
         menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         back.draw();
+        back.AddText("Back", Color.white);
         forward.draw();
+        forward.AddText("Ready", Color.white);
         g.setColor(Color.white);
+        g.setFont(font);
         g.drawString("PLAYERS:", Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f));
 
         //Draw player box 1

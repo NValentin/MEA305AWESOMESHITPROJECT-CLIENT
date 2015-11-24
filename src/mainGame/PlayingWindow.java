@@ -228,7 +228,7 @@ public class PlayingWindow extends BasicGameState
             make_trade_buttons[i] = makeNewTrade;
             make_trade_buttons[i].SetPos(x + 100, y + 35 + 35 * i);
             make_trade_buttons[i].draw();
-            make_trade_buttons[i].AddText(g, "Trade", Color.black);
+            make_trade_buttons[i].AddText("Trade", Color.black);
             if (make_trade_buttons[i].isWithin()) {
                 System.out.println("Trading with " + _names[i]);
             }

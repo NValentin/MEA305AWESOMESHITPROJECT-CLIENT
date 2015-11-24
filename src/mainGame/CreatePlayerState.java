@@ -42,8 +42,8 @@ public class CreatePlayerState extends BasicGameState {
         nameField = new TextField(gameContainer, font, Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.55f), sizeX, (int)(sizeY*0.7));
 
         back = new Button(Main.ScreenWidth/2-sizeX-10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
+        ok =  new Button(Main.ScreenWidth/2+sizeX/2-sizeX/3, (int)(Main.ScreenHeight*0.55f)+sizeY+10, sizeX/3, sizeY/3, button, 20);
         forward = new Button(Main.ScreenWidth/2+10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
-        ok =  new Button(Main.ScreenWidth/2+sizeX/2-sizeX/3, (int)(Main.ScreenHeight*0.55f)+sizeY+10, sizeX/3, sizeY/3, button);
 
     }
 
@@ -76,8 +76,11 @@ public class CreatePlayerState extends BasicGameState {
         g.drawString("Create a name!",100,100);
         menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         back.draw();
-        forward.draw();
+        back.AddText("Back", Color.white);
         ok.draw();
+        ok.AddText("Okay", Color.white);
+        forward.draw();
+        forward.AddText("Join", Color.white);
         nameField.render(gc, g);
         g.drawString("Your name: "+playerName,Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.5f));
 

@@ -69,9 +69,9 @@ public class MainMenuState extends BasicGameState
         create.draw();
         join.draw();
         exit.draw();
-        create.AddText(g, "Create");
-        join.AddText(g, "Join");
-        exit.AddText(g, "Exit");
+        create.AddText(g, "Create", Color.white);
+        join.AddText(g, "Join", Color.white);
+        exit.AddText(g, "Exit", Color.white);
     }
 
     @Override

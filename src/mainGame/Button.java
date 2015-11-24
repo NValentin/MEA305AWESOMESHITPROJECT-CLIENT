@@ -62,7 +62,7 @@ public class Button {
         this.y = y;
     }
 
-    public void AddText(Graphics g, String text) {
+    public void AddText(Graphics g, String text, Color color) {
         g.setColor(Color.black);
         g.setFont(font);
         font.drawString(x + sizeX/2f - font.getWidth(text)/2f, y + sizeY/2f - font.getHeight(text)/2f, text);

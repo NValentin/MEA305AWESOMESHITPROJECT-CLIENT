@@ -19,13 +19,14 @@ public class PlayingWindow extends BasicGameState
 
     int theWidth = Main.ScreenWidth;
     int theHeight = Main.ScreenHeight;
-    //String[] names = new String [] {"Fred", "George", "Ron", "Ginny"};
+    String[] names = new String [] {"Fred", "George", "Ron", "Ginny"};
     int turn = 1;
     Image buildingCost = null;
     Button accept, decline;
-    Button acceptOffer, declineOffer, counterOffer;
+    Button acceptOffer, declineOffer, counterOffer, makeNewTrade;
     Button[] buttons = new Button[20];
     Button[] trade_buttons = new Button[4];
+    Button[] make_trade_buttons = new Button[4];
     boolean trade = true;
     boolean tradeWindow = false;
     boolean offerWindow = false;
@@ -58,6 +59,8 @@ public class PlayingWindow extends BasicGameState
         acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, new Image("resources/acceptOffer.png"));
         declineOffer = new Button(theWidth / 2 + 50, theHeight / 2 + 30, 100, 25, new Image("resources/declineOffer.png"));
         counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, new Image("resources/counterOffer.png"));
+        makeNewTrade = new Button(0,0, 100, 25, new Image("resources/trade_button.png"), 20);
+
         for (int i = 0; i < trade_buttons.length; i ++) {
             trade_buttons[i] = new Button(0, 0, 0, 0, new Image("resources/trade.png"));
         }
@@ -117,7 +120,7 @@ public class PlayingWindow extends BasicGameState
         Trade(theWidth - 215, theHeight - 55, trade, PlayerStats.names[turn], g);
         TradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, tradeWindow, PlayerStats.names[turn], g);
         OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, offerWindow, PlayerStats.names[turn], g);
-        MakeTradeWindow(Main.ScreenWidth-200, 200, g, PlayerStats.names);
+        MakeTradeWindow(Main.ScreenWidth-200, 200, g, names);
 
         g.setColor(Color.white);
         chatBox.render(g, gc);
@@ -216,13 +219,18 @@ public class PlayingWindow extends BasicGameState
         g.setColor(Color.black);
         g.drawString("Trade with: ", x + 10, y + 10);
         g.drawLine(x, y + 30, x + 200, y + 30);
-        for (int i = 0; i < _names.length; i ++) {
+        for (int i = 0; i < _names.length; i++) {
             g.drawString(_names[i], x + 10, y + 40 + 25 * i);
+        }
+        for (int i = 0; i < _names.length; i ++) {
             trade_buttons[i].SetPos(x + 100, y + 40 + 25 * i);
             trade_buttons[i].draw();
-            if (trade_buttons[i].isWithin()) {
-                offerWindow = true;
-                trade = false;
+            make_trade_buttons[i] = makeNewTrade;
+            make_trade_buttons[i].SetPos(x + 100, y + 35 + 35 * i);
+            make_trade_buttons[i].draw();
+            make_trade_buttons[i].AddText(g, "Trade", Color.black);
+            if (make_trade_buttons[i].isWithin()) {
+                System.out.println("Trading with " + _names[i]);
             }
         }
         g.setColor(Color.white);

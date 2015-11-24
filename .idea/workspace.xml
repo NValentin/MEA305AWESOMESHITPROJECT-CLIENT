@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/GameMap.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/GameMap.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/PlayingWindow.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/PlayingWindow.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/CreatePlayerState.java" afterPath="$PROJECT_DIR$/src/mainGame/CreatePlayerState.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -48,7 +48,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="697">
               <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -68,8 +70,8 @@
       <file leaf-file-name="CreatePlayerState.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mainGame/CreatePlayerState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6300268" vertical-offset="666" max-vertical-offset="1411">
-              <caret line="62" column="90" selection-start-line="62" selection-start-column="90" selection-end-line="62" selection-end-column="90" />
+            <state vertical-scroll-proportion="0.6300268" vertical-offset="921" max-vertical-offset="1411">
+              <caret line="77" column="10" selection-start-line="77" selection-start-column="10" selection-end-line="77" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -696,13 +698,7 @@
       <workItem from="1448368065730" duration="47000" />
       <workItem from="1448368142429" duration="1112000" />
       <workItem from="1448369872045" duration="1832000" />
-      <workItem from="1448371904905" duration="29000" />
-    </task>
-    <task id="LOCAL-00003" summary="Redid most of GameMap">
-      <created>1446136552173</created>
-      <option name="number" value="00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1446136552173</updated>
+      <workItem from="1448371904905" duration="90000" />
     </task>
     <task id="LOCAL-00004" summary="Redid some of">
       <created>1446205790637</created>
@@ -992,11 +988,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448285827894</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="CreatePlayerState textfield changes&#10;">
+      <created>1448371959271</created>
+      <option name="number" value="00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1448371959273</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163568000" />
+    <option name="totallyTimeSpent" value="163629000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1373" height="780" extended-state="0" />
@@ -1075,7 +1077,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added proper placeholder textures" />
     <MESSAGE value="Removed some code" />
     <MESSAGE value="Chat almost working dammit" />
     <MESSAGE value="Added cryonet functionality" />
@@ -1100,7 +1101,8 @@
     <MESSAGE value="Server/client stuff 4.5 minor stuff&#10;" />
     <MESSAGE value="Server/client stuff 4.6 minor stuff&#10;" />
     <MESSAGE value="Server/client stuff 4.7 minor stuff&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Server/client stuff 4.7 minor stuff&#10;" />
+    <MESSAGE value="CreatePlayerState textfield changes&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="CreatePlayerState textfield changes&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1425,7 +1427,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="629">
           <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1470,8 +1474,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/CreatePlayerState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6300268" vertical-offset="666" max-vertical-offset="1411">
-          <caret line="62" column="90" selection-start-line="62" selection-start-column="90" selection-end-line="62" selection-end-column="90" />
+        <state vertical-scroll-proportion="0.6300268" vertical-offset="921" max-vertical-offset="1411">
+          <caret line="77" column="10" selection-start-line="77" selection-start-column="10" selection-end-line="77" selection-end-column="10" />
           <folding />
         </state>
       </provider>

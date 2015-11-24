@@ -75,7 +75,7 @@ public class CreatePlayerState extends BasicGameState {
         back.draw();
         back.AddText("Back", Color.white);
         //ok.draw();
-        ok.AddText("Okay", Color.white);
+        //ok.AddText("Okay", Color.white);
         forward.draw();
         forward.AddText("Join", Color.white);
         nameField.render(gc, g);

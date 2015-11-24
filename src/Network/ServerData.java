@@ -19,6 +19,7 @@ public class ServerData {
     public boolean StartGame = false;
     public String[] textToRender = new String[]{"","",""};
     public String[] oldText = new String[10];
+    public ArrayList<Integer> cards = new ArrayList<Integer>();
     public float[] serializedHouse = new float[3];
 
     Integer[] yieldNumbers = {2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12};

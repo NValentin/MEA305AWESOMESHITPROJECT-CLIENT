@@ -22,8 +22,8 @@ public class GameMap
     private ArrayList<Line> roadPlots;
     private ArrayList<Road> roads;
 
-    public static float[] serializedHouse = new float[3];
-    public static float[] deSerializedHouse = new float[3];
+    public static float[] serializedHouse = new float[]{0,0,0};
+    public static float[] deSerializedHouse = new float[] {0,0,0};
 
     public GameMap()
     {
@@ -39,8 +39,6 @@ public class GameMap
 
         houses = new ArrayList<>();
         roads = new ArrayList<>();
-
-        addHouse(housePlots.get(0), PlayerStats.ID);
 
         /*
         /// JUST FOR TESTING
@@ -249,7 +247,7 @@ public class GameMap
 
     public void update()
     {
-        if (deSerializedHouse != null)
+        if (deSerializedHouse[2] != 0)
         {
             for (Circle c : housePlots)
             {

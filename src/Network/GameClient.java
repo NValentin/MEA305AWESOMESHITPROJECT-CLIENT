@@ -3,6 +3,8 @@ package Network;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.minlog.Log;
 import mainGame.PlayerStats;
+import mapClasses.GameMap;
+import org.newdawn.slick.Game;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,6 +40,7 @@ public class GameClient extends Listener implements Runnable{
         }
 
         updateChat();
+        updateHouses();
     }
     void updatePlayerName(){
         if(!PlayerStats.name.matches("")) {
@@ -72,6 +75,17 @@ public class GameClient extends Listener implements Runnable{
             clientData.pack();
             network.client.sendUDP(clientData);
             lobbyReady = true;
+        }
+    }
+
+    void updateHouses()
+    {
+        if (GameMap.serializedHouse[2] != 0)
+        {
+            ClientData clientData = new ClientData();
+            clientData.pack();
+            network.client.sendUDP(clientData);
+            GameMap.serializedHouse[2] = 0;
         }
     }
 }

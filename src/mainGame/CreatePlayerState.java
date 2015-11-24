@@ -40,6 +40,7 @@ public class CreatePlayerState extends BasicGameState {
                 java.awt.Font.PLAIN, 24), true);
 
         nameField = new TextField(gameContainer, font, Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.55f), sizeX, (int)(sizeY*0.7));
+        nameField.setMaxLength(8);
 
         back = new Button(Main.ScreenWidth/2-sizeX-10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
         ok =  new Button(Main.ScreenWidth/2+sizeX/2-sizeX/3, (int)(Main.ScreenHeight*0.55f)+sizeY+10, sizeX/3, sizeY/3, button, 20);
@@ -51,39 +52,34 @@ public class CreatePlayerState extends BasicGameState {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i)
             throws SlickException {
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_2)){
+        if (gameContainer.getInput().isKeyPressed(Input.KEY_2)) {
             stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
             System.out.println("Joined Lobby");
         }
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isWithin()){
+        if (gameContainer.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isWithin()) {
             stateBasedGame.enterState(0, new FadeOutTransition(), new FadeInTransition());
         }
 
-        if(forward.isWithin() && playerName != ""){
+        if ((forward.isWithin() || gameContainer.getInput().isKeyPressed(Input.KEY_ENTER))
+                && nameField.getText().length() != 0 && !nameField.getText().substring(0,1).matches(" ")) {
+            PlayerStats.name = nameField.getText();
             stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
-            PlayerStats.name = playerName;
-        }
-
-        if((gameContainer.getInput().isKeyPressed(Input.KEY_ENTER)||ok.isWithin()) && nameField.getText()!=""){
-            playerName = nameField.getText();
-            nameField.setText("");
         }
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g)
             throws SlickException {
-        g.drawString("Create a name!",100,100);
+        g.drawString("Create a name!", 100, 100);
         menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         back.draw();
         back.AddText("Back", Color.white);
-        ok.draw();
+        //ok.draw();
         ok.AddText("Okay", Color.white);
         forward.draw();
         forward.AddText("Join", Color.white);
         nameField.render(gc, g);
-        g.drawString("Your name: "+playerName,Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.5f));
-
+        g.drawString("Write your name (Max. 8 characters):", Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.5f));
     }
 
     @Override

@@ -75,7 +75,10 @@ public class PlayingWindow extends BasicGameState
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException
+    {
+        map.update();
+
         Input input = gameContainer.getInput();
         if (input.isKeyPressed(Input.KEY_1)) {
             turn = 0;

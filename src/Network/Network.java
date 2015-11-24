@@ -4,6 +4,7 @@ import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import mainGame.PlayerStats;
+import mapClasses.GameMap;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -31,6 +32,7 @@ public class Network extends Listener {
         client.getKryo().register(ArrayList.class);
         client.getKryo().register(Integer.class);
         client.getKryo().register(Integer[].class);
+        client.getKryo().register(float[].class);
 
         client.addListener(this);
 
@@ -68,6 +70,11 @@ public class Network extends Listener {
             serverData = (ServerData) o;
             serverListOfTypes = serverData.listOfTileTypes;
             serverListOfYieldNumbers = serverData.listOfYieldNumbers;
+        }
+        if (o instanceof  ServerData)
+        {
+            serverData = (ServerData) o;
+            GameMap.deSerializedHouse = serverData.serializedHouse;
         }
     }
 }

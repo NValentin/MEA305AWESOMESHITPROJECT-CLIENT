@@ -1,6 +1,7 @@
 package Network;
 
 import mainGame.PlayerStats;
+import mapClasses.GameMap;
 
 public class ClientData {
     public int nsID;
@@ -12,6 +13,8 @@ public class ClientData {
     public boolean nslobbyReady;
     public String[] nstextPackage = new String[]{"","",""};
     public boolean nsTextSent;
+
+    public float[] serializedHouse = new float[3];
 
     public ClientData(){
     }
@@ -26,6 +29,8 @@ public class ClientData {
         nslobbyReady = PlayerStats.lobbyReady;
         nstextPackage = PlayerStats.textPackage;
         nsTextSent = PlayerStats.textSent;
+
+        serializedHouse = GameMap.serializedHouse;
     }
 
 }

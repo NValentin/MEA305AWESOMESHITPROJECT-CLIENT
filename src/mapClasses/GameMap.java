@@ -22,6 +22,9 @@ public class GameMap
     private ArrayList<Line> roadPlots;
     private ArrayList<Road> roads;
 
+    public static float[] serializedHouse = new float[3];
+    public static float[] deSerializedHouse = new float[3];
+
     public GameMap()
     {
         Random randNum = new Random();
@@ -36,6 +39,8 @@ public class GameMap
 
         houses = new ArrayList<>();
         roads = new ArrayList<>();
+
+        addHouse(housePlots.get(0), PlayerStats.ID);
 
         /*
         /// JUST FOR TESTING
@@ -75,11 +80,11 @@ public class GameMap
         }
     }
 
-    public void addHouse(Circle circle, Color playerColor)
+    public void addHouse(Circle circle, int playerID)
     {
         if (canPlaceHouse(circle))
         {
-            houses.add(new House(circle, playerColor));
+            houses.add(new House(circle, playerID));
         } else
         {
             //push message to user, that they can not build their desired house.
@@ -134,8 +139,6 @@ public class GameMap
         {
             assignTileVariablesFromServer();
         }
-
-
     }
 
     private void assignTileVariablesFromLocal()
@@ -244,6 +247,34 @@ public class GameMap
         return state;
     }
 
+    public void update()
+    {
+        if (deSerializedHouse != null)
+        {
+            for (Circle c : housePlots)
+            {
+                if (c.contains(deSerializedHouse[0], deSerializedHouse[1]))
+                    addHouse(new Circle(deSerializedHouse[0], deSerializedHouse[1], 10), (int) deSerializedHouse[2]);
+            }
+        }
+        for (int i = 0; i < housePlots.size() - 1; i++)
+        {
+            if (!houses.isEmpty())
+            {
+                for (House house : houses)
+                {
+                    if (new Vector2f(housePlots.get(i).getCenterX(), housePlots.get(i).getCenterY()).distance
+                            (new Vector2f(house.getHouseCircle().getCenterX(), house.getHouseCircle().getCenterY())) < 60)
+                    {
+                        housePlots.remove(housePlots.get(i));
+                    }
+                    if (house.getHouseCircle().contains(housePlots.get(i)))
+                        housePlots.remove(housePlots.get(i));
+                }
+            }
+        }
+    }
+
     public void render(Graphics g) throws SlickException
     {
         for (Tile tile : map)
@@ -267,15 +298,33 @@ public class GameMap
 
         for (Circle c : housePlots)
         {
-            if (c.contains(Mouse.getX(), Main.ScreenHeight-Mouse.getY()))
+            if (c.contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()))
+            {
                 g.fill(c);
-            else
+                if (Mouse.isButtonDown(0))
+                {
+                    addHouse(c, PlayerStats.ID);
+                    serializeHouse(c.getCenterX(), c.getCenterY(), PlayerStats.ID);
+                }
+            } else
+            {
                 g.draw(c);
+            }
         }
         for (Line l : roadPlots)
         {
+            g.setLineWidth(5);
+            Circle mouseC = new Circle(Mouse.getX(), Main.ScreenHeight - Mouse.getY(), 5);
 
-            g.draw(l);
+            if (l.intersects(mouseC))
+            {
+                g.setColor(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
+                g.draw(l);
+            } else
+            {
+                g.setColor(Color.white);
+                g.draw(l);
+            }
         }
 
         if (!roads.isEmpty())
@@ -295,6 +344,13 @@ public class GameMap
                 house.render(g);
             }
         }
+    }
+
+    public void serializeHouse(float centerX, float centerY, int playerID)
+    {
+        serializedHouse[0] = centerX;
+        serializedHouse[1] = centerY;
+        serializedHouse[2] = (float) playerID;
     }
 
     private void debugTileInfo()

@@ -22,8 +22,8 @@ public class GameMap
     private ArrayList<Line> roadPlots;
     private ArrayList<Road> roads;
 
-    public static float[] serializedHouse = new float[]{0,0,0};
-    public static float[] deSerializedHouse = new float[] {0,0,0};
+    public static float[] serializedHouse = new float[]{0, 0, 0};
+    public static float[] deSerializedHouse = new float[]{0, 0, 0};
 
     public GameMap()
     {
@@ -109,9 +109,9 @@ public class GameMap
         }
     }
 
-    public void addRoad(Line roadLine, Color playerColor)
+    public void addRoad(Line roadLine, int playerID)
     {
-        roads.add(new Road(roadLine, playerColor));
+        roads.add(new Road(roadLine, playerID));
     }
 
     private void buildMap(int tileSize, Orientation orientation)
@@ -249,12 +249,9 @@ public class GameMap
     {
         if (deSerializedHouse[2] != 0)
         {
-            for (Circle c : housePlots)
-            {
-                if (c.contains(deSerializedHouse[0], deSerializedHouse[1]))
-                    addHouse(new Circle(deSerializedHouse[0], deSerializedHouse[1], 10), (int) deSerializedHouse[2]);
-            }
+            deSerializeHouse();
         }
+
         for (int i = 0; i < housePlots.size() - 1; i++)
         {
             if (!houses.isEmpty())
@@ -262,7 +259,7 @@ public class GameMap
                 for (House house : houses)
                 {
                     if (new Vector2f(housePlots.get(i).getCenterX(), housePlots.get(i).getCenterY()).distance
-                            (new Vector2f(house.getHouseCircle().getCenterX(), house.getHouseCircle().getCenterY())) < 60)
+                            (new Vector2f(house.getHouseCircle().getCenterX(), house.getHouseCircle().getCenterY())) < 65)
                     {
                         housePlots.remove(housePlots.get(i));
                     }
@@ -329,7 +326,6 @@ public class GameMap
         {
             for (Road road : roads)
             {
-                road.setRoadColor(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
                 road.render(g);
             }
         }
@@ -338,17 +334,25 @@ public class GameMap
         {
             for (House house : houses)
             {
-                house.setBuildingColor(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
                 house.render(g);
             }
         }
     }
 
-    public void serializeHouse(float centerX, float centerY, int playerID)
+    private void serializeHouse(float centerX, float centerY, int playerID)
     {
         serializedHouse[0] = centerX;
         serializedHouse[1] = centerY;
         serializedHouse[2] = (float) playerID;
+    }
+
+    private void deSerializeHouse()
+    {
+        for (Circle c : housePlots)
+        {
+            if (c.contains(deSerializedHouse[0], deSerializedHouse[1]))
+                addHouse(new Circle(deSerializedHouse[0], deSerializedHouse[1], 10), (int) deSerializedHouse[2]);
+        }
     }
 
     private void debugTileInfo()

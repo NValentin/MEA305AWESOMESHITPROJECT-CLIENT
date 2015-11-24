@@ -7,24 +7,15 @@ import org.newdawn.slick.geom.Line;
 public class Road
 {
 
-    Line roadLine;
+    private Line roadLine;
+    private int playerID;
+    private Color roadColor;
 
-    public Color getRoadColor()
-    {
-        return roadColor;
-    }
-
-    public void setRoadColor(Color roadColor)
-    {
-        this.roadColor = roadColor;
-    }
-
-    Color roadColor;
-
-    public Road(Line roadLine, Color roadColor)
+    public Road(Line roadLine, int playerID)
     {
         this.roadLine = roadLine;
-        this.roadColor = roadColor;
+        this.playerID = playerID;
+        roadColor = getPlayerColor();
     }
 
     public void render(Graphics g)
@@ -33,5 +24,27 @@ public class Road
         g.setLineWidth(5);
         g.draw(roadLine);
         g.setColor(Color.white);
+    }
+    private Color getPlayerColor()
+    {
+        Color playerColor = Color.pink;
+        switch (playerID)
+        {
+            case(1):
+                playerColor = Color.blue;
+                break;
+            case(2):
+                playerColor = Color.red;
+                break;
+            case (3):
+                playerColor = Color.white;
+                break;
+            case (4):
+                playerColor = Color.orange;
+                break;
+            default:
+                break;
+        }
+        return playerColor;
     }
 }

@@ -237,6 +237,11 @@ public class GameMap
 
     public void update()
     {
+        if (deSerializedHouse[2] != 0)
+        {
+            deSerializeHouse();
+        }
+
         if (!housePlots.isEmpty())
         {
             for (int i = 0; i <= housePlots.size() - 1; i++)
@@ -244,11 +249,6 @@ public class GameMap
                 if (checkMouseOver(housePlots.get(i)) && Mouse.isButtonDown(0))
                     addHouse(housePlots.get(i), PlayerStats.ID, false);
             }
-        }
-
-        if (deSerializedHouse[2] != 0)
-        {
-            deSerializeHouse();
         }
     }
 

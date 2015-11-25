@@ -32,8 +32,8 @@
       <file leaf-file-name="GameMap.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5119617">
-              <caret line="333" column="39" selection-start-line="333" selection-start-column="39" selection-end-line="333" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.715311">
+              <caret line="251" column="9" selection-start-line="251" selection-start-column="9" selection-end-line="251" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#assignTileVariablesFromServer#0;class#GameMap#0" expanded="false" />
@@ -845,7 +845,7 @@
       <workItem from="1448266257984" duration="2073000" />
       <workItem from="1448269229003" duration="16480000" />
       <workItem from="1448359701139" duration="12375000" />
-      <workItem from="1448439570782" duration="6197000" />
+      <workItem from="1448439570782" duration="6671000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed to work with IntelliJ">
       <created>1446114969140</created>
@@ -1087,11 +1087,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448445207484</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Bug fixing for multiplayer purpose..">
+      <created>1448445794156</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1448445794156</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151018000" />
+    <option name="totallyTimeSpent" value="151492000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1167,7 +1173,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated tradewindow" />
     <MESSAGE value="Fixed Button class. It will only trigger once now" />
     <MESSAGE value="Changes to main menu AGAIN" />
     <MESSAGE value="Made Map to display Hex grid" />
@@ -1192,7 +1197,8 @@
     <MESSAGE value="GIANT LEAP OF FAITH THAT WE CAN NOW SEND BUILT HOUSES BETWEEN CLIENTS! ARGHHHH!!!&#10;&#10;2.0 bug fix" />
     <MESSAGE value="No more disco houses, built houses now have proper color corresponding to playerID" />
     <MESSAGE value="Killed Harry Potter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Killed Harry Potter" />
+    <MESSAGE value="Bug fixing for multiplayer purpose.." />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fixing for multiplayer purpose.." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1604,8 +1610,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5119617">
-          <caret line="333" column="39" selection-start-line="333" selection-start-column="39" selection-end-line="333" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.715311">
+          <caret line="251" column="9" selection-start-line="251" selection-start-column="9" selection-end-line="251" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#assignTileVariablesFromServer#0;class#GameMap#0" expanded="false" />

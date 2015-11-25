@@ -330,13 +330,14 @@ public class GameMap
 
     private void deSerializeHouse()
     {
-        for (Circle c : housePlots)
-        {
-            if (c.contains(deSerializedHouse[0], deSerializedHouse[1]))
+        if (!housePlots.isEmpty())
+            for (Circle c : housePlots)
             {
-                addHouse(new Circle(deSerializedHouse[0], deSerializedHouse[1], 10), (int) deSerializedHouse[2], true);
+                if (c.contains(deSerializedHouse[0], deSerializedHouse[1]))
+                {
+                    addHouse(new Circle(deSerializedHouse[0], deSerializedHouse[1], 10), (int) deSerializedHouse[2], true);
+                }
             }
-        }
     }
 
     private boolean checkMouseOver(Circle c)

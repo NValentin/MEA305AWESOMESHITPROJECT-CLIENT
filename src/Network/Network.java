@@ -32,7 +32,6 @@ public class Network extends Listener {
         client.getKryo().register(ArrayList.class);
         client.getKryo().register(Integer.class);
         client.getKryo().register(Integer[].class);
-        client.getKryo().register(float[].class);
 
         client.addListener(this);
 

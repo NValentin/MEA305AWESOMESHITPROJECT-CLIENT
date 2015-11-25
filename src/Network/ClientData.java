@@ -14,7 +14,7 @@ public class ClientData {
     public String[] nstextPackage = new String[]{"","",""};
     public boolean nsTextSent;
 
-    public float[] serializedHouse = new float[] {0,0,0};
+    public int[] serializedHouse = new int[2];
 
     public ClientData(){
     }

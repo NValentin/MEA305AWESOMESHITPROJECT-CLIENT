@@ -61,7 +61,7 @@ public class Texture
         {
             tileSprites = new SpriteSheet("resources/tileTexture_Sheet.png", 120, 140, 3);
             cardSprites = new SpriteSheet("resources/tileTexture_sheet.png", 256, 432, 0);
-            diceSprites = new SpriteSheet("resources/dice.png", 135, 135, 0);
+            diceSprites = new SpriteSheet("resources/dice_sheet.png", 135, 135, 0);
         } catch (SlickException e)
         {
             e.printStackTrace();

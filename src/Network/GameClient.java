@@ -85,6 +85,7 @@ public class GameClient extends Listener implements Runnable{
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);
+            GameMap.serverInputInProgress = true;
             GameMap.serializedHouse[2] = 0;
         }
     }

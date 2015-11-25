@@ -27,7 +27,6 @@ public class GameMap
 
     public GameMap()
     {
-        Random randNum = new Random();
     }
 
     public void GameMapGameMap()
@@ -39,24 +38,6 @@ public class GameMap
 
         houses = new ArrayList<>();
         roads = new ArrayList<>();
-
-        /*
-        /// JUST FOR TESTING
-        for (int i = 0; i < housePlots.size() - 1; i++)
-        {
-            addHouse(housePlots.get(i), PlayerStats.getPlayerColor());
-        }
-
-
-        for (int i = 0; i < houses.size() - 1; i += 2)
-            houses.get(i).upgradeHouse();
-
-        for (Line line : roadPlots)
-            addRoad(line, PlayerStats.getPlayerColor());
-
-
-        //this.debugTileInfo();
-        /// */
     }
 
     private void findHousePlots()
@@ -78,14 +59,17 @@ public class GameMap
         }
     }
 
-    public void addHouse(Circle circle, int playerID)
+    public void addHouse(Circle c, int playerID, boolean wasReceivedFromServer)
     {
-        if (canPlaceHouse(circle))
+        if (!housePlots.isEmpty())
         {
-            houses.add(new House(circle, playerID));
-        } else
-        {
-            //push message to user, that they can not build their desired house.
+            House tmpHouse = new House(c, playerID);
+            houses.add(tmpHouse);
+            if (!wasReceivedFromServer)
+                serializeHouse(c.getCenterX(), c.getCenterY(), PlayerStats.ID);
+
+            removeHousePlot(tmpHouse, c);
+            removeHouseNeighborPlots(tmpHouse);
         }
     }
 
@@ -231,42 +215,40 @@ public class GameMap
         return resourceYieldingTiles;
     }
 
-    private boolean canPlaceHouse(Circle desiredHousePlot)
+    private void removeHousePlot(House house, Circle c)
     {
-        boolean state = false;
-        if (houses.isEmpty())
-            state = true;
+        if (house.getHouseCircle().contains(c.getCenterX(), c.getCenterY()))
+            housePlots.remove(c);
+    }
 
-        for (House house : houses)
-        {
-            state = new Vector2f(house.getHouseCircle().getCenterX(), house.getHouseCircle().getCenterY()).distance(
-                    new Vector2f(desiredHousePlot.getCenterX(), desiredHousePlot.getCenterY())) > 60;
-        }
-        return state;
+    private void removeHouseNeighborPlots(House house)
+    {
+        if (!housePlots.isEmpty())
+            for (int i = 0; i <= housePlots.size() - 1; i++)
+            {
+                if (new Vector2f(housePlots.get(i).getCenterX(), housePlots.get(i).getCenterY()).distance
+                        (new Vector2f(house.getHouseCircle().getCenterX(),
+                                house.getHouseCircle().getCenterY())) < 65)
+                {
+                    housePlots.remove(housePlots.get(i));
+                }
+            }
     }
 
     public void update()
     {
+        if (!housePlots.isEmpty())
+        {
+            for (int i = 0; i <= housePlots.size() - 1; i++)
+            {
+                if (checkMouseOver(housePlots.get(i)) && Mouse.isButtonDown(0))
+                    addHouse(housePlots.get(i), PlayerStats.ID, false);
+            }
+        }
+
         if (deSerializedHouse[2] != 0)
         {
             deSerializeHouse();
-        }
-
-        for (int i = 0; i < housePlots.size() - 1; i++)
-        {
-            if (!houses.isEmpty())
-            {
-                for (House house : houses)
-                {
-                    if (new Vector2f(housePlots.get(i).getCenterX(), housePlots.get(i).getCenterY()).distance
-                            (new Vector2f(house.getHouseCircle().getCenterX(), house.getHouseCircle().getCenterY())) < 65)
-                    {
-                        housePlots.remove(housePlots.get(i));
-                    }
-                    if (house.getHouseCircle().contains(housePlots.get(i)))
-                        housePlots.remove(housePlots.get(i));
-                }
-            }
         }
     }
 
@@ -291,34 +273,34 @@ public class GameMap
             }
         }
 
-        for (Circle c : housePlots)
+        if (!housePlots.isEmpty())
         {
-            if (c.contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()))
+            for (Circle c : housePlots)
             {
-                g.fill(c);
-                if (Mouse.isButtonDown(0))
-                {
-                    addHouse(c, PlayerStats.ID);
-                    serializeHouse(c.getCenterX(), c.getCenterY(), PlayerStats.ID);
-                }
-            } else
-            {
-                g.draw(c);
+                if (checkMouseOver(c))
+                    g.fill(c);
+                else
+                    g.draw(c);
+
             }
         }
-        for (Line l : roadPlots)
-        {
-            g.setLineWidth(5);
-            Circle mouseC = new Circle(Mouse.getX(), Main.ScreenHeight - Mouse.getY(), 5);
 
-            if (l.intersects(mouseC))
+        if (!roadPlots.isEmpty())
+        {
+            for (Line l : roadPlots)
             {
-                g.setColor(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
-                g.draw(l);
-            } else
-            {
-                g.setColor(Color.white);
-                g.draw(l);
+                g.setLineWidth(5);
+                Circle mouseC = new Circle(Mouse.getX(), Main.ScreenHeight - Mouse.getY(), 5);
+
+                if (l.intersects(mouseC))
+                {
+                    g.setColor(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
+                    g.draw(l);
+                } else
+                {
+                    g.setColor(Color.white);
+                    g.draw(l);
+                }
             }
         }
 
@@ -351,8 +333,24 @@ public class GameMap
         for (Circle c : housePlots)
         {
             if (c.contains(deSerializedHouse[0], deSerializedHouse[1]))
-                addHouse(new Circle(deSerializedHouse[0], deSerializedHouse[1], 10), (int) deSerializedHouse[2]);
+            {
+                addHouse(new Circle(deSerializedHouse[0], deSerializedHouse[1], 10), (int) deSerializedHouse[2], true);
+            }
         }
+    }
+
+    private boolean checkMouseOver(Circle c)
+    {
+        boolean status;
+
+        if (c.contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()))
+        {
+            status = true;
+        } else
+        {
+            status = false;
+        }
+        return status;
     }
 
     private void debugTileInfo()

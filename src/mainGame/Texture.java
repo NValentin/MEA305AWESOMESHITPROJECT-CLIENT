@@ -11,8 +11,19 @@ public class Texture
     //Actually Used Textures
     public static SpriteSheet tileSprites;
     public static SpriteSheet cardSprites;
+    public static SpriteSheet diceSprites;
     public static Image butt;
     public static Image doge;
+    public static Image buildingCost;
+    public static Image makeNewTrade;
+    public static Image increase;
+    public static Image decrease;
+    public static Image acceptBig;
+    public static Image declineBig;
+    public static Image counterBig;
+    public static Image accept;
+    public static Image decline;
+    public static Image silverButton;
 
     public static Image menuBackground;
     public static Image buttonTemplate;
@@ -21,6 +32,16 @@ public class Texture
     {
         butt = new Image("resources/butt.png");
         doge = new Image("resources/doge.png");
+        buildingCost = new Image("resources/Buildingcost.jpg");
+        makeNewTrade = new Image("resources/trade_button.png");
+        accept = new Image("resources/accept.png");
+        decline = new Image("resources/decline.png");
+        acceptBig = new Image("resources/acceptOffer.png");
+        declineBig =  new Image("resources/declineOffer.png");
+        counterBig = new Image("resources/counterOffer.png");
+        increase = new Image("resources/increase.png");
+        decrease = new Image("resources/decrease.png");
+        silverButton = new Image("resources/trade.png");
     }
     void initMainMenuStateTextures()
     {
@@ -40,6 +61,7 @@ public class Texture
         {
             tileSprites = new SpriteSheet("resources/tileTexture_Sheet.png", 120, 140, 3);
             cardSprites = new SpriteSheet("resources/tileTexture_sheet.png", 256, 432, 0);
+            diceSprites = new SpriteSheet("resources/dice.png", 135, 135, 0);
         } catch (SlickException e)
         {
             e.printStackTrace();

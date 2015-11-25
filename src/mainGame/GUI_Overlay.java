@@ -1,64 +1,60 @@
 package mainGame;
 
-import mapClasses.GameMap;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
+
+import java.util.Random;
 
 /**
  * Created by Kingo on 25-Nov-15.
  */
-public class GameObjects {
-    Texture textures;
+public class GUI_Overlay {
 
+    Random random = new Random();
+    boolean DiceRolled = false;
+    int die1;
+    int die2;
+
+    Texture texture;
     int theWidth = Main.ScreenWidth;
     int theHeight = Main.ScreenHeight;
-    Image buildingCost, makeNewTrade_image;
     Button accept, decline;
     Button acceptOffer, declineOffer, counterOffer;
+    Button rollDice;
     Button[] makeNewTrade =  new Button[4];
     Button[] buttons = new Button[20];
-    Button[] trade_buttons = new Button[4];
-    boolean trade = true;
+    boolean trade = false;
     boolean tradeWindow = false;
     boolean offerWindow = false;
     int[] currentResources = new int[5];
     int [] resources = new int[10];
-    GatheringResources gathering;
-    GameMap map;
+    String tradeWithName = "";
 
-    GameObjects(){
+    GUI_Overlay()throws SlickException {
+        texture = new Texture();
         try {
             InitailizeTexture();
         } catch (SlickException e) { System.out.println("Problems loading pictures for the playing window: " + e); }
     }
 
     public void InitailizeTexture() throws SlickException{
-        buildingCost = new Image("resources/Buildingcost.jpg");
-        makeNewTrade_image = new Image("resources/trade_button.png");
-        accept = new Button(theWidth - 155, theHeight - 30, 25, 25, new Image("resources/accept.png"));
-        decline = new Button(theWidth - 100, theHeight - 30, 25, 25, new Image("resources/decline.png"));
-        acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, new Image("resources/acceptOffer.png"));
-        declineOffer = new Button(theWidth / 2 + 50, theHeight / 2 + 30, 100, 25, new Image("resources/declineOffer.png"));
-        counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, new Image("resources/counterOffer.png"));
-        for (int i = 0; i < trade_buttons.length; i ++) {
-            trade_buttons[i] = new Button(0, 0, 0, 0, new Image("resources/trade.png"));
-        }
+        accept = new Button(theWidth - 155, theHeight - 30, 25, 25, texture.accept);
+        decline = new Button(theWidth - 100, theHeight - 30, 25, 25, texture.decline);
+        acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, texture.acceptBig);
+        declineOffer = new Button(theWidth / 2 + 50, theHeight / 2 + 30, 100, 25, texture.declineBig);
+        counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, texture.counterBig);
+        rollDice = new Button(0,0, 105, 50, texture.silverButton, 20);
         for (int i = 0; i < makeNewTrade.length; i ++) {
-            makeNewTrade[i] = new Button(0,0, 80, 20, makeNewTrade_image, 20);
+            makeNewTrade[i] = new Button(0,0, 80, 20, texture.makeNewTrade, 20);
         }
         for (int i = 0; i < 5; i++) {
-            buttons[i] = new Button(theWidth / 2 - 110, theHeight / 2 - 80 + 20 * i, 20, 20, new Image("resources/increase.png"));
-            buttons[i + 5] = new Button(theWidth / 2 + 130, theHeight / 2 - 80 + 20 * i, 20, 20, new Image("resources/increase.png"));
-            buttons[i + 10] = new Button(theWidth / 2 - 80, theHeight / 2 - 80 + 20 * i, 20, 20, new Image("resources/decrease.png"));
-            buttons[i + 15] = new Button(theWidth / 2 + 160, theHeight / 2 - 80 + 20 * i, 20, 20, new Image("resources/decrease.png"));
+            buttons[i] = new Button(theWidth / 2 - 110, theHeight / 2 - 80 + 20 * i, 20, 20, texture.decrease);
+            buttons[i + 5] = new Button(theWidth / 2 + 130, theHeight / 2 - 80 + 20 * i, 20, 20, texture.increase);
+            buttons[i + 10] = new Button(theWidth / 2 - 80, theHeight / 2 - 80 + 20 * i, 20, 20, texture.decrease);
+            buttons[i + 15] = new Button(theWidth / 2 + 160, theHeight / 2 - 80 + 20 * i, 20, 20, texture.increase);
         }
-        textures = new Texture();
-        textures.initPlayingWindowTextures();
-        map = new GameMap();
-        gathering = new GatheringResources(map);
     }
 
     public void TradePopupWindow(int x, int y, boolean boo, String _name, Graphics graphics) throws SlickException {
@@ -84,6 +80,10 @@ public class GameObjects {
         }
     }
 
+    public void BuildingWindow(int x, int y, int sizeX, int sizeY) {
+        texture.buildingCost.draw(x, y, sizeX, sizeY);
+    }
+
     public void PlayerList (int x, int y, Graphics graphics, String[] _names, int turn) {
         graphics.drawString("Players:", x + 10, x + 5);
         graphics.drawLine(x + 5, y + 25, x + 145, y + 25);
@@ -107,13 +107,13 @@ public class GameObjects {
         graphics.drawLine(x + 400, y, x + 400, y + 25);
     }
 
-    public void IncomingTradeWindow(int x, int y, boolean boo, String _name, Graphics g) {
+    public void IncomingTradeWindow(int x, int y, boolean boo, Graphics g) {
         if (boo) {
             g.setColor(Color.white);
             g.fill(new Rectangle(x, y, 400, 300));
             g.setColor(Color.black);
-            g.drawString(_name + " wants to trade", x + 10, y + 20);
-            g.drawString(_name + "'s offer", x + 10, y +50);
+            g.drawString("Trade with " + tradeWithName, x + 10, y + 20);
+            //g.drawString(_name + "'s offer", x + 10, y +50);
             g.drawString("Wool:  " + resources[0], x + 10, y + 70);
             g.drawString("Stone: " + resources[1], x + 10, y + 90);
             g.drawString("Wood:  " + resources[2], x + 10, y + 110);
@@ -157,25 +157,50 @@ public class GameObjects {
             g.drawString(_names[i], x + 10, y + 40 + 25 * i);
         }
         for (int i = 0; i < _names.length; i ++) {
-            trade_buttons[i].SetPos(x + 100, y + 40 + 25 * i);
-            trade_buttons[i].draw();
             makeNewTrade[i].SetPos(x + 100, y + 40 + 25 * i);
             makeNewTrade[i].draw();
             makeNewTrade[i].AddText("Trade", Color.black);
             if (makeNewTrade[i].isWithin()) {
                 System.out.println("Trading with " + _names[i]);
+                tradeWithName = _names[i];
+                offerWindow = true;
             }
         }
         g.setColor(Color.white);
     }
 
-    public void OfferWindow(int x, int y, boolean boo, String _name, Graphics g) {
+    public void DisplayDice(Graphics g,int x, int y) {
+        int sizeX = 115;
+        int sizeY = 115;
+        g.setColor(Color.white);
+        g.drawRect(x, y, sizeX, sizeY);
+        rollDice.SetPos(x + 5, y + 59);
+        rollDice.draw();
+        if (!DiceRolled) {
+            rollDice.AddText("Roll Dice", Color.black);
+            texture.diceSprites.getSprite(0, 0).draw(x + 5, y + 5, 50, 50);
+            texture.diceSprites.getSprite(0, 0).draw(x + 60, y + 5, 50, 50);
+        }
+        if (rollDice.isWithin()) {
+            die1 = random.nextInt(6);
+            die2 = random.nextInt(6);
+            DiceRolled = true;
+        }
+        if (DiceRolled) {
+            int combinedValue = die1 + die2 + 2;
+            rollDice.AddText("Rolled: " + combinedValue, Color.black);
+            texture.diceSprites.getSprite(die1,0).draw(x+5, y+5, 50, 50);
+            texture.diceSprites.getSprite(die2,0).draw(x+60, y+5, 50, 50);
+        }
+    }
+
+    public void OfferWindow(int x, int y, boolean boo, Graphics g) {
         if (boo) {
             g.setColor(Color.white);
             g.fill(new Rectangle(x, y, 400, 300));
             g.setColor(Color.black);
-            g.drawString(_name + " wants to trade", x + 10, y + 20);
-            g.drawString(_name + "'s offer", x + 10, y +50);
+            g.drawString("Make an offer for " + tradeWithName, x + 10, y + 20);
+            //g.drawString(tradeWithName + "'s offer", x + 10, y +50);
             for (int i = 0; i < 5; i++) {
                 buttons[i].SetPos(x + 90, y + 70 + 20 * i);
                 buttons[i + 5].SetPos(x + 330, y + 70 + 20 * i);
@@ -199,7 +224,7 @@ public class GameObjects {
             g.drawString("Wood:  " + resources[2], x + 10, y + 110);
             g.drawString("Clay:  " + resources[3], x + 10, y + 130);
             g.drawString("Wheat: " + resources[4], x + 10, y + 150);
-            g.drawString("for", x + 150, y + 110);
+            g.drawString("for", x + 170, y + 110);
             g.drawString("Wool:  " + resources[5], x + 250, y + 70);
             g.drawString("Stone: " + resources[6], x + 250, y + 90);
             g.drawString("Clay:  " + resources[8], x + 250, y + 110);

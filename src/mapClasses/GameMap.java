@@ -237,13 +237,13 @@ public class GameMap
 
     public void update()
     {
-        if (deSerializedHouse[2] != 0)
-        {
-            deSerializeHouse();
-        }
-
         if (!housePlots.isEmpty())
         {
+            if (deSerializedHouse[2] != 0)
+            {
+                addHouse(deSerializedHouse().getHouseCircle(), deSerializedHouse().getPlayerID(), true);
+            }
+
             for (int i = 0; i <= housePlots.size() - 1; i++)
             {
                 if (checkMouseOver(housePlots.get(i)) && Mouse.isButtonDown(0))
@@ -328,16 +328,19 @@ public class GameMap
         serializedHouse[2] = (float) playerID;
     }
 
-    private void deSerializeHouse()
+    private House deSerializedHouse()
     {
+        House tmpHouse = null;
         if (!housePlots.isEmpty())
             for (Circle c : housePlots)
             {
                 if (c.contains(deSerializedHouse[0], deSerializedHouse[1]))
                 {
-                    addHouse(new Circle(deSerializedHouse[0], deSerializedHouse[1], 10), (int) deSerializedHouse[2], true);
+                    tmpHouse = new House(new Circle(deSerializedHouse[0], deSerializedHouse[1], 10)
+                            , (int) deSerializedHouse[2]);
                 }
             }
+        return tmpHouse;
     }
 
     private boolean checkMouseOver(Circle c)

@@ -1,6 +1,7 @@
 package mainGame;
 
 
+import org.lwjgl.Sys;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -12,12 +13,13 @@ public class House
 {
 
     private Boolean isCity;
-    private int playerID;
 
-    public void setBuildingColor(Color buildingColor)
+    public int getPlayerID()
     {
-        this.buildingColor = buildingColor;
+        return playerID;
     }
+
+    private int playerID;
 
     private Color buildingColor;
     private Circle houseCircle;
@@ -29,6 +31,7 @@ public class House
         this.playerID = playerID;
 
         buildingColor = getPlayerColor();
+        System.out.println(PlayerStats.ID);
     }
 
     public void render(Graphics g)

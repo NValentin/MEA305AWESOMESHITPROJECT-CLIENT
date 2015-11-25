@@ -4,9 +4,6 @@ import org.newdawn.slick.geom.Point;
 
 import java.util.ArrayList;
 
-/**
- * Created by Niels on 02-11-2015.
- */
 class Layout
 {
     public Layout(Orientation orientation, Point size, Point origin)
@@ -15,13 +12,14 @@ class Layout
         this.size = size;
         this.origin = origin;
     }
+
     public final Orientation orientation;
     public final Point size;
     public final Point origin;
     static public Orientation pointy = new Orientation(Math.sqrt(3.0), Math.sqrt(3.0) / 2.0, 0.0, 3.0 / 2.0, Math.sqrt(3.0) / 3.0, -1.0 / 3.0, 0.0, 2.0 / 3.0, 0.5);
     static public Orientation flat = new Orientation(3.0 / 2.0, 0.0, Math.sqrt(3.0) / 2.0, Math.sqrt(3.0), 2.0 / 3.0, 0.0, -1.0 / 3.0, Math.sqrt(3.0) / 3.0, 0.0);
 
-    static public Point hexToPixel(Layout layout, Tile h)
+    static public Point hexToPixel(Layout layout, Hex h)
     {
         Orientation M = layout.orientation;
         Point size = layout.size;
@@ -31,8 +29,7 @@ class Layout
         return new Point((float) x + origin.getX(), (float) y + origin.getY());
     }
 
-
-    static public FractionalTile pixelToHex(Layout layout, Point p)
+    static public FractionalHex pixelToHex(Layout layout, Point p)
     {
         Orientation M = layout.orientation;
         Point size = layout.size;
@@ -40,9 +37,8 @@ class Layout
         Point pt = new Point((p.getX() - origin.getY()) / size.getX(), (p.getY() - origin.getX()) / size.getY());
         double q = M.b0 * pt.getX() + M.b1 * pt.getY();
         double r = M.b2 * pt.getX() + M.b3 * pt.getY();
-        return new FractionalTile(q, r, -q - r);
+        return new FractionalHex(q, r, -q - r);
     }
-
 
     static public Point hexCornerOffset(Layout layout, int corner)
     {
@@ -52,17 +48,18 @@ class Layout
         return new Point((float) (size.getX() * Math.cos(angle)), (float) (size.getY() * Math.sin(angle)));
     }
 
-    static public ArrayList<Point> polygonCorners(Layout layout, Tile h)
+    static public ArrayList<Point> polygonCorners(Layout layout, Hex h)
     {
-        ArrayList<Point> corners = new ArrayList<Point>(){{}};
+        ArrayList<Point> corners = new ArrayList<Point>()
+        {{
+            }};
         Point center = Layout.hexToPixel(layout, h);
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i <= 6; i++)
         {
             Point offset = Layout.hexCornerOffset(layout, i);
             corners.add(new Point(center.getX() + offset.getX(), center.getY() + offset.getY()));
         }
         return corners;
     }
-
 }
 

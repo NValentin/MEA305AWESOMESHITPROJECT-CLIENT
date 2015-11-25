@@ -1,8 +1,5 @@
 package mapClasses;
 
-/**
- * Created by Niels on 02-11-2015.
- */
 class Orientation
 {
     public Orientation(double f0, double f1, double f2, double f3, double b0, double b1, double b2, double b3, double start_angle)
@@ -17,6 +14,7 @@ class Orientation
         this.b3 = b3;
         this.start_angle = start_angle;
     }
+
     public final double f0;
     public final double f1;
     public final double f2;

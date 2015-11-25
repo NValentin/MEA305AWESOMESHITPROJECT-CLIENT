@@ -68,10 +68,10 @@ public class JoinLobbyState extends BasicGameState {
             checkIfReady = true;
         }
         if(PlayerStats.StartGame) {
-            countdown -= 0.0012f;
-            if (countdown < 0.5f) {
+            //countdown -= 0.0012f;
+            //if (countdown < 0.5f) {
                 stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
-            }
+            //}
         }
     }
 

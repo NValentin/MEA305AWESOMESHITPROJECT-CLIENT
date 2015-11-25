@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/menuBackground.jpg" afterPath="$PROJECT_DIR$/resources/menuBackground.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -721,7 +720,7 @@
       <workItem from="1448369872045" duration="1832000" />
       <workItem from="1448371904905" duration="995000" />
       <workItem from="1448442442531" duration="1904000" />
-      <workItem from="1448445362346" duration="20000" />
+      <workItem from="1448445418755" duration="25000" />
     </task>
     <task id="LOCAL-00005" summary="Redid some of">
       <created>1446209317722</created>
@@ -1021,7 +1020,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166458000" />
+    <option name="totallyTimeSpent" value="166463000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1373" height="780" extended-state="0" />

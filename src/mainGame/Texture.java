@@ -16,7 +16,7 @@ public class Texture
 
     Texture(int ID) throws SlickException
     {
-        tileSprites = new SpriteSheet("resources/hexagonTerrain_sheet.png", 120, 140, 2);
+        tileSprites = new SpriteSheet("resources/Hexagon.png", 120, 140, 3);
         butt = new Image("resources/butt.png");
         doge = new Image("resources/doge.png");
     }

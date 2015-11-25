@@ -85,25 +85,25 @@ public class Tile
         switch (tileType)
         {
             case ("Grain"):
-                tmpTexture = Texture.tileSprites.getSprite(0, 3);
+                tmpTexture = Texture.tileSprites.getSprite(6, 0);
                 break;
             case ("Lumber"):
-                tmpTexture = Texture.tileSprites.getSprite(1, 3);
+                tmpTexture = Texture.tileSprites.getSprite(4, 0);
                 break;
             case ("Wool"):
-                tmpTexture = Texture.tileSprites.getSprite(3, 3);
+                tmpTexture = Texture.tileSprites.getSprite(3, 0);
                 break;
             case ("Ore"):
-                tmpTexture = Texture.tileSprites.getSprite(4, 3);
+                tmpTexture = Texture.tileSprites.getSprite(0, 0);
                 break;
             case ("Brick"):
-                tmpTexture = Texture.tileSprites.getSprite(5, 3);
+                tmpTexture = Texture.tileSprites.getSprite(1, 0);
                 break;
             case ("Desert"):
-                tmpTexture = Texture.tileSprites.getSprite(2, 5);
+                tmpTexture = Texture.tileSprites.getSprite(2, 0);
                 break;
             case ("Water"):
-                tmpTexture = Texture.doge;
+                tmpTexture = Texture.tileSprites.getSprite(5, 0);
                 break;
             default:
                 tmpTexture = Texture.butt;

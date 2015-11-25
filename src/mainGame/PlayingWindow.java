@@ -82,9 +82,11 @@ public class PlayingWindow extends BasicGameState
         gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, gui_overlay.trade, PlayerStats.names[turn], g);
         gui_overlay.IncomingTradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.tradeWindow, g);
         gui_overlay.OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.offerWindow, g);
-        if (yourTurn)
-            gui_overlay.TradeWithWindow(Main.ScreenWidth - 200, 200, g, names);
-        gui_overlay.DisplayDice(g, theWidth - 150, 50);
+        gui_overlay.ShowStats(g, theWidth - 125, 10);
+        if (yourTurn) {
+            gui_overlay.TradeWithWindow(Main.ScreenWidth - 200, 250, g, names);
+            gui_overlay.DisplayDice(g, theWidth - 150, 100);
+        }
         g.setColor(Color.white);
         chatBox.render(g, gc);
         chat.render(gc, g);

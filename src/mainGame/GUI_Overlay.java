@@ -16,38 +16,47 @@ public class GUI_Overlay {
     boolean DiceRolled = false;
     int die1;
     int die2;
+    int combinedValue;
+    int[] rolledDice = new int[12];
+    float[] procentValue = new float []{0,0,0,0,0,0,0,0,0,0,0,0};
+    int rolled = 0;
 
     Texture texture;
     int theWidth = Main.ScreenWidth;
     int theHeight = Main.ScreenHeight;
-    Button accept, decline;
+    Button accept, decline, showStats, closeStats;
     Button acceptOffer, declineOffer, counterOffer;
     Button rollDice;
-    Button[] makeNewTrade =  new Button[4];
+    Button[] makeNewTrade = new Button[4];
     Button[] buttons = new Button[20];
     boolean trade = false;
     boolean tradeWindow = false;
     boolean offerWindow = false;
+    boolean showStatsBool;
     int[] currentResources = new int[5];
-    int [] resources = new int[10];
+    int[] resources = new int[10];
     String tradeWithName = "";
 
-    GUI_Overlay()throws SlickException {
+    GUI_Overlay() throws SlickException {
         texture = new Texture();
         try {
             InitailizeTexture();
-        } catch (SlickException e) { System.out.println("Problems loading pictures for the playing window: " + e); }
+        } catch (SlickException e) {
+            System.out.println("Problems loading pictures for the playing window: " + e);
+        }
     }
 
-    public void InitailizeTexture() throws SlickException{
+    public void InitailizeTexture() throws SlickException {
         accept = new Button(theWidth - 155, theHeight - 30, 25, 25, texture.accept);
         decline = new Button(theWidth - 100, theHeight - 30, 25, 25, texture.decline);
         acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, texture.acceptBig);
         declineOffer = new Button(theWidth / 2 + 50, theHeight / 2 + 30, 100, 25, texture.declineBig);
         counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, texture.counterBig);
-        rollDice = new Button(0,0, 105, 50, texture.silverButton, 20);
-        for (int i = 0; i < makeNewTrade.length; i ++) {
-            makeNewTrade[i] = new Button(0,0, 80, 20, texture.makeNewTrade, 20);
+        rollDice = new Button(0, 0, 105, 50, texture.silverButton, 20);
+        closeStats = new Button(0, 0, 25, 25, texture.decline);
+        showStats = new Button(0, 0, 120, 35, texture.silverButton, 20);
+        for (int i = 0; i < makeNewTrade.length; i++) {
+            makeNewTrade[i] = new Button(0, 0, 80, 20, texture.makeNewTrade, 20);
         }
         for (int i = 0; i < 5; i++) {
             buttons[i] = new Button(theWidth / 2 - 110, theHeight / 2 - 80 + 20 * i, 20, 20, texture.decrease);
@@ -84,7 +93,8 @@ public class GUI_Overlay {
         texture.buildingCost.draw(x, y, sizeX, sizeY);
     }
 
-    public void PlayerList (int x, int y, Graphics graphics, String[] _names, int turn) {
+    public void PlayerList(int x, int y, Graphics graphics, String[] _names, int turn) {
+        graphics.setLineWidth(2);
         graphics.drawString("Players:", x + 10, x + 5);
         graphics.drawLine(x + 5, y + 25, x + 145, y + 25);
         graphics.drawRect(x, y, 150, 200);
@@ -94,7 +104,8 @@ public class GUI_Overlay {
         graphics.drawRect(x + 5, y + 32 + 25 * turn, 140, 25);
     }
 
-    public void ResourceBar (int x, int y, Graphics graphics, int wool, int stone, int wood, int clay, int wheat) {
+    public void ResourceBar(int x, int y, Graphics graphics, int wool, int stone, int wood, int clay, int wheat) {
+        graphics.setLineWidth(2);
         graphics.drawRect(x, y, 500, 25);
         graphics.drawString("Wood: " + wood, x + 5, y + 3);
         graphics.drawString("Stone: " + stone, x + 105, y + 3);
@@ -148,6 +159,7 @@ public class GUI_Overlay {
     }
 
     public void TradeWithWindow(int x, int y, Graphics g, String[] _names) {
+        g.setLineWidth(2);
         g.setColor(Color.white);
         g.fill(new Rectangle(x, y, 200, 150));
         g.setColor(Color.black);
@@ -156,7 +168,7 @@ public class GUI_Overlay {
         for (int i = 0; i < _names.length; i++) {
             g.drawString(_names[i], x + 10, y + 40 + 25 * i);
         }
-        for (int i = 0; i < _names.length; i ++) {
+        for (int i = 0; i < _names.length; i++) {
             makeNewTrade[i].SetPos(x + 100, y + 40 + 25 * i);
             makeNewTrade[i].draw();
             makeNewTrade[i].AddText("Trade", Color.black);
@@ -169,9 +181,45 @@ public class GUI_Overlay {
         g.setColor(Color.white);
     }
 
-    public void DisplayDice(Graphics g,int x, int y) {
+    public void ShowStats(Graphics g, int x, int y) {
+        showStats.SetPos(x, y);
+        closeStats.SetPos(theWidth / 2 + 270, theHeight / 2 - 195);
+        if (showStatsBool) {
+            if (closeStats.isWithin()) {
+                showStatsBool = false;
+            }
+            g.setColor(Color.white);
+            g.drawRect(theWidth / 2 - 100, theHeight / 2 - 200, 400, 200);
+            g.setColor(Color.black);
+            g.fillRect(theWidth / 2 - 100, theHeight / 2 - 200, 400, 200);
+            g.setColor(Color.white);
+            g.drawString("Statistics in procent", theWidth/2 - 25, theHeight/2 - 190);
+            for (int i = 1; i < 13; i++) {
+                float procent = (float) rolledDice[i - 1] / (float) rolled;
+                procentValue[i - 1] = procent * 120;
+                g.setLineWidth(2);
+                if (i < 10) {
+                    g.drawString(String.valueOf(i), theWidth / 2 - 105 + i * 30, theHeight / 2 - 25);
+                } else {
+                    g.drawString(String.valueOf(i), theWidth / 2 - 109 + i * 30, theHeight / 2 - 25);
+                }
+                g.setLineWidth(10);
+                g.drawLine(theWidth / 2 - 100 + i * 30, theHeight / 2 - 40, theWidth / 2 - 100 + i * 30, theHeight / 2 - 40 - procentValue[i - 1]);
+            }
+        }
+        showStats.draw();
+        showStats.AddText("Show Statistics", Color.white);
+        if (showStatsBool)
+            closeStats.draw();
+        if (showStats.isWithin()) {
+            showStatsBool = true;
+        }
+    }
+
+    public void DisplayDice(Graphics g, int x, int y) {
         int sizeX = 115;
         int sizeY = 115;
+        g.setLineWidth(2);
         g.setColor(Color.white);
         g.drawRect(x, y, sizeX, sizeY);
         rollDice.SetPos(x + 5, y + 59);
@@ -185,14 +233,18 @@ public class GUI_Overlay {
             die1 = random.nextInt(6);
             die2 = random.nextInt(6);
             DiceRolled = true;
+            combinedValue = die1 + die2 + 2;
+            System.out.println("Combined Value: " + combinedValue);
+            rolledDice[combinedValue-1]++;
+            rolled++;
         }
         if (DiceRolled) {
-            int combinedValue = die1 + die2 + 2;
             rollDice.AddText("Rolled: " + combinedValue, Color.black);
-            texture.diceSprites.getSprite(die1,0).draw(x+5, y+5, 50, 50);
-            texture.diceSprites.getSprite(die2,0).draw(x+60, y+5, 50, 50);
+            texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
+            texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
         }
     }
+
 
     public void OfferWindow(int x, int y, boolean boo, Graphics g) {
         if (boo) {

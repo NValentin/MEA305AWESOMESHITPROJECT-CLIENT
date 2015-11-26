@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/House.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/House.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Texture.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Texture.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapClasses/GameMap.java" afterPath="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/GameMap.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/GameMap.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -34,8 +32,8 @@
       <file leaf-file-name="GameMap.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33263597">
-              <caret line="374" column="65" selection-start-line="374" selection-start-column="65" selection-end-line="374" selection-end-column="65" />
+            <state vertical-scroll-proportion="0.61715484">
+              <caret line="382" column="0" selection-start-line="382" selection-start-column="0" selection-end-line="382" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#findHousePlots#0;class#GameMap#0" expanded="false" />
@@ -834,13 +832,7 @@
       <workItem from="1448439570782" duration="16421000" />
       <workItem from="1448456802456" duration="11520000" />
       <workItem from="1448483206855" duration="2437000" />
-      <workItem from="1448525419293" duration="13484000" />
-    </task>
-    <task id="LOCAL-00001" summary="Fixed to work with IntelliJ">
-      <created>1446114969140</created>
-      <option name="number" value="00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1446114969140</updated>
+      <workItem from="1448525419293" duration="13523000" />
     </task>
     <task id="LOCAL-00002" summary="Can now display hexagons">
       <created>1446126095699</created>
@@ -1130,11 +1122,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448538432376</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Quick bug fix for testing 1.11">
+      <created>1448539271310</created>
+      <option name="number" value="00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1448539271316</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188683000" />
+    <option name="totallyTimeSpent" value="188722000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1210,7 +1208,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Reworked texture class" />
     <MESSAGE value="IDNO WARRHHHH" />
     <MESSAGE value="Updated to implement houses and roads, or at least where they should be" />
     <MESSAGE value="Added a &quot;AddText&quot; to the button class and deleted some unused classes" />
@@ -1235,7 +1232,8 @@
     <MESSAGE value="Quick bug fix for testing 1.02" />
     <MESSAGE value="Quick bug fix for testing 1.03" />
     <MESSAGE value="Quick bug fix for testing 1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Quick bug fix for testing 1.1" />
+    <MESSAGE value="Quick bug fix for testing 1.11" />
+    <option name="LAST_COMMIT_MESSAGE" value="Quick bug fix for testing 1.11" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1620,8 +1618,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33263597">
-          <caret line="374" column="65" selection-start-line="374" selection-start-column="65" selection-end-line="374" selection-end-column="65" />
+        <state vertical-scroll-proportion="0.61715484">
+          <caret line="382" column="0" selection-start-line="382" selection-start-column="0" selection-end-line="382" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#findHousePlots#0;class#GameMap#0" expanded="false" />

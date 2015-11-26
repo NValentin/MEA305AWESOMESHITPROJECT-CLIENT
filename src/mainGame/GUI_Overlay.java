@@ -1,8 +1,6 @@
 package mainGame;
 
-import org.newdawn.slick.Color;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 
 import java.util.Random;
@@ -12,7 +10,6 @@ import java.util.Random;
  */
 public class GUI_Overlay {
 
-    Random random = new Random();
     boolean DiceRolled;
     int die1;
     int die2;
@@ -20,6 +17,7 @@ public class GUI_Overlay {
     int[] rolledDice = new int[12];
     float[] procentValue = new float []{0,0,0,0,0,0,0,0,0,0,0,0};
     int rolled = 0;
+    String[] buildingMenuText = new String[] {"Road", "House", "City", "Development Card", "Gives 0 Victory Points", "Gives 1 Victory Points", "Gives 2 Victory Points", "Gives ? Victory Points", "1 Lumber and 1 Brink", "1 Lumber, 1 Wool, 1 Grain, and 1 Brick", "3 Ore and 2 Grin", "1 Wool, 1 Ore, and 1 Grain"};
 
     Texture texture;
     int theWidth = Main.ScreenWidth;
@@ -29,6 +27,7 @@ public class GUI_Overlay {
     Button rollDice;
     Button[] makeNewTrade = new Button[4];
     Button[] buttons = new Button[20];
+    Button[] build_Buttons = new Button[4];
     boolean trade = false;
     boolean tradeWindow = false;
     boolean offerWindow = false;
@@ -37,9 +36,13 @@ public class GUI_Overlay {
     int[] resources = new int[10];
     String tradeWithName = "";
     Button endTurn;
+    Font font;
 
     GUI_Overlay() throws SlickException {
         texture = new Texture();
+        font = new TrueTypeFont(new java.awt.Font("Verdana",
+                java.awt.Font.PLAIN, 10), true);
+
         try {
             InitailizeTexture();
         } catch (SlickException e) {
@@ -57,8 +60,9 @@ public class GUI_Overlay {
         closeStats = new Button(0, 0, 25, 25, texture.decline);
         showStats = new Button(0, 0, 140, 35, texture.silverButton, 20);
         endTurn = new Button(0,0, 150, 50, texture.templateButton, 35);
-        for (int i = 0; i < makeNewTrade.length; i++) {
+        for (int i = 0; i < 4; i++) {
             makeNewTrade[i] = new Button(0, 0, 80, 20, texture.makeNewTrade, 20);
+            build_Buttons[i] = new Button(0, 0, 50, 20, texture.silverButton, 20);
         }
         for (int i = 0; i < 5; i++) {
             buttons[i] = new Button(theWidth / 2 - 110, theHeight / 2 - 80 + 20 * i, 20, 20, texture.decrease);
@@ -91,8 +95,31 @@ public class GUI_Overlay {
         }
     }
 
-    public void BuildingWindow(int x, int y, int sizeX, int sizeY) {
-        texture.buildingCost.draw(x, y, sizeX, sizeY);
+    public void BuildingWindow(Graphics g, int x, int y, int sizeX, int sizeY) {
+        //texture.buildingCost.draw(x, y, sizeX, sizeY);
+        g.setColor(Color.white);
+        g.drawRect(x, y, sizeX, sizeY);
+        g.setColor(Color.black);
+        g.fillRect(x, y, sizeX, sizeY);
+        g.setColor(Color.white);
+        g.drawString("Build Menu", x + sizeX/2- 50, y + 10);
+        for (int i = 0; i < 4; i ++) {
+            g.drawLine(x, y + 30 + 60 * i, x + sizeX, y + 30 + 60 * i);
+            build_Buttons[i].SetPos(x + 135, y + 46 + 60 * i);
+            build_Buttons[i].draw();
+            build_Buttons[i].AddText("Build", Color.white);
+            font.drawString(x + 5, y + 35 + 60 * i, buildingMenuText[i]);
+            font.drawString(x + 5, y + 50 + 60 * i, buildingMenuText[i+4]);
+            if (i+8 == 9) {
+                font.drawString(x + 5, y + 65 + 60 * i, buildingMenuText[i+8].substring(0,27));
+                font.drawString(x + 5, y + 75 + 60 * i, buildingMenuText[i+8].substring(27));
+            } else {
+                font.drawString(x + 5, y + 65 + 60 * i, buildingMenuText[i + 8]);
+            }
+            if (build_Buttons[i].isWithin()) {
+                System.out.println("Building " + buildingMenuText[i]);
+            }
+        }
     }
 
     public void PlayerList(int x, int y, Graphics graphics, String[] _names, int turn) {

@@ -23,6 +23,13 @@ public class ServerData
     public ArrayList<Integer> cards = new ArrayList<Integer>();
     public int[] serializedHouse = new int[]{0, 0};
     public boolean endTurn = false, diceRoll;
+    public int turnorderturn = 1;
+    public boolean gameEnded = false;
+    public boolean p1 = false;
+    public boolean p2 = false;
+    public boolean p3 = false;
+    public boolean p4 = false;
+    public boolean gamestart =false;
 
     Integer[] yieldNumbers = {2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12};
     ArrayList<Integer> listOfYieldNumbers = new ArrayList<Integer>(Arrays.asList(yieldNumbers));

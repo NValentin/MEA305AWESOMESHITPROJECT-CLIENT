@@ -16,7 +16,12 @@ public class ClientData
     public boolean nsTextSent;
     public int[] serializedHouse = new int[]{0, 0};
     public boolean endTurn = false, diceRoll;
-
+    public boolean gameEnded = false;
+    public boolean p1 = false;
+    public boolean p2 = false;
+    public boolean p3 = false;
+    public boolean p4 = false;
+    public boolean gamestart =false;
 
     public ClientData()
     {

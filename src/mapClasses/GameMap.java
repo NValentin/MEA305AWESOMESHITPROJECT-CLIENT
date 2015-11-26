@@ -87,9 +87,6 @@ public class GameMap
         houses.add(tmpHouse);
         if (!wasReceivedFromServer)
             serializeHouse(indexPos, PlayerStats.ID);
-
-        removeHousePlot(tmpHouse, indexPos);
-        removeHouseNeighborPlots(tmpHouse);
     }
 
     private void findRoadPlots() //should be 72
@@ -260,19 +257,18 @@ public class GameMap
         return resourceYieldingTiles;
     }
 
-    private void removeHousePlot(House house, int indexPos)
+    private void removeHousePlot(int indexPos)
     {
-        if (house.getHouseCircle().contains(housePlots[indexPos].getCenterX(), housePlots[indexPos].getCenterY()))
-            housePlots[indexPos] = null;
+        housePlots[indexPos] = null;
     }
 
-    private void removeHouseNeighborPlots(House house)
+    private void removeHouseNeighborPlots(int indexPos)
     {
         for (int i = 0; i < housePlots.length; i++)
         {
             if (housePlots[i] != null)
             {
-                int distance = (int) new Vector2f(house.getHouseCircle().getCenterX(), house.getHouseCircle().getCenterY()).
+                int distance = (int) new Vector2f(housePlots[indexPos].getCenterX(), housePlots[indexPos].getCenterY()).
                         distance(new Vector2f(housePlots[i].getCenterX(), housePlots[i].getCenterY()));
                 if (distance < 65)
                 {
@@ -371,6 +367,9 @@ public class GameMap
     private void deSerializeHouse()
     {
         addHouse(deSerializedHouse[0], deSerializedHouse[1], true);
+        removeHouseNeighborPlots(deSerializedHouse[0]);
+        removeHousePlot(deSerializedHouse[0]);
+        serverInputInReceived = false;
     }
 
     private boolean checkMouseOverHousePlot(int indexPos)

@@ -79,13 +79,13 @@ public class GameClient extends Listener implements Runnable{
 
     void updateHouses()
     {
-        if (GameMap.serializedHouse[2] != 0)
+        if (GameMap.serializedHouse[1] != 0)
         {
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);
             GameMap.serverInputInReceived = true;
-            GameMap.serializedHouse[2] = 0;
+            GameMap.serializedHouse[1] = 0;
         }
     }
 }

@@ -96,7 +96,6 @@ public class GUI_Overlay {
     }
 
     public void BuildingWindow(Graphics g, int x, int y, int sizeX, int sizeY) {
-        //texture.buildingCost.draw(x, y, sizeX, sizeY);
         g.setColor(Color.white);
         g.drawRect(x, y, sizeX, sizeY);
         g.setColor(Color.black);
@@ -117,7 +116,11 @@ public class GUI_Overlay {
                 font.drawString(x + 5, y + 65 + 60 * i, buildingMenuText[i + 8]);
             }
             if (build_Buttons[i].isWithin()) {
-                System.out.println("Building " + buildingMenuText[i]);
+                if (PlayerStats.turn == PlayerStats.ID) {
+                    System.out.println("Building " + buildingMenuText[i]);
+                } else {
+                    System.out.println("Can't build when its not your turn");
+                }
             }
         }
     }

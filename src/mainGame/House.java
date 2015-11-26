@@ -9,17 +9,15 @@ public class House
 {
     private Boolean isCity;
 
-    private int playerID;
-
     private Color buildingColor;
     private Circle houseCircle;
 
     public House(Circle circle, int playerID)
     {
+        Color[] playerColors = new Color[]{Color.black, Color.blue, Color.red, Color.white, Color.orange};
         isCity = false;
         houseCircle = circle;
-        this.playerID = playerID;
-        buildingColor = setPlayerColor();
+        buildingColor = playerColors[playerID];
     }
 
     public void render(Graphics g)
@@ -48,28 +46,5 @@ public class House
     public Circle getHouseCircle()
     {
         return houseCircle;
-    }
-
-    private Color setPlayerColor()
-    {
-        Color playerColor = Color.black;
-        switch (playerID)
-        {
-            case (1):
-                playerColor = Color.blue;
-                break;
-            case (2):
-                playerColor = Color.red;
-                break;
-            case (3):
-                playerColor = Color.white;
-                break;
-            case (4):
-                playerColor = Color.orange;
-                break;
-            default:
-                break;
-        }
-        return playerColor;
     }
 }

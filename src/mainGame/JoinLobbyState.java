@@ -23,7 +23,7 @@ public class JoinLobbyState extends BasicGameState {
     Button forward;
 
     TextBoxBase chatBox;
-    TextField chat;
+    TextField lobbyChat;
     String chatText = "";
     Font font;
 
@@ -40,7 +40,7 @@ public class JoinLobbyState extends BasicGameState {
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 12), true);
         chatBox = new TextBoxBase();
-        chat = new TextField(gameContainer, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
+        lobbyChat = new TextField(gameContainer, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
 
         countdown = 6f;
 
@@ -58,10 +58,10 @@ public class JoinLobbyState extends BasicGameState {
             stateBasedGame.enterState(0, new FadeOutTransition(), new FadeInTransition());
         }
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_ENTER) && chat.getText()!="") {
-            chatText = chat.getText();
+        if(gameContainer.getInput().isKeyPressed(Input.KEY_ENTER) && lobbyChat.getText()!="") {
+            chatText = lobbyChat.getText();
             chatBox.newMessage(chatText,PlayerStats.name);
-            chat.setText("");
+            lobbyChat.setText("");
         }
         if(forward.isWithin() && !checkIfReady) {
             PlayerStats.lobbyReady=true;
@@ -70,6 +70,7 @@ public class JoinLobbyState extends BasicGameState {
         if(PlayerStats.StartGame) {
             //countdown -= 0.0012f;
             //if (countdown < 0.5f) {
+            lobbyChat.setLocation(Main.ScreenWidth+200,Main.ScreenHeight+200);
                 stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
             //}
         }
@@ -78,7 +79,6 @@ public class JoinLobbyState extends BasicGameState {
     @Override
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g)
             throws SlickException {
-        g.drawString("Lobby", 100, 100);
         menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         back.draw();
         back.AddText("Back", Color.white);
@@ -119,7 +119,7 @@ public class JoinLobbyState extends BasicGameState {
         }
         g.setColor(Color.white);
         chatBox.render(g, gc);
-        chat.render(gc, g);
+        lobbyChat.render(gc, g);
 
         if(PlayerStats.StartGame){
                 g.drawString("Game Starts in "+(int)countdown, Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+200);

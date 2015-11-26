@@ -6,6 +6,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 
 /**
@@ -29,27 +31,33 @@ public class PlayingWindow extends BasicGameState
     int sizeY = Main.ScreenHeight/10;
 
     TextBoxBase chatBox;
-    TextField chat;
+    TextField gameChat;
     String chatText = "";
     Font font;
 
     @Override
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException
+    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
+            throws SlickException
     {
         gui_overlay = new GUI_Overlay();
         textures = new Texture();
         textures.initPlayingWindowTextures();
         map = new GameMap();
 
+
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 12), true);
         chatBox = new TextBoxBase();
-        chat = new TextField(gameContainer, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
+        gameChat = new TextField(gameContainer, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
     }
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException
     {
+
+        if(gameContainer.getInput().isKeyPressed(Input.KEY_ESCAPE)){
+            stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+        }
         map.update(gameContainer);
         if(gameContainer.getInput().isKeyPressed(Input.KEY_3)) {
             if (yourTurn) {
@@ -61,10 +69,10 @@ public class PlayingWindow extends BasicGameState
             }
         }
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_ENTER) && chat.getText()!="") {
-            chatText = chat.getText();
+        if(gameContainer.getInput().isKeyPressed(Input.KEY_ENTER) && gameChat.getText()!="") {
+            chatText = gameChat.getText();
             chatBox.newMessage(chatText, PlayerStats.name);
-            chat.setText("");
+            gameChat.setText("");
         }
     }
 
@@ -90,7 +98,7 @@ public class PlayingWindow extends BasicGameState
         }
         g.setColor(Color.white);
         chatBox.render(g, gc);
-        chat.render(gc, g);
+        gameChat.render(gc, g);
     }
 
     @Override

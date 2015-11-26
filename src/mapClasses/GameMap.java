@@ -11,9 +11,6 @@ import org.newdawn.slick.geom.*;
 
 import java.util.*;
 
-import static org.newdawn.slick.Input.KEY_B;
-import static org.newdawn.slick.Input.MOUSE_LEFT_BUTTON;
-
 public class GameMap
 {
     private static Layout mapLayout;
@@ -301,7 +298,7 @@ public class GameMap
             {
                 pressed = false;
                 System.out.println("HELLO");
-                serializeHouse(i, PlayerStats.ID);
+                serializeHouse(i);
 
             }
         }
@@ -373,10 +370,10 @@ public class GameMap
         }
     }
 
-    private void serializeHouse(int housePlotPos, int playerID)
+    private void serializeHouse(int housePlotPos)
     {
         serializedHouse[0] = housePlotPos;
-        serializedHouse[1] = playerID;
+        serializedHouse[1] = PlayerStats.ID;
     }
 
     public void deSerializeHouse()

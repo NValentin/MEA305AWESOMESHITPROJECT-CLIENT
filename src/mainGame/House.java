@@ -1,6 +1,5 @@
 package mainGame;
 
-
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -20,7 +19,7 @@ public class House
         isCity = false;
         houseCircle = circle;
         this.playerID = playerID;
-        this.buildingColor = this.getPlayerColor();
+        buildingColor = setPlayerColor();
     }
 
     public void render(Graphics g)
@@ -51,7 +50,7 @@ public class House
         return houseCircle;
     }
 
-    private Color getPlayerColor()
+    private Color setPlayerColor()
     {
         Color playerColor = Color.black;
         switch (playerID)

@@ -25,7 +25,7 @@ public class Network extends Listener
     public void connect()
     {
         client = new Client(16384, 2048);
-        client.getKryo().register(PlayerStats.class);
+        //client.getKryo().register(PlayerStats.class);
         client.getKryo().register(int[].class);
         client.getKryo().register(ServerData.class);
         client.getKryo().register(ClientData.class);
@@ -52,17 +52,6 @@ public class Network extends Listener
     @Override
     public void received(Connection c, Object o)
     {
-        if (o instanceof PacketAddPlayer)
-        {
-            PacketAddPlayer packet = (PacketAddPlayer) o;
-            PlayerStats newPlayerStats = new PlayerStats();
-            GameClient.players.put(packet.ID, newPlayerStats);
-        }
-        if (o instanceof PacketRemovePlayer)
-        {
-            PacketRemovePlayer packet = (PacketRemovePlayer) o;
-            GameClient.players.remove(packet.ID);
-        }
         if (o instanceof ServerData)
         {
             serverData = (ServerData) o;

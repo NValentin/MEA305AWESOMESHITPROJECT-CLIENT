@@ -296,10 +296,7 @@ public class GameMap
         {
             if (checkMouseOverHousePlot(i) && gc.getInput().isMousePressed(0))
             {
-                pressed = false;
-                System.out.println("HELLO");
                 serializeHouse(i);
-
             }
         }
     }

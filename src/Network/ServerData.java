@@ -1,5 +1,6 @@
 package Network;
 
+import com.esotericsoftware.kryonet.Connection;
 import mainGame.PlayerStats;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class ServerData
     public int[] resourcesOnHand = new int[]{0, 0, 0, 0};
     public boolean[] lobbyReadyAll = new boolean[]{false, false, false, false};
     public int longestRoad[] = new int[]{0, 0, 0, 0};
-    public int turn, die1, die2, cardID;
+    public int turn, die1, die2, ID, cardID;
     public boolean StartGame = false;
     public String[] textToRender = new String[]{"", "", ""};
     public String[] oldText = new String[10];
@@ -27,6 +28,7 @@ public class ServerData
     public boolean gameEnded = false;
     public boolean[] playerturn = new boolean[]{false,false,false,false};
     public boolean gamestart =false;
+    public Connection c;
 
     Integer[] yieldNumbers = {2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12};
     ArrayList<Integer> listOfYieldNumbers = new ArrayList<Integer>(Arrays.asList(yieldNumbers));
@@ -42,7 +44,7 @@ public class ServerData
     {
     }
 
-    public void unpack()
+    public void unpack(Connection c)
     {
         PlayerStats.names = names;
         PlayerStats.points = points;
@@ -54,6 +56,7 @@ public class ServerData
         PlayerStats.StartGame = StartGame;
         PlayerStats.textToRender = textToRender;
         PlayerStats.oldText = oldText;
+        PlayerStats.ID = c.getID();
         PlayerStats.die1 = die1;
         PlayerStats.die2 = die2;
         PlayerStats.endTurn = endTurn;

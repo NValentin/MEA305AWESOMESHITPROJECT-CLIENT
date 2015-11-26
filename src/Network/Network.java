@@ -15,7 +15,6 @@ public class Network extends Listener
 {
 
     Client client;
-    Connection c;
     int port = 23820;
     ServerData serverData;
     InetAddress ip;
@@ -45,7 +44,6 @@ public class Network extends Listener
         {
             client.connect(5000, ip, port, port);
             isConnected = true;
-            PlayerStats.ID = c.getID();
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -69,7 +67,7 @@ public class Network extends Listener
         if (o instanceof ServerData)
         {
             serverData = (ServerData) o;
-            serverData.unpack();
+            serverData.unpack(c);
 
             serverListOfTypes = serverData.listOfTileTypes;
             serverListOfYieldNumbers = serverData.listOfYieldNumbers;

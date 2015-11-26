@@ -7,7 +7,6 @@ public class PlayerStats {
 
     // Personal stats
     public static int ID;
-    public Connection c;
     public static String name = "";
     public static int point = 0;
     public static int knights_played = 0;

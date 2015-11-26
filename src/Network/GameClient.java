@@ -8,8 +8,8 @@ import mapClasses.GameMap;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GameClient extends Listener implements Runnable{
-
+public class GameClient extends Listener implements Runnable
+{
     //static PlayerStats playerStats = new PlayerStats();
     static Network network = new Network();
     static Map<Integer, PlayerStats> players = new HashMap<Integer, PlayerStats>();
@@ -17,32 +17,40 @@ public class GameClient extends Listener implements Runnable{
     boolean lobbyReady = false;
 
     @Override
-    public void run(){
+    public void run()
+    {
 
         network.connect();
         Log.set(Log.LEVEL_DEBUG);
 
-        while(true) {
+        while (true)
+        {
             update();
         }
 
         //System.exit(0);
     }
 
-    public void update(){
-        if (!nameSent){
+    public void update()
+    {
+        if (!nameSent)
+        {
             updatePlayerName();
         }
         updatePlayerPoints();
-        if(!lobbyReady){
+        if (!lobbyReady)
+        {
             updateLobbyReady();
         }
 
         updateChat();
         updateHouses();
     }
-    void updatePlayerName(){
-        if(!PlayerStats.name.matches("")) {
+
+    void updatePlayerName()
+    {
+        if (!PlayerStats.name.matches(""))
+        {
             System.out.println("PlayerStats.name is not null, SEND STUFF");
             ClientData clientData = new ClientData();
             clientData.pack();
@@ -50,8 +58,11 @@ public class GameClient extends Listener implements Runnable{
             nameSent = true;
         }
     }
-    void updateChat(){
-        if(PlayerStats.textSent){
+
+    void updateChat()
+    {
+        if (PlayerStats.textSent)
+        {
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);
@@ -59,8 +70,10 @@ public class GameClient extends Listener implements Runnable{
         }
     }
 
-    void updatePlayerPoints(){
-        if(PlayerStats.TEMPpoint != PlayerStats.point){
+    void updatePlayerPoints()
+    {
+        if (PlayerStats.TEMPpoint != PlayerStats.point)
+        {
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);
@@ -68,8 +81,11 @@ public class GameClient extends Listener implements Runnable{
             PlayerStats.TEMPpoint = PlayerStats.point;
         }
     }
-    void updateLobbyReady(){
-        if(PlayerStats.lobbyReady){
+
+    void updateLobbyReady()
+    {
+        if (PlayerStats.lobbyReady)
+        {
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);
@@ -84,7 +100,6 @@ public class GameClient extends Listener implements Runnable{
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);
-            GameMap.serverInputInReceived = true;
             GameMap.serializedHouse[1] = 0;
         }
     }

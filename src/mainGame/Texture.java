@@ -33,6 +33,7 @@ public class Texture
     {
         butt = new Image("resources/butt.png");
         doge = new Image("resources/doge.png");
+
         buildingCost = new Image("resources/Buildingcost.jpg");
         makeNewTrade = new Image("resources/trade_button.png");
         accept = new Image("resources/accept.png");

@@ -17,16 +17,15 @@ public class GameMap
     private ArrayList<Tile> map;
 
     private Circle[] housePlots;
-    private ArrayList<House> houses;
+    public ArrayList<House> houses;
 
     private int houseRadius;
 
     private Line[] roadPlots;
     private ArrayList<Road> roads;
 
-    public static int[] serializedHouse = new int[2];
+    public static int[] serializedHouse = new int[]{0, 0};
     public static int[] deSerializedHouse = new int[]{0, 0};
-    public static boolean serverInputInReceived = false;
 
     public GameMap()
     {
@@ -86,9 +85,9 @@ public class GameMap
         House tmpHouse = new House(housePlots[indexPos], playerID);
         houses.add(tmpHouse);
         if (!wasReceivedFromServer)
-            serializeHouse(indexPos, PlayerStats.ID);
+            serializeHouse(indexPos, playerID);
 
-        //removeHouseNeighborPlots(indexPos);
+        removeHouseNeighborPlots(tmpHouse);
         removeHousePlot(indexPos);
     }
 
@@ -266,14 +265,16 @@ public class GameMap
             housePlots[indexPos] = null;
     }
 
-    private void removeHouseNeighborPlots(int indexPos)
+    private void removeHouseNeighborPlots(House house)
     {
         for (int i = 0; i < housePlots.length; i++)
         {
             if (housePlots[i] != null)
             {
-                int distance = (int) new Vector2f(housePlots[indexPos].getCenterX(), housePlots[indexPos].getCenterY()).
-                        distance(new Vector2f(housePlots[i].getCenterX(), housePlots[i].getCenterY()));
+                int distance = (int)
+                        new Vector2f(house.getHouseCircle().getCenterX(), house.getHouseCircle().getCenterY())
+                                .distance
+                                        (new Vector2f(housePlots[i].getCenterX(), housePlots[i].getCenterY()));
                 if (distance < 65)
                 {
                     housePlots[i] = null;
@@ -284,9 +285,12 @@ public class GameMap
 
     public void update()
     {
-        if (serverInputInReceived)
+        if (deSerializedHouse[1] != 0)
+        {
             deSerializeHouse();
-
+            deSerializedHouse[1] = 0;
+            System.out.println(houses.size());
+        }
 
         for (int i = 0; i < housePlots.length; i++)
         {
@@ -354,12 +358,11 @@ public class GameMap
         if (!houses.isEmpty())
 
         {
-            for (House house : houses)
+            for (int i = 0; i < houses.size(); i++)
             {
-                house.render(g);
+                houses.get(i).render(g);
             }
         }
-
     }
 
     private void serializeHouse(int housePlotPos, int playerID)
@@ -368,10 +371,10 @@ public class GameMap
         serializedHouse[1] = playerID;
     }
 
-    private void deSerializeHouse()
+    public void deSerializeHouse()
     {
-        addHouse(deSerializedHouse[0], deSerializedHouse[1], true);
-        serverInputInReceived = false;
+        if (deSerializedHouse[1] != PlayerStats.ID && housePlots[deSerializedHouse[1]] != null)
+            addHouse(deSerializedHouse[0], deSerializedHouse[1], true);
     }
 
     private boolean checkMouseOverHousePlot(int indexPos)

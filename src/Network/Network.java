@@ -1,4 +1,5 @@
 package Network;
+
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
@@ -10,7 +11,8 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.util.ArrayList;
 
-public class Network extends Listener {
+public class Network extends Listener
+{
 
     Client client;
     int port = 23820;
@@ -21,8 +23,9 @@ public class Network extends Listener {
     public static ArrayList<String> serverListOfTypes;
     public static ArrayList<Integer> serverListOfYieldNumbers;
 
-    public void connect() {
-        client = new Client(16384,2048);
+    public void connect()
+    {
+        client = new Client(16384, 2048);
         client.getKryo().register(PlayerStats.class);
         client.getKryo().register(int[].class);
         client.getKryo().register(ServerData.class);
@@ -35,44 +38,41 @@ public class Network extends Listener {
 
         client.addListener(this);
 
-        ip = client.discoverHost(port,port);
+        ip = client.discoverHost(port, port);
         client.start();
-        try {
+        try
+        {
             client.connect(5000, ip, port, port);
             isConnected = true;
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void received(Connection c, Object o) {
-        if (o instanceof PacketAddPlayer) {
+    public void received(Connection c, Object o)
+    {
+        if (o instanceof PacketAddPlayer)
+        {
             PacketAddPlayer packet = (PacketAddPlayer) o;
             PlayerStats newPlayerStats = new PlayerStats();
             GameClient.players.put(packet.ID, newPlayerStats);
         }
-        if (o instanceof PacketRemovePlayer) {
+        if (o instanceof PacketRemovePlayer)
+        {
             PacketRemovePlayer packet = (PacketRemovePlayer) o;
             GameClient.players.remove(packet.ID);
-        }
-        if (o instanceof ServerData){
-            serverData = (ServerData) o;
-            serverData.unpack();
-            //PlayerStats.names = receivedPacket.names;
-            //PlayerStats.lobbyReadyAll = receivedPacket.lobbyReadyAll;
-            for (int i =0; i<PlayerStats.names.length; i++){
-            }
         }
         if (o instanceof ServerData)
         {
             serverData = (ServerData) o;
+            serverData.unpack();
+
             serverListOfTypes = serverData.listOfTileTypes;
             serverListOfYieldNumbers = serverData.listOfYieldNumbers;
-        }
-        if (o instanceof  ServerData)
-        {
-            serverData = (ServerData) o;
+
+            System.out.println(serverData.serializedHouse[0] + " : " + serverData.serializedHouse[1]);
             GameMap.deSerializedHouse = serverData.serializedHouse;
         }
     }

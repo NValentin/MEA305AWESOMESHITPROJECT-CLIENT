@@ -3,7 +3,8 @@ package Network;
 import mainGame.PlayerStats;
 import mapClasses.GameMap;
 
-public class ClientData {
+public class ClientData
+{
     public int nsID;
     public String nsname;
     public int nspoint;
@@ -11,15 +12,18 @@ public class ClientData {
     public int nslength_of_road;
     public int nsresources_on_hand;
     public boolean nslobbyReady;
-    public String[] nstextPackage = new String[]{"","",""};
+    public String[] nstextPackage = new String[]{"", "", ""};
     public boolean nsTextSent;
-    public int[] serializedHouse = new int[2];
-    public boolean endTurn, diceRoll;
+    public int[] serializedHouse = new int[]{0, 0};
+    public boolean endTurn = false, diceRoll;
 
-    public ClientData(){
+
+    public ClientData()
+    {
     }
 
-    public void pack(){
+    public void pack()
+    {
         nsID = PlayerStats.ID;
         nsname = PlayerStats.name;
         nspoint = PlayerStats.point;

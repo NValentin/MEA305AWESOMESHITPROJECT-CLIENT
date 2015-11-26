@@ -34,8 +34,6 @@ public class PlayerStats {
     public static int die1 = 0;
     public static int die2 = 0;
 
-
-
     public PlayerStats(){
 
     }

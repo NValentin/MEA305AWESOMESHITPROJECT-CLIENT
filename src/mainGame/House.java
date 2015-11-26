@@ -1,23 +1,14 @@
 package mainGame;
 
 
-import org.lwjgl.Sys;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Circle;
-import org.newdawn.slick.geom.Point;
-import org.newdawn.slick.geom.Shape;
 
 public class House
 {
-
     private Boolean isCity;
-
-    public int getPlayerID()
-    {
-        return playerID;
-    }
 
     private int playerID;
 
@@ -29,15 +20,13 @@ public class House
         isCity = false;
         houseCircle = circle;
         this.playerID = playerID;
-
-        buildingColor = getPlayerColor();
-        System.out.println(PlayerStats.ID);
+        this.buildingColor = this.getPlayerColor();
     }
 
     public void render(Graphics g)
     {
         g.setColor(buildingColor);
-        g.texture(houseCircle, this.getTexture(), true);
+        g.texture(houseCircle, getTexture(), true);
         g.setColor(Color.white);
     }
 
@@ -62,15 +51,15 @@ public class House
         return houseCircle;
     }
 
-    public Color getPlayerColor()
+    private Color getPlayerColor()
     {
-        Color playerColor = Color.pink;
+        Color playerColor = Color.black;
         switch (playerID)
         {
-            case(1):
+            case (1):
                 playerColor = Color.blue;
                 break;
-            case(2):
+            case (2):
                 playerColor = Color.red;
                 break;
             case (3):

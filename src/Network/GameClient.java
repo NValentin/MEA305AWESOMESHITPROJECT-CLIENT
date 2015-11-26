@@ -10,9 +10,7 @@ import java.util.Map;
 
 public class GameClient extends Listener implements Runnable
 {
-    //static PlayerStats playerStats = new PlayerStats();
     static Network network = new Network();
-    static Map<Integer, PlayerStats> players = new HashMap<Integer, PlayerStats>();
     boolean nameSent = false;
     boolean lobbyReady = false;
 

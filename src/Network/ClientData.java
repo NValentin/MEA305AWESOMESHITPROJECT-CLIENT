@@ -5,7 +5,6 @@ import mapClasses.GameMap;
 
 public class ClientData
 {
-    public int nsID;
     public String nsname;
     public int nspoint;
     public int nsknights_played;
@@ -17,8 +16,8 @@ public class ClientData
     public int[] serializedHouse = new int[]{0, 0};
     public boolean endTurn = false, diceRoll;
     public boolean gameEnded = false;
-    public boolean[] playerturn = new boolean[]{false,false,false,false};
-    public boolean gamestart =false;
+    public boolean[] playerturn = new boolean[]{false, false, false, false};
+    public boolean gamestart = false;
 
     public ClientData()
     {
@@ -26,7 +25,6 @@ public class ClientData
 
     public void pack()
     {
-        nsID = PlayerStats.ID;
         nsname = PlayerStats.name;
         nspoint = PlayerStats.point;
         nsknights_played = PlayerStats.knights_played;

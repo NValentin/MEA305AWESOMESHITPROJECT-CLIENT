@@ -15,6 +15,7 @@ public class Network extends Listener
 {
 
     Client client;
+    Connection c;
     int port = 23820;
     ServerData serverData;
     InetAddress ip;
@@ -44,6 +45,7 @@ public class Network extends Listener
         {
             client.connect(5000, ip, port, port);
             isConnected = true;
+            PlayerStats.ID = c.getID();
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -72,8 +74,10 @@ public class Network extends Listener
             serverListOfTypes = serverData.listOfTileTypes;
             serverListOfYieldNumbers = serverData.listOfYieldNumbers;
 
+            System.out.println(c.getID());
             System.out.println(PlayerStats.ID);
-            System.out.println(serverData.serializedHouse[0] + " : " + serverData.serializedHouse[1]);
+            if (serverData.serializedHouse[1] != 0)
+                System.out.println(serverData.serializedHouse[0] + " : " + serverData.serializedHouse[1]);
             GameMap.deSerializedHouse = serverData.serializedHouse;
         }
     }

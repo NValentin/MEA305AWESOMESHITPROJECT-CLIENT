@@ -16,7 +16,7 @@ public class ServerData
     public int[] resourcesOnHand = new int[]{0, 0, 0, 0};
     public boolean[] lobbyReadyAll = new boolean[]{false, false, false, false};
     public int longestRoad[] = new int[]{0, 0, 0, 0};
-    public int turn, die1, die2, ID, cardID;
+    public int turn, die1, die2, cardID;
     public boolean StartGame = false;
     public String[] textToRender = new String[]{"", "", ""};
     public String[] oldText = new String[10];
@@ -54,7 +54,6 @@ public class ServerData
         PlayerStats.StartGame = StartGame;
         PlayerStats.textToRender = textToRender;
         PlayerStats.oldText = oldText;
-        PlayerStats.ID = ID;
         PlayerStats.die1 = die1;
         PlayerStats.die2 = die2;
         PlayerStats.endTurn = endTurn;

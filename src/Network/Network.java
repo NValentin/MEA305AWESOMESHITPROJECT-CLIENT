@@ -60,10 +60,6 @@ public class Network extends Listener
             serverListOfTypes = serverData.listOfTileTypes;
             serverListOfYieldNumbers = serverData.listOfYieldNumbers;
 
-            System.out.println(c.getID());
-            System.out.println(PlayerStats.ID);
-            if (serverData.serializedHouse[1] != 0)
-                System.out.println(serverData.serializedHouse[0] + " : " + serverData.serializedHouse[1]);
             GameMap.deSerializedHouse = serverData.serializedHouse;
         }
     }

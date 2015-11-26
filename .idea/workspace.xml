@@ -98,8 +98,8 @@
       <file leaf-file-name="Network.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Network/Network.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6046025">
-              <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.57322174">
+              <caret line="60" column="69" selection-start-line="60" selection-start-column="69" selection-end-line="60" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -721,13 +721,7 @@
       <workItem from="1448456802456" duration="11520000" />
       <workItem from="1448483206855" duration="2437000" />
       <workItem from="1448525419293" duration="15747000" />
-      <workItem from="1448541562169" duration="3795000" />
-    </task>
-    <task id="LOCAL-00010" summary="Changed to StateBasedGame">
-      <created>1446452875815</created>
-      <option name="number" value="00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1446452875815</updated>
+      <workItem from="1448541562169" duration="4175000" />
     </task>
     <task id="LOCAL-00011" summary="Implemented Button Class">
       <created>1446455677080</created>
@@ -1017,11 +1011,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448545114565</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Hot fix 1.04 houses are now properly displayed with the proper colors across players">
+      <created>1448545401441</created>
+      <option name="number" value="00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1448545401441</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194741000" />
+    <option name="totallyTimeSpent" value="195121000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1097,7 +1097,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Redid some stuff to have properly implemented the Hexlib, instead of repurpossing and renaming it to fit with Tile. They are now seperate, and Tile extends Hex" />
     <MESSAGE value="Fixed subclass bug from renaming class FractionalTile to FractionalHex" />
     <MESSAGE value="Tried to patch gamemap to send it through server." />
     <MESSAGE value="Fixed bug in GameMap" />
@@ -1122,7 +1121,8 @@
     <MESSAGE value="Hot fix 1.01" />
     <MESSAGE value="Hot fix 1.02" />
     <MESSAGE value="Hot fix 1.03" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hot fix 1.03" />
+    <MESSAGE value="Hot fix 1.04 houses are now properly displayed with the proper colors across players" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hot fix 1.04 houses are now properly displayed with the proper colors across players" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1519,8 +1519,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Network/Network.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6046025">
-          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.57322174">
+          <caret line="60" column="69" selection-start-line="60" selection-start-column="69" selection-end-line="60" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

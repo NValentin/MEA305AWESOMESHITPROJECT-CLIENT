@@ -11,6 +11,9 @@ import org.newdawn.slick.geom.*;
 
 import java.util.*;
 
+import static org.newdawn.slick.Input.KEY_B;
+import static org.newdawn.slick.Input.MOUSE_LEFT_BUTTON;
+
 public class GameMap
 {
     private static Layout mapLayout;
@@ -26,6 +29,8 @@ public class GameMap
 
     public static int[] serializedHouse = new int[]{0, 0};
     public static int[] deSerializedHouse = new int[]{0, 0};
+
+    boolean pressed = false;
 
     public GameMap()
     {
@@ -85,7 +90,7 @@ public class GameMap
         House tmpHouse = new House(housePlots[indexPos], playerID);
         houses.add(tmpHouse);
 
-        //removeHouseNeighborPlots(tmpHouse);
+        removeHouseNeighborPlots(tmpHouse);
         removeHousePlot(indexPos);
     }
 
@@ -281,7 +286,7 @@ public class GameMap
         }
     }
 
-    public void update()
+    public void update(GameContainer gc)
     {
         if (deSerializedHouse[1] != 0)
         {
@@ -292,8 +297,13 @@ public class GameMap
 
         for (int i = 0; i < housePlots.length; i++)
         {
-            if (checkMouseOverHousePlot(i) && Mouse.isButtonDown(0))
+            if (checkMouseOverHousePlot(i) && gc.getInput().isMousePressed(0))
+            {
+                pressed = false;
+                System.out.println("HELLO");
                 serializeHouse(i, PlayerStats.ID);
+
+            }
         }
     }
 

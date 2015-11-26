@@ -26,7 +26,7 @@ public class GameMap
 
     public static int[] serializedHouse = new int[2];
     public static int[] deSerializedHouse = new int[]{0, 0};
-    public static boolean serverInputInProgress = false;
+    public static boolean serverInputInReceived = false;
 
     public GameMap()
     {
@@ -180,11 +180,15 @@ public class GameMap
                         "Desert"));
         Collections.shuffle(listOfTileTypes);
 
+        int counter = 0;
         for (Tile tile : map)
         {
             if (Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3)
             {
                 tile.setTileType("Water");
+
+
+                counter++;
             } else
             {
                 String type = tile.getTileType();
@@ -280,13 +284,13 @@ public class GameMap
 
     public void update()
     {
-        if (serverInputInProgress)
+        if (serverInputInReceived)
             deSerializeHouse();
 
 
         for (int i = 0; i < housePlots.length; i++)
         {
-            if (checkMouseOver(i) && Mouse.isButtonDown(0))
+            if (checkMouseOverHousePlot(i) && Mouse.isButtonDown(0))
                 addHouse(i, PlayerStats.ID, false);
         }
     }
@@ -314,7 +318,7 @@ public class GameMap
 
         for (int i = 0; i < housePlots.length; i++)
         {
-            if (housePlots[i] != null && checkMouseOver(i))
+            if (housePlots[i] != null && checkMouseOverHousePlot(i))
                 g.fill(housePlots[i]);
             else if (housePlots[i] != null)
                 g.draw(housePlots[i]);
@@ -325,16 +329,14 @@ public class GameMap
         {
             if (roadPlots[i] != null)
             {
-                g.setLineWidth(8);
                 Circle mouseC = new Circle(Mouse.getX(), Main.ScreenHeight - Mouse.getY(), 5);
                 if (roadPlots[i].intersects(mouseC))
                 {
-                    g.setColor(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
+                    g.setLineWidth(8);
                     g.draw(roadPlots[i]);
                 } else
                 {
-                    g.setLineWidth(5);
-                    g.setColor(Color.white);
+                    g.setLineWidth(3);
                     g.draw(roadPlots[i]);
                 }
             }
@@ -368,16 +370,10 @@ public class GameMap
 
     private void deSerializeHouse()
     {
-        for (int i = 0; i < housePlots.length; i++)
-        {
-            if (housePlots[i].contains(new Circle(deSerializedHouse[0], deSerializedHouse[1], houseRadius)))
-            {
-                addHouse(deSerializedHouse[0], (int) deSerializedHouse[2], true);
-            }
-        }
+        addHouse(deSerializedHouse[0], deSerializedHouse[1], true);
     }
 
-    private boolean checkMouseOver(int indexPos)
+    private boolean checkMouseOverHousePlot(int indexPos)
     {
         return housePlots[indexPos] != null &&
                 housePlots[indexPos].contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY());

@@ -4,7 +4,6 @@ import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.minlog.Log;
 import mainGame.PlayerStats;
 import mapClasses.GameMap;
-import org.newdawn.slick.Game;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -85,7 +84,7 @@ public class GameClient extends Listener implements Runnable{
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);
-            GameMap.serverInputInProgress = true;
+            GameMap.serverInputInReceived = true;
             GameMap.serializedHouse[2] = 0;
         }
     }

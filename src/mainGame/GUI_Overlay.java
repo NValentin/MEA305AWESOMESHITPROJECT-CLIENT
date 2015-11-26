@@ -36,6 +36,7 @@ public class GUI_Overlay {
     int[] currentResources = new int[5];
     int[] resources = new int[10];
     String tradeWithName = "";
+    Button endTurn;
 
     GUI_Overlay() throws SlickException {
         texture = new Texture();
@@ -54,7 +55,8 @@ public class GUI_Overlay {
         counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, texture.counterBig);
         rollDice = new Button(0, 0, 105, 50, texture.silverButton, 20);
         closeStats = new Button(0, 0, 25, 25, texture.decline);
-        showStats = new Button(0, 0, 120, 35, texture.silverButton, 20);
+        showStats = new Button(0, 0, 140, 35, texture.silverButton, 20);
+        endTurn = new Button(0,0, 150, 50, texture.templateButton, 35);
         for (int i = 0; i < makeNewTrade.length; i++) {
             makeNewTrade[i] = new Button(0, 0, 80, 20, texture.makeNewTrade, 20);
         }
@@ -234,7 +236,6 @@ public class GUI_Overlay {
             die2 = random.nextInt(6);
             DiceRolled = true;
             combinedValue = die1 + die2 + 2;
-            System.out.println("Combined Value: " + combinedValue);
             rolledDice[combinedValue-1]++;
             rolled++;
         }
@@ -295,6 +296,16 @@ public class GUI_Overlay {
                 trade = true;
             }
             g.setColor(Color.white);
+        }
+    }
+
+    public void EndTurn(int x, int y) {
+        endTurn.SetPos(x, y);
+        endTurn.draw();
+        endTurn.AddText("End Turn", Color.white);
+        if (endTurn.isWithin()) {
+            System.out.println("Ending turn");
+            PlayerStats.endTurn = true;
         }
     }
 }

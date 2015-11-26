@@ -14,7 +14,7 @@ public class ClientData {
     public String[] nstextPackage = new String[]{"","",""};
     public boolean nsTextSent;
     public int[] serializedHouse = new int[2];
-    public boolean endTurn;
+    public boolean endTurn, diceRoll;
 
     public ClientData(){
     }
@@ -30,7 +30,7 @@ public class ClientData {
         nstextPackage = PlayerStats.textPackage;
         nsTextSent = PlayerStats.textSent;
         endTurn = PlayerStats.endTurn;
-
+        diceRoll = PlayerStats.diceRoll;
         serializedHouse = GameMap.serializedHouse;
     }
 

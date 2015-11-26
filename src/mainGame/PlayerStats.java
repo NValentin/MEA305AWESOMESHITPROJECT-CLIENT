@@ -20,6 +20,7 @@ public class PlayerStats {
     public static String[] textToRender = new String[3];
     public static String[] oldText = new String[10];
     public static boolean endTurn = false;
+    public static boolean diceRoll = false;
 
     //Stats for all players
     public static String[] names = new String[]{" "," "," "," "};

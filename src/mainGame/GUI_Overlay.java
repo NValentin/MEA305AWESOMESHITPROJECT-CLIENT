@@ -13,7 +13,7 @@ import java.util.Random;
 public class GUI_Overlay {
 
     Random random = new Random();
-    boolean DiceRolled = false;
+    boolean DiceRolled;
     int die1;
     int die2;
     int combinedValue;
@@ -221,6 +221,7 @@ public class GUI_Overlay {
     public void DisplayDice(Graphics g, int x, int y) {
         int sizeX = 115;
         int sizeY = 115;
+        DiceRolled = PlayerStats.diceRoll;
         g.setLineWidth(2);
         g.setColor(Color.white);
         g.drawRect(x, y, sizeX, sizeY);
@@ -231,10 +232,10 @@ public class GUI_Overlay {
             texture.diceSprites.getSprite(0, 0).draw(x + 5, y + 5, 50, 50);
             texture.diceSprites.getSprite(0, 0).draw(x + 60, y + 5, 50, 50);
         }
-        if (rollDice.isWithin()) {
-            die1 = random.nextInt(6);
-            die2 = random.nextInt(6);
+        if (rollDice.isWithin() && !DiceRolled) {
             DiceRolled = true;
+            die1 = PlayerStats.die1;
+            die2 = PlayerStats.die2;
             combinedValue = die1 + die2 + 2;
             rolledDice[combinedValue-1]++;
             rolled++;

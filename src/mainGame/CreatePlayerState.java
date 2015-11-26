@@ -40,7 +40,7 @@ public class CreatePlayerState extends BasicGameState {
                 java.awt.Font.PLAIN, 24), true);
 
         nameField = new TextField(gameContainer, font, Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.55f), sizeX, (int)(sizeY*0.7));
-        nameField.setMaxLength(8);
+        nameField.setMaxLength(12);
 
         back = new Button(Main.ScreenWidth/2-sizeX-10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
         ok =  new Button(Main.ScreenWidth/2+sizeX/2-sizeX/3, (int)(Main.ScreenHeight*0.55f)+sizeY+10, sizeX/3, sizeY/3, button, 20);
@@ -79,7 +79,7 @@ public class CreatePlayerState extends BasicGameState {
         forward.draw();
         forward.AddText("Join", Color.white);
         nameField.render(gc, g);
-        g.drawString("Write your name (Max. 8 characters):", Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.5f));
+        g.drawString("Write your name (Max. 12 characters):", Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.5f));
     }
 
     @Override

@@ -80,14 +80,12 @@ public class GameMap
         }
     }
 
-    public void addHouse(int indexPos, int playerID, boolean wasReceivedFromServer)
+    public void addHouse(int indexPos, int playerID)
     {
         House tmpHouse = new House(housePlots[indexPos], playerID);
         houses.add(tmpHouse);
-        if (!wasReceivedFromServer)
-            serializeHouse(indexPos, playerID);
 
-        removeHouseNeighborPlots(tmpHouse);
+        //removeHouseNeighborPlots(tmpHouse);
         removeHousePlot(indexPos);
     }
 
@@ -295,7 +293,7 @@ public class GameMap
         for (int i = 0; i < housePlots.length; i++)
         {
             if (checkMouseOverHousePlot(i) && Mouse.isButtonDown(0))
-                addHouse(i, PlayerStats.ID, false);
+                serializeHouse(i, PlayerStats.ID);
         }
     }
 
@@ -373,8 +371,8 @@ public class GameMap
 
     public void deSerializeHouse()
     {
-        if (deSerializedHouse[1] != PlayerStats.ID && housePlots[deSerializedHouse[1]] != null)
-            addHouse(deSerializedHouse[0], deSerializedHouse[1], true);
+        if (housePlots[deSerializedHouse[1]] != null)
+            addHouse(deSerializedHouse[0], deSerializedHouse[1]);
     }
 
     private boolean checkMouseOverHousePlot(int indexPos)

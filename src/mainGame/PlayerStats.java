@@ -30,6 +30,8 @@ public class PlayerStats {
     public static int [] longestRoad = new int[]{0,0,0,0};
     public static int turn;
     public static boolean StartGame;
+    public static int die1 = 0;
+    public static int die2 = 0;
 
 
 

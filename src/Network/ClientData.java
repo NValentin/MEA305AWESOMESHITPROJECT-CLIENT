@@ -13,8 +13,8 @@ public class ClientData {
     public boolean nslobbyReady;
     public String[] nstextPackage = new String[]{"","",""};
     public boolean nsTextSent;
-
     public int[] serializedHouse = new int[2];
+    public boolean endTurn;
 
     public ClientData(){
     }
@@ -29,6 +29,7 @@ public class ClientData {
         nslobbyReady = PlayerStats.lobbyReady;
         nstextPackage = PlayerStats.textPackage;
         nsTextSent = PlayerStats.textSent;
+        endTurn = PlayerStats.endTurn;
 
         serializedHouse = GameMap.serializedHouse;
     }

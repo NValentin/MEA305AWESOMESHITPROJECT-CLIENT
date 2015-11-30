@@ -129,30 +129,35 @@ public class GUI_Overlay {
     public void PlayerList(int x, int y, Graphics graphics, String[] _names, int[] _points, int turn) {
         graphics.setLineWidth(2);
         graphics.drawString("Players:", x + 10, y + 5);
-        graphics.drawString("Score:", x + 125, y + 5);
+        graphics.drawString("Score:", x + 140, y + 5);
 
-        graphics.drawLine(x + 5, y + 25, x + 175, y + 25);
-        graphics.drawRect(x, y, 180, 140);
+        graphics.drawLine(x + 5, y + 25, x + 195, y + 25);
+        graphics.drawRect(x, y, 200, 140);
         for (int i = 0; i < _names.length; i++) {
             graphics.drawString(i + 1 + ") " + _names[i], x + 10, y + 35 + 25 * i);
             regularFont = graphics.getFont();
-            graphics.drawString(_points[i]+"", x+145, y + 35 + 25 * i);
+            graphics.drawString(_points[i]+"", x+160, y + 35 + 25 * i);
             graphics.setFont(font);
-            graphics.drawString("pts", x+157, y + 37 + 25*i);
+            graphics.drawString("pts", x+172, y + 37 + 25*i);
             graphics.setFont(regularFont);
 
         }
-        graphics.drawRect(x + 5, y + 32 + 25 * turn, 170, 25);
+        graphics.drawRect(x + 5, y + 32 + 25 * turn, 190, 25);
     }
 
-    public void ResourceBar(int x, int y, Graphics graphics, int wool, int stone, int wood, int clay, int wheat) {
+    public void ResourceBar(int x, int y, Graphics graphics, int wool, int ore, int lumber, int bricks, int grain) {
         graphics.setLineWidth(2);
         graphics.drawRect(x, y, 500, 25);
-        graphics.drawString("Wood: " + wood, x + 5, y + 3);
-        graphics.drawString("Stone: " + stone, x + 105, y + 3);
-        graphics.drawString("Wool: " + wool, x + 205, y + 3);
-        graphics.drawString("Clay: " + clay, x + 305, y + 3);
-        graphics.drawString("Wheat: " + wheat, x + 405, y + 3);
+        graphics.drawString("Lumber:", x + 5, y + 3);
+        graphics.drawString(String.valueOf(lumber),x+80, y+3);
+        graphics.drawString("Ore:", x + 105, y + 3);
+        graphics.drawString(String.valueOf(ore),x+180, y+3);
+        graphics.drawString("Wool:", x + 205, y + 3);
+        graphics.drawString(String.valueOf(wool),x+280, y+3);
+        graphics.drawString("Bricks:", x + 305, y + 3);
+        graphics.drawString(String.valueOf(bricks),x+380, y+3);
+        graphics.drawString("Grain:", x + 405, y + 3);
+        graphics.drawString(String.valueOf(grain),x+480, y+3);
         graphics.drawLine(x + 100, y, x + 100, y + 25);
         graphics.drawLine(x + 200, y, x + 200, y + 25);
         graphics.drawLine(x + 300, y, x + 300, y + 25);
@@ -224,32 +229,39 @@ public class GUI_Overlay {
 
     public void ShowStats(Graphics g, int x, int y) {
         showStats.SetPos(x, y);
-        closeStats.SetPos(theWidth / 2 + 270, theHeight / 2 - 195);
+        closeStats.SetPos(theWidth / 2 + 170, theHeight / 2 - 195);
         if (showStatsBool) {
             if (closeStats.isWithin()) {
                 showStatsBool = false;
             }
             g.setColor(Color.white);
-            g.drawRect(theWidth / 2 - 100, theHeight / 2 - 200, 400, 200);
+            g.drawRect(theWidth / 2 - 200, theHeight / 2 - 200, 400, 500);
             g.setColor(Color.black);
-            g.fillRect(theWidth / 2 - 100, theHeight / 2 - 200, 400, 200);
+            g.fillRect(theWidth / 2 - 200, theHeight / 2 - 200, 400, 500);
             g.setColor(Color.white);
-            g.drawString("Statistics in procent", theWidth/2 - 25, theHeight/2 - 190);
+            g.drawString("Dice rolls in percent", theWidth/2 - 35, theHeight/2 - 190);
             for (int i = 1; i < 13; i++) {
                 float procent = (float) rolledDice[i - 1] / (float) rolled;
                 procentValue[i - 1] = procent * 120;
                 g.setLineWidth(2);
                 if (i < 10) {
-                    g.drawString(String.valueOf(i), theWidth / 2 - 105 + i * 30, theHeight / 2 - 25);
+                    g.drawString(String.valueOf(i), theWidth / 2 - 205 + i * 30, theHeight / 2 - 25);
                 } else {
-                    g.drawString(String.valueOf(i), theWidth / 2 - 109 + i * 30, theHeight / 2 - 25);
+                    g.drawString(String.valueOf(i), theWidth / 2 - 209 + i * 30, theHeight / 2 - 25);
                 }
                 g.setLineWidth(10);
-                g.drawLine(theWidth / 2 - 100 + i * 30, theHeight / 2 - 40, theWidth / 2 - 100 + i * 30, theHeight / 2 - 40 - procentValue[i - 1]);
+                g.drawLine(theWidth / 2 - 200 + i * 30, theHeight / 2 - 40, theWidth / 2 - 200 + i * 30, theHeight / 2 - 40 - procentValue[i - 1]);
             }
+            g.drawImage(Texture.tileSprites.getSprite(4, 0),theWidth / 2 - 180,theHeight/2);
+            g.drawImage(Texture.tileSprites.getSprite(1, 0),0,0);
+            g.drawImage(Texture.tileSprites.getSprite(0, 0),0,0);
+            g.drawImage(Texture.tileSprites.getSprite(3, 0),0,0);
+            g.drawImage(Texture.tileSprites.getSprite(6, 0),0,0);
+            g.drawImage(Texture.tileSprites.getSprite(2, 0),0,0);
+
         }
         showStats.draw();
-        showStats.AddText("Show Statistics", Color.white);
+        showStats.AddText("Show Game Info", Color.white);
         if (showStatsBool)
             closeStats.draw();
         if (showStats.isWithin()) {

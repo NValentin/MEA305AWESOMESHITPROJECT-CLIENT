@@ -17,6 +17,7 @@ public class House
         isCity = false;
         houseCircle = circle;
         buildingColor = PlayerStats.playerColors[playerID];
+        PlayerStats.point +=1;
     }
 
     public void render(Graphics g)
@@ -40,6 +41,7 @@ public class House
     public void upgradeHouse()
     {
         isCity = true;
+        PlayerStats.point +=1;
     }
 
     public Circle getHouseCircle()

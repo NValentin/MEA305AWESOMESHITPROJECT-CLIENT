@@ -89,7 +89,7 @@ public class PlayingWindow extends BasicGameState
         }
         map.render(g);
         gui_overlay.PlayerList(15, 40, g, PlayerStats.names, PlayerStats.points, turn);
-        gui_overlay.ResourceBar(200, 10, g, currentResources[0], currentResources[1], currentResources[2], currentResources[3], currentResources[4]);
+        gui_overlay.ResourceBar(Main.ScreenWidth/2-250, 10, g, currentResources[0], currentResources[1], currentResources[2], currentResources[3], currentResources[4]);
         gui_overlay.BuildingWindow(g, theWidth - 205, theHeight - 275, 200, 270);
         gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, gui_overlay.trade, PlayerStats.names[turn], g);
         gui_overlay.IncomingTradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.tradeWindow, g);

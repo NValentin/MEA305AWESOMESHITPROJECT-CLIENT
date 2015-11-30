@@ -44,6 +44,7 @@ public class GameClient extends Listener implements Runnable
         updateChat();
         updateHouses();
         updateRoads();
+        updatePlayerTurn();
     }
 
     void updatePlayerName()
@@ -111,6 +112,15 @@ public class GameClient extends Listener implements Runnable
             clientData.pack();
             network.client.sendUDP(clientData);
             GameMap.serializedRoad[1] = 0;
+        }
+    }
+
+    void updatePlayerTurn() {
+        if (PlayerStats.endTurn) {
+            ClientData clientData = new ClientData();
+            clientData.pack();
+            network.client.sendUDP(clientData);
+            PlayerStats.endTurn = false;
         }
     }
 }

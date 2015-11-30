@@ -9,6 +9,7 @@ import mapClasses.GameMap;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Network extends Listener
 {
@@ -63,6 +64,7 @@ public class Network extends Listener
             GameMap.deSerializedRoad = serverData.serializedRoad;
 
             PlayerStats.playerturn = serverData.playerturn;
+            System.out.println(Arrays.toString(PlayerStats.playerturn));
         }
     }
 }

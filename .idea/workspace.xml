@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/ClientData.java" afterPath="$PROJECT_DIR$/src/Network/ClientData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapClasses/GameMap.java" afterPath="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/Network.java" afterPath="$PROJECT_DIR$/src/Network/Network.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" afterPath="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/ServerData.java" afterPath="$PROJECT_DIR$/src/Network/ServerData.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -34,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="315" column="37" selection-start-line="315" selection-start-column="37" selection-end-line="315" selection-end-column="37" />
+              <caret line="354" column="13" selection-start-line="354" selection-start-column="13" selection-end-line="354" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#buildMap#0;class#GameMap#0" expanded="false" />
@@ -54,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/src/mainGame/PlayingWindow.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="74" column="59" selection-start-line="74" selection-start-column="59" selection-end-line="74" selection-end-column="59" />
+              <caret line="102" column="31" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServerData.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ServerData.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Network/ServerData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="64" column="10" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.5690377">
+              <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -96,7 +99,7 @@
         <entry file="file://$PROJECT_DIR$/src/mainGame/House.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+              <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,16 +111,16 @@
         <entry file="file://$PROJECT_DIR$/src/Network/Network.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
+              <caret line="66" column="72" selection-start-line="66" selection-start-column="72" selection-end-line="66" selection-end-column="72" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientData.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ClientData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Network/ClientData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6046025">
+            <state vertical-scroll-proportion="0.0">
               <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
               <folding />
             </state>
@@ -186,15 +189,15 @@
         <option value="$PROJECT_DIR$/src/mapClasses/Hex.java" />
         <option value="$PROJECT_DIR$/src/mapClasses/Layout.java" />
         <option value="$PROJECT_DIR$/src/mainGame/Texture.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" />
         <option value="$PROJECT_DIR$/src/mainGame/House.java" />
         <option value="$PROJECT_DIR$/src/mainGame/Road.java" />
-        <option value="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
         <option value="$PROJECT_DIR$/src/mainGame/PlayerStats.java" />
-        <option value="$PROJECT_DIR$/src/Network/ServerData.java" />
         <option value="$PROJECT_DIR$/src/Network/GameClient.java" />
         <option value="$PROJECT_DIR$/src/Network/ClientData.java" />
         <option value="$PROJECT_DIR$/src/Network/Network.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" />
+        <option value="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
+        <option value="$PROJECT_DIR$/src/Network/ServerData.java" />
       </list>
     </option>
   </component>
@@ -844,13 +847,7 @@
       <workItem from="1448541562169" duration="4674000" />
       <workItem from="1448625585046" duration="1946000" />
       <workItem from="1448871724653" duration="2834000" />
-      <workItem from="1448874674649" duration="3063000" />
-    </task>
-    <task id="LOCAL-00015" summary="Updated tradewindow">
-      <created>1446463304449</created>
-      <option name="number" value="00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1446463304449</updated>
+      <workItem from="1448874674649" duration="4986000" />
     </task>
     <task id="LOCAL-00016" summary="Updated tradewindow">
       <created>1446463701422</created>
@@ -1140,11 +1137,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448877085995</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Hotfix for playerturn 2.0">
+      <created>1448877836058</created>
+      <option name="number" value="00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1448877836058</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="203463000" />
+    <option name="totallyTimeSpent" value="205386000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1220,7 +1223,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="GIANT LEAP OF FAITH THAT WE CAN NOW SEND BUILT HOUSES BETWEEN CLIENTS! ARGHHHH!!!" />
     <MESSAGE value="GIANT LEAP OF FAITH THAT WE CAN NOW SEND BUILT HOUSES BETWEEN CLIENTS! ARGHHHH!!!&#10;&#10;2.0 bug fix" />
     <MESSAGE value="No more disco houses, built houses now have proper color corresponding to playerID" />
     <MESSAGE value="Killed Harry Potter" />
@@ -1245,7 +1247,8 @@
     <MESSAGE value="Implemented roads to be sent through server." />
     <MESSAGE value="Implemented turn order check to build stuff" />
     <MESSAGE value="Hotfix for playerturn" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hotfix for playerturn" />
+    <MESSAGE value="Hotfix for playerturn 2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hotfix for playerturn 2.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1554,44 +1557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="315" column="37" selection-start-line="315" selection-start-column="37" selection-end-line="315" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#buildMap#0;class#GameMap#0" expanded="false" />
-            <element signature="method#findHousePlots#0;class#GameMap#0" expanded="false" />
-            <element signature="method#findRoadPlots#0;class#GameMap#0" expanded="false" />
-            <element signature="method#assignTileVariablesFromLocal#0;class#GameMap#0" expanded="false" />
-            <element signature="method#assignTileVariablesFromServer#0;class#GameMap#0" expanded="false" />
-            <element signature="method#tilesYieldingResource#0;class#GameMap#0" expanded="false" />
-            <element signature="method#removeHousePlot#0;class#GameMap#0" expanded="false" />
-            <element signature="method#removeHouseNeighborPlots#0;class#GameMap#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/House.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/PlayingWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="74" column="59" selection-start-line="74" selection-start-column="59" selection-end-line="74" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/Road.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1608,6 +1573,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/House.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Network/GameClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1616,26 +1591,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Network/ServerData.java">
+    <entry file="file://$PROJECT_DIR$/src/mainGame/PlayingWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="10" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
-          <folding />
+          <caret line="102" column="31" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Network/Network.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
+          <caret line="66" column="72" selection-start-line="66" selection-start-column="72" selection-end-line="66" selection-end-column="72" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="354" column="13" selection-start-line="354" selection-start-column="13" selection-end-line="354" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#buildMap#0;class#GameMap#0" expanded="false" />
+            <element signature="method#findHousePlots#0;class#GameMap#0" expanded="false" />
+            <element signature="method#findRoadPlots#0;class#GameMap#0" expanded="false" />
+            <element signature="method#assignTileVariablesFromLocal#0;class#GameMap#0" expanded="false" />
+            <element signature="method#assignTileVariablesFromServer#0;class#GameMap#0" expanded="false" />
+            <element signature="method#tilesYieldingResource#0;class#GameMap#0" expanded="false" />
+            <element signature="method#removeHousePlot#0;class#GameMap#0" expanded="false" />
+            <element signature="method#removeHouseNeighborPlots#0;class#GameMap#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Network/ClientData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6046025">
+        <state vertical-scroll-proportion="0.0">
           <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Network/ServerData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5690377">
+          <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
           <folding />
         </state>
       </provider>

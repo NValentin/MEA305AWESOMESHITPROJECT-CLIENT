@@ -237,11 +237,12 @@ public class GUI_Overlay {
                 showStatsBool = false;
             }
             g.setColor(Color.white);
-            g.drawRect(theWidth / 2 - 200, theHeight / 2 - 200, 400, 500);
+            g.drawRect(theWidth / 2 - 200, theHeight / 2 - 200, 400, 450);
             g.setColor(Color.black);
-            g.fillRect(theWidth / 2 - 200, theHeight / 2 - 200, 400, 500);
+            g.fillRect(theWidth / 2 - 200, theHeight / 2 - 200, 400, 450);
             g.setColor(Color.white);
-            g.drawString("Dice rolls in percent", theWidth/2 - 35, theHeight/2 - 190);
+
+            g.drawString("Dice Roll Percentages:", theWidth/2 - 180, theHeight/2 - 190);
             for (int i = 1; i < 13; i++) {
                 float procent = (float) rolledDice[i - 1] / (float) rolled;
                 procentValue[i - 1] = procent * 120;
@@ -254,12 +255,26 @@ public class GUI_Overlay {
                 g.setLineWidth(10);
                 g.drawLine(theWidth / 2 - 200 + i * 30, theHeight / 2 - 40, theWidth / 2 - 200 + i * 30, theHeight / 2 - 40 - procentValue[i - 1]);
             }
-            g.drawImage(Texture.tileSprites.getSprite(4, 0),theWidth / 2 - 180,theHeight/2);
-            g.drawImage(Texture.tileSprites.getSprite(1, 0), 0, 0);
-            g.drawImage(Texture.tileSprites.getSprite(0, 0), 0, 0);
-            g.drawImage(Texture.tileSprites.getSprite(3, 0), 0, 0);
-            g.drawImage(Texture.tileSprites.getSprite(6, 0), 0, 0);
-            g.drawImage(Texture.tileSprites.getSprite(2, 0), 0, 0);
+
+            g.setLineWidth(4);
+            g.drawLine(theWidth / 2 - 195, theHeight / 2, theWidth / 2 + 195, theHeight / 2);
+            g.drawString("Resource Types:", theWidth / 2 - 180, theHeight / 2 + 10);
+
+            Texture.tileSprites.getSprite(4, 0).draw(theWidth / 2 - 180, theHeight / 2 + 40, 0.4f);
+            g.drawString("Lumber", theWidth / 2 - 110,theHeight/2+60);
+            Texture.tileSprites.getSprite(1, 0).draw(theWidth / 2 - 180,theHeight/2+110,0.4f);
+            g.drawString("Bricks", theWidth / 2 - 110,theHeight/2+130);
+            Texture.tileSprites.getSprite(0, 0).draw(theWidth / 2 - 180,theHeight/2+180,0.4f);
+            g.drawString("Ore", theWidth / 2 - 110,theHeight/2+200);
+
+            Texture.tileSprites.getSprite(3, 0).draw(theWidth / 2+20,theHeight/2+40,0.4f);
+            g.drawString("Wool", theWidth / 2+90,theHeight/2+60);
+            Texture.tileSprites.getSprite(6, 0).draw(theWidth / 2+20,theHeight/2+110,0.4f);
+            g.drawString("Grain", theWidth / 2+90,theHeight/2+130);
+            Texture.tileSprites.getSprite(2, 0).draw(theWidth / 2+20,theHeight/2+180,0.4f);
+            g.drawString("No yield", theWidth / 2+90,theHeight/2+200);
+
+            g.setLineWidth(2);
 
         }
         showStats.draw();

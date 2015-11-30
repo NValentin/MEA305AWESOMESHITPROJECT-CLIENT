@@ -6,7 +6,7 @@ import org.newdawn.slick.Color;
 public class PlayerStats {
 
     // Personal stats
-    public static int ID;
+    public static int ID = 1;
     public static String name = "";
     public static int point = 0;
     public static int knights_played = 0;
@@ -20,7 +20,7 @@ public class PlayerStats {
     public static String[] oldText = new String[10];
     public static boolean endTurn = false;
     public static boolean diceRoll = false;
-    public static boolean[] playerturn = new boolean[]{false,false,false,false};
+    public static boolean[] playerturn = new boolean[]{true,false,false,false};
 
     //Stats for all players
     public static String[] names = new String[]{" "," "," "," "};

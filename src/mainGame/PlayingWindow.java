@@ -1,5 +1,6 @@
 package mainGame;
 
+import Network.Network;
 import mapClasses.GameMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
@@ -78,8 +79,7 @@ public class PlayingWindow extends BasicGameState
 
     @Override
     public void render(GameContainer gc, StateBasedGame stateBG, Graphics g) throws SlickException {
-        if (buildMap)
-        {
+        if (buildMap) {
             map.GameMapGameMap();
             buildMap = false;
         }
@@ -91,12 +91,13 @@ public class PlayingWindow extends BasicGameState
         gui_overlay.IncomingTradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.tradeWindow, g);
         gui_overlay.OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.offerWindow, g);
         gui_overlay.ShowStats(g, theWidth - 145, 10);
-        System.out.println("Is it your turn: " + PlayerStats.playerturn[PlayerStats.ID-1]);
-        if (PlayerStats.playerturn[PlayerStats.ID-1]) {
+        System.out.println("Is it your turn: " + PlayerStats.playerturn[PlayerStats.ID - 1]);
+        if (PlayerStats.playerturn[PlayerStats.ID - 1]) {
             gui_overlay.TradeWithWindow(Main.ScreenWidth - 215, 205, g, names);
             gui_overlay.DisplayDice(g, theWidth - 172, 75);
             gui_overlay.EndTurn(theWidth - 190, 370);
         }
+
         g.setColor(Color.white);
         chatBox.render(g, gc);
         gameChat.render(gc, g);

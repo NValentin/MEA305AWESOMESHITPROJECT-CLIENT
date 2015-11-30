@@ -27,7 +27,7 @@ public class ServerData
     public boolean endTurn = false, diceRoll;
     public int turnorderturn = 1;
     public boolean gameEnded = false;
-    public boolean[] playerturn = new boolean[]{false, false, false, false};
+    public boolean[] playerturn = new boolean[4];
     public boolean gamestart = false;
     public Connection c;
 
@@ -62,6 +62,6 @@ public class ServerData
         PlayerStats.die2 = die2;
         PlayerStats.endTurn = endTurn;
         PlayerStats.diceRoll = diceRoll;
-        PlayerStats.playerturn = playerturn;
+        //PlayerStats.playerturn = playerturn;
     }
 }

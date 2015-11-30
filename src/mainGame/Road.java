@@ -21,7 +21,7 @@ public class Road
     public void render(Graphics g)
     {
         g.setColor(roadColor);
-        g.setLineWidth(5);
+        g.setLineWidth(8);
         g.draw(roadLine);
         g.setColor(Color.white);
     }

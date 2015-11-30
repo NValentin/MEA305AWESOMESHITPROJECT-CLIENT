@@ -27,7 +27,10 @@ public class GameMap
     public static int[] serializedHouse = new int[]{0, 0};
     public static int[] deSerializedHouse = new int[]{0, 0};
 
-    boolean pressed = false;
+    public static int[] serializedRoad = new int[]{0, 0};
+    public static int[] deSerializedRoad = new int[]{0, 0};
+
+    boolean isClientsTurn = true;
 
     public GameMap()
     {
@@ -44,6 +47,31 @@ public class GameMap
 
         houses = new ArrayList<>();
         roads = new ArrayList<>();
+    }
+
+    private void buildMap(int tileSize, Orientation orientation)
+    {
+        mapLayout = new Layout(orientation,
+                new Point(tileSize, tileSize),
+                new Point(Main.ScreenWidth / 2, Main.ScreenHeight / 2));
+
+        map = new ArrayList<>();
+        for (int q = -3; q <= 3; q++)
+        {
+            int r1 = Math.max(-3, -q - 3);
+            int r2 = Math.min(3, -q + 3);
+            for (int r = r1; r <= r2; r++)
+            {
+                map.add(new Tile(q, r, -q - r));
+            }
+        }
+        if (!Network.isConnected)
+        {
+            assignTileVariablesFromLocal();
+        } else
+        {
+            assignTileVariablesFromServer();
+        }
     }
 
     private void findHousePlots() //should be 54
@@ -80,15 +108,6 @@ public class GameMap
                 }
             }
         }
-    }
-
-    public void addHouse(int indexPos, int playerID)
-    {
-        House tmpHouse = new House(housePlots[indexPos], playerID);
-        houses.add(tmpHouse);
-
-        removeHouseNeighborPlots(tmpHouse);
-        removeHousePlot(indexPos);
     }
 
     private void findRoadPlots() //should be 72
@@ -133,34 +152,19 @@ public class GameMap
         }
     }
 
-    public void addRoad(Line roadLine, int playerID)
+    public void addHouse(int indexPos, int playerID)
     {
-        roads.add(new Road(roadLine, playerID));
+        House tmpHouse = new House(housePlots[indexPos], playerID);
+        houses.add(tmpHouse);
+
+        removeHouseNeighborPlots(tmpHouse);
+        removeHousePlot(indexPos);
     }
 
-    private void buildMap(int tileSize, Orientation orientation)
+    public void addRoad(int indexPos, int playerID)
     {
-        mapLayout = new Layout(orientation,
-                new Point(tileSize, tileSize),
-                new Point(Main.ScreenWidth / 2, Main.ScreenHeight / 2));
-
-        map = new ArrayList<>();
-        for (int q = -3; q <= 3; q++)
-        {
-            int r1 = Math.max(-3, -q - 3);
-            int r2 = Math.min(3, -q + 3);
-            for (int r = r1; r <= r2; r++)
-            {
-                map.add(new Tile(q, r, -q - r));
-            }
-        }
-        if (!Network.isConnected)
-        {
-            assignTileVariablesFromLocal();
-        } else
-        {
-            assignTileVariablesFromServer();
-        }
+        roads.add(new Road(roadPlots[indexPos], playerID));
+        roadPlots[indexPos] = null;
     }
 
     private void assignTileVariablesFromLocal()
@@ -291,14 +295,31 @@ public class GameMap
             deSerializedHouse[1] = 0;
             System.out.println(houses.size());
         }
-
-        for (int i = 0; i < housePlots.length; i++)
+        if (deSerializedRoad[1] != 0)
         {
-            if (checkMouseOverHousePlot(i) && gc.getInput().isMousePressed(0))
+            deSerializeRoad();
+            deSerializedRoad[1] = 0;
+            System.out.println(roads.size());
+        }
+
+        if (isClientsTurn)
+        {
+            for (int i = 0; i < housePlots.length; i++)
             {
-                serializeHouse(i);
+                if (checkMouseOverHousePlot(i) && gc.getInput().isMousePressed(0))
+                {
+                    serializeHouse(i);
+                }
+            }
+            for (int i = 0; i < roadPlots.length; i++)
+            {
+                if (checkOverRoadPlot(i) && gc.getInput().isMousePressed(0))
+                {
+                    serializeRoad(i);
+                }
             }
         }
+
     }
 
     public void render(Graphics g) throws SlickException
@@ -333,18 +354,14 @@ public class GameMap
 
         for (int i = 0; i < roadPlots.length; i++)
         {
-            if (roadPlots[i] != null)
+            if (checkOverRoadPlot(i))
             {
-                Circle mouseC = new Circle(Mouse.getX(), Main.ScreenHeight - Mouse.getY(), 5);
-                if (roadPlots[i].intersects(mouseC))
-                {
-                    g.setLineWidth(8);
-                    g.draw(roadPlots[i]);
-                } else
-                {
-                    g.setLineWidth(3);
-                    g.draw(roadPlots[i]);
-                }
+                g.setLineWidth(8);
+                g.draw(roadPlots[i]);
+            } else if (roadPlots[i] != null)
+            {
+                g.setLineWidth(3);
+                g.draw(roadPlots[i]);
             }
         }
 
@@ -360,9 +377,9 @@ public class GameMap
         if (!houses.isEmpty())
 
         {
-            for (int i = 0; i < houses.size(); i++)
+            for (House house : houses)
             {
-                houses.get(i).render(g);
+                house.render(g);
             }
         }
     }
@@ -379,10 +396,29 @@ public class GameMap
             addHouse(deSerializedHouse[0], deSerializedHouse[1]);
     }
 
+    private void serializeRoad(int roadPlotPos)
+    {
+        serializedRoad[0] = roadPlotPos;
+        serializedRoad[1] = PlayerStats.ID;
+    }
+
+    public void deSerializeRoad()
+    {
+        if (roadPlots[deSerializedRoad[1]] != null)
+            addRoad(deSerializedRoad[0], deSerializedRoad[1]);
+    }
+
     private boolean checkMouseOverHousePlot(int indexPos)
     {
         return housePlots[indexPos] != null &&
                 housePlots[indexPos].contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY());
+    }
+
+    private boolean checkOverRoadPlot(int indexPos)
+    {
+        Circle mouseC = new Circle(Mouse.getX(), Main.ScreenHeight - Mouse.getY(), 5);
+        return roadPlots[indexPos] != null &&
+                roadPlots[indexPos].intersects(mouseC);
     }
 
     private void debugTileInfo()

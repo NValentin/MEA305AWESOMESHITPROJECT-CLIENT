@@ -3,7 +3,6 @@ package Network;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
-import mainGame.PlayerStats;
 import mapClasses.GameMap;
 
 import java.io.IOException;
@@ -61,6 +60,7 @@ public class Network extends Listener
             serverListOfYieldNumbers = serverData.listOfYieldNumbers;
 
             GameMap.deSerializedHouse = serverData.serializedHouse;
+            GameMap.deSerializedRoad = serverData.serializedRoad;
         }
     }
 }

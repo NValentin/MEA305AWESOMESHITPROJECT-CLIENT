@@ -23,11 +23,12 @@ public class ServerData
     public String[] oldText = new String[10];
     public ArrayList<Integer> cards = new ArrayList<Integer>();
     public int[] serializedHouse = new int[]{0, 0};
+    public int[] serializedRoad = new int[]{0, 0};
     public boolean endTurn = false, diceRoll;
     public int turnorderturn = 1;
     public boolean gameEnded = false;
-    public boolean[] playerturn = new boolean[]{false,false,false,false};
-    public boolean gamestart =false;
+    public boolean[] playerturn = new boolean[]{false, false, false, false};
+    public boolean gamestart = false;
     public Connection c;
 
     Integer[] yieldNumbers = {2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12};

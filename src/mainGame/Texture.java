@@ -25,6 +25,7 @@ public class Texture
     public static Image decline;
     public static Image silverButton;
     public static Image templateButton;
+    public static Image thief;
 
     public static Image menuBackground;
     public static Image buttonTemplate;
@@ -45,6 +46,7 @@ public class Texture
         decrease = new Image("resources/decrease.png");
         silverButton = new Image("resources/trade.png");
         templateButton = new Image("resources/TemplateButton.jpg");
+        thief = new Image("resources/thief.png");
     }
     void initMainMenuStateTextures()
     {

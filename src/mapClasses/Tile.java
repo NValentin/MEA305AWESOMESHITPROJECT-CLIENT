@@ -16,6 +16,7 @@ public class Tile extends Hex
     //Tile variables, for their individual type and number
     private String tileType;
     private int yieldNumber;
+    public boolean hasThief;
 
     /**
      * A tile have cubical coordinates, instead of pixel coordinates, to better understand where each tile is
@@ -30,6 +31,7 @@ public class Tile extends Hex
 
         tileType = "default";
         yieldNumber = 0;
+        hasThief = false;
     }
 
     /**
@@ -65,7 +67,11 @@ public class Tile extends Hex
      */
     public int getYieldNumber()
     {
-        return yieldNumber;
+        if(hasThief){
+            return 0;
+        } else {
+            return yieldNumber;
+        }
     }
 
     /**

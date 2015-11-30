@@ -17,7 +17,6 @@ public class ClientData
     public int[] serializedRoad = new int[]{0, 0};
     public boolean endTurn = false, diceRoll;
     public boolean gameEnded = false;
-    public boolean gamestart = false;
 
     public ClientData()
     {
@@ -37,7 +36,7 @@ public class ClientData
         diceRoll = PlayerStats.diceRoll;
         serializedHouse = GameMap.serializedHouse;
         serializedRoad = GameMap.serializedRoad;
-        endTurn = true;
+        endTurn = PlayerStats.endTurn;
     }
 
 }

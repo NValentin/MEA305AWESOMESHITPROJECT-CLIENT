@@ -300,7 +300,7 @@ public class GameMap
             System.out.println(roads.size());
         }
 
-        if (PlayerStats.playerturn[PlayerStats.ID-1])
+        if (PlayerStats.playerturn[PlayerStats.ID - 1])
         {
             for (int i = 0; i < housePlots.length; i++)
             {
@@ -340,25 +340,28 @@ public class GameMap
             }
         }
 
-        for (int i = 0; i < housePlots.length; i++)
+        if (PlayerStats.playerturn[PlayerStats.ID - 1])
         {
-            if (housePlots[i] != null && checkMouseOverHousePlot(i))
-                g.fill(housePlots[i]);
-            else if (housePlots[i] != null)
-                g.draw(housePlots[i]);
-
-        }
-
-        for (int i = 0; i < roadPlots.length; i++)
-        {
-            if (checkOverRoadPlot(i))
+            for (int i = 0; i < housePlots.length; i++)
             {
-                g.setLineWidth(8);
-                g.draw(roadPlots[i]);
-            } else if (roadPlots[i] != null)
+                if (housePlots[i] != null && checkMouseOverHousePlot(i))
+                    g.fill(housePlots[i]);
+                else if (housePlots[i] != null)
+                    g.draw(housePlots[i]);
+
+            }
+
+            for (int i = 0; i < roadPlots.length; i++)
             {
-                g.setLineWidth(3);
-                g.draw(roadPlots[i]);
+                if (checkOverRoadPlot(i))
+                {
+                    g.setLineWidth(8);
+                    g.draw(roadPlots[i]);
+                } else if (roadPlots[i] != null)
+                {
+                    g.setLineWidth(3);
+                    g.draw(roadPlots[i]);
+                }
             }
         }
 

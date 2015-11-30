@@ -37,6 +37,7 @@ public class GUI_Overlay {
     String tradeWithName = "";
     Button endTurn;
     Font font;
+    Font regularFont;
 
     GUI_Overlay() throws SlickException {
         texture = new Texture();
@@ -125,15 +126,23 @@ public class GUI_Overlay {
         }
     }
 
-    public void PlayerList(int x, int y, Graphics graphics, String[] _names, int turn) {
+    public void PlayerList(int x, int y, Graphics graphics, String[] _names, int[] _points, int turn) {
         graphics.setLineWidth(2);
-        graphics.drawString("Players:", x + 10, x + 5);
-        graphics.drawLine(x + 5, y + 25, x + 145, y + 25);
-        graphics.drawRect(x, y, 150, 200);
+        graphics.drawString("Players:", x + 10, y + 5);
+        graphics.drawString("Score:", x + 125, y + 5);
+
+        graphics.drawLine(x + 5, y + 25, x + 175, y + 25);
+        graphics.drawRect(x, y, 180, 140);
         for (int i = 0; i < _names.length; i++) {
             graphics.drawString(i + 1 + ") " + _names[i], x + 10, y + 35 + 25 * i);
+            regularFont = graphics.getFont();
+            graphics.drawString(_points[i]+"", x+145, y + 35 + 25 * i);
+            graphics.setFont(font);
+            graphics.drawString("pts", x+157, y + 37 + 25*i);
+            graphics.setFont(regularFont);
+
         }
-        graphics.drawRect(x + 5, y + 32 + 25 * turn, 140, 25);
+        graphics.drawRect(x + 5, y + 32 + 25 * turn, 170, 25);
     }
 
     public void ResourceBar(int x, int y, Graphics graphics, int wool, int stone, int wood, int clay, int wheat) {

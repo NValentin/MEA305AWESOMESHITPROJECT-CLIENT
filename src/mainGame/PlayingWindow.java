@@ -55,6 +55,10 @@ public class PlayingWindow extends BasicGameState
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException
     {
+        GameMap.buildRoad = gui_overlay.build_Buttons[0].isWithin();
+        GameMap.buildHouse = gui_overlay.build_Buttons[1].isWithin();
+        GameMap.upgradeHouse = gui_overlay.build_Buttons[2].isWithin();
+
 
         if(gameContainer.getInput().isKeyPressed(Input.KEY_ESCAPE)){
             stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());

@@ -30,6 +30,10 @@ public class GameMap
     public static int[] serializedRoad = new int[]{0, 0};
     public static int[] deSerializedRoad = new int[]{0, 0};
 
+    public static boolean buildHouse = false;
+    public static boolean buildRoad = false;
+    public static boolean upgradeHouse = false;
+
     public GameMap()
     {
     }
@@ -300,7 +304,7 @@ public class GameMap
             System.out.println(roads.size());
         }
 
-        if (PlayerStats.playerturn[PlayerStats.ID - 1])
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && buildHouse)
         {
             for (int i = 0; i < housePlots.length; i++)
             {
@@ -309,11 +313,26 @@ public class GameMap
                     serializeHouse(i);
                 }
             }
+        }
+
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && buildRoad)
+        {
             for (int i = 0; i < roadPlots.length; i++)
             {
                 if (checkOverRoadPlot(i) && gc.getInput().isMousePressed(0))
                 {
                     serializeRoad(i);
+                }
+            }
+        }
+
+        if (PlayerStats.playerturn[PlayerStats.ID-1] && upgradeHouse)
+        {
+            for (int i = 0; i < houses.size(); i++)
+            {
+                if (checkMouseOverHouse(i) && gc.getInput().isMousePressed(0))
+                {
+                    houses.get(i).upgradeHouse();
                 }
             }
         }
@@ -340,7 +359,7 @@ public class GameMap
             }
         }
 
-        if (PlayerStats.playerturn[PlayerStats.ID - 1])
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && buildHouse)
         {
             for (int i = 0; i < housePlots.length; i++)
             {
@@ -350,7 +369,9 @@ public class GameMap
                     g.draw(housePlots[i]);
 
             }
-
+        }
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && buildRoad)
+        {
             for (int i = 0; i < roadPlots.length; i++)
             {
                 if (checkOverRoadPlot(i))
@@ -412,6 +433,11 @@ public class GameMap
     {
         return housePlots[indexPos] != null &&
                 housePlots[indexPos].contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY());
+    }
+
+    private boolean checkMouseOverHouse(int indexPos)
+    {
+        return houses.get(indexPos).getHouseCircle().contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY());
     }
 
     private boolean checkOverRoadPlot(int indexPos)

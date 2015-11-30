@@ -32,6 +32,8 @@ public class GameMap
 
     public static boolean[] build_buttons = new boolean[]{false, false, false, false};
 
+    private boolean hasHouse = false;
+
     public GameMap()
     {
     }
@@ -309,26 +311,35 @@ public class GameMap
                 if (checkMouseOverHousePlot(i) && gc.getInput().isMousePressed(0))
                 {
                     serializeHouse(i);
+                    if (!Network.isConnected)
+                    {
+                        addHouse(i, 1);
+                    }
+                    hasHouse = true;
                     build_buttons[1] = false;
                 }
             }
 
         }
 
-        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[0])
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[0] && hasHouse)
         {
             for (int i = 0; i < roadPlots.length; i++)
             {
                 if (checkOverRoadPlot(i) && gc.getInput().isMousePressed(0))
                 {
                     serializeRoad(i);
+                    if (!Network.isConnected)
+                    {
+                        addRoad(i, 1);
+                    }
                     build_buttons[0] = false;
                 }
             }
 
         }
 
-        if (PlayerStats.playerturn[PlayerStats.ID-1] && build_buttons[2])
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[2])
         {
             for (int i = 0; i < houses.size(); i++)
             {
@@ -373,18 +384,49 @@ public class GameMap
 
             }
         }
-        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[0])
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[0] && hasHouse)
         {
             for (int i = 0; i < roadPlots.length; i++)
             {
-                if (checkOverRoadPlot(i))
+                if (!houses.isEmpty() && roadPlots[i] != null)
                 {
-                    g.setLineWidth(8);
-                    g.draw(roadPlots[i]);
-                } else if (roadPlots[i] != null)
+                    for (House house : houses)
+                    {
+                        if (house.getHouseCircle().intersects(roadPlots[i]))
+                        {
+                            if (checkOverRoadPlot(i))
+                            {
+                                g.setLineWidth(8);
+                                g.draw(roadPlots[i]);
+                            } else if (roadPlots[i] != null)
+                            {
+                                g.setLineWidth(3);
+                                g.draw(roadPlots[i]);
+                            }
+                        }
+                    }
+                }
+
+                if (!roads.isEmpty() && roadPlots[i] != null)
                 {
-                    g.setLineWidth(3);
-                    g.draw(roadPlots[i]);
+                    for (Road road : roads)
+                    {
+                        Line roadLine = road.getRoadLine();
+                        Circle c1 = new Circle(roadLine.getX1(), roadLine.getY1(), 5);
+                        Circle c2 = new Circle(roadLine.getX2(), roadLine.getY2(), 5);
+                        if (c1.intersects(roadPlots[i]) || c2.intersects(roadPlots[i]))
+                        {
+                            if (checkOverRoadPlot(i))
+                            {
+                                g.setLineWidth(8);
+                                g.draw(roadPlots[i]);
+                            } else if (roadPlots[i] != null)
+                            {
+                                g.setLineWidth(3);
+                                g.draw(roadPlots[i]);
+                            }
+                        }
+                    }
                 }
             }
         }

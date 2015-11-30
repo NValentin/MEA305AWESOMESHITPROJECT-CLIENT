@@ -64,7 +64,7 @@ public class Network extends Listener
             GameMap.deSerializedRoad = serverData.serializedRoad;
 
             PlayerStats.playerturn = serverData.playerturn;
-            System.out.println(Arrays.toString(PlayerStats.playerturn));
+            System.out.println(Arrays.toString(serverData.playerturn));
         }
     }
 }

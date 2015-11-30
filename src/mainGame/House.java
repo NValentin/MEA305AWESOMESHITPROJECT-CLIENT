@@ -14,10 +14,9 @@ public class House
 
     public House(Circle circle, int playerID)
     {
-        Color[] playerColors = new Color[]{Color.black, Color.blue, Color.red, Color.white, Color.orange};
         isCity = false;
         houseCircle = circle;
-        buildingColor = playerColors[playerID];
+        buildingColor = PlayerStats.playerColors[playerID];
     }
 
     public void render(Graphics g)

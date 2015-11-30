@@ -1,5 +1,6 @@
 package mainGame;
 
+import mapClasses.GameMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 
@@ -119,6 +120,7 @@ public class GUI_Overlay {
             if (build_Buttons[i].isWithin()) {
                 if (PlayerStats.turn == PlayerStats.ID) {
                     System.out.println("Building " + buildingMenuText[i]);
+                    GameMap.build_buttons[i] = build_Buttons[i].isWithin();
                 } else {
                     System.out.println("Can't build when its not your turn");
                 }
@@ -253,11 +255,11 @@ public class GUI_Overlay {
                 g.drawLine(theWidth / 2 - 200 + i * 30, theHeight / 2 - 40, theWidth / 2 - 200 + i * 30, theHeight / 2 - 40 - procentValue[i - 1]);
             }
             g.drawImage(Texture.tileSprites.getSprite(4, 0),theWidth / 2 - 180,theHeight/2);
-            g.drawImage(Texture.tileSprites.getSprite(1, 0),0,0);
-            g.drawImage(Texture.tileSprites.getSprite(0, 0),0,0);
-            g.drawImage(Texture.tileSprites.getSprite(3, 0),0,0);
-            g.drawImage(Texture.tileSprites.getSprite(6, 0),0,0);
-            g.drawImage(Texture.tileSprites.getSprite(2, 0),0,0);
+            g.drawImage(Texture.tileSprites.getSprite(1, 0), 0, 0);
+            g.drawImage(Texture.tileSprites.getSprite(0, 0), 0, 0);
+            g.drawImage(Texture.tileSprites.getSprite(3, 0), 0, 0);
+            g.drawImage(Texture.tileSprites.getSprite(6, 0), 0, 0);
+            g.drawImage(Texture.tileSprites.getSprite(2, 0), 0, 0);
 
         }
         showStats.draw();

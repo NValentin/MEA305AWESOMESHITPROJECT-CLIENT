@@ -30,9 +30,7 @@ public class GameMap
     public static int[] serializedRoad = new int[]{0, 0};
     public static int[] deSerializedRoad = new int[]{0, 0};
 
-    public static boolean buildHouse = false;
-    public static boolean buildRoad = false;
-    public static boolean upgradeHouse = false;
+    public static boolean[] build_buttons = new boolean[4];
 
     public GameMap()
     {
@@ -304,7 +302,7 @@ public class GameMap
             System.out.println(roads.size());
         }
 
-        if (PlayerStats.playerturn[PlayerStats.ID - 1] && buildHouse)
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[1])
         {
             for (int i = 0; i < housePlots.length; i++)
             {
@@ -315,7 +313,7 @@ public class GameMap
             }
         }
 
-        if (PlayerStats.playerturn[PlayerStats.ID - 1] && buildRoad)
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[0])
         {
             for (int i = 0; i < roadPlots.length; i++)
             {
@@ -326,7 +324,7 @@ public class GameMap
             }
         }
 
-        if (PlayerStats.playerturn[PlayerStats.ID-1] && upgradeHouse)
+        if (PlayerStats.playerturn[PlayerStats.ID-1] && build_buttons[2])
         {
             for (int i = 0; i < houses.size(); i++)
             {
@@ -359,7 +357,7 @@ public class GameMap
             }
         }
 
-        if (PlayerStats.playerturn[PlayerStats.ID - 1] && buildHouse)
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[1])
         {
             for (int i = 0; i < housePlots.length; i++)
             {
@@ -370,7 +368,7 @@ public class GameMap
 
             }
         }
-        if (PlayerStats.playerturn[PlayerStats.ID - 1] && buildRoad)
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[0])
         {
             for (int i = 0; i < roadPlots.length; i++)
             {

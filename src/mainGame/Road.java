@@ -23,4 +23,9 @@ public class Road
         g.draw(roadLine);
         g.setColor(Color.white);
     }
+
+    public Line getRoadLine()
+    {
+        return roadLine;
+    }
 }

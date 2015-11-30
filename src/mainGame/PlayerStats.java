@@ -21,7 +21,7 @@ public class PlayerStats {
     public static boolean endTurn = false;
     public static boolean diceRoll = false;
     public static boolean[] playerturn = new boolean[]{true,false,false,false};
-    public static Color[] playerColors = new Color[]{Color.black, Color.blue, Color.red, Color.magenta, Color.orange};
+    public static Color[] playerColors = new Color[]{Color.black, Color.blue, Color.red, Color.magenta, Color.cyan};
 
     //Stats for all players
     public static String[] names = new String[]{" "," "," "," "};

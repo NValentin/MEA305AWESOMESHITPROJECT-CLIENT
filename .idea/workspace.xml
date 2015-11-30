@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/PlayingWindow.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/PlayingWindow.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/GUI_Overlay.java" afterPath="$PROJECT_DIR$/src/mainGame/GUI_Overlay.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/GameMap.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/GameMap.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapClasses/GameMap.java" afterPath="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/Network.java" afterPath="$PROJECT_DIR$/src/Network/Network.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/PlayerStats.java" afterPath="$PROJECT_DIR$/src/mainGame/PlayerStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" afterPath="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -34,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GameMap.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameMap.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="343" column="56" selection-start-line="343" selection-start-column="56" selection-end-line="343" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.7766714">
+              <caret line="404" column="25" selection-start-line="404" selection-start-column="25" selection-end-line="404" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#buildMap#0;class#GameMap#0" expanded="false" />
@@ -54,11 +50,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GUI_Overlay.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Road.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mainGame/Road.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+              <folding>
+                <element signature="e#548#549#0" expanded="true" />
+                <element signature="e#579#580#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUI_Overlay.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mainGame/GUI_Overlay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.66191447">
-              <caret line="138" column="49" selection-start-line="138" selection-start-column="49" selection-end-line="138" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="144" column="42" selection-start-line="144" selection-start-column="42" selection-end-line="144" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -72,16 +81,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameClient.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Network/GameClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="131" column="40" selection-start-line="131" selection-start-column="40" selection-end-line="131" selection-end-column="40" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -142,7 +141,7 @@
         <entry file="file://$PROJECT_DIR$/src/mainGame/PlayerStats.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+              <caret line="28" column="59" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -203,13 +202,13 @@
         <option value="$PROJECT_DIR$/src/Network/GameClient.java" />
         <option value="$PROJECT_DIR$/src/Network/ServerData.java" />
         <option value="$PROJECT_DIR$/src/mainGame/House.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/Road.java" />
         <option value="$PROJECT_DIR$/src/Network/ClientData.java" />
         <option value="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" />
         <option value="$PROJECT_DIR$/src/Network/Network.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/PlayerStats.java" />
-        <option value="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
         <option value="$PROJECT_DIR$/src/mainGame/GUI_Overlay.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/PlayerStats.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/Road.java" />
+        <option value="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
       </list>
     </option>
   </component>
@@ -863,19 +862,7 @@
       <workItem from="1448541562169" duration="4674000" />
       <workItem from="1448625585046" duration="1946000" />
       <workItem from="1448871724653" duration="2834000" />
-      <workItem from="1448874674649" duration="13904000" />
-    </task>
-    <task id="LOCAL-00021" summary="CardHOlder">
-      <created>1446556514457</created>
-      <option name="number" value="00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1446556514457</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Removed some code">
-      <created>1446800011555</created>
-      <option name="number" value="00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1446800011555</updated>
+      <workItem from="1448874674649" duration="17168000" />
     </task>
     <task id="LOCAL-00023" summary="Chat almost working dammit">
       <created>1447344129135</created>
@@ -1159,11 +1146,23 @@
       <option name="project" value="LOCAL" />
       <updated>1448887310953</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Hotfix for build buttons &amp; displaying undisplaying where to build specific stuff">
+      <created>1448889326054</created>
+      <option name="number" value="00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1448889326055</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Now only display the roadplots players should be able to build. (Can theoretically build them anywhere though)">
+      <created>1448892137670</created>
+      <option name="number" value="00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1448892137670</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214304000" />
+    <option name="totallyTimeSpent" value="217568000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1176,8 +1175,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32333767" sideWeight="0.311875" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32333767" sideWeight="0.688125" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34028682" sideWeight="0.47" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32333767" sideWeight="0.688125" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.046936113" sideWeight="0.47" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.178125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1239,8 +1238,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Bug fixing for multiplayer purpose.. 1.01" />
-    <MESSAGE value="Bug fixing for multiplayer purpose.. 1.02" />
     <MESSAGE value="Bug fixing for multiplayer purpose.. 2.0&#10;: changed housePlots and roadPlots from Arraylist to Arrays to prevent skipping index positions when removing available plots, now pre-allocates the specific size array and fills it with the positions.." />
     <MESSAGE value="Just making sure all is up to date for some testing.." />
     <MESSAGE value="Quick bug fix for testing 1.01" />
@@ -1264,7 +1261,9 @@
     <MESSAGE value="Made buttons work with what you want to build" />
     <MESSAGE value="Stuff" />
     <MESSAGE value="Hotfix for build buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hotfix for build buttons" />
+    <MESSAGE value="Hotfix for build buttons &amp; displaying undisplaying where to build specific stuff" />
+    <MESSAGE value="Now only display the roadplots players should be able to build. (Can theoretically build them anywhere though)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now only display the roadplots players should be able to build. (Can theoretically build them anywhere though)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1558,14 +1557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/Road.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Network/GameClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1616,6 +1607,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/GUI_Overlay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="144" column="42" selection-start-line="144" selection-start-column="42" selection-end-line="144" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/PlayingWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1629,15 +1628,26 @@
     <entry file="file://$PROJECT_DIR$/src/mainGame/PlayerStats.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+          <caret line="28" column="59" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/Road.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+          <folding>
+            <element signature="e#548#549#0" expanded="true" />
+            <element signature="e#579#580#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="343" column="56" selection-start-line="343" selection-start-column="56" selection-end-line="343" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.7766714">
+          <caret line="404" column="25" selection-start-line="404" selection-start-column="25" selection-end-line="404" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#buildMap#0;class#GameMap#0" expanded="false" />
@@ -1649,14 +1659,6 @@
             <element signature="method#removeHousePlot#0;class#GameMap#0" expanded="false" />
             <element signature="method#removeHouseNeighborPlots#0;class#GameMap#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/GUI_Overlay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66191447">
-          <caret line="138" column="49" selection-start-line="138" selection-start-column="49" selection-end-line="138" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>

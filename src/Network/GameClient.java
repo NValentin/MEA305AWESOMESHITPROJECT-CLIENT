@@ -45,6 +45,7 @@ public class GameClient extends Listener implements Runnable
         updateHouses();
         updateRoads();
         updatePlayerTurn();
+        updateDice();
     }
 
     void updatePlayerName()
@@ -121,6 +122,14 @@ public class GameClient extends Listener implements Runnable
             clientData.pack();
             network.client.sendUDP(clientData);
             PlayerStats.endTurn = false;
+        }
+    }
+    void updateDice() {
+        if (PlayerStats.diceRoll) {
+            ClientData clientData = new ClientData();
+            clientData.pack();
+            network.client.sendUDP(clientData);
+            PlayerStats.diceRoll = false;
         }
     }
 }

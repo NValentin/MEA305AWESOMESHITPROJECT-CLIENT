@@ -273,6 +273,7 @@ public class GUI_Overlay {
         }
         if (rollDice.isWithin() && !DiceRolled) {
             DiceRolled = true;
+            PlayerStats.diceRoll = true;
             die1 = PlayerStats.die1;
             die2 = PlayerStats.die2;
             combinedValue = die1 + die2 + 2;

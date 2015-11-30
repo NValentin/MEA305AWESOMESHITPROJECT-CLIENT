@@ -22,7 +22,7 @@ public class PlayingWindow extends BasicGameState
     String[] names = new String [] {"Fred", "George", "Ron", "Ginny"};
     GUI_Overlay gui_overlay;
     int[] currentResources = new int[5];
-    int turn = 0;
+    //int turn = 0;
     boolean yourTurn = false;
 
     GameMap map;
@@ -83,10 +83,10 @@ public class PlayingWindow extends BasicGameState
             buildMap = false;
         }
         map.render(g);
-        gui_overlay.PlayerList(15, 40, g, PlayerStats.names, PlayerStats.points, turn);
+        gui_overlay.PlayerList(15, 40, g, PlayerStats.names, PlayerStats.points, PlayerStats.ID);
         gui_overlay.ResourceBar(Main.ScreenWidth/2-250, 10, g, currentResources[0], currentResources[1], currentResources[2], currentResources[3], currentResources[4]);
         gui_overlay.BuildingWindow(g, theWidth - 205, theHeight - 275, 200, 270);
-        gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, gui_overlay.trade, PlayerStats.names[turn], g);
+        gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, gui_overlay.trade, PlayerStats.names[PlayerStats.turn], g);
         gui_overlay.IncomingTradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.tradeWindow, g);
         gui_overlay.OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.offerWindow, g);
         gui_overlay.ShowStats(g, theWidth - 145, 10);

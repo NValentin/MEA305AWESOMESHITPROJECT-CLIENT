@@ -296,21 +296,22 @@ public class GUI_Overlay {
         g.drawRect(x, y, sizeX, sizeY);
         rollDice.SetPos(x + 5, y + 59);
         rollDice.draw();
-        if (!DiceRolled) {
+        if (!PlayerStats.diceRoll) {
             rollDice.AddText("Roll Dice", Color.black);
             texture.diceSprites.getSprite(0, 0).draw(x + 5, y + 5, 50, 50);
             texture.diceSprites.getSprite(0, 0).draw(x + 60, y + 5, 50, 50);
         }
-        if (rollDice.isWithin() && !DiceRolled) {
-            DiceRolled = true;
+        if (rollDice.isWithin() && !PlayerStats.diceRoll) {
             PlayerStats.diceRoll = true;
             die1 = PlayerStats.die1;
             die2 = PlayerStats.die2;
+            System.out.println("Die 1: " + die1 + " Die 2: " + die2 + " Boolean: " + PlayerStats.diceRoll);
             combinedValue = die1 + die2 + 2;
             rolledDice[combinedValue-1]++;
             rolled++;
         }
-        if (DiceRolled) {
+        if (PlayerStats.diceRoll) {
+            System.out.println("New dispaly");
             rollDice.AddText("Rolled: " + combinedValue, Color.black);
             texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
             texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
@@ -324,7 +325,6 @@ public class GUI_Overlay {
             g.fill(new Rectangle(x, y, 400, 300));
             g.setColor(Color.black);
             g.drawString("Make an offer for " + tradeWithName, x + 10, y + 20);
-            //g.drawString(tradeWithName + "'s offer", x + 10, y +50);
             for (int i = 0; i < 5; i++) {
                 buttons[i].SetPos(x + 90, y + 70 + 20 * i);
                 buttons[i + 5].SetPos(x + 330, y + 70 + 20 * i);

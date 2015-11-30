@@ -375,13 +375,34 @@ public class GameMap
 
         if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[1])
         {
-            for (int i = 0; i < housePlots.length; i++)
+            if (!hasHouse)
             {
-                if (housePlots[i] != null && checkMouseOverHousePlot(i))
-                    g.fill(housePlots[i]);
-                else if (housePlots[i] != null)
-                    g.draw(housePlots[i]);
+                for (int i = 0; i < housePlots.length; i++)
+                {
+                    if (housePlots[i] != null && checkMouseOverHousePlot(i))
+                        g.fill(housePlots[i]);
+                    else if (housePlots[i] != null)
+                        g.draw(housePlots[i]);
 
+                }
+            } else
+            {
+                for (int i = 0; i < housePlots.length; i++)
+                    if (!roads.isEmpty() && housePlots[i] != null)
+                        for (Road road : roads)
+                        {
+                            Line roadLine = road.getRoadLine();
+                            Circle c1 = new Circle(roadLine.getX1(), roadLine.getY1(), 5);
+                            Circle c2 = new Circle(roadLine.getX2(), roadLine.getY2(), 5);
+                            if (housePlots[i].intersects(c1) || housePlots[i].intersects(c2))
+                            {
+                                if (checkMouseOverHousePlot(i))
+                                    g.fill(housePlots[i]);
+                                else
+                                    g.draw(housePlots[i]);
+                            }
+
+                        }
             }
         }
         if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[0] && hasHouse)

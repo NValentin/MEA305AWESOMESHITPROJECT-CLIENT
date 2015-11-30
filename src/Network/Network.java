@@ -25,7 +25,6 @@ public class Network extends Listener
     public void connect()
     {
         client = new Client(16384, 2048);
-        client.getKryo().register(PlayerStats.class);
         client.getKryo().register(int[].class);
         client.getKryo().register(ServerData.class);
         client.getKryo().register(ClientData.class);

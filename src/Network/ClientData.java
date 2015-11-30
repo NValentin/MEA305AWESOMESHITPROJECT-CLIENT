@@ -37,7 +37,7 @@ public class ClientData
         diceRoll = PlayerStats.diceRoll;
         serializedHouse = GameMap.serializedHouse;
         serializedRoad = GameMap.serializedRoad;
-        endTurn = true;
+        endTurn = PlayerStats.endTurn;
     }
 
 }

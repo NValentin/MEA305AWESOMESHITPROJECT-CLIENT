@@ -4,6 +4,7 @@ import mapClasses.GameMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -118,9 +119,9 @@ public class GUI_Overlay {
                 font.drawString(x + 5, y + 65 + 60 * i, buildingMenuText[i + 8]);
             }
             if (build_Buttons[i].isWithin()) {
-                if (PlayerStats.turn == PlayerStats.ID) {
+                if (PlayerStats.playerturn[PlayerStats.ID-1]) {
                     System.out.println("Building " + buildingMenuText[i]);
-                    GameMap.build_buttons[i] = build_Buttons[i].isWithin();
+                    GameMap.build_buttons[i] = true;
                 } else {
                     System.out.println("Can't build when its not your turn");
                 }

@@ -30,7 +30,7 @@ public class GameMap
     public static int[] serializedRoad = new int[]{0, 0};
     public static int[] deSerializedRoad = new int[]{0, 0};
 
-    public static boolean[] build_buttons = new boolean[4];
+    public static boolean[] build_buttons = new boolean[]{false, false, false, false};
 
     public GameMap()
     {
@@ -309,8 +309,10 @@ public class GameMap
                 if (checkMouseOverHousePlot(i) && gc.getInput().isMousePressed(0))
                 {
                     serializeHouse(i);
+                    build_buttons[1] = false;
                 }
             }
+
         }
 
         if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[0])
@@ -320,8 +322,10 @@ public class GameMap
                 if (checkOverRoadPlot(i) && gc.getInput().isMousePressed(0))
                 {
                     serializeRoad(i);
+                    build_buttons[0] = false;
                 }
             }
+
         }
 
         if (PlayerStats.playerturn[PlayerStats.ID-1] && build_buttons[2])
@@ -331,6 +335,7 @@ public class GameMap
                 if (checkMouseOverHouse(i) && gc.getInput().isMousePressed(0))
                 {
                     houses.get(i).upgradeHouse();
+                    build_buttons[3] = false;
                 }
             }
         }

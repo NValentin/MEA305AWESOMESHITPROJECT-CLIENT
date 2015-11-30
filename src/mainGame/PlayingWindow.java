@@ -55,8 +55,6 @@ public class PlayingWindow extends BasicGameState
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException
     {
-
-
         if(gameContainer.getInput().isKeyPressed(Input.KEY_ESCAPE)){
             stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
         }

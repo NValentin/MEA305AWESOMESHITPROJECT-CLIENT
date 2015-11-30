@@ -20,7 +20,7 @@ public class PlayerStats {
     public static String[] oldText = new String[10];
     public static boolean endTurn = false;
     public static boolean diceRoll = false;
-    public static boolean[] playerturn = new boolean[]{false,false,false,false};
+    public static boolean[] playerturn = new boolean[]{true,false,false,false};
     public static Color[] playerColors = new Color[]{Color.black, Color.blue, Color.red, Color.magenta, Color.orange};
 
     //Stats for all players
@@ -28,7 +28,7 @@ public class PlayerStats {
     public static int[] points = new int[]{0,0,0,0};
     public static int[] knightsPlayed = new int[]{0,0,0,0};
     public static int[] resourcesOnHand = new int[]{0,0,0,0};
-    public static boolean[] lobbyReadyAll = new boolean[]{false,false,false,false};
+    public static boolean[] lobbyReadyAll = new boolean[]{true,false,false,false};
     public static int [] longestRoad = new int[]{0,0,0,0};
     public static int turn;
     public static boolean StartGame;

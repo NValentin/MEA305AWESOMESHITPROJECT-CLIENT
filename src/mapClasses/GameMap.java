@@ -30,8 +30,6 @@ public class GameMap
     public static int[] serializedRoad = new int[]{0, 0};
     public static int[] deSerializedRoad = new int[]{0, 0};
 
-    boolean isClientsTurn = true;
-
     public GameMap()
     {
     }
@@ -302,7 +300,7 @@ public class GameMap
             System.out.println(roads.size());
         }
 
-        if (isClientsTurn)
+        if (PlayerStats.playerturn[PlayerStats.ID-1])
         {
             for (int i = 0; i < housePlots.length; i++)
             {
@@ -319,7 +317,6 @@ public class GameMap
                 }
             }
         }
-
     }
 
     public void render(Graphics g) throws SlickException

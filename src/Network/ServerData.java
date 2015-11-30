@@ -62,5 +62,6 @@ public class ServerData
         PlayerStats.die2 = die2;
         PlayerStats.endTurn = endTurn;
         PlayerStats.diceRoll = diceRoll;
+        PlayerStats.playerturn = playerturn;
     }
 }

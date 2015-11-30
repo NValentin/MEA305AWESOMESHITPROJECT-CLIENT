@@ -91,7 +91,8 @@ public class PlayingWindow extends BasicGameState
         gui_overlay.IncomingTradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.tradeWindow, g);
         gui_overlay.OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.offerWindow, g);
         gui_overlay.ShowStats(g, theWidth - 145, 10);
-        if (PlayerStats.ID == PlayerStats.turn && !PlayerStats.endTurn) {
+        if (PlayerStats.playerturn[PlayerStats.ID-1]) {
+            System.out.println("It is your turn");
             gui_overlay.TradeWithWindow(Main.ScreenWidth - 215, 205, g, names);
             gui_overlay.DisplayDice(g, theWidth - 172, 75);
             gui_overlay.EndTurn(theWidth - 190, 370);

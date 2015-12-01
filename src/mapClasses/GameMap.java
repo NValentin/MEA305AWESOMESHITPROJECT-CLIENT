@@ -5,6 +5,7 @@ import mainGame.*;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.*;
+import sun.nio.ch.Net;
 
 import java.util.*;
 
@@ -161,6 +162,7 @@ public class GameMap
 
     private void findThiefPlots() //Should be 19
     {
+        thiefPositions = new ArrayList<>();
         for (Tile tile : map)
             if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
                 thiefPositions.add(new Circle(Layout.hexToPixel(mapLayout, tile).getX(),
@@ -218,7 +220,10 @@ public class GameMap
                         type = listOfTileTypes.remove(listOfTileTypes.size() - 1);
                         tile.setTileType(type);
                         if (tile.getTileType().matches("Desert"))
+                        {
+                            thief = new Thief(new Point(Layout.hexToPixel(mapLayout, tile).getX(), Layout.hexToPixel(mapLayout, tile).getY()));
                             tile.hasThief = true;
+                        }
                     }
                 }
 
@@ -379,6 +384,8 @@ public class GameMap
                         && houses.get(i).getPlayerID() == PlayerStats.ID)
                 {
                     serializeCity(i);
+                    if (!Network.isConnected)
+                        houses.get(i).upgradeHouse();
                     build_buttons[3] = false;
                 }
             }
@@ -501,6 +508,8 @@ public class GameMap
         drawTiles(g);
         drawHousePlots(g);
         drawRoadPlots(g);
+
+        thief.render(g);
 
         if (!roads.isEmpty())
             for (Road road : roads)

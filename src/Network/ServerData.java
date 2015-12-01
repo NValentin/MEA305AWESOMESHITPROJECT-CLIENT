@@ -64,6 +64,5 @@ public class ServerData
         PlayerStats.endTurn = endTurn;
         PlayerStats.diceRoll = diceRoll;
         PlayerStats.diceUsed = diceUsed;
-        //PlayerStats.playerturn = playerturn;
     }
 }

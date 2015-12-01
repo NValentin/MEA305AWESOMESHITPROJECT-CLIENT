@@ -236,7 +236,9 @@ public class GUI_Overlay {
         showStats.SetPos(x, y);
         closeStats.SetPos(theWidth / 2 + 170, theHeight / 2 - 195);
         if (showStatsBool) {
+            PlayingWindowState.gameInfo = "Close the window to continue playing";
             if (closeStats.isWithin()) {
+                PlayingWindowState.gameInfo = "";
                 showStatsBool = false;
             }
             g.setColor(Color.white);
@@ -298,6 +300,7 @@ public class GUI_Overlay {
         rollDice.SetPos(x + 5, y + 59);
         rollDice.draw();
         if (!DiceRolled) {
+            PlayingWindowState.gameInfo = "Your turn! Press 'Roll Dice' to roll the dice";
             rollDice.AddText("Roll Dice", Color.black);
         } else {
             rollDice.AddText("Rolled: " + combinedValue, Color.black);
@@ -310,6 +313,8 @@ public class GUI_Overlay {
             texture.butt.draw(x + 60, y + 5, 50, 50);
         }
         if (rollDice.isWithin() && !DiceRolled) {
+
+            System.out.println("Dice rolled");
             PlayerStats.diceRoll = true;
             DiceRolled = true;
         }

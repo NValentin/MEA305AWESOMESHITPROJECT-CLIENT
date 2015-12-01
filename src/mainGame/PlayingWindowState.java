@@ -35,7 +35,7 @@ public class PlayingWindowState extends BasicGameState
     String chatText = "";
     Font font;
 
-    static String gameInfo = "lort";
+    static String gameInfo = "";
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)

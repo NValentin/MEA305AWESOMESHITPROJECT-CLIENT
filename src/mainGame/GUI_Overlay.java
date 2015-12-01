@@ -4,8 +4,10 @@ import mapClasses.GameMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import mapClasses.Tile;
 
 /**
  * Created by Kingo on 25-Nov-15.
@@ -16,7 +18,6 @@ public class GUI_Overlay {
     int die1;
     int die2;
     int combinedValue;
-    int[] rolledDice = new int[12];
     float[] procentValue = new float []{0,0,0,0,0,0,0,0,0,0,0,0};
     int rolled = 0;
     String[] buildingMenuText = new String[] {"Road", "House", "City", "Development Card", "Gives 0 Victory Points", "Gives 1 Victory Points", "Gives 2 Victory Points", "Gives ? Victory Points", "1 Lumber and 1 Brink", "1 Lumber, 1 Wool, 1 Grain, and 1 Brick", "3 Ore and 2 Grin", "1 Wool, 1 Ore, and 1 Grain"};
@@ -40,6 +41,7 @@ public class GUI_Overlay {
     Button endTurn;
     Font font;
     Font regularFont;
+    String[] resourceTypes = new String[] {"Wool", "Ore", "Lumber", "Brick", "Grain"};
 
     GUI_Overlay() throws SlickException {
         texture = new Texture();
@@ -151,11 +153,11 @@ public class GUI_Overlay {
     public void ResourceBar(int x, int y, Graphics graphics, int wool, int ore, int lumber, int bricks, int grain) {
         graphics.setLineWidth(2);
         graphics.drawRect(x, y, 500, 25);
-        graphics.drawString("Lumber:", x + 5, y + 3);
+        graphics.drawString("Wool:", x + 5, y + 3);
         graphics.drawString(String.valueOf(lumber),x+80, y+3);
         graphics.drawString("Ore:", x + 105, y + 3);
         graphics.drawString(String.valueOf(ore),x+180, y+3);
-        graphics.drawString("Wool:", x + 205, y + 3);
+        graphics.drawString("Lumber:", x + 205, y + 3);
         graphics.drawString(String.valueOf(wool),x+280, y+3);
         graphics.drawString("Bricks:", x + 305, y + 3);
         graphics.drawString(String.valueOf(bricks),x+380, y+3);
@@ -245,7 +247,7 @@ public class GUI_Overlay {
 
             g.drawString("Dice Roll Percentages:", theWidth/2 - 180, theHeight/2 - 190);
             for (int i = 1; i < 13; i++) {
-                float procent = (float) rolledDice[i - 1] / (float) rolled;
+                float procent = (float) PlayerStats.rolledDiceStatistics[i - 1] / (float) rolled;
                 procentValue[i - 1] = procent * 120;
                 g.setLineWidth(2);
                 if (i < 10) {
@@ -287,24 +289,28 @@ public class GUI_Overlay {
         }
     }
 
-    public void DisplayDice(Graphics g, int x, int y) {
+    public void DisplayDice(Graphics g, int x, int y, GameMap map) {
         int sizeX = 115;
         int sizeY = 115;
         g.setLineWidth(2);
         g.setColor(Color.white);
         g.drawRect(x, y, sizeX, sizeY);
         rollDice.SetPos(x + 5, y + 59);
+        rollDice.draw();
         if (!DiceRolled) {
-            rollDice.draw();
             rollDice.AddText("Roll Dice", Color.black);
-            texture.diceSprites.getSprite(0, 0).draw(x + 5, y + 5, 50, 50);
-            texture.diceSprites.getSprite(0, 0).draw(x + 60, y + 5, 50, 50);
+        } else {
+            rollDice.AddText("Rolled: " + combinedValue, Color.black);
+        }
+        if (die1 != 0 && die2 != 0) {
+            texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
+            texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
+        } else {
+            texture.butt.draw(x + 5, y + 5, 50, 50);
+            texture.butt.draw(x + 60, y + 5, 50, 50);
         }
         if (rollDice.isWithin() && !DiceRolled) {
-            System.out.println("Dice rolled");
             PlayerStats.diceRoll = true;
-            System.out.println("Updating dice stats");
-            //System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2 + " Boolean: " + PlayerStats.diceRoll);
             DiceRolled = true;
         }
         if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0) {
@@ -312,17 +318,42 @@ public class GUI_Overlay {
             die1 = PlayerStats.die1-1;
             die2 = PlayerStats.die2-1;
             combinedValue = die1 + die2 + 2;
-            rolledDice[combinedValue-1]++;
             rolled++;
+            PlayingWindowState.currentResources = Addresources(PlayingWindowState.currentResources, combinedValue, false, map);
             calculateNewDice = false;
             PlayerStats.diceUsed = true;
         }
-        //System.out.println("playerstats diceroll value: " + PlayerStats.diceRoll + " DiceRolled: " + DiceRolled + " showNewStats: " + showNewStats);
-        if (DiceRolled) {
-            rollDice.draw();
+    }
+
+    public void DisplayDiceNotYourTurn(Graphics g, int x, int y, GameMap map) {
+        int sizeX = 115;
+        int sizeY = 115;
+        g.setLineWidth(2);
+        g.setColor(Color.white);
+        g.drawRect(x, y, sizeX, sizeY);
+        rollDice.SetPos(x + 5, y + 59);
+        rollDice.draw();
+        if (!calculateNewDice) {
             rollDice.AddText("Rolled: " + combinedValue, Color.black);
+        } else {
+            rollDice.AddText("Waiting for roll", Color.black);
+        }
+        if (die1 != 0 && die2 != 0) {
             texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
             texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
+        } else {
+            texture.butt.draw(x + 5, y + 5, 50, 50);
+            texture.butt.draw(x + 60, y + 5, 50, 50);
+        }
+        if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0) {
+            System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2 + " Boolean: " + PlayerStats.diceRoll);
+            die1 = PlayerStats.die1-1;
+            die2 = PlayerStats.die2-1;
+            combinedValue = die1 + die2 + 2;
+            rolled++;
+            PlayingWindowState.currentResources = Addresources(PlayingWindowState.currentResources, combinedValue, false, map);
+            calculateNewDice = false;
+            PlayerStats.diceUsed = true;
         }
     }
 
@@ -387,5 +418,24 @@ public class GUI_Overlay {
             PlayerStats.endTurn = true;
             DiceRolled = false;
         }
+    }
+
+    public int[] Addresources(int[] input, int diceRoll,boolean isCity, GameMap map) {
+        ArrayList<Tile> tiles = map.tilesYieldingResource(diceRoll);
+        for (int i = 0; i < tiles.size(); i++) {
+            String tmp_res = tiles.get(i).getTileType();
+            System.out.println("Rolled: " + diceRoll);
+            System.out.println((i+1) + ": " + tmp_res);
+            for (int j = 0; j < 5; j++) {
+                if (tmp_res.equals(resourceTypes[j])) {
+                    if (isCity) {
+                        input[i] += 2;
+                    } else {
+                        input[i]++;
+                    }
+                }
+            }
+        }
+        return input;
     }
 }

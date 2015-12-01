@@ -31,6 +31,7 @@ public class ServerData
     public boolean[] playerturn = new boolean[] {true, false, false, false};
     public Connection c;
     boolean first = true;
+    public int[] rolledDiceStatistics = new int[]{0,0,0,0,0,0,0,0,0,0,0,0};
 
     Integer[] yieldNumbers = {2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12};
     ArrayList<Integer> listOfYieldNumbers = new ArrayList<Integer>(Arrays.asList(yieldNumbers));
@@ -64,5 +65,6 @@ public class ServerData
         PlayerStats.endTurn = endTurn;
         PlayerStats.diceRoll = diceRoll;
         PlayerStats.diceUsed = diceUsed;
+        PlayerStats.rolledDiceStatistics = rolledDiceStatistics;
     }
 }

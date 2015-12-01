@@ -21,8 +21,7 @@ public class PlayingWindowState extends BasicGameState
     int theHeight = Main.ScreenHeight;
     String[] names = new String [] {"Fred", "George", "Ron", "Ginny"};
     GUI_Overlay gui_overlay;
-    int[] currentResources = new int[5];
-    //int turn = 0;
+    public static int[] currentResources = new int[5];
     boolean yourTurn = false;
 
     GameMap map;
@@ -88,7 +87,7 @@ public class PlayingWindowState extends BasicGameState
             buildMap = false;
         }
         map.render(g);
-        gui_overlay.PlayerList(15, 40, g, PlayerStats.names, PlayerStats.points, PlayerStats.ID);
+        gui_overlay.PlayerList(15, 40, g, PlayerStats.names, PlayerStats.points, PlayerStats.turn);
         gui_overlay.ResourceBar(Main.ScreenWidth/2-250, 10, g, currentResources[0], currentResources[1], currentResources[2], currentResources[3], currentResources[4]);
         gui_overlay.BuildingWindow(g, theWidth - 205, theHeight - 275, 200, 270);
         gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, gui_overlay.trade, PlayerStats.names[PlayerStats.turn], g);
@@ -98,8 +97,10 @@ public class PlayingWindowState extends BasicGameState
         //System.out.println("Is it your turn: " + PlayerStats.playerturn[PlayerStats.ID - 1]);
         if (PlayerStats.playerturn[PlayerStats.ID - 1]) {
             gui_overlay.TradeWithWindow(Main.ScreenWidth - 215, 205, g, names);
-            gui_overlay.DisplayDice(g, theWidth - 172, 75);
+            gui_overlay.DisplayDice(g, theWidth - 172, 75, map);
             gui_overlay.EndTurn(theWidth - 190, 370);
+        } else {
+            gui_overlay.DisplayDiceNotYourTurn(g, theWidth - 172, 75, map);
         }
 
         g.setColor(Color.white);

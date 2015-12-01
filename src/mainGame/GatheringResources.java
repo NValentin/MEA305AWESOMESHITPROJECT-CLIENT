@@ -17,7 +17,7 @@ public class GatheringResources {
         this.map = map;
     }
 
-    public int[] Addresources(int[] input, int diceRoll,boolean isCity) {
+    public int[] Addresources(int[] input, int diceRoll,boolean isCity, GameMap map) {
         tiles = map.tilesYieldingResource(diceRoll);
         for (int i = 0; i < tiles.size(); i++) {
             String tmp_res = tiles.get(i).getTileType();

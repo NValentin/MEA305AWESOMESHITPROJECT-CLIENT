@@ -23,6 +23,7 @@ public class PlayerStats {
     public static boolean[] playerturn = new boolean[]{true,false,false,false};
     public static Color[] playerColors = new Color[]{Color.black, Color.blue, Color.red, Color.magenta, Color.cyan};
     public static boolean diceUsed;
+    public static int[] rolledDiceStatistics = new int[]{0,0,0,0,0,0,0,0,0,0,0,0};
 
     //Stats for all players
     public static String[] names = new String[]{" "," "," "," "};

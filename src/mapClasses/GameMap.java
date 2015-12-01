@@ -1,10 +1,7 @@
 package mapClasses;
 
 import Network.Network;
-import mainGame.House;
-import mainGame.Main;
-import mainGame.PlayerStats;
-import mainGame.Road;
+import mainGame.*;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.*;
@@ -31,6 +28,8 @@ public class GameMap
     public static int[] deSerializedRoad = new int[]{0, 0};
 
     public static boolean[] build_buttons = new boolean[]{false, false, false, false};
+
+    Thief thief;
 
     private boolean hasHouse = false;
 
@@ -204,6 +203,8 @@ public class GameMap
                     {
                         type = listOfTileTypes.remove(listOfTileTypes.size() - 1);
                         tile.setTileType(type);
+                        if (tile.getTileType().matches("Desert"))
+                            tile.hasThief = true;
                     }
                 }
 
@@ -239,6 +240,8 @@ public class GameMap
                     {
                         type = listOfTileTypes.remove(listOfTileTypes.size() - 1);
                         tile.setTileType(type);
+                        if (tile.getTileType().matches("Desert"))
+                            tile.hasThief = true;
                     }
                 }
 
@@ -370,6 +373,10 @@ public class GameMap
                         Layout.hexToPixel(mapLayout, tile).getX() - 6,
                         Layout.hexToPixel(mapLayout, tile).getY() - 8
                 );
+            }
+            if (tile.hasThief){
+                thief = new Thief(new Point(Layout.hexToPixel(mapLayout, tile).getX(),Layout.hexToPixel(mapLayout, tile).getY()));
+                thief.render(g);
             }
         }
 

@@ -62,6 +62,7 @@ public class Network extends Listener
 
             GameMap.deSerializedHouse = serverData.serializedHouse;
             GameMap.deSerializedRoad = serverData.serializedRoad;
+            GameMap.deSerializedCity = serverData.serializedCity;
 
             PlayerStats.playerturn = serverData.playerturn;
             PlayerStats.die1 = serverData.die1;

@@ -44,6 +44,7 @@ public class GameClient extends Listener implements Runnable
         updateChat();
         updateHouses();
         updateRoads();
+        updateCities();
         updatePlayerTurn();
         updateDice();
     }
@@ -113,6 +114,17 @@ public class GameClient extends Listener implements Runnable
             clientData.pack();
             network.client.sendUDP(clientData);
             GameMap.serializedRoad[1] = 0;
+        }
+    }
+
+    void updateCities()
+    {
+        if (GameMap.serializedCity != 0)
+        {
+            ClientData clientData = new ClientData();
+            clientData.pack();
+            network.client.sendUDP(clientData);
+            GameMap.serializedCity = 0;
         }
     }
 

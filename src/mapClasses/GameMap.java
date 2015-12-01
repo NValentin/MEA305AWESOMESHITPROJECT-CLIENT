@@ -30,6 +30,9 @@ public class GameMap
     public static int[] serializedRoad = new int[]{0, 0};
     public static int[] deSerializedRoad = new int[]{0, 0};
 
+    public static int serializedCity = 0;
+    public static int deSerializedCity = 0;
+
     public static boolean[] build_buttons = new boolean[]{false, false, false, false};
 
     Thief thief;
@@ -161,7 +164,7 @@ public class GameMap
         for (Tile tile : map)
             if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
                 thiefPositions.add(new Circle(Layout.hexToPixel(mapLayout, tile).getX(),
-                        Layout.hexToPixel(mapLayout, tile).getY(), 20 ));
+                        Layout.hexToPixel(mapLayout, tile).getY(), 20));
     }
 
     public void addHouse(int indexPos, int playerID)
@@ -251,7 +254,8 @@ public class GameMap
                     {
                         type = listOfTileTypes.remove(listOfTileTypes.size() - 1);
                         tile.setTileType(type);
-                        if (tile.getTileType().matches("Desert")) {
+                        if (tile.getTileType().matches("Desert"))
+                        {
                             thief = new Thief(new Point(Layout.hexToPixel(mapLayout, tile).getX(), Layout.hexToPixel(mapLayout, tile).getY()));
                             tile.hasThief = true;
                         }
@@ -371,9 +375,10 @@ public class GameMap
         {
             for (int i = 0; i < houses.size(); i++)
             {
-                if (checkMouseOverHouse(i) && gc.getInput().isMousePressed(0))
+                if (checkMouseOverHouse(i) && gc.getInput().isMousePressed(0)
+                        && houses.get(i).getPlayerID() == PlayerStats.ID)
                 {
-                    houses.get(i).upgradeHouse();
+                    serializeCity(i);
                     build_buttons[3] = false;
                 }
             }
@@ -524,6 +529,16 @@ public class GameMap
     {
         if (housePlots[deSerializedHouse[1]] != null)
             addHouse(deSerializedHouse[0], deSerializedHouse[1]);
+    }
+
+    public void serializeCity(int indexPos)
+    {
+        serializedCity = indexPos;
+    }
+
+    public void deSerializeCity()
+    {
+        houses.get(deSerializedCity).upgradeHouse();
     }
 
     private void serializeRoad(int roadPlotPos)

@@ -1,13 +1,11 @@
 package mapClasses;
 
 import Network.Network;
-import mainGame.House;
-import mainGame.Main;
-import mainGame.PlayerStats;
-import mainGame.Road;
+import mainGame.*;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.*;
+import sun.nio.ch.Net;
 
 import java.util.*;
 
@@ -16,14 +14,31 @@ public class GameMap
     private static Layout mapLayout;
     private ArrayList<Tile> map;
 
-    private ArrayList<Circle> housePlots;
-    private ArrayList<House> houses;
+    private Circle[] housePlots;
+    public ArrayList<House> houses;
 
-    private ArrayList<Line> roadPlots;
+    private int houseRadius;
+
+    private Line[] roadPlots;
     private ArrayList<Road> roads;
 
-    public static float[] serializedHouse = new float[]{0, 0, 0};
-    public static float[] deSerializedHouse = new float[]{0, 0, 0};
+    private ArrayList<Circle> thiefPositions;
+    private static boolean moveThief = false;
+
+    public static int[] serializedHouse = new int[]{0, 0};
+    public static int[] deSerializedHouse = new int[]{0, 0};
+
+    public static int[] serializedRoad = new int[]{0, 0};
+    public static int[] deSerializedRoad = new int[]{0, 0};
+
+    public static int serializedCity = 0;
+    public static int deSerializedCity = 0;
+
+    public static boolean[] build_buttons = new boolean[]{false, false, false, false};
+
+    Thief thief;
+
+    private boolean hasHouse = false;
 
     public GameMap()
     {
@@ -32,70 +47,14 @@ public class GameMap
     public void GameMapGameMap()
     {
         int mapTileSize = 55;
+        houseRadius = 10;
         buildMap(mapTileSize, Layout.pointy);
         findHousePlots();
         findRoadPlots();
+        findThiefPlots();
 
         houses = new ArrayList<>();
         roads = new ArrayList<>();
-    }
-
-    private void findHousePlots()
-    {
-        housePlots = new ArrayList<>();
-
-        for (Tile tile : map)
-        {
-            if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
-            {
-                ArrayList<Point> centerPoints = Layout.polygonCorners(mapLayout, tile);
-                for (Point point : centerPoints)
-                {
-                    Circle tmpCircle = new Circle(point.getX(), point.getY(), 10);
-                    if (!housePlots.contains(tmpCircle))
-                        housePlots.add(tmpCircle);
-                }
-            }
-        }
-    }
-
-    public void addHouse(Circle c, int playerID, boolean wasReceivedFromServer)
-    {
-        if (!housePlots.isEmpty())
-        {
-            House tmpHouse = new House(c, playerID);
-            houses.add(tmpHouse);
-            if (!wasReceivedFromServer)
-                serializeHouse(c.getCenterX(), c.getCenterY(), PlayerStats.ID);
-
-            removeHousePlot(tmpHouse, c);
-            removeHouseNeighborPlots(tmpHouse);
-        }
-    }
-
-    private void findRoadPlots()
-    {
-        roadPlots = new ArrayList<>();
-        for (Tile tile : map)
-        {
-            if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
-            {
-                ArrayList<Point> tmpPlots = Layout.polygonCorners(mapLayout, tile);
-                for (int i = 0; i < tmpPlots.size() - 1; i++)
-                {
-                    Line l = new Line(tmpPlots.get(i).getX(), tmpPlots.get(i).getY(),
-                            tmpPlots.get(i + 1).getX(), tmpPlots.get(i + 1).getY());
-
-                    if (!roadPlots.contains(l))
-                        roadPlots.add(l);
-                }
-            }
-        }
-    }
-
-    public void addRoad(Line roadLine, int playerID)
-    {
-        roads.add(new Road(roadLine, playerID));
     }
 
     private void buildMap(int tileSize, Orientation orientation)
@@ -123,6 +82,108 @@ public class GameMap
         }
     }
 
+    private void findHousePlots() //should be 54
+    {
+        housePlots = new Circle[54];
+        int counter = 1;
+
+        for (Tile tile : map)
+        {
+            if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
+            {
+                ArrayList<Point> centerPoints = Layout.polygonCorners(mapLayout, tile);
+
+                for (Point point : centerPoints)
+                {
+                    Circle tmpCircle = new Circle(point.getX(), point.getY(), houseRadius);
+                    if (housePlots[0] == null)
+                    {
+                        housePlots[0] = tmpCircle;
+                    } else
+                    {
+                        boolean canAdd = true;
+                        for (int i = 0; i < housePlots.length; i++)
+                        {
+                            if (housePlots[i] != null && housePlots[i].contains(tmpCircle.getCenterX(), tmpCircle.getCenterY()))
+                                canAdd = false;
+                        }
+                        if (canAdd)
+                        {
+                            housePlots[counter] = tmpCircle;
+                            counter++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void findRoadPlots() //should be 72
+    {
+        roadPlots = new Line[72];
+        int counter = 0;
+
+        for (Tile tile : map)
+        {
+            if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
+            {
+                ArrayList<Point> tmpPlots = Layout.polygonCorners(mapLayout, tile);
+                for (int i = 0; i < tmpPlots.size(); i++)
+                {
+                    int iPlusOne = (i == tmpPlots.size() - 1) ? (-5) : 1;
+
+                    Line l = new Line(tmpPlots.get(i).getX(), tmpPlots.get(i).getY(),
+                            tmpPlots.get(i + iPlusOne).getX(), tmpPlots.get(i + iPlusOne).getY());
+
+                    if (roadPlots[0] == null)
+                    {
+                        roadPlots[0] = l;
+                    } else
+                    {
+                        boolean canAdd = true;
+                        for (int j = 0; j < roadPlots.length; j++)
+                        {
+                            if (roadPlots[j] != null && roadPlots[j].intersects
+                                    (new Circle(l.getCenterX(), l.getCenterY(), 3)))
+                            {
+                                canAdd = false;
+                            }
+                        }
+                        if (canAdd)
+                        {
+                            roadPlots[counter] = l;
+                            counter++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void findThiefPlots() //Should be 19
+    {
+        thiefPositions = new ArrayList<>();
+        for (Tile tile : map)
+            if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
+                thiefPositions.add(new Circle(Layout.hexToPixel(mapLayout, tile).getX(),
+                        Layout.hexToPixel(mapLayout, tile).getY(), 20));
+    }
+
+    public void addHouse(int indexPos, int playerID)
+    {
+        House tmpHouse = new House(housePlots[indexPos], playerID);
+        houses.add(tmpHouse);
+
+        removeHouseNeighborPlots(tmpHouse);
+        removeHousePlot(indexPos);
+    }
+
+    public void addRoad(int indexPos, int playerID)
+    {
+        roads.add(new Road(roadPlots[indexPos], playerID));
+        roadPlots[indexPos] = null;
+    }
+
     private void assignTileVariablesFromLocal()
     {
         Integer[] yieldNumbers = {2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12};
@@ -139,11 +200,15 @@ public class GameMap
                         "Desert"));
         Collections.shuffle(listOfTileTypes);
 
+        int counter = 0;
         for (Tile tile : map)
         {
             if (Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3)
             {
                 tile.setTileType("Water");
+
+
+                counter++;
             } else
             {
                 String type = tile.getTileType();
@@ -154,6 +219,11 @@ public class GameMap
                     {
                         type = listOfTileTypes.remove(listOfTileTypes.size() - 1);
                         tile.setTileType(type);
+                        if (tile.getTileType().matches("Desert"))
+                        {
+                            thief = new Thief(new Point(Layout.hexToPixel(mapLayout, tile).getX(), Layout.hexToPixel(mapLayout, tile).getY()));
+                            tile.hasThief = true;
+                        }
                     }
                 }
 
@@ -189,6 +259,11 @@ public class GameMap
                     {
                         type = listOfTileTypes.remove(listOfTileTypes.size() - 1);
                         tile.setTileType(type);
+                        if (tile.getTileType().matches("Desert"))
+                        {
+                            thief = new Thief(new Point(Layout.hexToPixel(mapLayout, tile).getX(), Layout.hexToPixel(mapLayout, tile).getY()));
+                            tile.hasThief = true;
+                        }
                     }
                 }
 
@@ -215,44 +290,109 @@ public class GameMap
         return resourceYieldingTiles;
     }
 
-    private void removeHousePlot(House house, Circle c)
+    private void removeHousePlot(int indexPos)
     {
-        if (house.getHouseCircle().contains(c.getCenterX(), c.getCenterY()))
-            housePlots.remove(c);
+        if (housePlots[indexPos] != null)
+            housePlots[indexPos] = null;
     }
 
     private void removeHouseNeighborPlots(House house)
     {
-        if (!housePlots.isEmpty())
-            for (int i = 0; i <= housePlots.size() - 1; i++)
-            {
-                if (new Vector2f(housePlots.get(i).getCenterX(), housePlots.get(i).getCenterY()).distance
-                        (new Vector2f(house.getHouseCircle().getCenterX(),
-                                house.getHouseCircle().getCenterY())) < 65)
-                {
-                    housePlots.remove(housePlots.get(i));
-                }
-            }
-    }
-
-    public void update()
-    {
-        if (!housePlots.isEmpty())
+        for (int i = 0; i < housePlots.length; i++)
         {
-            if (deSerializedHouse[2] != 0)
+            if (housePlots[i] != null)
             {
-                addHouse(deSerializedHouse().getHouseCircle(), deSerializedHouse().getPlayerID(), true);
-            }
-
-            for (int i = 0; i <= housePlots.size() - 1; i++)
-            {
-                if (checkMouseOver(housePlots.get(i)) && Mouse.isButtonDown(0))
-                    addHouse(housePlots.get(i), PlayerStats.ID, false);
+                int distance = (int)
+                        new Vector2f(house.getHouseCircle().getCenterX(), house.getHouseCircle().getCenterY())
+                                .distance
+                                        (new Vector2f(housePlots[i].getCenterX(), housePlots[i].getCenterY()));
+                if (distance < 65)
+                {
+                    housePlots[i] = null;
+                }
             }
         }
     }
 
-    public void render(Graphics g) throws SlickException
+    public void update(GameContainer gc)
+    {
+        while (moveThief)
+        {
+            for (Circle circle : thiefPositions)
+            {
+                if (circle.contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()) && gc.getInput().isKeyPressed(0))
+                {
+                    thief.moveThief(new Point(circle.getCenterX(), circle.getCenterY()));
+                    moveThief = false;
+                }
+            }
+        }
+
+        if (deSerializedHouse[1] != 0)
+        {
+            deSerializeHouse();
+            deSerializedHouse[1] = 0;
+            System.out.println(houses.size());
+        }
+        if (deSerializedRoad[1] != 0)
+        {
+            deSerializeRoad();
+            deSerializedRoad[1] = 0;
+            System.out.println(roads.size());
+        }
+
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[1])
+        {
+            for (int i = 0; i < housePlots.length; i++)
+            {
+                if (checkMouseOverHousePlot(i) && gc.getInput().isMousePressed(0))
+                {
+                    serializeHouse(i);
+                    if (!Network.isConnected)
+                    {
+                        addHouse(i, 1);
+                    }
+                    hasHouse = true;
+                    build_buttons[1] = false;
+                }
+            }
+
+        }
+
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[0] && hasHouse)
+        {
+            for (int i = 0; i < roadPlots.length; i++)
+            {
+                if (checkOverRoadPlot(i) && gc.getInput().isMousePressed(0))
+                {
+                    serializeRoad(i);
+                    if (!Network.isConnected)
+                    {
+                        addRoad(i, 1);
+                    }
+                    build_buttons[0] = false;
+                }
+            }
+
+        }
+
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[2])
+        {
+            for (int i = 0; i < houses.size(); i++)
+            {
+                if (checkMouseOverHouse(i) && gc.getInput().isMousePressed(0)
+                        && houses.get(i).getPlayerID() == PlayerStats.ID)
+                {
+                    serializeCity(i);
+                    if (!Network.isConnected)
+                        houses.get(i).upgradeHouse();
+                    build_buttons[3] = false;
+                }
+            }
+        }
+    }
+
+    private void drawTiles(Graphics g) throws SlickException
     {
         for (Tile tile : map)
         {
@@ -271,90 +411,173 @@ public class GameMap
                         Layout.hexToPixel(mapLayout, tile).getY() - 8
                 );
             }
+            if (tmpPoly.contains(thief.getPoint()))
+                tile.hasThief = true;
+            else
+                tile.hasThief = false;
+
         }
+    }
 
-        if (!housePlots.isEmpty())
+    private void drawHousePlots(Graphics g) throws SlickException
+    {
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[1])
         {
-            for (Circle c : housePlots)
+            if (!hasHouse)
             {
-                if (checkMouseOver(c))
-                    g.fill(c);
-                else
-                    g.draw(c);
-
-            }
-        }
-
-        if (!roadPlots.isEmpty())
-        {
-            for (Line l : roadPlots)
-            {
-                g.setLineWidth(5);
-                Circle mouseC = new Circle(Mouse.getX(), Main.ScreenHeight - Mouse.getY(), 5);
-
-                if (l.intersects(mouseC))
+                for (int i = 0; i < housePlots.length; i++)
                 {
-                    g.setColor(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
-                    g.draw(l);
-                } else
-                {
-                    g.setColor(Color.white);
-                    g.draw(l);
+                    if (housePlots[i] != null && checkMouseOverHousePlot(i))
+                        g.fill(housePlots[i]);
+                    else if (housePlots[i] != null)
+                        g.draw(housePlots[i]);
+
                 }
+            } else
+            {
+                for (int i = 0; i < housePlots.length; i++)
+                    if (!roads.isEmpty() && housePlots[i] != null)
+                        for (Road road : roads)
+                            if (road.getPlayerID() == PlayerStats.ID)
+                            {
+                                Line roadLine = road.getRoadLine();
+                                Circle c1 = new Circle(roadLine.getX1(), roadLine.getY1(), 5);
+                                Circle c2 = new Circle(roadLine.getX2(), roadLine.getY2(), 5);
+                                if (housePlots[i].intersects(c1) || housePlots[i].intersects(c2))
+                                {
+                                    if (checkMouseOverHousePlot(i))
+                                        g.fill(housePlots[i]);
+                                    else
+                                        g.draw(housePlots[i]);
+                                }
+                            }
             }
         }
+    }
+
+    private void drawRoadPlots(Graphics g) throws SlickException
+    {
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[0] && hasHouse)
+        {
+            for (int i = 0; i < roadPlots.length; i++)
+            {
+                if (!houses.isEmpty() && roadPlots[i] != null)
+                {
+                    for (House house : houses)
+                    {
+                        if (house.getHouseCircle().intersects(roadPlots[i]) && house.getPlayerID() == PlayerStats.ID)
+                        {
+                            if (checkOverRoadPlot(i))
+                            {
+                                g.setLineWidth(8);
+                                g.draw(roadPlots[i]);
+                            } else if (roadPlots[i] != null)
+                            {
+                                g.setLineWidth(3);
+                                g.draw(roadPlots[i]);
+                            }
+                        }
+                    }
+                }
+
+                if (!roads.isEmpty() && roadPlots[i] != null)
+                    for (Road road : roads)
+                        if (road.getPlayerID() == PlayerStats.ID)
+                        {
+                            Line roadLine = road.getRoadLine();
+                            Circle c1 = new Circle(roadLine.getX1(), roadLine.getY1(), 5);
+                            Circle c2 = new Circle(roadLine.getX2(), roadLine.getY2(), 5);
+                            if (c1.intersects(roadPlots[i]) || c2.intersects(roadPlots[i]))
+                                if (checkOverRoadPlot(i))
+                                {
+                                    g.setLineWidth(8);
+                                    g.draw(roadPlots[i]);
+                                } else if (roadPlots[i] != null)
+                                {
+                                    g.setLineWidth(3);
+                                    g.draw(roadPlots[i]);
+                                }
+                        }
+
+            }
+        }
+    }
+
+    public void render(Graphics g) throws SlickException
+    {
+        drawTiles(g);
+        drawHousePlots(g);
+        drawRoadPlots(g);
+
+        thief.render(g);
 
         if (!roads.isEmpty())
-        {
             for (Road road : roads)
             {
                 road.render(g);
             }
-        }
 
         if (!houses.isEmpty())
-        {
             for (House house : houses)
             {
                 house.render(g);
             }
-        }
+
+        if (moveThief)
+            for (Circle circle : thiefPositions)
+                g.draw(circle);
     }
 
-    private void serializeHouse(float centerX, float centerY, int playerID)
+    private void serializeHouse(int housePlotPos)
     {
-        serializedHouse[0] = centerX;
-        serializedHouse[1] = centerY;
-        serializedHouse[2] = (float) playerID;
+        serializedHouse[0] = housePlotPos;
+        serializedHouse[1] = PlayerStats.ID;
     }
 
-    private House deSerializedHouse()
+    public void deSerializeHouse()
     {
-        House tmpHouse = null;
-        if (!housePlots.isEmpty())
-            for (Circle c : housePlots)
-            {
-                if (c.contains(deSerializedHouse[0], deSerializedHouse[1]))
-                {
-                    tmpHouse = new House(new Circle(deSerializedHouse[0], deSerializedHouse[1], 10)
-                            , (int) deSerializedHouse[2]);
-                }
-            }
-        return tmpHouse;
+        if (housePlots[deSerializedHouse[1]] != null)
+            addHouse(deSerializedHouse[0], deSerializedHouse[1]);
     }
 
-    private boolean checkMouseOver(Circle c)
+    public void serializeCity(int indexPos)
     {
-        boolean status;
+        serializedCity = indexPos;
+    }
 
-        if (c.contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()))
-        {
-            status = true;
-        } else
-        {
-            status = false;
-        }
-        return status;
+    public void deSerializeCity()
+    {
+        houses.get(deSerializedCity).upgradeHouse();
+    }
+
+    private void serializeRoad(int roadPlotPos)
+    {
+        serializedRoad[0] = roadPlotPos;
+        serializedRoad[1] = PlayerStats.ID;
+    }
+
+    public void deSerializeRoad()
+    {
+        if (roadPlots[deSerializedRoad[1]] != null)
+            addRoad(deSerializedRoad[0], deSerializedRoad[1]);
+    }
+
+    private boolean checkMouseOverHousePlot(int indexPos)
+    {
+        return housePlots[indexPos] != null &&
+                housePlots[indexPos].contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY());
+    }
+
+    private boolean checkMouseOverHouse(int indexPos)
+    {
+        return houses.get(indexPos).getHouseCircle().contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY());
+    }
+
+    private boolean checkOverRoadPlot(int indexPos)
+    {
+        Circle mouseC = new Circle(Mouse.getX(), Main.ScreenHeight - Mouse.getY(), 5);
+        return roadPlots[indexPos] != null &&
+                roadPlots[indexPos].intersects(mouseC);
     }
 
     private void debugTileInfo()

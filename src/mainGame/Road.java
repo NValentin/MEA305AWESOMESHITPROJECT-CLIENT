@@ -13,38 +13,26 @@ public class Road
 
     public Road(Line roadLine, int playerID)
     {
-        this.roadLine = roadLine;
         this.playerID = playerID;
-        roadColor = getPlayerColor();
+        this.roadLine = roadLine;
+        roadColor = PlayerStats.playerColors[playerID];
     }
 
     public void render(Graphics g)
     {
         g.setColor(roadColor);
-        g.setLineWidth(5);
+        g.setLineWidth(8);
         g.draw(roadLine);
         g.setColor(Color.white);
     }
-    private Color getPlayerColor()
+
+    public Line getRoadLine()
     {
-        Color playerColor = Color.pink;
-        switch (playerID)
-        {
-            case(1):
-                playerColor = Color.blue;
-                break;
-            case(2):
-                playerColor = Color.red;
-                break;
-            case (3):
-                playerColor = Color.white;
-                break;
-            case (4):
-                playerColor = Color.orange;
-                break;
-            default:
-                break;
-        }
-        return playerColor;
+        return roadLine;
+    }
+
+    public int getPlayerID()
+    {
+        return playerID;
     }
 }

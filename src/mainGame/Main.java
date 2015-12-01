@@ -17,7 +17,7 @@ public class Main extends StateBasedGame
 
     public static void main(String[] args) throws SlickException
     {
-        AppGameContainer appgc = new AppGameContainer(new Main("Dick Butt: The Game"));
+        AppGameContainer appgc = new AppGameContainer(new Main("Settlers of Catan"));
 
         appgc.setDisplayMode(ScreenWidth, ScreenHeight, false);
         appgc.setAlwaysRender(true);
@@ -33,6 +33,6 @@ public class Main extends StateBasedGame
         this.addState(new MainMenuState());
         this.addState(new CreatePlayerState());
         this.addState(new JoinLobbyState());
-        this.addState(new PlayingWindow());
+        this.addState(new PlayingWindowState());
     }
 }

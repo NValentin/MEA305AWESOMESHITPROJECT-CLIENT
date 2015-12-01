@@ -1,5 +1,5 @@
 package Network;
-import com.esotericsoftware.kryo.Kryo;
+
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
@@ -10,7 +10,8 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.util.ArrayList;
 
-public class Network extends Listener {
+public class Network extends Listener
+{
 
     Client client;
     int port = 23820;
@@ -21,9 +22,9 @@ public class Network extends Listener {
     public static ArrayList<String> serverListOfTypes;
     public static ArrayList<Integer> serverListOfYieldNumbers;
 
-    public void connect() {
-        client = new Client(16384,2048);
-        client.getKryo().register(PlayerStats.class);
+    public void connect()
+    {
+        client = new Client(16384, 2048);
         client.getKryo().register(int[].class);
         client.getKryo().register(ServerData.class);
         client.getKryo().register(ClientData.class);
@@ -32,49 +33,39 @@ public class Network extends Listener {
         client.getKryo().register(ArrayList.class);
         client.getKryo().register(Integer.class);
         client.getKryo().register(Integer[].class);
-        client.getKryo().register(float[].class);
 
         client.addListener(this);
 
-        ip = client.discoverHost(port,port);
+        ip = client.discoverHost(port, port);
         client.start();
-        try {
+        try
+        {
             client.connect(5000, ip, port, port);
             isConnected = true;
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void received(Connection c, Object o) {
-        if (o instanceof PacketAddPlayer) {
-            PacketAddPlayer packet = (PacketAddPlayer) o;
-            PlayerStats newPlayerStats = new PlayerStats();
-            GameClient.players.put(packet.ID, newPlayerStats);
-        }
-        if (o instanceof PacketRemovePlayer) {
-            PacketRemovePlayer packet = (PacketRemovePlayer) o;
-            GameClient.players.remove(packet.ID);
-        }
-        if (o instanceof ServerData){
-            serverData = (ServerData) o;
-            serverData.unpack();
-            //PlayerStats.names = receivedPacket.names;
-            //PlayerStats.lobbyReadyAll = receivedPacket.lobbyReadyAll;
-            for (int i =0; i<PlayerStats.names.length; i++){
-            }
-        }
+    public void received(Connection c, Object o)
+    {
         if (o instanceof ServerData)
         {
             serverData = (ServerData) o;
+            serverData.unpack(c);
+
             serverListOfTypes = serverData.listOfTileTypes;
             serverListOfYieldNumbers = serverData.listOfYieldNumbers;
-        }
-        if (o instanceof  ServerData)
-        {
-            serverData = (ServerData) o;
+
             GameMap.deSerializedHouse = serverData.serializedHouse;
+            GameMap.deSerializedRoad = serverData.serializedRoad;
+            GameMap.deSerializedCity = serverData.serializedCity;
+
+            PlayerStats.playerturn = serverData.playerturn;
+            PlayerStats.die1 = serverData.die1;
+            PlayerStats.die2 = serverData.die2;
         }
     }
 }

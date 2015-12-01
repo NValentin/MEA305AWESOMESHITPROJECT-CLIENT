@@ -17,13 +17,11 @@ public class GatheringResources {
         this.map = map;
     }
 
-    public int[] Addresources(int[] input, int diceRoll,boolean isCity) {
+    public int[] Addresources(int[] input, int diceRoll,boolean isCity, GameMap map) {
         tiles = map.tilesYieldingResource(diceRoll);
         for (int i = 0; i < tiles.size(); i++) {
             String tmp_res = tiles.get(i).getTileType();
-            System.out.println(tmp_res);
             for (int j = 0; j < 5; j++) {
-                System.out.println(resourceTypes[j]);
                 if (tmp_res.equals(resourceTypes[j])) {
                     if (isCity) {
                         input[i] += 2;

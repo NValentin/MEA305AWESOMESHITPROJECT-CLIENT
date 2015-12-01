@@ -1,43 +1,32 @@
 package mainGame;
 
-
-import org.lwjgl.Sys;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Circle;
-import org.newdawn.slick.geom.Point;
-import org.newdawn.slick.geom.Shape;
 
 public class House
 {
-
     private Boolean isCity;
-
-    public int getPlayerID()
-    {
-        return playerID;
-    }
-
     private int playerID;
-
     private Color buildingColor;
     private Circle houseCircle;
 
     public House(Circle circle, int playerID)
     {
         isCity = false;
-        houseCircle = circle;
         this.playerID = playerID;
+        houseCircle = circle;
+        buildingColor = PlayerStats.playerColors[playerID];
+        if (playerID == PlayerStats.ID)
+            PlayerStats.point +=1;
 
-        buildingColor = getPlayerColor();
-        System.out.println(PlayerStats.ID);
     }
 
     public void render(Graphics g)
     {
         g.setColor(buildingColor);
-        g.texture(houseCircle, this.getTexture(), true);
+        g.texture(houseCircle, getTexture(), true);
         g.setColor(Color.white);
     }
 
@@ -55,33 +44,17 @@ public class House
     public void upgradeHouse()
     {
         isCity = true;
+        if (playerID == PlayerStats.ID)
+            PlayerStats.point +=1;
+    }
+
+    public int getPlayerID()
+    {
+        return playerID;
     }
 
     public Circle getHouseCircle()
     {
         return houseCircle;
-    }
-
-    public Color getPlayerColor()
-    {
-        Color playerColor = Color.pink;
-        switch (playerID)
-        {
-            case(1):
-                playerColor = Color.blue;
-                break;
-            case(2):
-                playerColor = Color.red;
-                break;
-            case (3):
-                playerColor = Color.white;
-                break;
-            case (4):
-                playerColor = Color.orange;
-                break;
-            default:
-                break;
-        }
-        return playerColor;
     }
 }

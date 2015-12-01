@@ -24,6 +24,10 @@ public class PlayerStats {
     public static Color[] playerColors = new Color[]{Color.black, Color.blue, Color.red, Color.magenta, Color.cyan};
     public static boolean diceUsed;
     public static int[] rolledDiceStatistics = new int[]{0,0,0,0,0,0,0,0,0,0,0,0};
+    public static int[] tradingResources = new int[10];
+    public static boolean[] tradingWithyou = new boolean[] {false, false, false, false, false};
+    public static boolean tradeHandled = true;
+    public static boolean tradeAccpeted, tradingComplete;
 
     //Stats for all players
     public static String[] names = new String[]{" "," "," "," "};

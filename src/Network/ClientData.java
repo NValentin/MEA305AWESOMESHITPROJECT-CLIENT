@@ -18,6 +18,10 @@ public class ClientData
     public int serializedCity = 0;
     public boolean endTurn = false, diceRoll, diceUsed;
     public boolean gameEnded = false;
+    public int[] tradingResources = new int[10];
+    public boolean[] tradingWithyou = new boolean[] {false, false, false, false, false};
+    public boolean tradeHandled = true;
+    public boolean tradeAccepted, tradingComplete;
 
     public ClientData()
     {
@@ -40,6 +44,12 @@ public class ClientData
         serializedCity = GameMap.serializedCity;
         endTurn = PlayerStats.endTurn;
         diceUsed = PlayerStats.diceUsed;
+        tradingResources = PlayerStats.tradingResources;
+        tradingWithyou = PlayerStats.tradingWithyou;
+        tradeHandled = PlayerStats.tradeHandled;
+        tradeAccepted = PlayerStats.tradeAccpeted;
+        tradingComplete = PlayerStats.tradingComplete;
+
     }
 
 }

@@ -47,6 +47,8 @@ public class GameClient extends Listener implements Runnable
         updateCities();
         updatePlayerTurn();
         updateDice();
+        updateTrade();
+        updateTradeHandled();
     }
 
     void updatePlayerName()
@@ -142,6 +144,22 @@ public class GameClient extends Listener implements Runnable
             clientData.pack();
             network.client.sendUDP(clientData);
             PlayerStats.diceRoll = false;
+        }
+    }
+    void updateTrade() {
+        if (PlayerStats.tradingWithyou[4]) {
+            ClientData clientData = new ClientData();
+            clientData.pack();
+            network.client.sendUDP(clientData);
+            PlayerStats.tradingWithyou[4] = false;
+        }
+    }
+    void updateTradeHandled() {
+        if (PlayerStats.tradeHandled) {
+            ClientData clientData = new ClientData();
+            clientData.pack();
+            network.client.sendUDP(clientData);
+            PlayerStats.tradeHandled = false;
         }
     }
 }

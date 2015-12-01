@@ -25,13 +25,18 @@ public class ServerData
     public int[] serializedHouse = new int[]{0, 0};
     public int[] serializedRoad = new int[]{0, 0};
     public int serializedCity = 0;
-    public boolean endTurn = false, diceRoll, diceUsed;
+    public boolean endTurn = false, diceRoll;
+    public boolean diceUsed = true;
     public int turnorderturn = 1;
     public boolean gameEnded = false;
     public boolean[] playerturn = new boolean[] {true, false, false, false};
     public Connection c;
     boolean first = true;
     public int[] rolledDiceStatistics = new int[]{0,0,0,0,0,0,0,0,0,0,0,0};
+    public int[] tradingResources = new int[10];
+    public boolean[] tradingWithyou = new boolean[] {false, false, false, false, false};
+    public boolean tradeHandled = true;
+    public boolean tradeAccepted, tradingComplete;
 
     Integer[] yieldNumbers = {2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12};
     ArrayList<Integer> listOfYieldNumbers = new ArrayList<Integer>(Arrays.asList(yieldNumbers));
@@ -66,5 +71,10 @@ public class ServerData
         PlayerStats.diceRoll = diceRoll;
         PlayerStats.diceUsed = diceUsed;
         PlayerStats.rolledDiceStatistics = rolledDiceStatistics;
+        PlayerStats.tradingResources = tradingResources;
+        PlayerStats.tradingWithyou = tradingWithyou;
+        PlayerStats.tradeHandled = tradeHandled;
+        PlayerStats.tradeAccpeted = tradeAccepted;
+        PlayerStats.tradingComplete = tradingComplete;
     }
 }

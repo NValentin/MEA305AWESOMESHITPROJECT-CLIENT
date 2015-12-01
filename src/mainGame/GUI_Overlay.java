@@ -1,6 +1,7 @@
 package mainGame;
 
 import mapClasses.GameMap;
+import org.lwjgl.Sys;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 
@@ -15,10 +16,11 @@ import mapClasses.Tile;
 public class GUI_Overlay {
 
     boolean DiceRolled, calculateNewDice;
+    int randomInt = 0;
     int die1;
     int die2;
     int combinedValue;
-    float[] procentValue = new float []{0,0,0,0,0,0,0,0,0,0,0,0};
+    float[] procentValue = new float [10];
     int rolled = 0;
     String[] buildingMenuText = new String[] {"Road", "House", "City", "Development Card", "Gives 0 Victory Points", "Gives 1 Victory Points", "Gives 2 Victory Points", "Gives ? Victory Points", "1 Lumber and 1 Brink", "1 Lumber, 1 Wool, 1 Grain, and 1 Brick", "3 Ore and 2 Grin", "1 Wool, 1 Ore, and 1 Grain"};
 
@@ -36,7 +38,7 @@ public class GUI_Overlay {
     boolean offerWindow = false;
     boolean showStatsBool;
     int[] currentResources = new int[5];
-    int[] resources = new int[10];
+    int[] tradingReources = new int[10];
     String tradeWithName = "";
     Button endTurn;
     Font font;
@@ -58,9 +60,9 @@ public class GUI_Overlay {
     public void InitailizeTexture() throws SlickException {
         accept = new Button(theWidth - 155, theHeight - 30, 25, 25, texture.accept);
         decline = new Button(theWidth - 100, theHeight - 30, 25, 25, texture.decline);
-        acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, texture.acceptBig);
-        declineOffer = new Button(theWidth / 2 + 50, theHeight / 2 + 30, 100, 25, texture.declineBig);
-        counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, texture.counterBig);
+        acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, texture.acceptBig, 15);
+        declineOffer = new Button(theWidth / 2 + 50, theHeight / 2 + 30, 100, 25, texture.declineBig, 15);
+        counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, texture.counterBig, 15);
         rollDice = new Button(0, 0, 105, 50, texture.silverButton, 20);
         closeStats = new Button(0, 0, 25, 25, texture.decline);
         showStats = new Button(0, 0, 140, 35, texture.silverButton, 20);
@@ -96,6 +98,9 @@ public class GUI_Overlay {
             if (decline.isWithin()) {
                 System.out.println("Decline");
                 trade = false;
+                PlayerStats.tradeAccpeted = false;
+                PlayerStats.tradingComplete = false;
+                PlayerStats.tradeHandled = true;
             }
         }
     }
@@ -154,11 +159,11 @@ public class GUI_Overlay {
         graphics.setLineWidth(2);
         graphics.drawRect(x, y, 500, 25);
         graphics.drawString("Wool:", x + 5, y + 3);
-        graphics.drawString(String.valueOf(lumber),x+80, y+3);
+        graphics.drawString(String.valueOf(wool),x+80, y+3);
         graphics.drawString("Ore:", x + 105, y + 3);
         graphics.drawString(String.valueOf(ore),x+180, y+3);
         graphics.drawString("Lumber:", x + 205, y + 3);
-        graphics.drawString(String.valueOf(wool),x+280, y+3);
+        graphics.drawString(String.valueOf(lumber),x+280, y+3);
         graphics.drawString("Bricks:", x + 305, y + 3);
         graphics.drawString(String.valueOf(bricks),x+380, y+3);
         graphics.drawString("Grain:", x + 405, y + 3);
@@ -175,35 +180,38 @@ public class GUI_Overlay {
             g.fill(new Rectangle(x, y, 400, 300));
             g.setColor(Color.black);
             g.drawString("Trade with " + tradeWithName, x + 10, y + 20);
-            //g.drawString(_name + "'s offer", x + 10, y +50);
-            g.drawString("Wool:  " + resources[0], x + 10, y + 70);
-            g.drawString("Stone: " + resources[1], x + 10, y + 90);
-            g.drawString("Wood:  " + resources[2], x + 10, y + 110);
-            g.drawString("Clay:  " + resources[3], x + 10, y + 130);
-            g.drawString("Wheat: " + resources[4], x + 10, y + 150);
+            g.drawString("Wool:  " + PlayerStats.tradingResources[5], x + 10, y + 70);
+            g.drawString("Ore:   " + PlayerStats.tradingResources[6], x + 10, y + 90);
+            g.drawString("Lumber:" + PlayerStats.tradingResources[7], x + 10, y + 110);
+            g.drawString("Bricks:" + PlayerStats.tradingResources[8], x + 10, y + 130);
+            g.drawString("Grain: " + PlayerStats.tradingResources[9], x + 10, y + 150);
             g.drawString("for", x + 150, y + 110);
-            g.drawString("Wool:  " + resources[5], x + 250, y + 70);
-            g.drawString("Stone: " + resources[6], x + 250, y + 90);
-            g.drawString("Clay:  " + resources[8], x + 250, y + 110);
-            g.drawString("Wheat: " + resources[9], x + 250, y + 130);
-            g.drawString("Wood:  " + resources[7], x + 250, y + 150);
+            g.drawString("Wool:  " + PlayerStats.tradingResources[0], x + 250, y + 70);
+            g.drawString("Ore:   " + PlayerStats.tradingResources[1], x + 250, y + 90);
+            g.drawString("Lumber:" + PlayerStats.tradingResources[2], x + 250, y + 110);
+            g.drawString("Bricks:" + PlayerStats.tradingResources[3], x + 250, y + 130);
+            g.drawString("Grain: " + PlayerStats.tradingResources[4], x + 250, y + 150);
             acceptOffer.SetPos(x + 10, y + 180);
             declineOffer.SetPos(x + 250, y + 180);
             counterOffer.SetPos(x + 135, y + 180);
             acceptOffer.draw();
+            acceptOffer.AddText("Accept Offer", Color.black);
             declineOffer.draw();
-            counterOffer.draw();
+            declineOffer.AddText("Decline Offer", Color.black);
             if (acceptOffer.isWithin()) {
                 tradeWindow = false;
                 trade = true;
+                PlayerStats.tradeAccpeted = true;
+                PlayerStats.tradingComplete = false;
+                PlayerStats.tradeHandled = true;
             }
             if (declineOffer.isWithin()) {
                 tradeWindow = false;
                 trade = true;
-            }
-            if (counterOffer.isWithin()) {
-                tradeWindow = false;
-                offerWindow = true;
+                PlayerStats.tradeAccpeted = false;
+                PlayerStats.tradingComplete = false;
+                PlayerStats.tradeHandled = true;
+
             }
             g.setColor(Color.white);
         }
@@ -227,6 +235,7 @@ public class GUI_Overlay {
                 System.out.println("Trading with " + _names[i]);
                 tradeWithName = _names[i];
                 offerWindow = true;
+                PlayingWindowState.tradeId = i;
             }
         }
         g.setColor(Color.white);
@@ -291,7 +300,7 @@ public class GUI_Overlay {
         }
     }
 
-    public void DisplayDice(Graphics g, int x, int y, GameMap map) {
+    public void DisplayDice(Graphics g, int x, int y, GameMap map, boolean yourTurn) {
         int sizeX = 115;
         int sizeY = 115;
         g.setLineWidth(2);
@@ -299,71 +308,66 @@ public class GUI_Overlay {
         g.drawRect(x, y, sizeX, sizeY);
         rollDice.SetPos(x + 5, y + 59);
         rollDice.draw();
-        if (!DiceRolled) {
-            PlayingWindowState.gameInfo = "Your turn! Press 'Roll Dice' to roll the dice";
-            rollDice.AddText("Roll Dice", Color.black);
-        } else {
-            rollDice.AddText("Rolled: " + combinedValue, Color.black);
-        }
-        if (die1 != 0 && die2 != 0) {
-            texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
-            texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
-        } else {
-            texture.butt.draw(x + 5, y + 5, 50, 50);
-            texture.butt.draw(x + 60, y + 5, 50, 50);
-        }
-        if (rollDice.isWithin() && !DiceRolled) {
+        if (yourTurn) {
+            //If it your turn
+            if (!DiceRolled) {
+                PlayingWindowState.gameInfo = "Your turn! Press 'Roll Dice' to roll the dice";
+                rollDice.AddText("Roll Dice", Color.black);
+            } else {
+                rollDice.AddText("Rolled: " + combinedValue, Color.black);
+            }
+            if (PlayerStats.die1 != 0 && PlayerStats.die2 != 0) {
+                texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
+                texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
+            } else {
+                texture.butt.draw(x + 5, y + 5, 50, 50);
+                texture.butt.draw(x + 60, y + 5, 50, 50);
+            }
+            if (rollDice.isWithin()) { //Add " && !DiceRolled" after testing!!!!
 
-            System.out.println("Dice rolled");
-            PlayerStats.diceRoll = true;
-            DiceRolled = true;
-        }
-        if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0) {
-            System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2 + " Boolean: " + PlayerStats.diceRoll);
-            die1 = PlayerStats.die1-1;
-            die2 = PlayerStats.die2-1;
-            combinedValue = die1 + die2 + 2;
-            rolled++;
-            PlayingWindowState.currentResources = Addresources(PlayingWindowState.currentResources, combinedValue, false, map);
-            calculateNewDice = false;
-            PlayerStats.diceUsed = true;
-        }
-    }
-
-    public void DisplayDiceNotYourTurn(Graphics g, int x, int y, GameMap map) {
-        int sizeX = 115;
-        int sizeY = 115;
-        g.setLineWidth(2);
-        g.setColor(Color.white);
-        g.drawRect(x, y, sizeX, sizeY);
-        rollDice.SetPos(x + 5, y + 59);
-        rollDice.draw();
-        if (!calculateNewDice) {
-            rollDice.AddText("Rolled: " + combinedValue, Color.black);
+                System.out.println("Dice rolled");
+                PlayerStats.diceRoll = true;
+                DiceRolled = true;
+            }
+            if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0) {
+                System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2 + " Boolean: " + PlayerStats.diceRoll);
+                die1 = PlayerStats.die1 - 1;
+                die2 = PlayerStats.die2 - 1;
+                combinedValue = die1 + die2 + 2;
+                rolled++;
+                PlayingWindowState.currentResources = Addresources(PlayingWindowState.currentResources, combinedValue, false, map);
+                calculateNewDice = false;
+                PlayerStats.diceUsed = true;
+            }
         } else {
-            rollDice.AddText("Waiting for roll", Color.black);
-        }
-        if (die1 != 0 && die2 != 0) {
-            texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
-            texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
-        } else {
-            texture.butt.draw(x + 5, y + 5, 50, 50);
-            texture.butt.draw(x + 60, y + 5, 50, 50);
-        }
-        if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0) {
-            System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2 + " Boolean: " + PlayerStats.diceRoll);
-            die1 = PlayerStats.die1-1;
-            die2 = PlayerStats.die2-1;
-            combinedValue = die1 + die2 + 2;
-            rolled++;
-            PlayingWindowState.currentResources = Addresources(PlayingWindowState.currentResources, combinedValue, false, map);
-            calculateNewDice = false;
-            PlayerStats.diceUsed = true;
+            //If it isn't your turn
+            if (!calculateNewDice) {
+                rollDice.AddText("Rolled: " + combinedValue, Color.black);
+            } else {
+                rollDice.AddText("Waiting for roll", Color.black);
+            }
+            if (PlayerStats.die1 != 0 && PlayerStats.die2 != 0) {
+                texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
+                texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
+            } else {
+                texture.butt.draw(x + 5, y + 5, 50, 50);
+                texture.butt.draw(x + 60, y + 5, 50, 50);
+            }
+            if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0) {
+                System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2 + " Boolean: " + PlayerStats.diceRoll);
+                die1 = PlayerStats.die1-1;
+                die2 = PlayerStats.die2-1;
+                combinedValue = die1 + die2 + 2;
+                rolled++;
+                PlayingWindowState.currentResources = Addresources(PlayingWindowState.currentResources, combinedValue, false, map);
+                calculateNewDice = false;
+                PlayerStats.diceUsed = true;
+            }
         }
     }
 
 
-    public void OfferWindow(int x, int y, boolean boo, Graphics g) {
+    public void OfferWindow(int x, int y, boolean boo, Graphics g, int tradeId) {
         if (boo) {
             g.setColor(Color.white);
             g.fill(new Rectangle(x, y, 400, 300));
@@ -371,46 +375,74 @@ public class GUI_Overlay {
             g.drawString("Make an offer for " + tradeWithName, x + 10, y + 20);
             for (int i = 0; i < 5; i++) {
                 buttons[i].SetPos(x + 90, y + 70 + 20 * i);
-                buttons[i + 5].SetPos(x + 330, y + 70 + 20 * i);
-                buttons[i + 10].SetPos(x + 120, y + 70 + 20 * i);
+                buttons[i + 5].SetPos(x + 120, y + 70 + 20 * i);
+                buttons[i + 10].SetPos(x + 330, y + 70 + 20 * i);
                 buttons[i + 15].SetPos(x + 360, y + 70 + 20 * i);
             }
             for (int i = 0; i < 20; i++) {
                 buttons[i].draw();
             }
-            for (int i = 0; i < 10; i++) {
-                if (buttons[i].isWithin())
-                    resources[i]++;
-                if (buttons[i + 10].isWithin() && resources[i] > 0)
-                    resources[i]--;
-            }
             for (int i = 0; i < 5; i++) {
-                resources[i] = currentResources[i];
+                if (buttons[i].isWithin() && tradingReources[i] > 0)
+                    tradingReources[i]--;
+                if (buttons[i+5].isWithin() && tradingReources[i] < PlayingWindowState.currentResources[i])
+                    tradingReources[i]++;
+                if (buttons[i + 10].isWithin() && tradingReources[i+5] > 0)
+                    tradingReources[i + 5]--;
+                if (buttons[i+15].isWithin())
+                    tradingReources[i+5]++;
             }
-            g.drawString("Wool:  " + resources[0], x + 10, y + 70);
-            g.drawString("Stone: " + resources[1], x + 10, y + 90);
-            g.drawString("Wood:  " + resources[2], x + 10, y + 110);
-            g.drawString("Clay:  " + resources[3], x + 10, y + 130);
-            g.drawString("Wheat: " + resources[4], x + 10, y + 150);
+            g.drawString("Wool:  " + tradingReources[0], x + 10, y + 70);
+            g.drawString("Ore:   " + tradingReources[1], x + 10, y + 90);
+            g.drawString("Lumber:" + tradingReources[2], x + 10, y + 110);
+            g.drawString("Bricks:" + tradingReources[3], x + 10, y + 130);
+            g.drawString("Grain: " + tradingReources[4], x + 10, y + 150);
             g.drawString("for", x + 170, y + 110);
-            g.drawString("Wool:  " + resources[5], x + 250, y + 70);
-            g.drawString("Stone: " + resources[6], x + 250, y + 90);
-            g.drawString("Clay:  " + resources[8], x + 250, y + 110);
-            g.drawString("Wheat: " + resources[9], x + 250, y + 130);
-            g.drawString("Wood:  " + resources[7], x + 250, y + 150);
+            g.drawString("Wool:  " + tradingReources[5], x + 250, y + 70);
+            g.drawString("Ore:   " + tradingReources[6], x + 250, y + 90);
+            g.drawString("Lumber:" + tradingReources[7], x + 250, y + 110);
+            g.drawString("Bricks:" + tradingReources[8], x + 250, y + 130);
+            g.drawString("Grain: " + tradingReources[9], x + 250, y + 150);
             acceptOffer.SetPos(x + 10, y + 180);
             declineOffer.SetPos(x + 250, y + 180);
             acceptOffer.draw();
+            acceptOffer.AddText("Send Offer", Color.black);
             declineOffer.draw();
+            declineOffer.AddText("Cancel", Color.black);
             if (acceptOffer.isWithin()) {
                 offerWindow = false;
-                trade = true;
+                PlayerStats.tradingResources = tradingReources;
+                PlayerStats.tradingWithyou =  new boolean[5];
+                PlayerStats.tradingWithyou[tradeId] = true;
+                PlayerStats.tradingWithyou[4] = true;
+                System.out.println("Tranding...");
+                for (int i = 0; i < 5; i++) {
+                    System.out.println(PlayerStats.tradingResources[i] + " for " + PlayerStats.tradingResources[i+5]);
+                }
+                for (int i = 0; i < 5; i++) {
+                    System.out.println("Player nr: " + (i+1) + " is " + PlayerStats.tradingWithyou[i]);
+                }
             }
             if (declineOffer.isWithin()) {
                 offerWindow = false;
-                trade = true;
             }
             g.setColor(Color.white);
+        }
+    }
+
+    public void HandleTradeRespons(boolean tradeAccept) {
+        if (!PlayerStats.tradingComplete) {
+            if (tradeAccept) {
+                System.out.println("Accpeted the trade");
+                for (int i = 0; i < 5; i++) {
+                    PlayingWindowState.currentResources[i] = +tradingReources[i];
+                    tradingReources = new int[10];
+                }
+            } else {
+                System.out.println("Declined the trade");
+                tradingReources = new int[10];
+            }
+            PlayerStats.tradingComplete = true;
         }
     }
 
@@ -434,12 +466,15 @@ public class GUI_Overlay {
             for (int j = 0; j < 5; j++) {
                 if (tmp_res.equals(resourceTypes[j])) {
                     if (isCity) {
-                        input[i] += 2;
+                        input[j] += 2;
                     } else {
-                        input[i]++;
+                        input[j]++;
                     }
                 }
             }
+        }
+        for (int i = 0; i < 5; i++) {
+            System.out.println(resourceTypes[i] + ":" + PlayingWindowState.currentResources[i]);
         }
         return input;
     }

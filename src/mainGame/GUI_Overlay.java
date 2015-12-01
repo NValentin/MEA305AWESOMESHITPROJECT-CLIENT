@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public class GUI_Overlay {
 
-    boolean DiceRolled;
+    boolean DiceRolled, calculateNewDice;
     int die1;
     int die2;
     int combinedValue;
@@ -290,28 +290,36 @@ public class GUI_Overlay {
     public void DisplayDice(Graphics g, int x, int y) {
         int sizeX = 115;
         int sizeY = 115;
-        DiceRolled = PlayerStats.diceRoll;
         g.setLineWidth(2);
         g.setColor(Color.white);
         g.drawRect(x, y, sizeX, sizeY);
         rollDice.SetPos(x + 5, y + 59);
-        rollDice.draw();
-        if (!PlayerStats.diceRoll) {
+        if (!DiceRolled) {
+            rollDice.draw();
             rollDice.AddText("Roll Dice", Color.black);
             texture.diceSprites.getSprite(0, 0).draw(x + 5, y + 5, 50, 50);
             texture.diceSprites.getSprite(0, 0).draw(x + 60, y + 5, 50, 50);
         }
-        if (rollDice.isWithin() && !PlayerStats.diceRoll) {
+        if (rollDice.isWithin() && !DiceRolled) {
+            System.out.println("Dice rolled");
             PlayerStats.diceRoll = true;
-            die1 = PlayerStats.die1;
-            die2 = PlayerStats.die2;
-            System.out.println("Die 1: " + die1 + " Die 2: " + die2 + " Boolean: " + PlayerStats.diceRoll);
+            System.out.println("Updating dice stats");
+            //System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2 + " Boolean: " + PlayerStats.diceRoll);
+            DiceRolled = true;
+        }
+        if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0) {
+            System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2 + " Boolean: " + PlayerStats.diceRoll);
+            die1 = PlayerStats.die1-1;
+            die2 = PlayerStats.die2-1;
             combinedValue = die1 + die2 + 2;
             rolledDice[combinedValue-1]++;
             rolled++;
+            calculateNewDice = false;
+            PlayerStats.diceUsed = true;
         }
-        if (PlayerStats.diceRoll) {
-            System.out.println("New dispaly");
+        //System.out.println("playerstats diceroll value: " + PlayerStats.diceRoll + " DiceRolled: " + DiceRolled + " showNewStats: " + showNewStats);
+        if (DiceRolled) {
+            rollDice.draw();
             rollDice.AddText("Rolled: " + combinedValue, Color.black);
             texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
             texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
@@ -377,6 +385,7 @@ public class GUI_Overlay {
         if (endTurn.isWithin()) {
             System.out.println("Ending turn");
             PlayerStats.endTurn = true;
+            DiceRolled = false;
         }
     }
 }

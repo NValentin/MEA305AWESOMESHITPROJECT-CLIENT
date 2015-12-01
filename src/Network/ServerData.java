@@ -24,7 +24,7 @@ public class ServerData
     public ArrayList<Integer> cards = new ArrayList<Integer>();
     public int[] serializedHouse = new int[]{0, 0};
     public int[] serializedRoad = new int[]{0, 0};
-    public boolean endTurn = false, diceRoll;
+    public boolean endTurn = false, diceRoll, diceUsed;
     public int turnorderturn = 1;
     public boolean gameEnded = false;
     public boolean[] playerturn = new boolean[] {true, false, false, false};
@@ -62,6 +62,7 @@ public class ServerData
         PlayerStats.die2 = die2;
         PlayerStats.endTurn = endTurn;
         PlayerStats.diceRoll = diceRoll;
+        PlayerStats.diceUsed = diceUsed;
         //PlayerStats.playerturn = playerturn;
     }
 }

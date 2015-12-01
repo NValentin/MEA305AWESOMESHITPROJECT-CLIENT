@@ -21,6 +21,9 @@ public class GameMap
     private Line[] roadPlots;
     private ArrayList<Road> roads;
 
+    private ArrayList<Circle> thiefPositions;
+    private static boolean moveThief = false;
+
     public static int[] serializedHouse = new int[]{0, 0};
     public static int[] deSerializedHouse = new int[]{0, 0};
 
@@ -43,8 +46,8 @@ public class GameMap
         houseRadius = 10;
         buildMap(mapTileSize, Layout.pointy);
         findHousePlots();
-
         findRoadPlots();
+        findThiefPlots();
 
         houses = new ArrayList<>();
         roads = new ArrayList<>();
@@ -153,6 +156,14 @@ public class GameMap
         }
     }
 
+    private void findThiefPlots() //Should be 19
+    {
+        for (Tile tile : map)
+            if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
+                thiefPositions.add(new Circle(Layout.hexToPixel(mapLayout, tile).getX(),
+                        Layout.hexToPixel(mapLayout, tile).getY(), 20 ));
+    }
+
     public void addHouse(int indexPos, int playerID)
     {
         House tmpHouse = new House(housePlots[indexPos], playerID);
@@ -240,8 +251,10 @@ public class GameMap
                     {
                         type = listOfTileTypes.remove(listOfTileTypes.size() - 1);
                         tile.setTileType(type);
-                        if (tile.getTileType().matches("Desert"))
+                        if (tile.getTileType().matches("Desert")) {
+                            thief = new Thief(new Point(Layout.hexToPixel(mapLayout, tile).getX(), Layout.hexToPixel(mapLayout, tile).getY()));
                             tile.hasThief = true;
+                        }
                     }
                 }
 
@@ -294,6 +307,18 @@ public class GameMap
 
     public void update(GameContainer gc)
     {
+        while (moveThief)
+        {
+            for (Circle circle : thiefPositions)
+            {
+                if (circle.contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()) && gc.getInput().isKeyPressed(0))
+                {
+                    thief.moveThief(new Point(circle.getCenterX(), circle.getCenterY()));
+                    moveThief = false;
+                }
+            }
+        }
+
         if (deSerializedHouse[1] != 0)
         {
             deSerializeHouse();
@@ -374,11 +399,11 @@ public class GameMap
                         Layout.hexToPixel(mapLayout, tile).getY() - 8
                 );
             }
-            if (tile.hasThief)
-            {
-                thief = new Thief(new Point(Layout.hexToPixel(mapLayout, tile).getX(), Layout.hexToPixel(mapLayout, tile).getY()));
-                thief.render(g);
-            }
+            if (tmpPoly.contains(thief.getPoint()))
+                tile.hasThief = true;
+            else
+                tile.hasThief = false;
+
         }
     }
 
@@ -483,6 +508,10 @@ public class GameMap
             {
                 house.render(g);
             }
+
+        if (moveThief)
+            for (Circle circle : thiefPositions)
+                g.draw(circle);
     }
 
     private void serializeHouse(int housePlotPos)

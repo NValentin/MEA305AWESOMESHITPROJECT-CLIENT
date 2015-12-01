@@ -33,6 +33,6 @@ public class Main extends StateBasedGame
         this.addState(new MainMenuState());
         this.addState(new CreatePlayerState());
         this.addState(new JoinLobbyState());
-        this.addState(new PlayingWindow());
+        this.addState(new PlayingWindowState());
     }
 }

@@ -14,7 +14,7 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 /**
  * Created by Kingo on 30-10-2015.
  */
-public class PlayingWindow extends BasicGameState
+public class PlayingWindowState extends BasicGameState
 {
     Texture textures;
     int theWidth = Main.ScreenWidth;
@@ -35,6 +35,8 @@ public class PlayingWindow extends BasicGameState
     TextField gameChat;
     String chatText = "";
     Font font;
+
+    static String gameInfo;
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
@@ -74,6 +76,9 @@ public class PlayingWindow extends BasicGameState
             chatBox.newMessage(chatText, PlayerStats.name);
             gameChat.setText("");
         }
+        if (PlayerStats.die1+PlayerStats.die2==7){
+
+        }
     }
 
     @Override
@@ -100,6 +105,10 @@ public class PlayingWindow extends BasicGameState
         g.setColor(Color.white);
         chatBox.render(g, gc);
         gameChat.render(gc, g);
+
+        g.getFont().getWidth(gameInfo);
+        g.drawString(gameInfo,theWidth/2-g.getFont().getWidth(gameInfo)/2,theHeight-40);
+
     }
 
     @Override

@@ -8,16 +8,19 @@ import org.newdawn.slick.geom.Circle;
 public class House
 {
     private Boolean isCity;
-
+    private int playerID;
     private Color buildingColor;
     private Circle houseCircle;
 
     public House(Circle circle, int playerID)
     {
         isCity = false;
+        this.playerID = playerID;
         houseCircle = circle;
         buildingColor = PlayerStats.playerColors[playerID];
-        PlayerStats.point +=1;
+        if (playerID == PlayerStats.ID)
+            PlayerStats.point +=1;
+
     }
 
     public void render(Graphics g)
@@ -41,7 +44,13 @@ public class House
     public void upgradeHouse()
     {
         isCity = true;
-        PlayerStats.point +=1;
+        if (playerID == PlayerStats.ID)
+            PlayerStats.point +=1;
+    }
+
+    public int getPlayerID()
+    {
+        return playerID;
     }
 
     public Circle getHouseCircle()

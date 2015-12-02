@@ -188,10 +188,14 @@ public class GameMap
     private void findThiefPlots() //Should be 19
     {
         thiefPositions = new Circle[19];
+        int counter = 0;
         for (int i = 0; i < map.size(); i++)
-            if (!(Math.abs(map.get(i).q) == 3 || Math.abs(map.get(i).r) == 3 || Math.abs(map.get(i).s) == 3))
-                thiefPositions[i] = (new Circle(Layout.hexToPixel(mapLayout, map.get(i)).getX(),
-                        Layout.hexToPixel(mapLayout, map.get(i)).getY(), 20));
+            if (Math.abs(map.get(i).q) != 3 && Math.abs(map.get(i).r) != 3 && Math.abs(map.get(i).s) == 3)
+        {
+            thiefPositions[counter] = (new Circle(Layout.hexToPixel(mapLayout, map.get(i)).getX(),
+                    Layout.hexToPixel(mapLayout, map.get(i)).getY(), 20));
+            counter++;
+        }
     }
 
     /**

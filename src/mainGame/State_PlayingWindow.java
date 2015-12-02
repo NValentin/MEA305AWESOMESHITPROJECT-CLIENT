@@ -9,8 +9,6 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
-import javax.xml.soap.Text;
-
 
 /**
  * Created by Kingo on 30-10-2015.
@@ -26,7 +24,7 @@ public class State_PlayingWindow extends BasicGameState
     public static int tradeId = 0;
 
     GameMap map;
-    public static boolean buildMap = true;
+    boolean buildMap = true;
 
     int sizeX = Main.ScreenWidth/4;
     int sizeY = Main.ScreenHeight/10;
@@ -85,8 +83,7 @@ public class State_PlayingWindow extends BasicGameState
 
     @Override
     public void render(GameContainer gc, StateBasedGame stateBG, Graphics g) throws SlickException {
-        Texture.mapBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
-
+        //System.out.println("Trade with you? " + PlayerStats.tradingWithyou[4] + " Refresh: " + PlayerStats.refreshResources);
         if (buildMap) {
             map.GameMapGameMap();
             buildMap = false;
@@ -99,7 +96,11 @@ public class State_PlayingWindow extends BasicGameState
         gui_overlay.IncomingTradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.tradeWindow, g);
         gui_overlay.OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.offerWindow, g, tradeId);
         gui_overlay.ShowStats(g, theWidth - 145, 10);
-        gui_overlay.HandleTradeRespons(PlayerStats.tradeAccpeted);
+        if (PlayerStats.tradingWithyou[5] && PlayerStats.refreshResources) {
+            gui_overlay.HandleTradeRespons();
+        } else {
+            gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, PlayerStats.tradingWithyou[PlayerStats.ID-1], PlayerStats.names[PlayerStats.turn], g);
+        }
         if (PlayerStats.playerturn[PlayerStats.ID - 1]) {
             gui_overlay.TradeWithWindow(Main.ScreenWidth - 215, 205, g, PlayerStats.names);
             gui_overlay.DisplayDice(g, theWidth - 172, 75, map, true);

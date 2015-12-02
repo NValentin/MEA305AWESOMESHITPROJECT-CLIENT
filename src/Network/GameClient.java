@@ -4,6 +4,7 @@ import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.minlog.Log;
 import mainGame.PlayerStats;
 import mapClasses.GameMap;
+import org.lwjgl.Sys;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +49,6 @@ public class GameClient extends Listener implements Runnable
         updatePlayerTurn();
         updateDice();
         updateTrade();
-        updateTradeHandled();
     }
 
     void updatePlayerName()
@@ -147,18 +147,11 @@ public class GameClient extends Listener implements Runnable
     }
     void updateTrade() {
         if (PlayerStats.tradingWithyou[4]) {
+            System.out.println("Sending trade data");
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);
             PlayerStats.tradingWithyou[4] = false;
-        }
-    }
-    void updateTradeHandled() {
-        if (PlayerStats.tradeHandled) {
-            ClientData clientData = new ClientData();
-            clientData.pack();
-            network.client.sendUDP(clientData);
-            PlayerStats.tradeHandled = false;
         }
     }
 }

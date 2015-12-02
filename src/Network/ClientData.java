@@ -13,15 +13,13 @@ public class ClientData
     public boolean nslobbyReady;
     public String[] nstextPackage = new String[]{"", "", ""};
     public boolean nsTextSent;
-    public int[] serializedHouse = new int[]{0, 0};
-    public int[] serializedRoad = new int[]{0, 0};
+    public int[] serializedHouse = new int[]{0,0};
+    public int[] serializedRoad = new int[] {0,0};
     public int serializedCity = 0;
     public boolean endTurn = false, diceRoll, diceUsed;
     public boolean gameEnded = false;
     public int[] tradingResources = new int[10];
-    public boolean[] tradingWithyou = new boolean[] {false, false, false, false, false};
-    public boolean tradeHandled = true;
-    public boolean tradeAccepted, tradingComplete;
+    public boolean[] tradingWithyou = new boolean[] {false, false, false, false, false, false};
 
     public ClientData()
     {
@@ -46,10 +44,7 @@ public class ClientData
         diceUsed = PlayerStats.diceUsed;
         tradingResources = PlayerStats.tradingResources;
         tradingWithyou = PlayerStats.tradingWithyou;
-        tradeHandled = PlayerStats.tradeHandled;
-        tradeAccepted = PlayerStats.tradeAccpeted;
-        tradingComplete = PlayerStats.tradingComplete;
-
+        PlayerStats.refreshResources = true;
     }
 
 }

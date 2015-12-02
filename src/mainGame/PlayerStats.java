@@ -25,9 +25,10 @@ public class PlayerStats {
     public static boolean diceUsed;
     public static int[] rolledDiceStatistics = new int[]{0,0,0,0,0,0,0,0,0,0,0,0};
     public static int[] tradingResources = new int[10];
-    public static boolean[] tradingWithyou = new boolean[] {false, false, false, false, false};
+    public static boolean[] tradingWithyou = new boolean[] {false, false, false, false, false, false};
     public static boolean tradeHandled = true;
-    public static boolean tradeAccpeted, tradingComplete;
+    public static boolean tradingComplete;
+    public static boolean refreshResources;
 
     //Stats for all players
     public static String[] names = new String[]{" "," "," "," "};

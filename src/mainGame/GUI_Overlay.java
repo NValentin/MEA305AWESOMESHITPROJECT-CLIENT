@@ -1,11 +1,13 @@
 package mainGame;
 
 import mapClasses.GameMap;
+import org.lwjgl.Sys;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 
 import java.util.ArrayList;
-
+import java.util.Arrays;
+import java.util.Random;
 import mapClasses.Tile;
 
 /**
@@ -14,7 +16,6 @@ import mapClasses.Tile;
 public class GUI_Overlay {
 
     boolean DiceRolled, calculateNewDice;
-    int randomInt = 0;
     int die1;
     int die2;
     int combinedValue;
@@ -35,7 +36,6 @@ public class GUI_Overlay {
     boolean tradeWindow = false;
     boolean offerWindow = false;
     boolean showStatsBool;
-    int[] currentResources = new int[5];
     int[] tradingReources = new int[10];
     String tradeWithName = "";
     Button endTurn;
@@ -91,14 +91,16 @@ public class GUI_Overlay {
             if (accept.isWithin()) {
                 System.out.println("Accept");
                 tradeWindow = true;
-                trade = false;
+                PlayerStats.tradingWithyou[PlayerStats.turn] = false;
             }
             if (decline.isWithin()) {
                 System.out.println("Decline");
-                trade = false;
-                PlayerStats.tradeAccpeted = false;
-                PlayerStats.tradingComplete = false;
-                PlayerStats.tradeHandled = true;
+                PlayerStats.tradingResources = new int[10];
+                PlayerStats.tradingWithyou =  new boolean[6];
+                PlayerStats.tradingWithyou[PlayerStats.turn] = true;
+                PlayerStats.tradingWithyou[4] = true;
+                PlayerStats.tradingWithyou[5] = true;
+                PlayerStats.tradingWithyou[PlayerStats.turn] = false;
             }
         }
     }
@@ -178,17 +180,17 @@ public class GUI_Overlay {
             g.fill(new Rectangle(x, y, 400, 300));
             g.setColor(Color.black);
             g.drawString("Trade with " + tradeWithName, x + 10, y + 20);
-            g.drawString("Wool:  " + PlayerStats.tradingResources[5], x + 10, y + 70);
-            g.drawString("Ore:   " + PlayerStats.tradingResources[6], x + 10, y + 90);
-            g.drawString("Lumber:" + PlayerStats.tradingResources[7], x + 10, y + 110);
-            g.drawString("Bricks:" + PlayerStats.tradingResources[8], x + 10, y + 130);
-            g.drawString("Grain: " + PlayerStats.tradingResources[9], x + 10, y + 150);
+            g.drawString("Wool:  " + PlayerStats.tradingResources[0], x + 10, y + 70);
+            g.drawString("Ore:   " + PlayerStats.tradingResources[1], x + 10, y + 90);
+            g.drawString("Lumber:" + PlayerStats.tradingResources[2], x + 10, y + 110);
+            g.drawString("Bricks:" + PlayerStats.tradingResources[3], x + 10, y + 130);
+            g.drawString("Grain: " + PlayerStats.tradingResources[4], x + 10, y + 150);
             g.drawString("for", x + 150, y + 110);
-            g.drawString("Wool:  " + PlayerStats.tradingResources[0], x + 250, y + 70);
-            g.drawString("Ore:   " + PlayerStats.tradingResources[1], x + 250, y + 90);
-            g.drawString("Lumber:" + PlayerStats.tradingResources[2], x + 250, y + 110);
-            g.drawString("Bricks:" + PlayerStats.tradingResources[3], x + 250, y + 130);
-            g.drawString("Grain: " + PlayerStats.tradingResources[4], x + 250, y + 150);
+            g.drawString("Wool:  " + PlayerStats.tradingResources[5], x + 250, y + 70);
+            g.drawString("Ore:   " + PlayerStats.tradingResources[6], x + 250, y + 90);
+            g.drawString("Lumber:" + PlayerStats.tradingResources[7], x + 250, y + 110);
+            g.drawString("Bricks:" + PlayerStats.tradingResources[8], x + 250, y + 130);
+            g.drawString("Grain: " + PlayerStats.tradingResources[9], x + 250, y + 150);
             acceptOffer.SetPos(x + 10, y + 180);
             declineOffer.SetPos(x + 250, y + 180);
             counterOffer.SetPos(x + 135, y + 180);
@@ -197,19 +199,24 @@ public class GUI_Overlay {
             declineOffer.draw();
             declineOffer.AddText("Decline Offer", Color.black);
             if (acceptOffer.isWithin()) {
+                System.out.println("Accept");
+                //PlayerStats.tradingResources = tradingReources;
+                PlayerStats.tradingWithyou =  new boolean[6];
+                PlayerStats.tradingWithyou[PlayerStats.turn] = true;
+                PlayerStats.tradingWithyou[5] = true;
                 tradeWindow = false;
-                trade = true;
-                PlayerStats.tradeAccpeted = true;
-                PlayerStats.tradingComplete = false;
-                PlayerStats.tradeHandled = true;
+                PlayerStats.refreshResources = false;
+                PlayerStats.tradingWithyou[4] = true;
             }
             if (declineOffer.isWithin()) {
+                System.out.println("Decline");
+                PlayerStats.tradingResources = new int[10];
+                PlayerStats.tradingWithyou =  new boolean[6];
+                PlayerStats.tradingWithyou[PlayerStats.turn] = true;
+                PlayerStats.tradingWithyou[5] = true;
                 tradeWindow = false;
-                trade = true;
-                PlayerStats.tradeAccpeted = false;
-                PlayerStats.tradingComplete = false;
-                PlayerStats.tradeHandled = true;
-
+                PlayerStats.refreshResources = false;
+                PlayerStats.tradingWithyou[4] = true;
             }
             g.setColor(Color.white);
         }
@@ -328,7 +335,7 @@ public class GUI_Overlay {
                 DiceRolled = true;
             }
             if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0) {
-                System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2 + " Boolean: " + PlayerStats.diceRoll);
+                System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2);
                 die1 = PlayerStats.die1 - 1;
                 die2 = PlayerStats.die2 - 1;
                 combinedValue = die1 + die2 + 2;
@@ -352,7 +359,7 @@ public class GUI_Overlay {
                 texture.butt.draw(x + 60, y + 5, 50, 50);
             }
             if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0) {
-                System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2 + " Boolean: " + PlayerStats.diceRoll);
+                System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2);
                 die1 = PlayerStats.die1-1;
                 die2 = PlayerStats.die2-1;
                 combinedValue = die1 + die2 + 2;
@@ -410,16 +417,9 @@ public class GUI_Overlay {
             if (acceptOffer.isWithin()) {
                 offerWindow = false;
                 PlayerStats.tradingResources = tradingReources;
-                PlayerStats.tradingWithyou =  new boolean[5];
+                PlayerStats.tradingWithyou =  new boolean[6];
                 PlayerStats.tradingWithyou[tradeId] = true;
                 PlayerStats.tradingWithyou[4] = true;
-                System.out.println("Tranding...");
-                for (int i = 0; i < 5; i++) {
-                    System.out.println(PlayerStats.tradingResources[i] + " for " + PlayerStats.tradingResources[i+5]);
-                }
-                for (int i = 0; i < 5; i++) {
-                    System.out.println("Player nr: " + (i+1) + " is " + PlayerStats.tradingWithyou[i]);
-                }
             }
             if (declineOffer.isWithin()) {
                 offerWindow = false;
@@ -428,19 +428,44 @@ public class GUI_Overlay {
         }
     }
 
-    public void HandleTradeRespons(boolean tradeAccept) {
+    public void HandleTradeRespons() {
         if (!PlayerStats.tradingComplete) {
-            if (tradeAccept) {
-                System.out.println("Accpeted the trade");
+            System.out.println("-------Boolean Values--------------------------");
+            System.out.println("Trade accepted: " + PlayerStats.tradingWithyou[5]);
+            System.out.println("Trade Complete: " + PlayerStats.tradingComplete);
+            System.out.println("Trade Handled: " + PlayerStats.tradeHandled);
+            if (PlayerStats.tradingWithyou[5]) {
+                System.out.println("-------Accpeted the trade----------------------");
+                System.out.println("-------Old Resources---------------------------");
+                System.out.println("Wool: " + State_PlayingWindow.currentResources[0]);
+                System.out.println("Ore: " + State_PlayingWindow.currentResources[1]);
+                System.out.println("Lumber: " + State_PlayingWindow.currentResources[2]);
+                System.out.println("Bricks: " + State_PlayingWindow.currentResources[3]);
+                System.out.println("Grain: " + State_PlayingWindow.currentResources[4]);
+                System.out.println("-------Inc Resources---------------------------");
+                System.out.println("Wool: " + (PlayerStats.tradingResources[0] - PlayerStats.tradingResources[5]));
+                System.out.println("Ore: " + (PlayerStats.tradingResources[1] - PlayerStats.tradingResources[6]));
+                System.out.println("Lumber: " + (PlayerStats.tradingResources[2] - PlayerStats.tradingResources[7]));
+                System.out.println("Bricks: " + (PlayerStats.tradingResources[3] - PlayerStats.tradingResources[8]));
+                System.out.println("Grain: " + (PlayerStats.tradingResources[4] - PlayerStats.tradingResources[9]));
+
                 for (int i = 0; i < 5; i++) {
-                    State_PlayingWindow.currentResources[i] = +tradingReources[i];
-                    tradingReources = new int[10];
+                    State_PlayingWindow.currentResources[i] = State_PlayingWindow.currentResources[i] + PlayerStats.tradingResources[i] - PlayerStats.tradingResources[i + 5];
                 }
+                System.out.println("-------New Resources---------------------------");
+                System.out.println("Wool: " + State_PlayingWindow.currentResources[0]);
+                System.out.println("Ore: " + State_PlayingWindow.currentResources[1]);
+                System.out.println("Lumber: " + State_PlayingWindow.currentResources[2]);
+                System.out.println("Bricks: " + State_PlayingWindow.currentResources[3]);
+                System.out.println("Grain: " + State_PlayingWindow.currentResources[4]);
+                System.out.println("-----------------------------------------------");
+                PlayerStats.tradingWithyou[5] = false;
             } else {
-                System.out.println("Declined the trade");
-                tradingReources = new int[10];
+                System.out.println("-------Declined the trade----------------------");
             }
+            tradingReources = new int[10];
             PlayerStats.tradingComplete = true;
+            PlayerStats.refreshResources = false;
         }
     }
 
@@ -459,8 +484,6 @@ public class GUI_Overlay {
         ArrayList<Tile> tiles = map.tilesYieldingResource(diceRoll);
         for (int i = 0; i < tiles.size(); i++) {
             String tmp_res = tiles.get(i).getTileType();
-            System.out.println("Rolled: " + diceRoll);
-            System.out.println((i+1) + ": " + tmp_res);
             for (int j = 0; j < 5; j++) {
                 if (tmp_res.equals(resourceTypes[j])) {
                     if (isCity) {
@@ -470,9 +493,6 @@ public class GUI_Overlay {
                     }
                 }
             }
-        }
-        for (int i = 0; i < 5; i++) {
-            System.out.println(resourceTypes[i] + ":" + State_PlayingWindow.currentResources[i]);
         }
         return input;
     }

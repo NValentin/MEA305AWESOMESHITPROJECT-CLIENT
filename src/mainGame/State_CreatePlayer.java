@@ -14,68 +14,91 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class State_CreatePlayer extends BasicGameState {
 
+    Texture texture;
     public static Image menuBackground;
     public static Image button;
-    int sizeX = Main.ScreenWidth/4;
-    int sizeY = Main.ScreenHeight/10;
+    int sizeX = Main.ScreenWidth/4; // Standard width of buttons
+    int sizeY = Main.ScreenHeight/10; // Standard height of buttons
 
     Button back;
     Button forward;
-    Button ok;
 
     TextField nameField;
 
-    String playerName = "";
+    Font font; // Font used in the textfield
 
-    Font font;
-
+    /**
+     * Initiation method. creates/assigns variables and objects
+     * @param gc GameContainer component
+     *          @see GameContainer and Slick2D
+     * @param sbg StateBasedGame component
+     *          @see StateBasedGame and Slick2D
+     * @throws SlickException
+     */
     @Override
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
+    public void init(GameContainer gc, StateBasedGame sbg)
             throws SlickException {
 
-        menuBackground = new Image("resources/menuBackground.jpg");
-        button = new Image("resources/TemplateButton.jpg");
+        texture = new Texture();
+        texture.initCreatePlayerTextures(); //Takes textures from the texture class
 
         font = new TrueTypeFont(new java.awt.Font("Verdana",
-                java.awt.Font.PLAIN, 24), true);
+                java.awt.Font.PLAIN, 24), true); // Font used in the textfield
 
-        nameField = new TextField(gameContainer, font, Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.55f), sizeX, (int)(sizeY*0.7));
-        nameField.setMaxLength(12);
+        nameField = new TextField(gc, font, Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.55f), sizeX, (int)(sizeY*0.7)); //Field for name
+        nameField.setMaxLength(12); // Sets a max limit to number of characters in the textfield
 
         back = new Button(Main.ScreenWidth/2-sizeX-10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
-        ok =  new Button(Main.ScreenWidth/2+sizeX/2-sizeX/3, (int)(Main.ScreenHeight*0.55f)+sizeY+10, sizeX/3, sizeY/3, button, 20);
         forward = new Button(Main.ScreenWidth/2+10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
 
     }
 
+    /**
+     * Update method. Listens for conditionals
+     * @param gc GameContainer component
+     *          @see GameContainer and Slick2D
+     * @param sbg StateBasedGame component
+     *          @see StateBasedGame and Slick2D
+     * @param i Update parameter
+     *          @see Update and Slick2D
+     * @throws SlickException
+     */
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i)
+    public void update(GameContainer gc, StateBasedGame sbg, int i)
             throws SlickException {
 
-        if (gameContainer.getInput().isKeyPressed(Input.KEY_2)) {
-            stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+        if (gc.getInput().isKeyPressed(Input.KEY_2)) { //Shortcut for changing states. Used when testing
+            sbg.enterState(2, new FadeOutTransition(), new FadeInTransition());
             System.out.println("Joined Lobby");
         }
-        if (gameContainer.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isWithin()) {
-            stateBasedGame.enterState(0, new FadeOutTransition(), new FadeInTransition());
+        if (gc.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isWithin()) { // Press Esc or button to return to main menu
+            sbg.enterState(0, new FadeOutTransition(), new FadeInTransition());
         }
 
-        if ((forward.isWithin() || gameContainer.getInput().isKeyPressed(Input.KEY_ENTER))
+        if ((forward.isWithin() || gc.getInput().isKeyPressed(Input.KEY_ENTER)) // Press enter or button to enter lobby
                 && nameField.getText().length() != 0 && !nameField.getText().substring(0,1).matches(" ")) {
-            PlayerStats.name = nameField.getText();
-            stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+            PlayerStats.name = nameField.getText(); // Updates the player name variable
+            sbg.enterState(2, new FadeOutTransition(), new FadeInTransition());
         }
     }
 
+    /**
+     * Render method. Renders elements in the game window
+     @param gc GameContainer component
+      *          @see GameContainer and Slick2D
+     * @param sbg StateBasedGame component
+     *          @see StateBasedGame and Slick2D
+     * @param g Graphics component
+     *          @see Graphics and slick2D
+     * @throws SlickException
+     */
     @Override
-    public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g)
+    public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
             throws SlickException {
         g.drawString("Create a name!", 100, 100);
         menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         back.draw();
         back.AddText("Back", Color.white);
-        //ok.draw();
-        //ok.AddText("Okay", Color.white);
         forward.draw();
         forward.AddText("Join", Color.white);
         nameField.render(gc, g);
@@ -85,5 +108,5 @@ public class State_CreatePlayer extends BasicGameState {
     @Override
     public int getID() {
         return 1;
-    }
+    } //Returns the ID of the state. Useful for switching between states
 }

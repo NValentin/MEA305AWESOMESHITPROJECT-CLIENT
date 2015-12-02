@@ -56,23 +56,23 @@ public class State_MainMenu extends BasicGameState
             System.out.println("Entered Lobby");
         }
 
-        if (join.isWithin()) // Starts the run method in GameClient and enters new state when button is clicked
+        if (join.isWithin())
         {
             if(firstGame) {
-                (new Thread(new GameClient())).start();
+                (new Thread(new GameClient())).start(); // Starts the run method in GameClient when button is clicked
                 firstGame = false;
             }
-            sbg.enterState(1, new FadeOutTransition(), new FadeInTransition());
+            sbg.enterState(1, new FadeOutTransition(), new FadeInTransition()); // enters new state when button is clicked
         }
 
         if (exit.isWithin())
         {
-            System.exit(0);
+            System.exit(0); // Terminates program when button is clicked
 
         }
 
         if(gc.getInput().isKeyPressed(Input.KEY_4)) {
-            sbg.enterState(4, new FadeOutTransition(), new FadeInTransition());
+            sbg.enterState(4, new FadeOutTransition(), new FadeInTransition()); // Shortcut to the endgame screen. Used for testing
         }
     }
 
@@ -97,8 +97,5 @@ public class State_MainMenu extends BasicGameState
     }
 
     @Override
-    public int getID() //Returns the ID of the state. Useful for switching between states, although we haven't used it yet
-    {
-        return 0;
-    }
+    public int getID() { return 0; } //Returns the ID of the state. Useful for switching between states
 }

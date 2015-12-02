@@ -11,7 +11,6 @@ import org.newdawn.slick.GameContainer;
 
 public class ChatBox {
     TrueTypeFont trueTypeFont;
-    Image textBox;
 
     int chatLength = 10;
     static final int TEXTBOXWIDTH = 30;
@@ -20,11 +19,8 @@ public class ChatBox {
     String oldText[];
 
     public ChatBox(){
-        try{
-            trueTypeFont = new TrueTypeFont(new Font("Verdana", Font.BOLD, 12), true);
-            textBox = new Image("resources/butt.png");
-        }catch(SlickException e){}
 
+        trueTypeFont = new TrueTypeFont(new Font("Verdana", Font.BOLD, 12), true);
 
         textToRender = new String[3];
         oldText = new String[chatLength];

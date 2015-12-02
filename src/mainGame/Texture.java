@@ -80,6 +80,19 @@ public class Texture
             e.printStackTrace();
         }
     }
+    void initCreatePlayerTextures()
+    {
+        try
+        {
+            menuBackground = new Image("resources/menuBackground.jpg");
+            templateButton = new Image("resources/TemplateButton.jpg");
+
+
+        } catch (SlickException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
     void initPlayingWindowTextures()
     {

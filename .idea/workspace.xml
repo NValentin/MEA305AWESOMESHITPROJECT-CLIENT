@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java" afterPath="$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/State_EndGame.java" afterPath="$PROJECT_DIR$/src/mainGame/State_EndGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/Texture.java" afterPath="$PROJECT_DIR$/src/mainGame/Texture.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Texture.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Texture.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -79,7 +77,7 @@
       <file leaf-file-name="State_EndGame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mainGame/State_EndGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4516129" vertical-offset="2283" max-vertical-offset="2686">
+            <state vertical-scroll-proportion="6.1166253" vertical-offset="0" max-vertical-offset="2686">
               <caret line="145" column="5" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -749,13 +747,7 @@
       <workItem from="1449044170115" duration="8612000" />
       <workItem from="1449052799939" duration="650000" />
       <workItem from="1449053458213" duration="4193000" />
-      <workItem from="1449058726501" duration="4327000" />
-    </task>
-    <task id="LOCAL-00024" summary="Reworked texture class">
-      <created>1447409693857</created>
-      <option name="number" value="00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1447409693857</updated>
+      <workItem from="1449058726501" duration="4368000" />
     </task>
     <task id="LOCAL-00025" summary="IDNO WARRHHHH">
       <created>1447418485487</created>
@@ -1045,11 +1037,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449060818806</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Comments and chat stuff">
+      <created>1449063073759</created>
+      <option name="number" value="00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1449063073759</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="248557000" />
+    <option name="totallyTimeSpent" value="248598000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1367" height="780" extended-state="0" />
@@ -1128,7 +1126,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Bug fixing for multiplayer purpose.. 1.02" />
     <MESSAGE value="Bug fixing for multiplayer purpose.. 2.0&#10;: changed housePlots and roadPlots from Arraylist to Arrays to prevent skipping index positions when removing available plots, now pre-allocates the specific size array and fills it with the positions.." />
     <MESSAGE value="Just making sure all is up to date for some testing.." />
     <MESSAGE value="Quick bug fix for testing 1.01" />
@@ -1153,7 +1150,8 @@
     <MESSAGE value="Endgame menu stuff&#10;" />
     <MESSAGE value="Comments and stuff" />
     <MESSAGE value="Comments and stuff 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comments and stuff 2" />
+    <MESSAGE value="Comments and chat stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comments and chat stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1534,7 +1532,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/State_EndGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4516129" vertical-offset="2283" max-vertical-offset="2686">
+        <state vertical-scroll-proportion="6.1166253" vertical-offset="0" max-vertical-offset="2686">
           <caret line="145" column="5" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />

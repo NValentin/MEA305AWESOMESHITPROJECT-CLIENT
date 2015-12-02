@@ -9,6 +9,8 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
+import javax.xml.soap.Text;
+
 
 /**
  * Created by Kingo on 30-10-2015.
@@ -81,6 +83,8 @@ public class State_PlayingWindow extends BasicGameState
 
     @Override
     public void render(GameContainer gc, StateBasedGame stateBG, Graphics g) throws SlickException {
+        Texture.mapBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
+
         if (buildMap) {
             map.GameMapGameMap();
             buildMap = false;

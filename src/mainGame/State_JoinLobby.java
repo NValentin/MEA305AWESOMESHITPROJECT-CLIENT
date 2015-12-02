@@ -12,8 +12,7 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
  */
 public class State_JoinLobby extends BasicGameState {
 
-    public static Image menuBackground;
-    public static Image button;
+    Texture texture;
     int sizeX = Main.ScreenWidth/4;
     int sizeY = Main.ScreenHeight/10;
     boolean checkIfReady = false;
@@ -28,14 +27,13 @@ public class State_JoinLobby extends BasicGameState {
     Font font;
 
     @Override
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
-            throws SlickException {
+    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException
+    {
+        texture = new Texture();
+        texture.initJoinLobbyTextures();
 
-        menuBackground = new Image("resources/menuBackground.jpg");
-        button = new Image("resources/TemplateButton.jpg");
-
-        back = new Button(Main.ScreenWidth/2-sizeX-10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
-        forward = new Button(Main.ScreenWidth/2+10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
+        back = new Button(Main.ScreenWidth/2-sizeX-10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, Texture.templateButton);
+        forward = new Button(Main.ScreenWidth/2+10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, Texture.templateButton);
 
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 12), true);
@@ -79,7 +77,7 @@ public class State_JoinLobby extends BasicGameState {
     @Override
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g)
             throws SlickException {
-        menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
+        Texture.menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         back.draw();
         back.AddText("Back", Color.white);
         forward.draw();

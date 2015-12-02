@@ -12,8 +12,10 @@ public class Texture
     public static SpriteSheet tileSprites;
     public static SpriteSheet cardSprites;
     public static SpriteSheet diceSprites;
-    public static Image butt;
-    public static Image doge;
+
+    public static Image menuBackground;
+    public static Image mapBackground;
+
     public static Image buildingCost;
     public static Image makeNewTrade;
     public static Image increase;
@@ -27,8 +29,11 @@ public class Texture
     public static Image templateButton;
     public static Image thief;
 
-    public static Image menuBackground;
+
     public static Image buttonTemplate;
+
+    public static Image butt;
+    public static Image doge;
 
     Texture() throws SlickException
     {
@@ -48,6 +53,7 @@ public class Texture
         templateButton = new Image("resources/TemplateButton.jpg");
         thief = new Image("resources/thief.png");
     }
+
     void initMainMenuStateTextures()
     {
         try
@@ -60,6 +66,21 @@ public class Texture
             e.printStackTrace();
         }
     }
+
+    void initJoinLobbyTextures()
+    {
+        try
+        {
+            menuBackground = new Image("resources/menuBackground.jpg");
+            templateButton = new Image("resources/TemplateButton.jpg");
+
+
+        } catch (SlickException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     void initPlayingWindowTextures()
     {
         try
@@ -67,6 +88,8 @@ public class Texture
             tileSprites = new SpriteSheet("resources/tileTexture_Sheet.png", 120, 140, 3);
             cardSprites = new SpriteSheet("resources/tileTexture_sheet.png", 256, 432, 0);
             diceSprites = new SpriteSheet("resources/dice_sheet.png", 135, 135, 0);
+
+            mapBackground = new Image("resources/map_background.png");
         } catch (SlickException e)
         {
             e.printStackTrace();

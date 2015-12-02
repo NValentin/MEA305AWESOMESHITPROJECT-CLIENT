@@ -39,18 +39,6 @@ public class Texture
     {
         butt = new Image("resources/butt.png");
         doge = new Image("resources/doge.png");
-
-        buildingCost = new Image("resources/Buildingcost.jpg");
-        makeNewTrade = new Image("resources/trade_button.png");
-        accept = new Image("resources/accept.png");
-        decline = new Image("resources/decline.png");
-        acceptBig = new Image("resources/acceptOffer.png");
-        declineBig =  new Image("resources/declineOffer.png");
-        counterBig = new Image("resources/counterOffer.png");
-        increase = new Image("resources/increase.png");
-        decrease = new Image("resources/decrease.png");
-        silverButton = new Image("resources/trade.png");
-        templateButton = new Image("resources/TemplateButton.jpg");
         thief = new Image("resources/thief.png");
     }
 
@@ -101,7 +89,17 @@ public class Texture
             tileSprites = new SpriteSheet("resources/tileTexture_Sheet.png", 120, 140, 3);
             cardSprites = new SpriteSheet("resources/tileTexture_sheet.png", 256, 432, 0);
             diceSprites = new SpriteSheet("resources/dice_sheet.png", 135, 135, 0);
-
+            buildingCost = new Image("resources/Buildingcost.jpg");
+            makeNewTrade = new Image("resources/trade_button.png");
+            accept = new Image("resources/accept.png");
+            decline = new Image("resources/decline.png");
+            acceptBig = new Image("resources/acceptOffer.png");
+            declineBig =  new Image("resources/declineOffer.png");
+            counterBig = new Image("resources/counterOffer.png");
+            increase = new Image("resources/increase.png");
+            decrease = new Image("resources/decrease.png");
+            silverButton = new Image("resources/trade.png");
+            templateButton = new Image("resources/TemplateButton.jpg");
             mapBackground = new Image("resources/map_background.png");
         } catch (SlickException e)
         {

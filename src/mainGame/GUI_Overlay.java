@@ -23,7 +23,6 @@ public class GUI_Overlay {
     int rolled = 0;
     String[] buildingMenuText = new String[] {"Road", "House", "City", "Development Card", "Gives 0 Victory Points", "Gives 1 Victory Points", "Gives 2 Victory Points", "Gives ? Victory Points", "1 Lumber and 1 Brink", "1 Lumber, 1 Wool, 1 Grain, and 1 Brick", "3 Ore and 2 Grin", "1 Wool, 1 Ore, and 1 Grain"};
 
-    Texture texture;
     int theWidth = Main.ScreenWidth;
     int theHeight = Main.ScreenHeight;
     Button accept, decline, showStats, closeStats;
@@ -44,7 +43,6 @@ public class GUI_Overlay {
     String[] resourceTypes = new String[] {"Wool", "Ore", "Lumber", "Brick", "Grain"};
 
     GUI_Overlay() throws SlickException {
-        texture = new Texture();
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 10), true);
 
@@ -56,24 +54,24 @@ public class GUI_Overlay {
     }
 
     public void InitailizeTexture() throws SlickException {
-        accept = new Button(theWidth - 155, theHeight - 30, 25, 25, texture.accept);
-        decline = new Button(theWidth - 100, theHeight - 30, 25, 25, texture.decline);
-        acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, texture.acceptBig, 15);
-        declineOffer = new Button(theWidth / 2 + 50, theHeight / 2 + 30, 100, 25, texture.declineBig, 15);
-        counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, texture.counterBig, 15);
-        rollDice = new Button(0, 0, 105, 50, texture.silverButton, 20);
-        closeStats = new Button(0, 0, 25, 25, texture.decline);
-        showStats = new Button(0, 0, 140, 35, texture.silverButton, 20);
-        endTurn = new Button(0,0, 150, 50, texture.templateButton, 35);
+        accept = new Button(theWidth - 155, theHeight - 30, 25, 25, Texture.accept);
+        decline = new Button(theWidth - 100, theHeight - 30, 25, 25, Texture.decline);
+        acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, Texture.acceptBig, 15);
+        declineOffer = new Button(theWidth / 2 + 50, theHeight / 2 + 30, 100, 25, Texture.declineBig, 15);
+        counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, Texture.counterBig, 15);
+        rollDice = new Button(0, 0, 105, 50, Texture.silverButton, 20);
+        closeStats = new Button(0, 0, 25, 25, Texture.decline);
+        showStats = new Button(0, 0, 140, 35, Texture.silverButton, 20);
+        endTurn = new Button(0,0, 150, 50, Texture.templateButton, 35);
         for (int i = 0; i < 4; i++) {
-            makeNewTrade[i] = new Button(0, 0, 80, 20, texture.makeNewTrade, 20);
-            build_Buttons[i] = new Button(0, 0, 50, 20, texture.silverButton, 20);
+            makeNewTrade[i] = new Button(0, 0, 80, 20, Texture.makeNewTrade, 20);
+            build_Buttons[i] = new Button(0, 0, 50, 20, Texture.silverButton, 20);
         }
         for (int i = 0; i < 5; i++) {
-            buttons[i] = new Button(theWidth / 2 - 110, theHeight / 2 - 80 + 20 * i, 20, 20, texture.decrease);
-            buttons[i + 5] = new Button(theWidth / 2 + 130, theHeight / 2 - 80 + 20 * i, 20, 20, texture.increase);
-            buttons[i + 10] = new Button(theWidth / 2 - 80, theHeight / 2 - 80 + 20 * i, 20, 20, texture.decrease);
-            buttons[i + 15] = new Button(theWidth / 2 + 160, theHeight / 2 - 80 + 20 * i, 20, 20, texture.increase);
+            buttons[i] = new Button(theWidth / 2 - 110, theHeight / 2 - 80 + 20 * i, 20, 20, Texture.decrease);
+            buttons[i + 5] = new Button(theWidth / 2 + 130, theHeight / 2 - 80 + 20 * i, 20, 20, Texture.increase);
+            buttons[i + 10] = new Button(theWidth / 2 - 80, theHeight / 2 - 80 + 20 * i, 20, 20, Texture.decrease);
+            buttons[i + 15] = new Button(theWidth / 2 + 160, theHeight / 2 - 80 + 20 * i, 20, 20, Texture.increase);
         }
     }
 
@@ -322,11 +320,11 @@ public class GUI_Overlay {
                 rollDice.AddText("Rolled: " + combinedValue, Color.black);
             }
             if (PlayerStats.die1 != 0 && PlayerStats.die2 != 0) {
-                texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
-                texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
+                Texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
+                Texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
             } else {
-                texture.butt.draw(x + 5, y + 5, 50, 50);
-                texture.butt.draw(x + 60, y + 5, 50, 50);
+                Texture.butt.draw(x + 5, y + 5, 50, 50);
+                Texture.butt.draw(x + 60, y + 5, 50, 50);
             }
             if (rollDice.isWithin()) { //Add " && !DiceRolled" after testing!!!!
 
@@ -352,11 +350,11 @@ public class GUI_Overlay {
                 rollDice.AddText("Waiting for roll", Color.black);
             }
             if (PlayerStats.die1 != 0 && PlayerStats.die2 != 0) {
-                texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
-                texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
+                Texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
+                Texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
             } else {
-                texture.butt.draw(x + 5, y + 5, 50, 50);
-                texture.butt.draw(x + 60, y + 5, 50, 50);
+                Texture.butt.draw(x + 5, y + 5, 50, 50);
+                Texture.butt.draw(x + 60, y + 5, 50, 50);
             }
             if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0) {
                 System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2);

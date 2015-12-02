@@ -22,17 +22,15 @@ public class Main extends StateBasedGame
         appgc.setDisplayMode(ScreenWidth, ScreenHeight, false);
         appgc.setAlwaysRender(true);
 
-        (new Thread(new GameClient())).start();
-
         appgc.start();
     }
 
     @Override
     public void initStatesList(GameContainer container) throws SlickException
     {
-        this.addState(new MainMenuState());
-        this.addState(new CreatePlayerState());
-        this.addState(new JoinLobbyState());
-        this.addState(new PlayingWindowState());
+        this.addState(new State_MainMenu());
+        this.addState(new State_CreatePlayer());
+        this.addState(new State_JoinLobby());
+        this.addState(new State_PlayingWindow());
     }
 }

@@ -10,7 +10,7 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 /**
  * Created by Bjørn on 01-11-2015.
  */
-public class JoinLobbyState extends BasicGameState {
+public class State_JoinLobby extends BasicGameState {
 
     public static Image menuBackground;
     public static Image button;
@@ -22,7 +22,7 @@ public class JoinLobbyState extends BasicGameState {
     Button back;
     Button forward;
 
-    TextBoxBase chatBox;
+    ChatBox chatBox;
     TextField lobbyChat;
     String chatText = "";
     Font font;
@@ -39,7 +39,7 @@ public class JoinLobbyState extends BasicGameState {
 
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 12), true);
-        chatBox = new TextBoxBase();
+        chatBox = new ChatBox();
         lobbyChat = new TextField(gameContainer, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
 
         countdown = 6f;
@@ -125,7 +125,6 @@ public class JoinLobbyState extends BasicGameState {
                 g.drawString("Game Starts in "+(int)countdown, Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+200);
 
         }
-
     }
 
     @Override

@@ -12,7 +12,7 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 
-public class CreatePlayerState extends BasicGameState {
+public class State_CreatePlayer extends BasicGameState {
 
     public static Image menuBackground;
     public static Image button;

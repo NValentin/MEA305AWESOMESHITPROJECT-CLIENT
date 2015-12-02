@@ -1,13 +1,10 @@
 package mainGame;
 
 import mapClasses.Tile;
-import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Point;
-import org.newdawn.slick.state.StateBasedGame;
 
 /**
  * Created by Bjørn on 30-11-2015.
@@ -33,7 +30,7 @@ public class Thief {
     public void remove(Tile tile) {
 
         tile.hasThief = false;
-        PlayingWindowState.gameInfo = "Place the Thief on a resource tile";
+        State_PlayingWindow.gameInfo = "Place the Thief on a resource tile";
     }
 
     public void render(Graphics g){

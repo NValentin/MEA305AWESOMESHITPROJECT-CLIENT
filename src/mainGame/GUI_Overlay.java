@@ -1,13 +1,11 @@
 package mainGame;
 
 import mapClasses.GameMap;
-import org.lwjgl.Sys;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+
 import mapClasses.Tile;
 
 /**
@@ -235,7 +233,7 @@ public class GUI_Overlay {
                 System.out.println("Trading with " + _names[i]);
                 tradeWithName = _names[i];
                 offerWindow = true;
-                PlayingWindowState.tradeId = i;
+                State_PlayingWindow.tradeId = i;
             }
         }
         g.setColor(Color.white);
@@ -245,9 +243,9 @@ public class GUI_Overlay {
         showStats.SetPos(x, y);
         closeStats.SetPos(theWidth / 2 + 170, theHeight / 2 - 195);
         if (showStatsBool) {
-            PlayingWindowState.gameInfo = "Close the window to continue playing";
+            State_PlayingWindow.gameInfo = "Close the window to continue playing";
             if (closeStats.isWithin()) {
-                PlayingWindowState.gameInfo = "";
+                State_PlayingWindow.gameInfo = "";
                 showStatsBool = false;
             }
             g.setColor(Color.white);
@@ -311,7 +309,7 @@ public class GUI_Overlay {
         if (yourTurn) {
             //If it your turn
             if (!DiceRolled) {
-                PlayingWindowState.gameInfo = "Your turn! Press 'Roll Dice' to roll the dice";
+                State_PlayingWindow.gameInfo = "Your turn! Press 'Roll Dice' to roll the dice";
                 rollDice.AddText("Roll Dice", Color.black);
             } else {
                 rollDice.AddText("Rolled: " + combinedValue, Color.black);
@@ -335,7 +333,7 @@ public class GUI_Overlay {
                 die2 = PlayerStats.die2 - 1;
                 combinedValue = die1 + die2 + 2;
                 rolled++;
-                PlayingWindowState.currentResources = Addresources(PlayingWindowState.currentResources, combinedValue, false, map);
+                State_PlayingWindow.currentResources = Addresources(State_PlayingWindow.currentResources, combinedValue, false, map);
                 calculateNewDice = false;
                 PlayerStats.diceUsed = true;
             }
@@ -359,7 +357,7 @@ public class GUI_Overlay {
                 die2 = PlayerStats.die2-1;
                 combinedValue = die1 + die2 + 2;
                 rolled++;
-                PlayingWindowState.currentResources = Addresources(PlayingWindowState.currentResources, combinedValue, false, map);
+                State_PlayingWindow.currentResources = Addresources(State_PlayingWindow.currentResources, combinedValue, false, map);
                 calculateNewDice = false;
                 PlayerStats.diceUsed = true;
             }
@@ -385,7 +383,7 @@ public class GUI_Overlay {
             for (int i = 0; i < 5; i++) {
                 if (buttons[i].isWithin() && tradingReources[i] > 0)
                     tradingReources[i]--;
-                if (buttons[i+5].isWithin() && tradingReources[i] < PlayingWindowState.currentResources[i])
+                if (buttons[i+5].isWithin() && tradingReources[i] < State_PlayingWindow.currentResources[i])
                     tradingReources[i]++;
                 if (buttons[i + 10].isWithin() && tradingReources[i+5] > 0)
                     tradingReources[i + 5]--;
@@ -435,7 +433,7 @@ public class GUI_Overlay {
             if (tradeAccept) {
                 System.out.println("Accpeted the trade");
                 for (int i = 0; i < 5; i++) {
-                    PlayingWindowState.currentResources[i] = +tradingReources[i];
+                    State_PlayingWindow.currentResources[i] = +tradingReources[i];
                     tradingReources = new int[10];
                 }
             } else {
@@ -474,7 +472,7 @@ public class GUI_Overlay {
             }
         }
         for (int i = 0; i < 5; i++) {
-            System.out.println(resourceTypes[i] + ":" + PlayingWindowState.currentResources[i]);
+            System.out.println(resourceTypes[i] + ":" + State_PlayingWindow.currentResources[i]);
         }
         return input;
     }

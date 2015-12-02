@@ -9,7 +9,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.GameContainer;
 
-public class TextBoxBase{
+public class ChatBox {
     TrueTypeFont trueTypeFont;
     Image textBox;
 
@@ -19,7 +19,7 @@ public class TextBoxBase{
     String textToRender[];
     String oldText[];
 
-    public TextBoxBase(){
+    public ChatBox(){
         try{
             trueTypeFont = new TrueTypeFont(new Font("Verdana", Font.BOLD, 12), true);
             textBox = new Image("resources/butt.png");

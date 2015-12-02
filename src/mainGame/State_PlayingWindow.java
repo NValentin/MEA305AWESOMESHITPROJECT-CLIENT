@@ -1,6 +1,5 @@
 package mainGame;
 
-import Network.Network;
 import mapClasses.GameMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
@@ -14,7 +13,7 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 /**
  * Created by Kingo on 30-10-2015.
  */
-public class PlayingWindowState extends BasicGameState
+public class State_PlayingWindow extends BasicGameState
 {
     Texture textures;
     int theWidth = Main.ScreenWidth;
@@ -30,7 +29,7 @@ public class PlayingWindowState extends BasicGameState
     int sizeX = Main.ScreenWidth/4;
     int sizeY = Main.ScreenHeight/10;
 
-    TextBoxBase chatBox;
+    ChatBox chatBox;
     TextField gameChat;
     String chatText = "";
     Font font;
@@ -49,7 +48,7 @@ public class PlayingWindowState extends BasicGameState
 
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 12), true);
-        chatBox = new TextBoxBase();
+        chatBox = new ChatBox();
         gameChat = new TextField(gameContainer, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
     }
 

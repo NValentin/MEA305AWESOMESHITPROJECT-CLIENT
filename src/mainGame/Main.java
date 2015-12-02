@@ -32,5 +32,6 @@ public class Main extends StateBasedGame
         this.addState(new State_CreatePlayer());
         this.addState(new State_JoinLobby());
         this.addState(new State_PlayingWindow());
+        this.addState(new State_EndGame());
     }
 }

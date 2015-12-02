@@ -14,6 +14,7 @@ public class State_MainMenu extends BasicGameState
 
     int sizeX = Main.ScreenWidth / 4;
     int sizeY = Main.ScreenHeight / 10;
+    boolean firstGame;
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
@@ -25,6 +26,7 @@ public class State_MainMenu extends BasicGameState
                 sizeX, sizeY, Texture.buttonTemplate);
         exit = new Button(Main.ScreenWidth / 2 - sizeX / 2, (int) (Main.ScreenHeight * 0.85f),
                 sizeX, sizeY, Texture.buttonTemplate);
+        firstGame = true;
     }
 
     @Override
@@ -45,7 +47,10 @@ public class State_MainMenu extends BasicGameState
 
         if (join.isWithin())
         {
-            (new Thread(new GameClient())).start();
+            if(firstGame) {
+                (new Thread(new GameClient())).start();
+                firstGame = false;
+            }
             sbg.enterState(1, new FadeOutTransition(), new FadeInTransition());
         }
 
@@ -53,6 +58,10 @@ public class State_MainMenu extends BasicGameState
         {
             System.exit(0);
 
+        }
+
+        if(gc.getInput().isKeyPressed(Input.KEY_4)) {
+            sbg.enterState(4, new FadeOutTransition(), new FadeInTransition());
         }
     }
 

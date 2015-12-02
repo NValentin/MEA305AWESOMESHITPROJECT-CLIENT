@@ -76,8 +76,10 @@ public class State_PlayingWindow extends BasicGameState
             chatBox.newMessage(chatText, PlayerStats.name);
             gameChat.setText("");
         }
-        if (PlayerStats.die1+PlayerStats.die2==7){
 
+        if(gameContainer.getInput().isKeyPressed(Input.KEY_4)) {
+            gameChat.setLocation(Main.ScreenWidth+200,Main.ScreenHeight+200);
+            stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
         }
     }
 

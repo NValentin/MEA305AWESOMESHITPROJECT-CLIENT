@@ -15,8 +15,6 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 public class State_CreatePlayer extends BasicGameState {
 
     Texture texture;
-    public static Image menuBackground;
-    public static Image button;
     int sizeX = Main.ScreenWidth/4; // Standard width of buttons
     int sizeY = Main.ScreenHeight/10; // Standard height of buttons
 
@@ -48,8 +46,8 @@ public class State_CreatePlayer extends BasicGameState {
         nameField = new TextField(gc, font, Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.55f), sizeX, (int)(sizeY*0.7)); //Field for name
         nameField.setMaxLength(12); // Sets a max limit to number of characters in the textfield
 
-        back = new Button(Main.ScreenWidth/2-sizeX-10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
-        forward = new Button(Main.ScreenWidth/2+10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
+        back = new Button(Main.ScreenWidth/2-sizeX-10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, Texture.templateButton);
+        forward = new Button(Main.ScreenWidth/2+10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, Texture.templateButton);
 
     }
 
@@ -96,7 +94,7 @@ public class State_CreatePlayer extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
             throws SlickException {
         g.drawString("Create a name!", 100, 100);
-        menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
+        Texture.menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         back.draw();
         back.AddText("Back", Color.white);
         forward.draw();

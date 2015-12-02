@@ -55,7 +55,6 @@ public class GameClient extends Listener implements Runnable
     {
         if (!PlayerStats.name.matches(""))
         {
-            System.out.println("PlayerStats.name is not null, SEND STUFF");
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);

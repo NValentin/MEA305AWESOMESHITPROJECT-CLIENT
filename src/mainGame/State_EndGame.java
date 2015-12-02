@@ -1,11 +1,19 @@
 package mainGame;
 
 import org.newdawn.slick.*;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Font;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.font.effects.ColorEffect;
+import org.newdawn.slick.font.effects.OutlineEffect;
 import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+
+import java.awt.*;
 
 /**
  * Created by Bjørn on 02-12-2015.
@@ -23,33 +31,53 @@ public class State_EndGame  extends BasicGameState{
     ChatBox chatBox;
     TextField endChat;
     String chatText = "";
-    Font font;
+    UnicodeFont font;
 
-    @Override
+    String gameEnded;
+    String winner;
+    String winnerName;
+    boolean gameWon;
+
+
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         menuBackground = new Image("resources/menuBackground.jpg");
         button = new Image("resources/TemplateButton.jpg");
 
-        backToMenu = new Button(Main.ScreenWidth/2+10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, button);
+        backToMenu = new Button(Main.ScreenWidth / 2 - sizeX / 2, (int) (Main.ScreenHeight * 0.85f),
+                sizeX, sizeY, Texture.buttonTemplate);
 
-        font = new TrueTypeFont(new java.awt.Font("Verdana",
-                java.awt.Font.PLAIN, 12), true);
+        font = new UnicodeFont(new java.awt.Font("Verdana",
+                java.awt.Font.PLAIN, 46));
         chatBox = new ChatBox();
         endChat = new TextField(gameContainer, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
 
+        gameWon = true;
+        gameEnded = "Game Ended!";
+        winner = "Winner:";
+        winnerName = "";
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+    public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_ENTER) && endChat.getText()!="") {
+        if(gc.getInput().isKeyPressed(Input.KEY_ENTER) && endChat.getText()!="") {
             chatText = endChat.getText();
             chatBox.newMessage(chatText,PlayerStats.name);
             endChat.setText("");
         }
 
         if(backToMenu.isWithin()) {
-            stateBasedGame.enterState(0, new FadeOutTransition(), new FadeInTransition());
+            sbg.enterState(0, new FadeOutTransition(), new FadeInTransition());
+        }
+        if (gameWon) {
+            for (int j = 0; j < PlayerStats.points.length; j++) {
+                if (PlayerStats.points[j] == 10) {
+                    winnerName = PlayerStats.names[j];
+                } else {
+                    winnerName = "No one!";
+                }
+            }
+            gameWon = false;
         }
 
     }
@@ -61,13 +89,26 @@ public class State_EndGame  extends BasicGameState{
         backToMenu.draw();
         backToMenu.AddText("Main Menu", Color.white);
 
-        g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+140,sizeX,40);
-        //Draw names
+
+        g.setColor(new Color(50,50,50,200));
+        //g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+20,sizeX,160);
+
+        g.setColor(Color.black);
+        g.setFont(new TrueTypeFont(new java.awt.Font("Verdana",
+                java.awt.Font.BOLD, 34), true));
+        g.drawString(gameEnded, Main.ScreenWidth/2-g.getFont().getWidth(gameEnded)/2, (int)(Main.ScreenHeight*0.32));
+
+        g.setFont(new TrueTypeFont(new java.awt.Font("Verdana",
+                java.awt.Font.PLAIN, 26), true));
         g.setColor(Color.white);
-        for (int i=0; i<4;i++){
-            g.drawString(PlayerStats.names[i], Main.ScreenWidth/2-sizeX/2+10, (int)(Main.ScreenHeight*0.45f)+30+40*i);
-        }
-        g.setColor(Color.white);
+        g.drawString(winner, Main.ScreenWidth/2-g.getFont().getWidth(winner)/2, (int)(Main.ScreenHeight*0.48));
+
+        g.setFont(new TrueTypeFont(new java.awt.Font("Verdana",
+                java.awt.Font.BOLD, 46), true));
+        g.setColor(new Color(0, 100, 0));
+        g.drawString(winnerName, Main.ScreenWidth/2-g.getFont().getWidth(winnerName)/2, (int)(Main.ScreenHeight*0.55));
+
+
         chatBox.render(g, gc);
         endChat.render(gc, g);
 

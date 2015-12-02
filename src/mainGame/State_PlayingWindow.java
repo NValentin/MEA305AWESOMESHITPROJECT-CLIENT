@@ -26,7 +26,7 @@ public class State_PlayingWindow extends BasicGameState
     public static int tradeId = 0;
 
     GameMap map;
-    boolean buildMap = true;
+    public static boolean buildMap = true;
 
     int sizeX = Main.ScreenWidth/4;
     int sizeY = Main.ScreenHeight/10;

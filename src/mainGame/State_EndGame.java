@@ -2,22 +2,12 @@ package mainGame;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
-import org.newdawn.slick.Font;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.font.effects.ColorEffect;
-import org.newdawn.slick.font.effects.OutlineEffect;
 import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import org.newdawn.slick.state.transition.FadeInTransition;
-import org.newdawn.slick.state.transition.FadeOutTransition;
 
-import java.awt.*;
-
-/**
- * Created by Bjørn on 02-12-2015.
- */
 public class State_EndGame  extends BasicGameState{
 
     public static Image menuBackground;
@@ -39,7 +29,15 @@ public class State_EndGame  extends BasicGameState{
     boolean gameWon;
 
 
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+    /**
+     * Initiation method. creates/assigns variables and objects
+     * @param gc GameContainer component
+     *          @see GameContainer and Slick2D
+     * @param sbg StateBasedGame component
+     *          @see StateBasedGame and Slick2D
+     * @throws SlickException
+     */
+    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         menuBackground = new Image("resources/menuBackground.jpg");
         button = new Image("resources/TemplateButton.jpg");
 
@@ -49,14 +47,23 @@ public class State_EndGame  extends BasicGameState{
         font = new UnicodeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 46));
         chatBox = new ChatBox();
-        endChat = new TextField(gameContainer, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
+        endChat = new TextField(gc, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
 
         gameWon = true;
         gameEnded = "Game Ended!";
         winner = "Winner:";
         winnerName = "";
     }
-
+    /**
+     * Update method. Listens for conditionals
+     * @param gc GameContainer component
+     *          @see GameContainer and Slick2D
+     * @param sbg StateBasedGame component
+     *          @see StateBasedGame and Slick2D
+     * @param i Update parameter
+     *          @see Update and Slick2D
+     * @throws SlickException
+     */
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
 
@@ -67,7 +74,13 @@ public class State_EndGame  extends BasicGameState{
         }
 
         if(backToMenu.isWithin()) {
-            sbg.enterState(0, new FadeOutTransition(), new FadeInTransition());
+            //This was an attempt to reset the game. Currently, it DOES NOT work.
+            /*State_PlayingWindow.buildMap = true;
+            sbg.getState(2).init(gc, sbg);
+            sbg.getState(3).init(gc, sbg);
+            sbg.getState(4).init(gc, sbg);
+            sbg.enterState(0, new FadeOutTransition(), new FadeInTransition());*/
+            System.exit(0);
         }
         if (gameWon) {
             for (int j = 0; j < PlayerStats.points.length; j++) {
@@ -82,16 +95,25 @@ public class State_EndGame  extends BasicGameState{
 
     }
 
+    /**
+     * Render method. Renders elements in the game window
+     @param gc GameContainer component
+      *          @see GameContainer and Slick2D
+     * @param sbg StateBasedGame component
+     *          @see StateBasedGame and Slick2D
+     * @param g Graphics component
+     *          @see Graphics and slick2D
+     * @throws SlickException
+     */
     @Override
-    public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
+    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 
         menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         backToMenu.draw();
-        backToMenu.AddText("Main Menu", Color.white);
+        backToMenu.AddText("End Game", Color.white);
 
 
         g.setColor(new Color(50,50,50,200));
-        //g.fillRect(Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.45f)+20,sizeX,160);
 
         g.setColor(Color.black);
         g.setFont(new TrueTypeFont(new java.awt.Font("Verdana",
@@ -116,7 +138,7 @@ public class State_EndGame  extends BasicGameState{
     }
 
     @Override
-    public int getID() {
+    public int getID() { //Returns the ID of the state. Useful for switching between states, although we haven't used it yet
         return 4;
     }
 }

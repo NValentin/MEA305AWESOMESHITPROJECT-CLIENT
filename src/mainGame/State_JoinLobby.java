@@ -7,9 +7,6 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
-/**
- * Created by Bjørn on 01-11-2015.
- */
 public class State_JoinLobby extends BasicGameState {
 
     Texture texture;
@@ -26,8 +23,17 @@ public class State_JoinLobby extends BasicGameState {
     String chatText = "";
     Font font;
 
+    /**
+     * Initiation method. creates/assigns variables and objects
+     * @param gc GameContainer component
+     *          @see GameContainer and Slick2D
+     * @param sbg StateBasedGame component
+     *          @see StateBasedGame and Slick2D
+     * @throws SlickException
+     */
     @Override
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException
+    public void init(GameContainer gc, StateBasedGame sbg)
+            throws SlickException
     {
         texture = new Texture();
         texture.initJoinLobbyTextures();
@@ -38,25 +44,34 @@ public class State_JoinLobby extends BasicGameState {
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 12), true);
         chatBox = new ChatBox();
-        lobbyChat = new TextField(gameContainer, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
+        lobbyChat = new TextField(gc, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
 
         countdown = 6f;
 
     }
-
+    /**
+     * Update method. Listens for conditionals
+     * @param gc GameContainer component
+     *          @see GameContainer and Slick2D
+     * @param sbg StateBasedGame component
+     *          @see StateBasedGame and Slick2D
+     * @param i Update parameter
+     *          @see Update and Slick2D
+     * @throws SlickException
+     */
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i)
+    public void update(GameContainer gc, StateBasedGame sbg, int i)
             throws SlickException {
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_3)) {
+        if(gc.getInput().isKeyPressed(Input.KEY_3)) {
             PlayerStats.StartGame=true;
         }
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isWithin()){
-            stateBasedGame.enterState(0, new FadeOutTransition(), new FadeInTransition());
+        if(gc.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isWithin()){
+            sbg.enterState(0, new FadeOutTransition(), new FadeInTransition());
         }
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_ENTER) && lobbyChat.getText()!="") {
+        if(gc.getInput().isKeyPressed(Input.KEY_ENTER) && lobbyChat.getText()!="") {
             chatText = lobbyChat.getText();
             chatBox.newMessage(chatText,PlayerStats.name);
             lobbyChat.setText("");
@@ -69,13 +84,23 @@ public class State_JoinLobby extends BasicGameState {
             //countdown -= 0.0012f;
             //if (countdown < 0.5f) {
             lobbyChat.setLocation(Main.ScreenWidth+200,Main.ScreenHeight+200);
-                stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+                sbg.enterState(3, new FadeOutTransition(), new FadeInTransition());
             //}
         }
     }
 
+    /**
+     * Render method. Renders elements in the game window
+     @param gc GameContainer component
+      *          @see GameContainer and Slick2D
+     * @param sbg StateBasedGame component
+     *          @see StateBasedGame and Slick2D
+     * @param g Graphics component
+     *          @see Graphics and slick2D
+     * @throws SlickException
+     */
     @Override
-    public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g)
+    public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
             throws SlickException {
         Texture.menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
         back.draw();
@@ -126,7 +151,7 @@ public class State_JoinLobby extends BasicGameState {
     }
 
     @Override
-    public int getID() {
+    public int getID() { //Returns the ID of the state. Useful for switching between states, although we haven't used it yet
         return 2;
     }
 }

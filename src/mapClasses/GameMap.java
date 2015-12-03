@@ -36,11 +36,11 @@ public class GameMap
     public static int[] serializedRoad = new int[]{0, 0}; //int array to "pack" indexpos in housePlots, and PlayerID
     public static int[] deSerializedRoad = new int[]{0, 0}; //int array to "pack" indexpos in housePlots, and PlayerID
 
-    public static int serializedCity = 0; //Int representing indexPos in houses that has to be upgraded to a city
-    public static int deSerializedCity = 0; //Int representing indexPos in houses that has to be upgraded to a city
+    public static int serializedCity = 99; //Int representing indexPos in houses that has to be upgraded to a city
+    public static int deSerializedCity = 99; //Int representing indexPos in houses that has to be upgraded to a city
 
-    public static int serializedThief = 0;
-    public static int deSerializedThief = 0;
+    public static int serializedThief = 99;
+    public static int deSerializedThief = 99;
 
     //Build buttons as they are in the GUI_Overlay, becomes true depending on which build action a player press.
     public static boolean[] build_buttons = new boolean[]{false, false, false, false};
@@ -85,13 +85,13 @@ public class GameMap
         {
             if (tile.getTileType().matches("Desert"))
             {
-                for (Circle circle : thiefPositions)
+                for (int i = 0; i < thiefPositions.length; i++)
                 {
-                    if (circle != null)
+                    if (thiefPositions[i] != null)
                     {
-                        if (circle.contains(Layout.hexToPixel(mapLayout, tile)))
+                        if (thiefPositions[i].contains(Layout.hexToPixel(mapLayout, tile)))
                         {
-                            thief = new Thief(circle);
+                            thief = new Thief(thiefPositions[i]);
                             tile.hasThief = true;
                             thiefWasPlaced = true;
                         }
@@ -605,16 +605,16 @@ public class GameMap
             deSerializedRoad[1] = 0;
         }
 
-        if (deSerializedCity != 0)
+        if (deSerializedCity != 99)
         {
             deSerializeCity();
-            deSerializedCity = 0;
+            deSerializedCity = 99;
         }
 
-        if (deSerializedThief != 0)
+        if (deSerializedThief != 99)
         {
             deSerializeThief();
-            deSerializedThief = 0;
+            deSerializedThief = 99;
         }
 
         checkForBuiltHouses(gc);
@@ -824,7 +824,8 @@ public class GameMap
      */
     public void serializeCity(int indexPos)
     {
-        serializedCity = indexPos;
+        if (serializedCity < houses.size())
+            serializedCity = indexPos;
     }
 
     /**
@@ -832,7 +833,8 @@ public class GameMap
      */
     public void deSerializeCity()
     {
-        houses.get(deSerializedCity).upgradeHouse();
+        if (deSerializedCity < houses.size())
+            houses.get(deSerializedCity).upgradeHouse();
     }
 
     /**
@@ -858,11 +860,28 @@ public class GameMap
 
     private void serializeThief(int indexPos)
     {
-        serializedThief = indexPos;
+        if (indexPos < 20)
+            serializedThief = indexPos;
     }
+
     private void deSerializeThief()
     {
-        thief.setThief(thiefPositions[deSerializedThief]);
+        if (deSerializedThief < 20)
+            for (Tile tile : map)
+            {
+                for (int i = 0; i < thiefPositions.length; i++)
+                {
+                    if (thiefPositions[deSerializedThief] != null)
+                    {
+                        if (thiefPositions[deSerializedThief].contains(Layout.hexToPixel(mapLayout, tile)))
+                        {
+                            thief = new Thief(thiefPositions[deSerializedThief]);
+                            tile.hasThief = true;
+                            thiefWasPlaced = true;
+                        }
+                    }
+                }
+            }
     }
 
     /**

@@ -4,6 +4,10 @@ import org.newdawn.slick.geom.Point;
 
 import java.util.ArrayList;
 
+/**
+ * Part of DIY Hex-library from Author of: http://www.redblobgames.com/grids/hexagons/
+ * Methods are derived directly from library, documentation comments if not.
+ */
 class Layout
 {
     public Layout(Orientation orientation, Point size, Point origin)

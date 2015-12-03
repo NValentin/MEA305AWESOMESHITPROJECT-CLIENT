@@ -36,6 +36,10 @@ public class GUI_Overlay {
     boolean offerWindow = false;
     boolean showStatsBool;
     int[] tradingReources = new int[10];
+    
+    int[] resourcesSent = new int[6];
+    int[] resourcesReceived = new int[6];
+
     String tradeWithName = "";
     Button endTurn;
     Font font;
@@ -338,7 +342,7 @@ public class GUI_Overlay {
                 die2 = PlayerStats.die2 - 1;
                 combinedValue = die1 + die2 + 2;
                 rolled++;
-                State_PlayingWindow.currentResources = Addresources(State_PlayingWindow.currentResources, combinedValue, false, map);
+                map.addResources(die1+die2);
                 calculateNewDice = false;
                 PlayerStats.diceUsed = true;
             }
@@ -362,7 +366,7 @@ public class GUI_Overlay {
                 die2 = PlayerStats.die2-1;
                 combinedValue = die1 + die2 + 2;
                 rolled++;
-                State_PlayingWindow.currentResources = Addresources(State_PlayingWindow.currentResources, combinedValue, false, map);
+                map.addResources(die1+die2);
                 calculateNewDice = false;
                 PlayerStats.diceUsed = true;
             }
@@ -476,22 +480,5 @@ public class GUI_Overlay {
             PlayerStats.endTurn = true;
             DiceRolled = false;
         }
-    }
-
-    public int[] Addresources(int[] input, int diceRoll,boolean isCity, GameMap map) {
-        ArrayList<Tile> tiles = map.tilesYieldingResource(diceRoll);
-        for (int i = 0; i < tiles.size(); i++) {
-            String tmp_res = tiles.get(i).getTileType();
-            for (int j = 0; j < 5; j++) {
-                if (tmp_res.equals(resourceTypes[j])) {
-                    if (isCity) {
-                        input[j] += 2;
-                    } else {
-                        input[j]++;
-                    }
-                }
-            }
-        }
-        return input;
     }
 }

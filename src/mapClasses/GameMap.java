@@ -5,6 +5,7 @@ import mainGame.*;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.*;
+
 import java.util.*;
 
 /**
@@ -191,15 +192,16 @@ public class GameMap
         int counter = 0;
         for (int i = 0; i < map.size(); i++)
             if (Math.abs(map.get(i).q) != 3 && Math.abs(map.get(i).r) != 3 && Math.abs(map.get(i).s) == 3)
-        {
-            thiefPositions[counter] = (new Circle(Layout.hexToPixel(mapLayout, map.get(i)).getX(),
-                    Layout.hexToPixel(mapLayout, map.get(i)).getY(), 20));
-            counter++;
-        }
+            {
+                thiefPositions[counter] = (new Circle(Layout.hexToPixel(mapLayout, map.get(i)).getX(),
+                        Layout.hexToPixel(mapLayout, map.get(i)).getY(), 20));
+                counter++;
+            }
     }
 
     /**
      * adds a house to the houses arraylist, and calls the remove plot methods.
+     *
      * @param indexPos the indexPosition of the plot in housePlots that should be built as a house.
      * @param playerID the ID of the player that built the house.
      */
@@ -215,6 +217,7 @@ public class GameMap
     /**
      * add a road to the roads arraylist, and set the plot it built it on to null, to prevent others from building
      * on top of it.
+     *
      * @param indexPos indexPosition of the line in roadPlots it has to built the road as.
      * @param playerID ID of the player that built the road.
      */
@@ -329,11 +332,12 @@ public class GameMap
 
     /**
      * Method for determining all tiles that yields resources depending on diceRoll.
+     *
      * @param diceRoll takes an int, diceRoll, that should be from 2-12.
      * @return returns an ArrayList of all the tiles in map, that will yields resources from the diceRoll.
      * @see ArrayList
      */
-    public ArrayList tilesYieldingResource(int diceRoll)
+    public ArrayList<Tile> tilesYieldingResource(int diceRoll)
     {
         ArrayList<Tile> resourceYieldingTiles = new ArrayList<>();
         for (Tile tile : map)
@@ -344,8 +348,37 @@ public class GameMap
         return resourceYieldingTiles;
     }
 
+    public void addResources(int diceRoll)
+    {
+        ArrayList<Tile> tiles = tilesYieldingResource(diceRoll);
+        for (Tile tile : tiles)
+            for (Point point : Layout.polygonCorners(mapLayout, tile))
+                if (!houses.isEmpty())
+                    for (House house : houses)
+                        if (house.getHouseCircle().contains(point) && house.getPlayerID() == PlayerStats.ID)
+                        {
+                            int numOfResource = (house.getIsCity()) ? 2 : 1;
+                            if (tile.getTileType().matches("Lumber"))
+                                State_PlayingWindow.currentResources[2] += numOfResource;
+
+                            if (tile.getTileType().matches("Wool"))
+                                State_PlayingWindow.currentResources[0] += numOfResource;
+
+                            if (tile.getTileType().matches("Brick"))
+                                State_PlayingWindow.currentResources[3] += numOfResource;
+
+                            if (tile.getTileType().matches("Ore"))
+                                State_PlayingWindow.currentResources[1] += numOfResource;
+
+                            if (tile.getTileType().matches("Grain"))
+                                State_PlayingWindow.currentResources[4] += numOfResource;
+
+                        }
+    }
+
     /**
      * sets an object to null, in HousePlot array
+     *
      * @param indexPos position in the array it sets as null
      */
     private void removeHousePlot(int indexPos)
@@ -357,6 +390,7 @@ public class GameMap
     /**
      * Set neighbouring housePlots to the built house, to null, because of the minimum distance requirement
      * present in Catan.
+     *
      * @param house the house that has just been built in addHouse().
      */
     private void removeHouseNeighborPlots(House house)
@@ -377,8 +411,9 @@ public class GameMap
      * It checks for updates to variables that potentially could change, i.e. new house/road/city, and if thief
      * has to be moved. Also has to redundancy checks for whether the player should actually be able to do a
      * certain action, like build if it's not your turn.
+     *
      * @param gc a slick2D thing.
-     *           @see GameContainer and Slick2D javadoc
+     * @see GameContainer and Slick2D javadoc
      */
     public void update(GameContainer gc)
     {
@@ -447,9 +482,10 @@ public class GameMap
 
     /**
      * the method for drawing the tiles, and the thief on the tile that has the thief.
+     *
      * @param g Graphics component
-     *          @see Graphics and Slick2D
      * @throws SlickException
+     * @see Graphics and Slick2D
      */
     private void drawTiles(Graphics g) throws SlickException
     {
@@ -476,9 +512,10 @@ public class GameMap
 
     /**
      * method for drawing the circles in housePlots, and checking to only draw those that should be drawn.
+     *
      * @param g Slick2D graphics component
-     *          @see Graphics and Slick2D javadoc
      * @throws SlickException
+     * @see Graphics and Slick2D javadoc
      */
     private void drawHousePlots(Graphics g) throws SlickException
     {
@@ -518,9 +555,10 @@ public class GameMap
 
     /**
      * method for drawing the lines in roadPlots, and checking to only draw those that should be drawn.
+     *
      * @param g Slick2D Graphics component
-     *          @see Graphics and Slick2D javadoc
      * @throws SlickException
+     * @see Graphics and Slick2D javadoc
      */
     private void drawRoadPlots(Graphics g) throws SlickException
     {
@@ -573,9 +611,10 @@ public class GameMap
     /**
      * The main render method, it will call drawTiles(), drawHousePlots(), and drawRoadPlots(), along with that
      * does not take up a lot of checks.
+     *
      * @param g slick2D graphics component
-     *          @see Graphics and Slick2d javadoc
      * @throws SlickException
+     * @see Graphics and Slick2d javadoc
      */
     public void render(Graphics g) throws SlickException
     {
@@ -605,6 +644,7 @@ public class GameMap
     /**
      * Sets the variables in serializedHouse array, this is the array that is sent to the server, if its second
      * variable is not 0.
+     *
      * @param housePlotPos int that represents the index position in housePlots array, that a player build on.
      */
     private void serializeHouse(int housePlotPos)
@@ -625,6 +665,7 @@ public class GameMap
 
     /**
      * takes the indexPos in the houses ArrayList a player wants to upgrade to a city
+     *
      * @param indexPos the int representing the position in houses
      */
     public void serializeCity(int indexPos)
@@ -643,6 +684,7 @@ public class GameMap
     /**
      * sets the variables in serializedRoad, which will be sent to the server if there are changes.
      * sets the indexPosition, and playerID
+     *
      * @param roadPlotPos int that represents the indexPosition in roadPlots a player wants to place a road on.
      */
     private void serializeRoad(int roadPlotPos)
@@ -662,6 +704,7 @@ public class GameMap
 
     /**
      * checks if the mouse position is within a circle in housePlots, dependant on the indexPos param.
+     *
      * @param indexPos the int representing the indexPos in housePlots.
      * @return returns true/false, true if mouse pos is inside, and vice versa.
      */
@@ -673,6 +716,7 @@ public class GameMap
 
     /**
      * checks if the mouse position is within a circle in houses, dependant on the indexPos param.
+     *
      * @param indexPos the int representing the indexPos in houses.
      * @return returns true/false, true if mouse pos is inside, and vice versa.
      */
@@ -683,6 +727,7 @@ public class GameMap
 
     /**
      * checks if a circle made from the mousePosition intersects a line in roadPlots, dependant on the indexPos param.
+     *
      * @param indexPos the int representing the indexPos in roadPlots.
      * @return returns true/false, true if mouse pos is inside, and vice versa.
      */

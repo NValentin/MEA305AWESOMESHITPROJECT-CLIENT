@@ -2,6 +2,10 @@ package mapClasses;
 
 import java.util.ArrayList;
 
+/**
+ * Part of DIY Hex-library from Author of: http://www.redblobgames.com/grids/hexagons/
+ * Methods are derived directly from library, documentation comments if not.
+ */
 class FractionalHex
 {
     public FractionalHex(double q, double r, double s)

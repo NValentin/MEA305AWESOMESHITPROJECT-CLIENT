@@ -7,6 +7,11 @@ import org.newdawn.slick.geom.Circle;
 
 public class House
 {
+    public Boolean getIsCity()
+    {
+        return isCity;
+    }
+
     private Boolean isCity;
     private int playerID;
     private Color buildingColor;

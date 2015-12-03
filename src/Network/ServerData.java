@@ -34,8 +34,12 @@ public class ServerData
     public Connection c;
     boolean first = true;
     public int[] rolledDiceStatistics = new int[]{0,0,0,0,0,0,0,0,0,0,0,0};
-    public int[] tradingResources = new int[10];
-    public boolean[] tradingWithyou = new boolean[] {false, false, false, false, false, false};
+    public boolean sendTrade = false;
+    public boolean resetTradingResources = true;
+    public int[] resourcesTrade = new int[10];
+    public int targetPlayerTrade;
+    public boolean tradeResourcesToHandle = false;
+    public boolean updateCard;
     public boolean isCardUpToDate;
 
     Integer[] yieldNumbers = {2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12};
@@ -75,9 +79,12 @@ public class ServerData
         PlayerStats.diceRoll = diceRoll;
         PlayerStats.diceUsed = diceUsed;
         PlayerStats.rolledDiceStatistics = rolledDiceStatistics;
-        PlayerStats.tradingResources = tradingResources;
-        PlayerStats.tradingWithyou = tradingWithyou;
         PlayerStats.cardID = cardID;
         PlayerStats.updateCard = isCardUpToDate;
+        PlayerStats.sendTrade = sendTrade;
+        PlayerStats.resourcesTrade = resourcesTrade;
+        PlayerStats.targetPlayerTrade = targetPlayerTrade;
+        PlayerStats.resetTradingResources = resetTradingResources;
+        PlayerStats.tradeResourcesToHandle = tradeResourcesToHandle;
     }
 }

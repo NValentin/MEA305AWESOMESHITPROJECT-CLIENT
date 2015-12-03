@@ -8,6 +8,7 @@ import org.newdawn.slick.geom.Rectangle;
  * Created by Kingo on 25-Nov-15.
  */
 public class GUI_Overlay {
+    public static boolean popTrade = true;
 
     boolean DiceRolled;
     String[] buildingMenuText = new String[]{"Road", "House", "City", "Development Card", "Gives 0 Victory Points", "Gives 1 Victory Points", "Gives 2 Victory Points", "Gives ? Victory Points", "1 Lumber and 1 Brink", "1 Lumber, 1 Wool, 1 Grain, and 1 Brick", "3 Ore and 2 Grin", "1 Wool, 1 Ore, and 1 Grain"};
@@ -24,18 +25,20 @@ public class GUI_Overlay {
     boolean offerWindow = false;
     boolean showStatsBool;
     Dice dice;
-    int[] tradingReources = new int[10];
+    public static int[] tradingReources = new int[10];
     DevelopmentCard card;
+    Trading trade;
 
     String tradeWithName = "";
     Button endTurn;
     Font font;
     Font regularFont;
-    String[] resourceTypes = new String[]{"Wool", "Ore", "Lumber", "Brick", "Grain"};
+    String[] resourceTypes = new String[]{"Wool   ", "Ore    ", "Lumber ", "Brick  ", "Grain  "};
 
     GUI_Overlay() throws SlickException {
         card = new DevelopmentCard();
         dice = new Dice();
+        trade = new Trading();
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 10), true);
 
@@ -87,16 +90,11 @@ public class GUI_Overlay {
             if (accept.isPressed(gc)) {
                 System.out.println("Accept");
                 tradeWindow = true;
-                PlayerStats.tradingWithyou[PlayerStats.turn] = false;
+                popTrade = false;
             }
             if (decline.isPressed(gc)) {
                 System.out.println("Decline");
-                PlayerStats.tradingResources = new int[10];
-                PlayerStats.tradingWithyou = new boolean[6];
-                PlayerStats.tradingWithyou[PlayerStats.turn] = true;
-                PlayerStats.tradingWithyou[4] = true;
-                PlayerStats.tradingWithyou[5] = true;
-                PlayerStats.tradingWithyou[PlayerStats.turn] = false;
+                popTrade = false;
             }
         }
     }
@@ -179,17 +177,11 @@ public class GUI_Overlay {
             g.fill(new Rectangle(x, y, 400, 300));
             g.setColor(Color.black);
             g.drawString("Trade with " + tradeWithName, x + 10, y + 20);
-            g.drawString("Wool:  " + PlayerStats.tradingResources[0], x + 10, y + 70);
-            g.drawString("Ore:   " + PlayerStats.tradingResources[1], x + 10, y + 90);
-            g.drawString("Lumber:" + PlayerStats.tradingResources[2], x + 10, y + 110);
-            g.drawString("Bricks:" + PlayerStats.tradingResources[3], x + 10, y + 130);
-            g.drawString("Grain: " + PlayerStats.tradingResources[4], x + 10, y + 150);
             g.drawString("for", x + 150, y + 110);
-            g.drawString("Wool:  " + PlayerStats.tradingResources[5], x + 250, y + 70);
-            g.drawString("Ore:   " + PlayerStats.tradingResources[6], x + 250, y + 90);
-            g.drawString("Lumber:" + PlayerStats.tradingResources[7], x + 250, y + 110);
-            g.drawString("Bricks:" + PlayerStats.tradingResources[8], x + 250, y + 130);
-            g.drawString("Grain: " + PlayerStats.tradingResources[9], x + 250, y + 150);
+            for (int i = 0; i < 5; i++) {
+                g.drawString(resourceTypes[i] + ":  " + PlayerStats.resourcesTrade[i], x + 25, y + 70 + 20 * i);
+                g.drawString(resourceTypes[i] + ":  " + PlayerStats.resourcesTrade[i + 5], x + 265, y + 70 + 20 * i);
+            }
             acceptOffer.SetPos(x + 10, y + 180);
             declineOffer.SetPos(x + 250, y + 180);
             counterOffer.SetPos(x + 135, y + 180);
@@ -199,23 +191,13 @@ public class GUI_Overlay {
             declineOffer.AddText("Decline Offer", Color.black);
             if (acceptOffer.isPressed(gc)) {
                 System.out.println("Accept");
-                //PlayerStats.tradingResources = tradingReources;
-                PlayerStats.tradingWithyou = new boolean[6];
-                PlayerStats.tradingWithyou[PlayerStats.turn] = true;
-                PlayerStats.tradingWithyou[5] = true;
                 tradeWindow = false;
-                PlayerStats.refreshResources = false;
-                PlayerStats.tradingWithyou[4] = true;
+                trade.AcceptTrade(PlayerStats.resourcesTrade);
             }
             if (declineOffer.isPressed(gc)) {
                 System.out.println("Decline");
-                PlayerStats.tradingResources = new int[10];
-                PlayerStats.tradingWithyou = new boolean[6];
-                PlayerStats.tradingWithyou[PlayerStats.turn] = true;
-                PlayerStats.tradingWithyou[5] = true;
                 tradeWindow = false;
-                PlayerStats.refreshResources = false;
-                PlayerStats.tradingWithyou[4] = true;
+                trade.DeclineTrade(true);
             }
             g.setColor(Color.white);
         }
@@ -237,6 +219,7 @@ public class GUI_Overlay {
             makeNewTrade[i].AddText("Trade", Color.black);
             if (makeNewTrade[i].isPressed(gc)) {
                 System.out.println("Trading with " + _names[i]);
+                PlayerStats.targetPlayerTrade = (i+1);
                 tradeWithName = _names[i];
                 offerWindow = true;
                 State_PlayingWindow.tradeId = i;
@@ -329,7 +312,7 @@ public class GUI_Overlay {
 
 
 
-    public void OfferWindow(int x, int y, boolean boo, Graphics g, int tradeId, GameContainer gc) {
+    public void OfferWindow(int x, int y, boolean boo, Graphics g, GameContainer gc) {
         if (boo) {
             g.setColor(Color.white);
             g.fill(new Rectangle(x, y, 400, 300));
@@ -355,8 +338,8 @@ public class GUI_Overlay {
                     tradingReources[i+5]++;
             }
             for (int i = 0; i < 5; i ++) {
-                g.drawString("Wool:  " + tradingReources[i], x + 10, y + 70 + i * 20);
-                g.drawString(resourceTypes[i] + ":  " + tradingReources[i + 5], x + 250, y + 70 + i * 20);
+                g.drawString(resourceTypes[i] + ":  " + tradingReources[i], x + 25, y + 70 + i * 20);
+                g.drawString(resourceTypes[i] + ":  " + tradingReources[i + 5], x + 265, y + 70 + i * 20);
             }
             g.drawString("for", x + 170, y + 110);
             acceptOffer.SetPos(x + 10, y + 180);
@@ -367,56 +350,12 @@ public class GUI_Overlay {
             declineOffer.AddText("Cancel", Color.black);
             if (acceptOffer.isPressed(gc)) {
                 offerWindow = false;
-                PlayerStats.tradingResources = tradingReources;
-                PlayerStats.tradingWithyou =  new boolean[6];
-                PlayerStats.tradingWithyou[tradeId] = true;
-                PlayerStats.tradingWithyou[4] = true;
+                trade.MakeNewTrade(tradingReources);
             }
             if (declineOffer.isPressed(gc)) {
                 offerWindow = false;
             }
             g.setColor(Color.white);
-        }
-    }
-
-    public void HandleTradeRespons() {
-        if (!PlayerStats.tradingComplete) {
-            System.out.println("-------Boolean Values--------------------------");
-            System.out.println("Trade accepted: " + PlayerStats.tradingWithyou[5]);
-            System.out.println("Trade Complete: " + PlayerStats.tradingComplete);
-            System.out.println("Trade Handled: " + PlayerStats.tradeHandled);
-            if (PlayerStats.tradingWithyou[5]) {
-                System.out.println("-------Accpeted the trade----------------------");
-                System.out.println("-------Old Resources---------------------------");
-                System.out.println("Wool: " + State_PlayingWindow.currentResources[0]);
-                System.out.println("Ore: " + State_PlayingWindow.currentResources[1]);
-                System.out.println("Lumber: " + State_PlayingWindow.currentResources[2]);
-                System.out.println("Bricks: " + State_PlayingWindow.currentResources[3]);
-                System.out.println("Grain: " + State_PlayingWindow.currentResources[4]);
-                System.out.println("-------Inc Resources---------------------------");
-                System.out.println("Wool: " + (PlayerStats.tradingResources[0] - PlayerStats.tradingResources[5]));
-                System.out.println("Ore: " + (PlayerStats.tradingResources[1] - PlayerStats.tradingResources[6]));
-                System.out.println("Lumber: " + (PlayerStats.tradingResources[2] - PlayerStats.tradingResources[7]));
-                System.out.println("Bricks: " + (PlayerStats.tradingResources[3] - PlayerStats.tradingResources[8]));
-                System.out.println("Grain: " + (PlayerStats.tradingResources[4] - PlayerStats.tradingResources[9]));
-
-                for (int i = 0; i < 5; i++) {
-                    State_PlayingWindow.currentResources[i] = State_PlayingWindow.currentResources[i] + PlayerStats.tradingResources[i] - PlayerStats.tradingResources[i + 5];
-                }
-                System.out.println("-------New Resources---------------------------");
-                System.out.println("Wool: " + State_PlayingWindow.currentResources[0]);
-                System.out.println("Ore: " + State_PlayingWindow.currentResources[1]);
-                System.out.println("Lumber: " + State_PlayingWindow.currentResources[2]);
-                System.out.println("Bricks: " + State_PlayingWindow.currentResources[3]);
-                System.out.println("Grain: " + State_PlayingWindow.currentResources[4]);
-                System.out.println("-----------------------------------------------");
-                PlayerStats.tradingWithyou[5] = false;
-            } else {
-                System.out.println("-------Declined the trade----------------------");
-            }
-            tradingReources = new int[10];
-            PlayerStats.tradingComplete = true;
-            PlayerStats.refreshResources = false;
         }
     }
 

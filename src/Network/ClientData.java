@@ -21,8 +21,10 @@ public class ClientData
     public int serializedThief = 0;
     public boolean endTurn = false, diceRoll, diceUsed;
     public boolean gameEnded = false;
-    public int[] tradingResources = new int[10];
-    public boolean[] tradingWithyou = new boolean[] {false, false, false, false, false, false};
+    public boolean sendTrade = false;
+    public boolean resetTradingResources = true;
+    public int[] resourcesTrade = new int[10];
+    public int targetPlayerTrade;
     public boolean updateCard;
 
     public ClientData()
@@ -47,10 +49,11 @@ public class ClientData
         serializedThief = GameMap.serializedThief;
         endTurn = PlayerStats.endTurn;
         diceUsed = PlayerStats.diceUsed;
-        tradingResources = PlayerStats.tradingResources;
-        tradingWithyou = PlayerStats.tradingWithyou;
+        sendTrade = PlayerStats.sendTrade;
+        resetTradingResources = PlayerStats.resetTradingResources;
+        resourcesTrade = PlayerStats.resourcesTrade;
+        targetPlayerTrade = PlayerStats.targetPlayerTrade;
         updateCard = PlayerStats.updateCard;
-        PlayerStats.refreshResources = true;
     }
 
 }

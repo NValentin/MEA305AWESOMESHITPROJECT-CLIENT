@@ -49,7 +49,7 @@ public class GameClient extends Listener implements Runnable
         updateThief();
         updatePlayerTurn();
         updateDice();
-        //updateTrade();
+        updateTrade();
         updateCards();
     }
 
@@ -159,12 +159,12 @@ public class GameClient extends Listener implements Runnable
         }
     }
     void updateTrade() {
-        if (PlayerStats.tradingWithyou[4]) {
+        if (PlayerStats.sendTrade) {
             System.out.println("Sending trade data");
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);
-            PlayerStats.tradingWithyou[4] = false;
+            PlayerStats.sendTrade = false;
         }
     }
     void updateCards() {

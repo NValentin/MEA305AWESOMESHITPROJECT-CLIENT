@@ -19,7 +19,7 @@ public class State_PlayingWindow extends BasicGameState
     int theWidth = Main.ScreenWidth;
     int theHeight = Main.ScreenHeight;
     GUI_Overlay gui_overlay;
-    public static int[] currentResources = new int[5];
+    public static int[] currentResources = new int[] {5, 5, 5, 5, 5};
     boolean yourTurn = false;
     public static int tradeId = 0;
 
@@ -96,14 +96,18 @@ public class State_PlayingWindow extends BasicGameState
         gui_overlay.PlayerList(15, 40, g, PlayerStats.names, PlayerStats.points, PlayerStats.turn, gc);
         gui_overlay.ResourceBar(Main.ScreenWidth/2-250, 10, g, currentResources[0], currentResources[1], currentResources[2], currentResources[3], currentResources[4], gc);
         gui_overlay.BuildingWindow(g, theWidth - 205, theHeight - 275, 200, 270, gc);
-        gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, PlayerStats.tradingWithyou[PlayerStats.ID-1], PlayerStats.names[PlayerStats.turn], g, gc);
         gui_overlay.IncomingTradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.tradeWindow, g, gc);
-        gui_overlay.OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.offerWindow, g, tradeId, gc);
+        gui_overlay.OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.offerWindow, g, gc);
         gui_overlay.ShowStats(g, theWidth - 145, 10, gc);
-        if (PlayerStats.tradingWithyou[5] && PlayerStats.refreshResources) {
-            gui_overlay.HandleTradeRespons();
-        } else {
-            gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, PlayerStats.tradingWithyou[PlayerStats.ID-1], PlayerStats.names[PlayerStats.turn], g, gc);
+
+        if (PlayerStats.targetPlayerTrade == PlayerStats.ID) {
+            if (PlayerStats.tradeResourcesToHandle) {
+                if (!PlayerStats.resetTradingResources) {
+                    gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, GUI_Overlay.popTrade, PlayerStats.names[PlayerStats.turn], g, gc);
+                } else {
+                    Trading.ReAdjustResources(PlayerStats.resourcesTrade);
+                }
+            }
         }
         if (PlayerStats.playerturn[PlayerStats.ID - 1]) {
             gui_overlay.TradeWithWindow(Main.ScreenWidth - 215, 205, g, PlayerStats.names, gc);

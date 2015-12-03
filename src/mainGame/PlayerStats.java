@@ -24,13 +24,13 @@ public class PlayerStats {
     public static Color[] playerColors = new Color[]{Color.black, Color.blue, Color.red, Color.magenta, Color.cyan};
     public static boolean diceUsed;
     public static int[] rolledDiceStatistics = new int[]{0,0,0,0,0,0,0,0,0,0,0,0};
-    public static int[] tradingResources = new int[10];
-    public static boolean[] tradingWithyou = new boolean[] {false, false, false, false, false, false};
-    public static boolean tradeHandled = true;
-    public static boolean tradingComplete;
-    public static boolean refreshResources;
     public static int cardID;
     public static boolean updateCard;
+    public static boolean sendTrade = false;
+    public static boolean resetTradingResources = true;
+    public static int[] resourcesTrade = new int[10];
+    public static int targetPlayerTrade;
+    public static boolean tradeResourcesToHandle = false;
 
     //Stats for all players
     public static String[] names = new String[]{" "," "," "," "};

@@ -72,9 +72,29 @@ public class GameMap
         findHousePlots();
         findRoadPlots();
         findThiefPlots();
+        placeThief();
 
         houses = new ArrayList<>();
         roads = new ArrayList<>();
+    }
+
+    private void placeThief()
+    {
+        for (Tile tile : map)
+        {
+            if (tile.getTileType().matches("Desert"))
+            {
+                for (Circle circle : thiefPositions)
+                {
+                    if (circle.contains(Layout.hexToPixel(mapLayout, tile)))
+                    {
+                        thief = new Thief(new Point(circle.getCenterX(), circle.getCenterY()));
+                        tile.hasThief = true;
+                    }
+                }
+
+            }
+        }
     }
 
     /**
@@ -351,18 +371,6 @@ public class GameMap
                     {
                         type = listOfTileTypes.remove(listOfTileTypes.size() - 1);
                         tile.setTileType(type);
-                        if (tile.getTileType().matches("Desert"))
-                        {
-                            for (Circle circle : thiefPositions)
-                            {
-                                if (circle.contains(Layout.hexToPixel(mapLayout, tile)))
-                                {
-                                    thief = new Thief(new Point(circle.getCenterX(), circle.getCenterY()));
-                                    tile.hasThief = true;
-                                }
-                            }
-
-                        }
                     }
                 }
 

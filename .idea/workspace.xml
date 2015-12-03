@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="Fixed thief to be sent over server">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Button.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Button.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/GameMap.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/GameMap.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Texture.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Texture.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/Button.java" afterPath="$PROJECT_DIR$/src/mainGame/Button.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/ClientData.java" afterPath="$PROJECT_DIR$/src/Network/ClientData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/Dice.java" afterPath="$PROJECT_DIR$/src/mainGame/Dice.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/GameClient.java" afterPath="$PROJECT_DIR$/src/Network/GameClient.java" />
+    <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapClasses/GameMap.java" afterPath="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/Network.java" afterPath="$PROJECT_DIR$/src/Network/Network.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/ServerData.java" afterPath="$PROJECT_DIR$/src/Network/ServerData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/Thief.java" afterPath="$PROJECT_DIR$/src/mainGame/Thief.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -39,17 +29,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GameMap.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameMap.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0689654">
-              <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.26757368">
+              <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
               <folding>
                 <element signature="method#findHousePlots#0;class#GameMap#0" expanded="false" />
                 <element signature="method#findRoadPlots#0;class#GameMap#0" expanded="false" />
-                <element signature="method#findThiefPlots#0;class#GameMap#0" expanded="false" />
                 <element signature="method#assignTileVariablesFromLocal#0;class#GameMap#0" expanded="false" />
-                <element signature="e#10946#10954#0" expanded="true" />
+                <element signature="e#11496#11504#0" expanded="true" />
                 <element signature="method#addResources#0;class#GameMap#0" expanded="false" />
                 <element signature="method#removeHousePlot#0;class#GameMap#0" expanded="false" />
                 <element signature="method#removeHouseNeighborPlots#0;class#GameMap#0" expanded="false" />
@@ -121,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dice.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Dice.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mainGame/Dice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6021277">
-              <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -925,13 +914,7 @@
       <workItem from="1449147015464" duration="87000" />
       <workItem from="1449147548293" duration="166000" />
       <workItem from="1449149549657" duration="729000" />
-      <workItem from="1449151970709" duration="5630000" />
-    </task>
-    <task id="LOCAL-00038" summary="GIANT LEAP OF FAITH THAT WE CAN NOW SEND BUILT HOUSES BETWEEN CLIENTS! ARGHHHH!!!&#10;&#10;2.0 bug fix">
-      <created>1448369747832</created>
-      <option name="number" value="00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1448369747832</updated>
+      <workItem from="1449151970709" duration="5919000" />
     </task>
     <task id="LOCAL-00039" summary="No more disco houses, built houses now have proper color corresponding to playerID">
       <created>1448372996280</created>
@@ -1221,11 +1204,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449149739580</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Fixed thief to be sent over server, and update position when rolling 7">
+      <created>1449157631385</created>
+      <option name="number" value="00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1449157631386</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="263960000" />
+    <option name="totallyTimeSpent" value="264249000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1301,7 +1290,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Hot fix 1.03" />
     <MESSAGE value="Hot fix 1.04 houses are now properly displayed with the proper colors across players" />
     <MESSAGE value="Implemented roads to be sent through server." />
     <MESSAGE value="Implemented turn order check to build stuff" />
@@ -1326,7 +1314,8 @@
     <MESSAGE value="Resource hot fix" />
     <MESSAGE value="Stuff" />
     <MESSAGE value="texture stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="texture stuff" />
+    <MESSAGE value="Fixed thief to be sent over server, and update position when rolling 7" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed thief to be sent over server, and update position when rolling 7" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1736,16 +1725,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/Dice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0689654">
-          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.26757368">
+          <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
           <folding>
             <element signature="method#findHousePlots#0;class#GameMap#0" expanded="false" />
             <element signature="method#findRoadPlots#0;class#GameMap#0" expanded="false" />
-            <element signature="method#findThiefPlots#0;class#GameMap#0" expanded="false" />
             <element signature="method#assignTileVariablesFromLocal#0;class#GameMap#0" expanded="false" />
-            <element signature="e#10946#10954#0" expanded="true" />
+            <element signature="e#11496#11504#0" expanded="true" />
             <element signature="method#addResources#0;class#GameMap#0" expanded="false" />
             <element signature="method#removeHousePlot#0;class#GameMap#0" expanded="false" />
             <element signature="method#removeHouseNeighborPlots#0;class#GameMap#0" expanded="false" />
@@ -1763,14 +1759,6 @@
             <element signature="method#checkMouseOverHouse#0;class#GameMap#0" expanded="false" />
             <element signature="method#checkOverRoadPlot#0;class#GameMap#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/Dice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6021277">
-          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>

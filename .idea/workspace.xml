@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\out\production\MEA305AWESOMESHITPROJECT-CLIENT\mainGame\Texture.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\resources\Buildingcost.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/Button.java" afterPath="$PROJECT_DIR$/src/mainGame/Button.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/Texture.java" afterPath="$PROJECT_DIR$/src/mainGame/Texture.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Button.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Button.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -121,8 +118,8 @@
       <file leaf-file-name="Button.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mainGame/Button.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6148936">
-              <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.57872343">
+              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding>
                 <element signature="e#1336#1337#0" expanded="true" />
                 <element signature="e#1397#1398#0" expanded="true" />
@@ -881,13 +878,7 @@
       <workItem from="1449070691013" duration="2058000" />
       <workItem from="1449073374228" duration="2270000" />
       <workItem from="1449082453085" duration="1249000" />
-      <workItem from="1449130918896" duration="7372000" />
-    </task>
-    <task id="LOCAL-00032" summary="Redid some stuff to have properly implemented the Hexlib, instead of repurpossing and renaming it to fit with Tile. They are now seperate, and Tile extends Hex">
-      <created>1448272666371</created>
-      <option name="number" value="00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1448272666371</updated>
+      <workItem from="1449130918896" duration="7402000" />
     </task>
     <task id="LOCAL-00033" summary="Fixed subclass bug from renaming class FractionalTile to FractionalHex">
       <created>1448273540742</created>
@@ -1177,11 +1168,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449137447008</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Button hot fix 3">
+      <created>1449138330725</created>
+      <option name="number" value="00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1449138330725</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="251611000" />
+    <option name="totallyTimeSpent" value="251641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1257,7 +1254,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Quick bug fix for testing 1.13" />
     <MESSAGE value="Hot fix for player colors" />
     <MESSAGE value="Hot fix 1.01" />
     <MESSAGE value="Hot fix 1.02" />
@@ -1282,7 +1278,8 @@
     <MESSAGE value="fixed loooooots of error because of button rework" />
     <MESSAGE value="Button hot fix" />
     <MESSAGE value="Button hot fix 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Button hot fix 2" />
+    <MESSAGE value="Button hot fix 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Button hot fix 3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1702,8 +1699,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/Button.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6148936">
-          <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.57872343">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding>
             <element signature="e#1336#1337#0" expanded="true" />
             <element signature="e#1397#1398#0" expanded="true" />

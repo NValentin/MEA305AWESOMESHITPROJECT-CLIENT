@@ -16,7 +16,6 @@ public class Texture
     public static Image menuBackground;
     public static Image mapBackground;
 
-    public static Image buildingCost;
     public static Image makeNewTrade;
     public static Image increase;
     public static Image decrease;
@@ -101,9 +100,6 @@ public class Texture
 
             diceSprites = new SpriteSheet("resources/dice_sheet.png", 135, 135, 0);
             diceSprites.setFilter(Image.FILTER_LINEAR);
-
-            buildingCost = new Image("resources/Buildingcost.jpg");
-            buildingCost.setFilter(Image.FILTER_LINEAR);
 
             makeNewTrade = new Image("resources/trade_button.png");
             makeNewTrade.setFilter(Image.FILTER_LINEAR);

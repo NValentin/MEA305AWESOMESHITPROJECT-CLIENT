@@ -95,7 +95,7 @@ public class Texture
             tileSprites = new SpriteSheet("resources/tileTexture_Sheet.png", 120, 140, 3);
             tileSprites.setFilter(Image.FILTER_LINEAR);
 
-            cardSprites = new SpriteSheet("resources/tileTexture_sheet.png", 256, 432, 0);
+            cardSprites = new SpriteSheet("resources/allCards_sheet.png", 256, 432, 0);
             cardSprites.setFilter(Image.FILTER_LINEAR);
 
             diceSprites = new SpriteSheet("resources/dice_sheet.png", 135, 135, 0);

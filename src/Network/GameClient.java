@@ -49,6 +49,7 @@ public class GameClient extends Listener implements Runnable
         updatePlayerTurn();
         updateDice();
         //updateTrade();
+        updateCards();
     }
 
     void updatePlayerName()
@@ -152,6 +153,15 @@ public class GameClient extends Listener implements Runnable
             clientData.pack();
             network.client.sendUDP(clientData);
             PlayerStats.tradingWithyou[4] = false;
+        }
+    }
+    void updateCards() {
+        if (PlayerStats.updateCard) {
+            System.out.println("Getting card info");
+            ClientData clientData = new ClientData();
+            clientData.pack();
+            network.client.sendUDP(clientData);
+            PlayerStats.updateCard = false;
         }
     }
 }

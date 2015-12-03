@@ -10,7 +10,6 @@ import org.newdawn.slick.geom.Rectangle;
 public class GUI_Overlay {
 
     boolean DiceRolled;
-    int rolled = 0;
     String[] buildingMenuText = new String[]{"Road", "House", "City", "Development Card", "Gives 0 Victory Points", "Gives 1 Victory Points", "Gives 2 Victory Points", "Gives ? Victory Points", "1 Lumber and 1 Brink", "1 Lumber, 1 Wool, 1 Grain, and 1 Brick", "3 Ore and 2 Grin", "1 Wool, 1 Ore, and 1 Grain"};
 
     int theWidth = Main.ScreenWidth;
@@ -26,9 +25,7 @@ public class GUI_Overlay {
     boolean showStatsBool;
     Dice dice;
     int[] tradingReources = new int[10];
-
-    int[] resourcesSent = new int[6];
-    int[] resourcesReceived = new int[6];
+    DevelopmentCard card;
 
     String tradeWithName = "";
     Button endTurn;
@@ -37,6 +34,7 @@ public class GUI_Overlay {
     String[] resourceTypes = new String[]{"Wool", "Ore", "Lumber", "Brick", "Grain"};
 
     GUI_Overlay() throws SlickException {
+        card = new DevelopmentCard();
         dice = new Dice();
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 10), true);
@@ -48,10 +46,15 @@ public class GUI_Overlay {
         }
     }
 
+    public void DisplayCards(int x, int y, GameContainer gc) {
+        card.DisplayCards(x, y);
+        card.Hover(gc);
+    }
+
     public void InitailizeTexture() throws SlickException {
         accept = new Button(theWidth - 155, theHeight - 30, 25, 25, "accept");
         decline = new Button(theWidth - 100, theHeight - 30, 25, 25, "decline");
-        acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, "accpetBig", 15);
+        acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, "acceptBig", 15);
         declineOffer = new Button(theWidth / 2 + 50, theHeight / 2 + 30, 100, 25, "declineBig", 15);
         counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, "counterBig", 15);
         rollDice = new Button(0, 0, 105, 50, "silverButton", 20);
@@ -122,6 +125,9 @@ public class GUI_Overlay {
                 if (PlayerStats.playerturn[PlayerStats.ID - 1]) {
                     System.out.println("Building " + buildingMenuText[i]);
                     GameMap.build_buttons[i] = true;
+                    if (i == 3) {
+                        card.DrawNewCard();
+                    }
                 } else {
                     System.out.println("Can't build when its not your turn");
                 }
@@ -353,17 +359,6 @@ public class GUI_Overlay {
                 g.drawString(resourceTypes[i] + ":  " + tradingReources[i + 5], x + 250, y + 70 + i * 20);
             }
             g.drawString("for", x + 170, y + 110);
-            /*g.drawString("Wool:  " + tradingReources[0], x + 10, y + 70);
-            g.drawString("Ore:   " + tradingReources[1], x + 10, y + 90);
-            g.drawString("Lumber:" + tradingReources[2], x + 10, y + 110);
-            g.drawString("Bricks:" + tradingReources[3], x + 10, y + 130);
-            g.drawString("Grain: " + tradingReources[4], x + 10, y + 150);
-            g.drawString("for", x + 170, y + 110);
-            g.drawString("Wool:  " + tradingReources[5], x + 250, y + 70);
-            g.drawString("Ore:   " + tradingReources[6], x + 250, y + 90);
-            g.drawString("Lumber:" + tradingReources[7], x + 250, y + 110);
-            g.drawString("Bricks:" + tradingReources[8], x + 250, y + 130);
-            g.drawString("Grain: " + tradingReources[9], x + 250, y + 150); */
             acceptOffer.SetPos(x + 10, y + 180);
             declineOffer.SetPos(x + 250, y + 180);
             acceptOffer.draw(g);

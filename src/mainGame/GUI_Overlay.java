@@ -4,20 +4,12 @@ import mapClasses.GameMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 
-import java.util.ArrayList;
-
-import mapClasses.Tile;
-
 /**
  * Created by Kingo on 25-Nov-15.
  */
 public class GUI_Overlay {
 
-    boolean DiceRolled, calculateNewDice;
-    int die1;
-    int die2;
-    int combinedValue;
-    float[] percentValue = new float[10];
+    boolean DiceRolled;
     int rolled = 0;
     String[] buildingMenuText = new String[]{"Road", "House", "City", "Development Card", "Gives 0 Victory Points", "Gives 1 Victory Points", "Gives 2 Victory Points", "Gives ? Victory Points", "1 Lumber and 1 Brink", "1 Lumber, 1 Wool, 1 Grain, and 1 Brick", "3 Ore and 2 Grin", "1 Wool, 1 Ore, and 1 Grain"};
 
@@ -29,11 +21,10 @@ public class GUI_Overlay {
     Button[] makeNewTrade = new Button[4];
     Button[] buttons = new Button[20];
     Button[] build_Buttons = new Button[4];
-    boolean trade = false;
     boolean tradeWindow = false;
     boolean offerWindow = false;
     boolean showStatsBool;
-    Dices dice;
+    Dice dice;
     int[] tradingReources = new int[10];
 
     int[] resourcesSent = new int[6];
@@ -46,7 +37,7 @@ public class GUI_Overlay {
     String[] resourceTypes = new String[]{"Wool", "Ore", "Lumber", "Brick", "Grain"};
 
     GUI_Overlay() throws SlickException {
-        dice = new Dices();
+        dice = new Dice();
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 10), true);
 
@@ -265,8 +256,6 @@ public class GUI_Overlay {
 
             g.drawString("Dice Roll Percentages:", theWidth / 2 - 180, theHeight / 2 - 190);
             for (int i = 1; i < 13; i++) {
-                float procent = (float) PlayerStats.rolledDiceStatistics[i - 1] / (float) rolled;
-                percentValue[i - 1] = procent * 120;
                 g.setLineWidth(2);
                 if (i < 10) {
                     g.drawString(String.valueOf(i), theWidth / 2 - 205 + i * 30, theHeight / 2 - 25);
@@ -274,7 +263,7 @@ public class GUI_Overlay {
                     g.drawString(String.valueOf(i), theWidth / 2 - 209 + i * 30, theHeight / 2 - 25);
                 }
                 g.setLineWidth(10);
-                g.drawLine(theWidth / 2 - 200 + i * 30, theHeight / 2 - 40, theWidth / 2 - 200 + i * 30, theHeight / 2 - 40 - percentValue[i - 1]);
+                g.drawLine(theWidth / 2 - 200 + i * 30, theHeight / 2 - 40, theWidth / 2 - 200 + i * 30, theHeight / 2 - 40 - dice.getDicePercentages(i-1));
             }
 
             g.setLineWidth(4);
@@ -359,7 +348,12 @@ public class GUI_Overlay {
                 if (buttons[i+15].isPressed(gc))
                     tradingReources[i+5]++;
             }
-            g.drawString("Wool:  " + tradingReources[0], x + 10, y + 70);
+            for (int i = 0; i < 5; i ++) {
+                g.drawString("Wool:  " + tradingReources[i], x + 10, y + 70 + i * 20);
+                g.drawString(resourceTypes[i] + ":  " + tradingReources[i + 5], x + 250, y + 70 + i * 20);
+            }
+            g.drawString("for", x + 170, y + 110);
+            /*g.drawString("Wool:  " + tradingReources[0], x + 10, y + 70);
             g.drawString("Ore:   " + tradingReources[1], x + 10, y + 90);
             g.drawString("Lumber:" + tradingReources[2], x + 10, y + 110);
             g.drawString("Bricks:" + tradingReources[3], x + 10, y + 130);
@@ -369,7 +363,7 @@ public class GUI_Overlay {
             g.drawString("Ore:   " + tradingReources[6], x + 250, y + 90);
             g.drawString("Lumber:" + tradingReources[7], x + 250, y + 110);
             g.drawString("Bricks:" + tradingReources[8], x + 250, y + 130);
-            g.drawString("Grain: " + tradingReources[9], x + 250, y + 150);
+            g.drawString("Grain: " + tradingReources[9], x + 250, y + 150); */
             acceptOffer.SetPos(x + 10, y + 180);
             declineOffer.SetPos(x + 250, y + 180);
             acceptOffer.draw(g);

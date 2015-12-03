@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\out\production\MEA305AWESOMESHITPROJECT-CLIENT\mapClasses\GameMap.class" afterPath="" />
+    <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="Quick fix of thief 3">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapClasses/GameMap.java" afterPath="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/Thief.java" afterPath="$PROJECT_DIR$/src/mainGame/Thief.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -34,13 +33,13 @@
       <file leaf-file-name="GameMap.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6553288">
-              <caret line="593" column="0" selection-start-line="593" selection-start-column="0" selection-end-line="593" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6638298">
+              <caret line="230" column="78" selection-start-line="230" selection-start-column="78" selection-end-line="230" selection-end-column="78" />
               <folding>
                 <element signature="method#findHousePlots#0;class#GameMap#0" expanded="false" />
                 <element signature="method#findRoadPlots#0;class#GameMap#0" expanded="false" />
                 <element signature="method#assignTileVariablesFromLocal#0;class#GameMap#0" expanded="false" />
-                <element signature="e#11555#11563#0" expanded="true" />
+                <element signature="e#11650#11658#0" expanded="true" />
                 <element signature="method#addResources#0;class#GameMap#0" expanded="false" />
                 <element signature="method#removeHousePlot#0;class#GameMap#0" expanded="false" />
                 <element signature="method#removeHouseNeighborPlots#0;class#GameMap#0" expanded="false" />
@@ -104,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/src/mainGame/Thief.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
                 <element signature="e#433#434#0" expanded="true" />
                 <element signature="e#469#470#0" expanded="true" />
@@ -917,13 +916,7 @@
       <workItem from="1449147015464" duration="87000" />
       <workItem from="1449147548293" duration="166000" />
       <workItem from="1449149549657" duration="729000" />
-      <workItem from="1449151970709" duration="6796000" />
-    </task>
-    <task id="LOCAL-00040" summary="Killed Harry Potter">
-      <created>1448445207484</created>
-      <option name="number" value="00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1448445207484</updated>
+      <workItem from="1449151970709" duration="7183000" />
     </task>
     <task id="LOCAL-00041" summary="Bug fixing for multiplayer purpose..">
       <created>1448445794156</created>
@@ -1213,11 +1206,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449157906709</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="Quick fix of thief 2">
+      <created>1449158783675</created>
+      <option name="number" value="00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1449158783675</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="265126000" />
+    <option name="totallyTimeSpent" value="265513000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1293,8 +1292,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented roads to be sent through server." />
-    <MESSAGE value="Implemented turn order check to build stuff" />
     <MESSAGE value="Hotfix for playerturn" />
     <MESSAGE value="Hotfix for playerturn 2.0" />
     <MESSAGE value="Hotfix for playerturn 2.01" />
@@ -1318,7 +1315,9 @@
     <MESSAGE value="texture stuff" />
     <MESSAGE value="Fixed thief to be sent over server, and update position when rolling 7" />
     <MESSAGE value="Quick fix of thief" />
-    <option name="LAST_COMMIT_MESSAGE" value="Quick fix of thief" />
+    <MESSAGE value="Quick fix of thief 2" />
+    <MESSAGE value="Quick fix of thief 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Quick fix of thief 3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1731,7 +1730,7 @@
     <entry file="file://$PROJECT_DIR$/src/mainGame/Thief.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
             <element signature="e#433#434#0" expanded="true" />
             <element signature="e#469#470#0" expanded="true" />
@@ -1741,13 +1740,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6553288">
-          <caret line="593" column="0" selection-start-line="593" selection-start-column="0" selection-end-line="593" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6638298">
+          <caret line="230" column="78" selection-start-line="230" selection-start-column="78" selection-end-line="230" selection-end-column="78" />
           <folding>
             <element signature="method#findHousePlots#0;class#GameMap#0" expanded="false" />
             <element signature="method#findRoadPlots#0;class#GameMap#0" expanded="false" />
             <element signature="method#assignTileVariablesFromLocal#0;class#GameMap#0" expanded="false" />
-            <element signature="e#11555#11563#0" expanded="true" />
+            <element signature="e#11650#11658#0" expanded="true" />
             <element signature="method#addResources#0;class#GameMap#0" expanded="false" />
             <element signature="method#removeHousePlot#0;class#GameMap#0" expanded="false" />
             <element signature="method#removeHouseNeighborPlots#0;class#GameMap#0" expanded="false" />

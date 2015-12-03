@@ -26,7 +26,7 @@ public class Thief {
 
     public void render(Graphics g){
         thief.setFilter(Image.FILTER_LINEAR);
-        g.texture(circle, thief, true);
+        g.texture(this.circle, thief, true);
 
     }
 }

@@ -46,6 +46,7 @@ public class GameMap
     public static boolean[] build_buttons = new boolean[]{false, false, false, false};
 
     private Thief thief; //Instance of the thief.
+    private boolean thiefWasPlaced = false;
 
     //boolean becomes true when player first builds a house (initial requirement for building roads)
     private boolean hasHouse = false;
@@ -92,6 +93,7 @@ public class GameMap
                         {
                             thief = new Thief(circle);
                             tile.hasThief = true;
+                            thiefWasPlaced = true;
                         }
                     }
                 }
@@ -223,7 +225,7 @@ public class GameMap
         thiefPositions = new Circle[19];
         int counter = 0;
         for (int i = 0; i < map.size(); i++)
-            if (Math.abs(map.get(i).q) != 3 && Math.abs(map.get(i).r) != 3 && Math.abs(map.get(i).s) == 3)
+            if (Math.abs(map.get(i).q) != 3 && Math.abs(map.get(i).r) != 3 && Math.abs(map.get(i).s) != 3)
             {
                 thiefPositions[counter] = (new Circle(Layout.hexToPixel(mapLayout, map.get(i)).getX(),
                         Layout.hexToPixel(mapLayout, map.get(i)).getY(), 20));
@@ -767,7 +769,8 @@ public class GameMap
         drawHousePlots(g);
         drawRoadPlots(g);
 
-        thief.render(g);
+        if (thiefWasPlaced)
+            thief.render(g);
 
         if (!roads.isEmpty())
             for (Road road : roads)

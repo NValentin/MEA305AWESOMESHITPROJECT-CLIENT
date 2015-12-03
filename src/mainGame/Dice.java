@@ -53,7 +53,7 @@ public class Dice {
             die2 = PlayerStats.die2 - 1;
             combinedValue = die1 + die2 + 2;
             rolled++;
-            map.addResources(die1+die2);
+            map.addResources(combinedValue);
             calculateNewDice = false;
             PlayerStats.diceUsed = true;
     }

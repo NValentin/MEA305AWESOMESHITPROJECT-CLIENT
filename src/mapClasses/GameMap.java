@@ -351,29 +351,33 @@ public class GameMap
     public void addResources(int diceRoll)
     {
         ArrayList<Tile> tiles = tilesYieldingResource(diceRoll);
+
         for (Tile tile : tiles)
+        {
+            System.out.println(tile.q+" "+tile.r+" "+tile.s);
             for (Point point : Layout.polygonCorners(mapLayout, tile))
                 if (!houses.isEmpty())
                     for (House house : houses)
                         if (house.getHouseCircle().contains(point) && house.getPlayerID() == PlayerStats.ID)
                         {
                             int numOfResource = (house.getIsCity()) ? 2 : 1;
-                            if (tile.getTileType().matches("Lumber"))
+                            if (tile.getTileType().matches("Lumber") && tile.getYieldNumber() == diceRoll)
                                 State_PlayingWindow.currentResources[2] += numOfResource;
 
-                            if (tile.getTileType().matches("Wool"))
+                            if (tile.getTileType().matches("Wool") && tile.getYieldNumber() == diceRoll)
                                 State_PlayingWindow.currentResources[0] += numOfResource;
 
-                            if (tile.getTileType().matches("Brick"))
+                            if (tile.getTileType().matches("Brick") && tile.getYieldNumber() == diceRoll)
                                 State_PlayingWindow.currentResources[3] += numOfResource;
 
-                            if (tile.getTileType().matches("Ore"))
+                            if (tile.getTileType().matches("Ore") && tile.getYieldNumber() == diceRoll)
                                 State_PlayingWindow.currentResources[1] += numOfResource;
 
-                            if (tile.getTileType().matches("Grain"))
+                            if (tile.getTileType().matches("Grain") && tile.getYieldNumber() == diceRoll)
                                 State_PlayingWindow.currentResources[4] += numOfResource;
 
                         }
+        }
     }
 
     /**

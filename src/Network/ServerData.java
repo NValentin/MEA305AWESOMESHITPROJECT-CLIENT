@@ -25,6 +25,7 @@ public class ServerData
     public int[] serializedHouse = new int[]{0,0};
     public int[] serializedRoad = new int[] {0,0};
     public int serializedCity = 0;
+    public int serializedThief = 0;
     public boolean endTurn = false, diceRoll;
     public boolean diceUsed = true;
     public int turnorderturn = 1;

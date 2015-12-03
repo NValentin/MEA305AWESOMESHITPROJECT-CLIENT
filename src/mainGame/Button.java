@@ -22,7 +22,6 @@ public class Button {
     int sizeY;
     String texture;
     Font font;
-    int counter = 0;
     int fontSize = 50;
 
     Rectangle butShape;
@@ -74,9 +73,7 @@ public class Button {
 
         if (butShape.contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()) && gc.getInput().isMousePressed(0))
         {
-            System.out.println("Button was pressed : "+counter+" times");
             wasPressed = true;
-            counter++;
         }
         return wasPressed;
     }

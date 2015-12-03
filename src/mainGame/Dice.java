@@ -56,6 +56,8 @@ public class Dice {
             map.addResources(combinedValue);
             calculateNewDice = false;
             PlayerStats.diceUsed = true;
+        if (combinedValue == 7)
+            GameMap.moveThief = true;
     }
 
     public float getDicePercentages(int index) {

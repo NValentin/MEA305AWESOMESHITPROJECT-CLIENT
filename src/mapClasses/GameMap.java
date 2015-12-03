@@ -28,7 +28,7 @@ public class GameMap
     private ArrayList<Road> roads; //ArrayList containing all built roads.
 
     private Circle[] thiefPositions; //Array of all potential thief positions.
-    private static boolean moveThief = false; // boolean that should be set true, if client rolled a 7.
+    public static boolean moveThief = false; // boolean that should be set true, if client rolled a 7.
 
     public static int[] serializedHouse = new int[]{0, 0}; //int array to "pack" indexpos in housePlots, and PlayerID
     public static int[] deSerializedHouse = new int[]{0, 0}; //int array to "pack" indexpos in housePlots, and PlayerID
@@ -39,13 +39,22 @@ public class GameMap
     public static int serializedCity = 0; //Int representing indexPos in houses that has to be upgraded to a city
     public static int deSerializedCity = 0; //Int representing indexPos in houses that has to be upgraded to a city
 
+    public static int serializedThief = 0;
+    public static int deSerializedThief = 0;
+
     //Build buttons as they are in the GUI_Overlay, becomes true depending on which build action a player press.
     public static boolean[] build_buttons = new boolean[]{false, false, false, false};
 
-    private Thief thief; //Instace of the thief.
+    private Thief thief; //Instance of the thief.
 
     //boolean becomes true when player first builds a house (initial requirement for building roads)
     private boolean hasHouse = false;
+
+    //Number of houses players have.
+    private int playersNumOfHouses = 0;
+
+    //Player built house this round.
+    public static boolean playerBuiltHouse = false;
 
     public GameMap()
     {
@@ -209,9 +218,41 @@ public class GameMap
     {
         House tmpHouse = new House(housePlots[indexPos], playerID);
         houses.add(tmpHouse);
+        if (playerID == PlayerStats.ID)
+            playerBuiltHouse = true;
+        if (playerID == PlayerStats.ID && playersNumOfHouses != 2)
+            playersNumOfHouses++;
 
         removeHouseNeighborPlots(tmpHouse);
         removeHousePlot(indexPos);
+
+        if (playersNumOfHouses == 2)
+        {
+            playersNumOfHouses++;
+            for (Tile tile : map)
+            {
+                for (int i = 0; i < Layout.polygonCorners(mapLayout, tile).size(); i++)
+                {
+                    if (tmpHouse.getHouseCircle().contains(Layout.polygonCorners(mapLayout, tile).get(i)))
+                    {
+                        if (tile.getTileType().matches("Lumber"))
+                            State_PlayingWindow.currentResources[2]++;
+
+                        if (tile.getTileType().matches("Wool"))
+                            State_PlayingWindow.currentResources[0]++;
+
+                        if (tile.getTileType().matches("Brick"))
+                            State_PlayingWindow.currentResources[3]++;
+
+                        if (tile.getTileType().matches("Ore"))
+                            State_PlayingWindow.currentResources[1]++;
+
+                        if (tile.getTileType().matches("Grain"))
+                            State_PlayingWindow.currentResources[4]++;
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -312,8 +353,15 @@ public class GameMap
                         tile.setTileType(type);
                         if (tile.getTileType().matches("Desert"))
                         {
-                            thief = new Thief(new Point(Layout.hexToPixel(mapLayout, tile).getX(), Layout.hexToPixel(mapLayout, tile).getY()));
-                            tile.hasThief = true;
+                            for (Circle circle : thiefPositions)
+                            {
+                                if (circle.contains(Layout.hexToPixel(mapLayout, tile)))
+                                {
+                                    thief = new Thief(new Point(circle.getCenterX(), circle.getCenterY()));
+                                    tile.hasThief = true;
+                                }
+                            }
+
                         }
                     }
                 }
@@ -354,7 +402,7 @@ public class GameMap
 
         for (Tile tile : tiles)
         {
-            System.out.println(tile.q+" "+tile.r+" "+tile.s);
+            System.out.println(tile.q + " " + tile.r + " " + tile.s);
             for (Point point : Layout.polygonCorners(mapLayout, tile))
                 if (!houses.isEmpty())
                     for (House house : houses)
@@ -411,6 +459,115 @@ public class GameMap
     }
 
     /**
+     * Update and check if players want to build a new house.
+     *
+     * @param gc GameContainer
+     * @see GameContainer and Slick2D javadoc
+     */
+    private void checkForBuiltHouses(GameContainer gc)
+    {
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[1])
+        {
+            boolean addHouse = false;
+
+            for (int i = 0; i < housePlots.length; i++)
+            {
+                if (playersNumOfHouses <= 2)
+                {
+
+                    if (checkMouseOverHousePlot(i) && gc.getInput().isMousePressed(0) && housePlots[i] != null)
+                    {
+                        addHouse = true;
+                    }
+                } else
+                {
+                    if (!roads.isEmpty() && housePlots[i] != null)
+                        for (Road road : roads)
+                            if (road.getPlayerID() == PlayerStats.ID)
+                            {
+                                Line roadLine = road.getRoadLine();
+                                Circle c1 = new Circle(roadLine.getX1(), roadLine.getY1(), 5);
+                                Circle c2 = new Circle(roadLine.getX2(), roadLine.getY2(), 5);
+                                if (housePlots[i].intersects(c1) || housePlots[i].intersects(c2))
+                                {
+                                    if (checkMouseOverHousePlot(i) && gc.getInput().isMousePressed(0) && housePlots[i] != null)
+                                    {
+                                        addHouse = true;
+                                    }
+                                }
+                            }
+                }
+                if (addHouse)
+                {
+                    serializeHouse(i);
+                    if (!Network.isConnected)
+                    {
+                        addHouse(i, 1);
+                    }
+                    hasHouse = true;
+                    build_buttons[1] = false;
+                    addHouse = false;
+                }
+            }
+        }
+    }
+
+    /**
+     * Update and check if players want to build a new road.
+     *
+     * @param gc GameContainer
+     * @see GameContainer and Slick2D javadoc
+     */
+    private void checkForBuiltRoads(GameContainer gc)
+    {
+        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[0] && hasHouse)
+        {
+            boolean addRoad = false;
+            for (int i = 0; i < roadPlots.length; i++)
+            {
+                if (!houses.isEmpty() && roadPlots[i] != null)
+                {
+                    for (House house : houses)
+                    {
+                        if (house.getHouseCircle().intersects(roadPlots[i]) && house.getPlayerID() == PlayerStats.ID)
+                        {
+                            if (checkOverRoadPlot(i) && gc.getInput().isMousePressed(0))
+                            {
+                                addRoad = true;
+
+                            }
+                        }
+                    }
+                }
+                if (!roads.isEmpty() && roadPlots[i] != null)
+                    for (Road road : roads)
+                        if (road.getPlayerID() == PlayerStats.ID)
+                        {
+                            Line roadLine = road.getRoadLine();
+                            Circle c1 = new Circle(roadLine.getX1(), roadLine.getY1(), 5);
+                            Circle c2 = new Circle(roadLine.getX2(), roadLine.getY2(), 5);
+                            if (c1.intersects(roadPlots[i]) || c2.intersects(roadPlots[i]))
+                                if (checkOverRoadPlot(i) && gc.getInput().isMousePressed(0))
+                                {
+                                    addRoad = true;
+                                }
+                        }
+                if (addRoad)
+                {
+                    serializeRoad(i);
+                    if (!Network.isConnected)
+                    {
+                        addRoad(i, 1);
+                    }
+                    build_buttons[0] = false;
+                    addRoad = false;
+                }
+            }
+        }
+
+    }
+
+    /**
      * The update method runs continuously through Slick2D and the Update method in PlayerWindowState.
      * It checks for updates to variables that potentially could change, i.e. new house/road/city, and if thief
      * has to be moved. Also has to redundancy checks for whether the player should actually be able to do a
@@ -446,30 +603,8 @@ public class GameMap
             deSerializedCity = 0;
         }
 
-        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[1])
-            for (int i = 0; i < housePlots.length; i++)
-                if (checkMouseOverHousePlot(i) && gc.getInput().isMousePressed(0))
-                {
-                    serializeHouse(i);
-                    if (!Network.isConnected)
-                    {
-                        addHouse(i, 1);
-                    }
-                    hasHouse = true;
-                    build_buttons[1] = false;
-                }
-
-        if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[0] && hasHouse)
-            for (int i = 0; i < roadPlots.length; i++)
-                if (checkOverRoadPlot(i) && gc.getInput().isMousePressed(0))
-                {
-                    serializeRoad(i);
-                    if (!Network.isConnected)
-                    {
-                        addRoad(i, 1);
-                    }
-                    build_buttons[0] = false;
-                }
+        checkForBuiltHouses(gc);
+        checkForBuiltRoads(gc);
 
         if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[2])
             for (int i = 0; i < houses.size(); i++)
@@ -526,7 +661,7 @@ public class GameMap
     {
         if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[1])
         {
-            if (!hasHouse)
+            if (playersNumOfHouses <= 2)
             {
                 for (int i = 0; i < housePlots.length; i++)
                 {
@@ -743,18 +878,4 @@ public class GameMap
                 roadPlots[indexPos].intersects(mouseC);
     }
 
-    /**
-     * a method for debugging the information on every tile, if there is a wrong type or number, or weird positions.
-     * this provides all information about a tile. (except for its pixel coordinates, they don't know those)
-     */
-    private void debugTileInfo()
-    {
-        for (Tile tile : map)
-        {
-            if (!(Math.abs(tile.q) == 3 || Math.abs(tile.r) == 3 || Math.abs(tile.s) == 3))
-                System.out.println("Tile: " + tile.q + ", " + tile.r + ", " + tile.s +
-                        " : Got number: " + tile.getYieldNumber() +
-                        " : and Type: " + tile.getTileType());
-        }
-    }
 }

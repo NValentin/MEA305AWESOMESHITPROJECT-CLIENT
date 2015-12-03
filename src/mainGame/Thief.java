@@ -13,7 +13,6 @@ public class Thief {
 
     Image thief;
     Circle circle;
-    boolean moveThief;
 
     public Point getPoint() {
         return point;

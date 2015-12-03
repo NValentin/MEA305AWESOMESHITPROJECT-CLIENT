@@ -1,7 +1,9 @@
 package Network;
 
+import com.tinyline.svg.SVGAnimationElem;
 import mainGame.PlayerStats;
 import mapClasses.GameMap;
+import org.newdawn.slick.Game;
 
 public class ClientData
 {
@@ -16,6 +18,7 @@ public class ClientData
     public int[] serializedHouse = new int[]{0,0};
     public int[] serializedRoad = new int[] {0,0};
     public int serializedCity = 0;
+    public int serializedThief = 0;
     public boolean endTurn = false, diceRoll, diceUsed;
     public boolean gameEnded = false;
     public int[] tradingResources = new int[10];
@@ -41,6 +44,7 @@ public class ClientData
         serializedHouse = GameMap.serializedHouse;
         serializedRoad = GameMap.serializedRoad;
         serializedCity = GameMap.serializedCity;
+        serializedThief = GameMap.serializedThief;
         endTurn = PlayerStats.endTurn;
         diceUsed = PlayerStats.diceUsed;
         tradingResources = PlayerStats.tradingResources;

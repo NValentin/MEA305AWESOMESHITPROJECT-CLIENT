@@ -47,9 +47,9 @@ public class Texture
     {
         try
         {
-            menuBackground = new Image("resources/menuBackground.jpg");
+            menuBackground = new Image("resources/menuBackground.png");
             menuBackground.setFilter(Image.FILTER_LINEAR);
-            buttonTemplate = new Image("resources/TemplateButton.jpg");
+            buttonTemplate = new Image("resources/TemplateButton.png");
             buttonTemplate.setFilter(Image.FILTER_LINEAR);
 
         } catch (SlickException e)
@@ -62,9 +62,9 @@ public class Texture
     {
         try
         {
-            menuBackground = new Image("resources/menuBackground.jpg");
+            menuBackground = new Image("resources/menuBackground.png");
             menuBackground.setFilter(Image.FILTER_LINEAR);
-            templateButton = new Image("resources/TemplateButton.jpg");
+            templateButton = new Image("resources/TemplateButton.png");
             templateButton.setFilter(Image.FILTER_LINEAR);
 
 
@@ -77,9 +77,9 @@ public class Texture
     {
         try
         {
-            menuBackground = new Image("resources/menuBackground.jpg");
+            menuBackground = new Image("resources/menuBackground.png");
             menuBackground.setFilter(Image.FILTER_LINEAR);
-            templateButton = new Image("resources/TemplateButton.jpg");
+            templateButton = new Image("resources/TemplateButton.png");
             templateButton.setFilter(Image.FILTER_LINEAR);
 
         } catch (SlickException e)
@@ -128,7 +128,7 @@ public class Texture
             silverButton = new Image("resources/trade.png");
             silverButton.setFilter(Image.FILTER_LINEAR);
 
-            templateButton = new Image("resources/TemplateButton.jpg");
+            templateButton = new Image("resources/TemplateButton.png");
             templateButton.setFilter(Image.FILTER_LINEAR);
 
             mapBackground = new Image("resources/map_background.png");
@@ -146,10 +146,10 @@ public class Texture
     {
         try
         {
-            menuBackground = new Image("resources/menuBackground.jpg");
+            menuBackground = new Image("resources/menuBackground.png");
             menuBackground.setFilter(Image.FILTER_LINEAR);
 
-            templateButton = new Image("resources/TemplateButton.jpg");
+            templateButton = new Image("resources/TemplateButton.png");
             templateButton.setFilter(Image.FILTER_LINEAR);
 
         } catch (SlickException e)

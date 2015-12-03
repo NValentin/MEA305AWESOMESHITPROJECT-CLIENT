@@ -1,13 +1,11 @@
 package mainGame;
 
 import mapClasses.GameMap;
-import org.lwjgl.Sys;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+
 import mapClasses.Tile;
 
 /**
@@ -19,7 +17,7 @@ public class GUI_Overlay {
     int die1;
     int die2;
     int combinedValue;
-    float[] procentValue = new float [10];
+    float[] percentValue = new float [10];
     int rolled = 0;
     String[] buildingMenuText = new String[] {"Road", "House", "City", "Development Card", "Gives 0 Victory Points", "Gives 1 Victory Points", "Gives 2 Victory Points", "Gives ? Victory Points", "1 Lumber and 1 Brink", "1 Lumber, 1 Wool, 1 Grain, and 1 Brick", "3 Ore and 2 Grin", "1 Wool, 1 Ore, and 1 Grain"};
 
@@ -266,7 +264,7 @@ public class GUI_Overlay {
             g.drawString("Dice Roll Percentages:", theWidth/2 - 180, theHeight/2 - 190);
             for (int i = 1; i < 13; i++) {
                 float procent = (float) PlayerStats.rolledDiceStatistics[i - 1] / (float) rolled;
-                procentValue[i - 1] = procent * 120;
+                percentValue[i - 1] = procent * 120;
                 g.setLineWidth(2);
                 if (i < 10) {
                     g.drawString(String.valueOf(i), theWidth / 2 - 205 + i * 30, theHeight / 2 - 25);
@@ -274,7 +272,7 @@ public class GUI_Overlay {
                     g.drawString(String.valueOf(i), theWidth / 2 - 209 + i * 30, theHeight / 2 - 25);
                 }
                 g.setLineWidth(10);
-                g.drawLine(theWidth / 2 - 200 + i * 30, theHeight / 2 - 40, theWidth / 2 - 200 + i * 30, theHeight / 2 - 40 - procentValue[i - 1]);
+                g.drawLine(theWidth / 2 - 200 + i * 30, theHeight / 2 - 40, theWidth / 2 - 200 + i * 30, theHeight / 2 - 40 - percentValue[i - 1]);
             }
 
             g.setLineWidth(4);

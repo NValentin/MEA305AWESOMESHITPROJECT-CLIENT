@@ -10,21 +10,24 @@ import org.newdawn.slick.state.StateBasedGame;
 public class State_EndGame  extends BasicGameState{
 
     Texture texture;
-    int sizeX = Main.ScreenWidth/4;
-    int sizeY = Main.ScreenHeight/10;
+    int sizeX = Main.ScreenWidth/4; // Standard width of buttons
+    int sizeY = Main.ScreenHeight/10; // Standard height of buttons
 
 
     Button backToMenu;
 
     ChatBox chatBox;
     TextField endChat;
-    TrueTypeFont font;
 
+    // The strings are only created here/in init in order to place them on the x-axis according to their length
     String gameEnded;
     String winner;
     String winnerName;
-    boolean gameWon;
 
+
+    boolean gameWon; // Used for checking if someone won the game
+
+    //Different fonts used in the render method
     Font chatFont;
     Font endedFont;
     Font winnerFont;
@@ -145,7 +148,5 @@ public class State_EndGame  extends BasicGameState{
     }
 
     @Override
-    public int getID() { //Returns the ID of the state. Useful for switching between states, although we haven't used it yet
-        return 4;
-    }
+    public int getID() { return 4; } //Returns the ID of the state. Useful for switching between states, although we haven't used it yet
 }

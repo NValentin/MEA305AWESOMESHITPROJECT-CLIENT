@@ -36,6 +36,9 @@ public class State_PlayingWindow extends BasicGameState
 
     static String gameInfo = "";
 
+    Boolean tradingOut = false;
+    Boolean tradingIn = false;
+
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
             throws SlickException
@@ -115,12 +118,10 @@ public class State_PlayingWindow extends BasicGameState
 
         g.getFont().getWidth(gameInfo);
         g.drawString(gameInfo,theWidth/2-g.getFont().getWidth(gameInfo)/2,theHeight-40);
-
     }
 
     @Override
     public int getID() {
         return 3;
     }
-
 }

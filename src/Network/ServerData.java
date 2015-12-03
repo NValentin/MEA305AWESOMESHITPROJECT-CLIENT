@@ -35,6 +35,7 @@ public class ServerData
     public int[] rolledDiceStatistics = new int[]{0,0,0,0,0,0,0,0,0,0,0,0};
     public int[] tradingResources = new int[10];
     public boolean[] tradingWithyou = new boolean[] {false, false, false, false, false, false};
+    public boolean isCardUpToDate;
 
     Integer[] yieldNumbers = {2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12};
     ArrayList<Integer> listOfYieldNumbers = new ArrayList<Integer>(Arrays.asList(yieldNumbers));

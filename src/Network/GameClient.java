@@ -48,7 +48,7 @@ public class GameClient extends Listener implements Runnable
         updateCities();
         updatePlayerTurn();
         updateDice();
-        updateTrade();
+        //updateTrade();
     }
 
     void updatePlayerName()

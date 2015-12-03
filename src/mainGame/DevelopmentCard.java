@@ -3,6 +3,7 @@ package mainGame;
 import java.awt.*;
 import java.util.ArrayList;
 
+import mapClasses.GameMap;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
@@ -30,7 +31,7 @@ public class DevelopmentCard {
             cardsDrawn.add(PlayerStats.cardID);
             System.out.println("Added card to array");
             PlayerStats.updateCard = false;
-            cardContainer.add(new Rectangle(x + 50 * (cardContainer.size()-1), y, 50, 100));
+            cardContainer.add(new Rectangle(x + 50 * (cardContainer.size()), y, 50, 100));
             canGetNewCard = false;
         }
         if (cardsDrawn.size() > 0) {
@@ -49,48 +50,99 @@ public class DevelopmentCard {
         }
     }
 
-    public Image getCardTexture(int index) {
-        int x = 0;
-        int y = 0;
+    public void isPressed(GameContainer gc) {
+        for (int i = 0; i < cardContainer.size(); i++) {
+            if (cardContainer.get(i).contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()) && gc.getInput().isMousePressed(0)) {
+                useCard(cardsDrawn.get(i));
+            }
+        }
+    }
+
+    public void useCard(int index) {
         switch (index) {
             case 1:
-                x = 0;
-                y = 0;
+                System.out.println("Knight Played");
+                GameMap.moveThief = true;
                 break;
             case 2:
-                x = 5;
-                y = 0;
+                System.out.println("University Played");
+                PlayerStats.point +=1;
                 break;
             case 3:
-                x = 4;
-                y = 0;
+                System.out.println("Library Played");
+                PlayerStats.point +=1;
                 break;
             case 4:
-                x = 0;
-                y = 1;
+                System.out.println("Marketplace Played");
+                PlayerStats.point +=1;
                 break;
             case 5:
-                x = 6;
-                y = 0;
+                System.out.println("Parliament Played");
+                PlayerStats.point +=1;
                 break;
             case 6:
-                x = 5;
-                y = 0;
+                System.out.println("Cathedral Played");
+                PlayerStats.point +=1;
                 break;
             case 7:
-                x = 3;
-                y = 0;
+                System.out.println("Year of Plenty Played");
+                GUI_Overlay.isYearOfPlenty = true;
                 break;
             case 8:
-                x = 2;
-                y = 0;
+                System.out.println("Road Building Played");
+                int roads = 2;
+                while (roads > 0) {
+                    if (!GameMap.build_buttons[0]) {
+                        GameMap.build_buttons[0] = true;
+                        roads--;
+                    }
+                }
                 break;
             case 9:
-                x = 1;
-                y = 0;
+                System.out.println("Monopoly Played");
+                //Add take all of one resource
+                break;
+            default:
+                System.out.println("Something went wrong with using the development cards.");
                 break;
         }
-        return Texture.cardSprites.getSprite(x, y);
+    }
+
+    public Image getCardTexture(int index) {
+        Image tmp_tex;
+        switch (index) {
+            case 1:
+                tmp_tex = Texture.cardSprites.getSprite(0, 0);
+                break;
+            case 2:
+                tmp_tex = Texture.cardSprites.getSprite(5, 0);
+                break;
+            case 3:
+                tmp_tex = Texture.cardSprites.getSprite(4, 0);
+                break;
+            case 4:
+                tmp_tex = Texture.cardSprites.getSprite(0, 1);
+                break;
+            case 5:
+                tmp_tex = Texture.cardSprites.getSprite(6, 0);
+                break;
+            case 6:
+                tmp_tex = Texture.cardSprites.getSprite(5, 0);
+                break;
+            case 7:
+                tmp_tex = Texture.cardSprites.getSprite(3, 0);
+                break;
+            case 8:
+                tmp_tex = Texture.cardSprites.getSprite(2, 0);
+                break;
+            case 9:
+                tmp_tex = Texture.cardSprites.getSprite(1, 0);
+                break;
+            default:
+                tmp_tex = Texture.doge;
+                break;
+        }
+        return tmp_tex;
     }
 
 

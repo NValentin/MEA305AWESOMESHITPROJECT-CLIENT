@@ -21,6 +21,7 @@ public class GUI_Overlay {
     Button[] makeNewTrade = new Button[4];
     Button[] buttons = new Button[20];
     Button[] build_Buttons = new Button[4];
+    Button[] yearOfPlenty_Buttons =  new Button[12];
     boolean tradeWindow = false;
     boolean offerWindow = false;
     boolean showStatsBool;
@@ -28,6 +29,9 @@ public class GUI_Overlay {
     public static int[] tradingReources = new int[10];
     DevelopmentCard card;
     Trading trade;
+    public static int yearOfPlentyTaken = 0;
+    int[] tmp_res = new int[5];
+    public static boolean isYearOfPlenty = false;
 
     String tradeWithName = "";
     Button endTurn;
@@ -52,6 +56,7 @@ public class GUI_Overlay {
     public void DisplayCards(int x, int y, GameContainer gc) {
         card.DisplayCards(x, y);
         card.Hover(gc);
+        card.isPressed(gc);
     }
 
     public void InitailizeTexture() throws SlickException {
@@ -73,6 +78,12 @@ public class GUI_Overlay {
             buttons[i + 5] = new Button(theWidth / 2 + 130, theHeight / 2 - 80 + 20 * i, 20, 20, "increase");
             buttons[i + 10] = new Button(theWidth / 2 - 80, theHeight / 2 - 80 + 20 * i, 20, 20, "decrease");
             buttons[i + 15] = new Button(theWidth / 2 + 160, theHeight / 2 - 80 + 20 * i, 20, 20, "increase");
+        }
+        yearOfPlenty_Buttons[10] = new Button(Main.ScreenWidth/2 + 75, Main.ScreenHeight/2 + 40, 60, 20, "acceptBig", 15);
+        yearOfPlenty_Buttons[11] = new Button(Main.ScreenWidth/2 + 5, Main.ScreenHeight/2 + 40, 60, 20, "declineBig", 15);
+        for (int i = 0; i < 5; i++) {
+            yearOfPlenty_Buttons[i] = new Button(Main.ScreenWidth/2 - 50, Main.ScreenHeight/2 - 45 + i * 20, 20 ,20, "decrease");
+            yearOfPlenty_Buttons[i+5] = new Button(Main.ScreenWidth/2 - 25, Main.ScreenHeight/2 - 45 + i * 20, 20 ,20, "increase");
         }
     }
 
@@ -311,6 +322,51 @@ public class GUI_Overlay {
         if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0)
             dice.DiceRolled(map);
     }
+
+    public void YearOfPlenty(boolean display, Graphics g, GameContainer gc) {
+        if (display) {
+            g.setColor(Color.white);
+            g.fill(new Rectangle(Main.ScreenWidth / 2 - 150, Main.ScreenHeight / 2 - 75, 300, 150));
+            g.setColor(Color.black);
+            g.drawString("Choose any two resources: " + (2 - yearOfPlentyTaken) + " left", Main.ScreenWidth / 2 - 140, Main.ScreenHeight / 2 - 70);
+            for (int i = 0; i < 5; i++) {
+                g.drawString(resourceTypes[i] + ": " + tmp_res[i], Main.ScreenWidth / 2 - 145, Main.ScreenHeight / 2 - 45 + i * 20);
+                yearOfPlenty_Buttons[i].draw(g);
+                yearOfPlenty_Buttons[i + 5].draw(g);
+                if (yearOfPlenty_Buttons[i].isPressed(gc) && tmp_res[i] > 0) {
+                    yearOfPlentyTaken--;
+                    tmp_res[i]--;
+                }
+                if (yearOfPlenty_Buttons[i + 5].isPressed(gc) && yearOfPlentyTaken < 2) {
+                    yearOfPlentyTaken++;
+                    tmp_res[i]++;
+                }
+            }
+            g.setColor(Color.white);
+            yearOfPlenty_Buttons[10].draw(g);
+            yearOfPlenty_Buttons[11].draw(g);
+            yearOfPlenty_Buttons[10].AddText("Accept", Color.black);
+            yearOfPlenty_Buttons[11].AddText("Decline", Color.black);
+            if (yearOfPlenty_Buttons[10].isPressed(gc)) {
+                isYearOfPlenty = false;
+                for (int i = 0; i < 5; i++) {
+                    State_PlayingWindow.currentResources[i] += tmp_res[i];
+                }
+                tmp_res = new int[5];
+                yearOfPlentyTaken = 0;
+                //removeCard
+            }
+            if (yearOfPlenty_Buttons[11].isPressed(gc)) {
+                isYearOfPlenty = false;
+                yearOfPlentyTaken = 0;
+                tmp_res = new int[5];
+                //don't remove card
+            }
+        }
+    }
+
+
+
 
 
 

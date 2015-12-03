@@ -45,7 +45,8 @@ public class ChatBox {
         }
 
     public void newMessage(String chatText, String name){
-        updateOldMessages();
+
+        //updateOldMessages();
         int mark = 0;
         int mark2 = 0;
         String text = name+": "+chatText;

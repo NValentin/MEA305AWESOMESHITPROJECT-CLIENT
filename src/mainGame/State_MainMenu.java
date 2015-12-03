@@ -1,6 +1,7 @@
 package mainGame;
 
 import Network.GameClient;
+import Network.ServerData;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;

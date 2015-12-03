@@ -61,8 +61,12 @@ public class ServerData
         PlayerStats.longestRoad = longestRoad;
         PlayerStats.turn = turn;
         PlayerStats.StartGame = StartGame;
-        PlayerStats.textToRender = textToRender;
-        PlayerStats.oldText = oldText;
+        if(textToRender[0] != "") {
+            PlayerStats.textToRender = textToRender;
+        }
+        if(oldText[0] != null) {
+            PlayerStats.oldText = oldText;
+        }
         PlayerStats.ID = c.getID();
         PlayerStats.die1 = die1;
         PlayerStats.die2 = die2;

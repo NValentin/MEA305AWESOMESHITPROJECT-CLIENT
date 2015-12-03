@@ -24,6 +24,8 @@ public class State_JoinLobby extends BasicGameState {
     TextField lobbyChat; // Textfield used for the chatbox
     Font font; // Font used for the textfield
 
+    boolean message1Sent;
+
     /**
      * Initiation method. creates/assigns variables and objects
      * @param gc GameContainer component

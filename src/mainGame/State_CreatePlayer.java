@@ -73,6 +73,13 @@ public class State_CreatePlayer extends BasicGameState {
         if ((forward.isPressed(gc) || gc.getInput().isKeyPressed(Input.KEY_ENTER)) // Press enter or button to enter lobby
                 && nameField.getText().length() != 0 && !nameField.getText().substring(0,1).matches(" ")) {
             PlayerStats.name = nameField.getText(); // Updates the player name variable
+
+            System.out.println("AFTER CREATING NAME:");
+            System.out.println(PlayerStats.oldText[2]);
+            System.out.println(PlayerStats.oldText[1]);
+            System.out.println(PlayerStats.oldText[0]);
+            System.out.println(PlayerStats.textToRender[0]);
+
             sbg.enterState(2, new FadeOutTransition(), new FadeInTransition());
         }
     }

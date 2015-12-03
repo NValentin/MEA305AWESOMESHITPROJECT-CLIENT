@@ -72,5 +72,7 @@ public class ServerData
         PlayerStats.rolledDiceStatistics = rolledDiceStatistics;
         PlayerStats.tradingResources = tradingResources;
         PlayerStats.tradingWithyou = tradingWithyou;
+        PlayerStats.cardID = cardID;
+        PlayerStats.updateCard = isCardUpToDate;
     }
 }

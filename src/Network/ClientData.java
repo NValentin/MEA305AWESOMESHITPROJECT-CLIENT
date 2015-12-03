@@ -45,6 +45,7 @@ public class ClientData
         diceUsed = PlayerStats.diceUsed;
         tradingResources = PlayerStats.tradingResources;
         tradingWithyou = PlayerStats.tradingWithyou;
+        updateCard = PlayerStats.updateCard;
         PlayerStats.refreshResources = true;
     }
 

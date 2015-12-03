@@ -29,6 +29,8 @@ public class PlayerStats {
     public static boolean tradeHandled = true;
     public static boolean tradingComplete;
     public static boolean refreshResources;
+    public static int cardID;
+    public static boolean updateCard;
 
     //Stats for all players
     public static String[] names = new String[]{" "," "," "," "};

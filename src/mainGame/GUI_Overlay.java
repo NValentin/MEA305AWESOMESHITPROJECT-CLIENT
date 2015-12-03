@@ -4,6 +4,10 @@ import mapClasses.GameMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 
+import java.util.ArrayList;
+
+import mapClasses.Tile;
+
 /**
  * Created by Kingo on 25-Nov-15.
  */
@@ -13,9 +17,9 @@ public class GUI_Overlay {
     int die1;
     int die2;
     int combinedValue;
-    float[] percentValue = new float [10];
+    float[] percentValue = new float[10];
     int rolled = 0;
-    String[] buildingMenuText = new String[] {"Road", "House", "City", "Development Card", "Gives 0 Victory Points", "Gives 1 Victory Points", "Gives 2 Victory Points", "Gives ? Victory Points", "1 Lumber and 1 Brink", "1 Lumber, 1 Wool, 1 Grain, and 1 Brick", "3 Ore and 2 Grin", "1 Wool, 1 Ore, and 1 Grain"};
+    String[] buildingMenuText = new String[]{"Road", "House", "City", "Development Card", "Gives 0 Victory Points", "Gives 1 Victory Points", "Gives 2 Victory Points", "Gives ? Victory Points", "1 Lumber and 1 Brink", "1 Lumber, 1 Wool, 1 Grain, and 1 Brick", "3 Ore and 2 Grin", "1 Wool, 1 Ore, and 1 Grain"};
 
     int theWidth = Main.ScreenWidth;
     int theHeight = Main.ScreenHeight;
@@ -25,11 +29,13 @@ public class GUI_Overlay {
     Button[] makeNewTrade = new Button[4];
     Button[] buttons = new Button[20];
     Button[] build_Buttons = new Button[4];
+    boolean trade = false;
     boolean tradeWindow = false;
     boolean offerWindow = false;
     boolean showStatsBool;
+    Dices dice;
     int[] tradingReources = new int[10];
-    
+
     int[] resourcesSent = new int[6];
     int[] resourcesReceived = new int[6];
 
@@ -37,9 +43,10 @@ public class GUI_Overlay {
     Button endTurn;
     Font font;
     Font regularFont;
-    String[] resourceTypes = new String[] {"Wool", "Ore", "Lumber", "Brick", "Grain"};
+    String[] resourceTypes = new String[]{"Wool", "Ore", "Lumber", "Brick", "Grain"};
 
     GUI_Overlay() throws SlickException {
+        dice = new Dices();
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 10), true);
 
@@ -53,13 +60,13 @@ public class GUI_Overlay {
     public void InitailizeTexture() throws SlickException {
         accept = new Button(theWidth - 155, theHeight - 30, 25, 25, "accept");
         decline = new Button(theWidth - 100, theHeight - 30, 25, 25, "decline");
-        acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, "acceptBig", 15);
+        acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, "accpetBig", 15);
         declineOffer = new Button(theWidth / 2 + 50, theHeight / 2 + 30, 100, 25, "declineBig", 15);
         counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, "counterBig", 15);
         rollDice = new Button(0, 0, 105, 50, "silverButton", 20);
         closeStats = new Button(0, 0, 25, 25, "decline");
         showStats = new Button(0, 0, 140, 35, "silverButton", 20);
-        endTurn = new Button(0,0, 150, 50, "templateButton", 35);
+        endTurn = new Button(0, 0, 150, 50, "templateButton", 35);
         for (int i = 0; i < 4; i++) {
             makeNewTrade[i] = new Button(0, 0, 80, 20, "makeNewTrade", 20);
             build_Buttons[i] = new Button(0, 0, 50, 20, "silverButton", 20);
@@ -91,7 +98,7 @@ public class GUI_Overlay {
             if (decline.isPressed(gc)) {
                 System.out.println("Decline");
                 PlayerStats.tradingResources = new int[10];
-                PlayerStats.tradingWithyou =  new boolean[6];
+                PlayerStats.tradingWithyou = new boolean[6];
                 PlayerStats.tradingWithyou[PlayerStats.turn] = true;
                 PlayerStats.tradingWithyou[4] = true;
                 PlayerStats.tradingWithyou[5] = true;
@@ -106,22 +113,22 @@ public class GUI_Overlay {
         g.setColor(Color.black);
         g.fillRect(x, y, sizeX, sizeY);
         g.setColor(Color.white);
-        g.drawString("Build Menu", x + sizeX/2- 50, y + 10);
-        for (int i = 0; i < 4; i ++) {
+        g.drawString("Build Menu", x + sizeX / 2 - 50, y + 10);
+        for (int i = 0; i < 4; i++) {
             g.drawLine(x, y + 30 + 60 * i, x + sizeX, y + 30 + 60 * i);
             build_Buttons[i].SetPos(x + 135, y + 46 + 60 * i);
             build_Buttons[i].draw(g);
             build_Buttons[i].AddText("Build", Color.white);
             font.drawString(x + 5, y + 35 + 60 * i, buildingMenuText[i]);
-            font.drawString(x + 5, y + 50 + 60 * i, buildingMenuText[i+4]);
-            if (i+8 == 9) {
-                font.drawString(x + 5, y + 65 + 60 * i, buildingMenuText[i+8].substring(0,27));
-                font.drawString(x + 5, y + 75 + 60 * i, buildingMenuText[i+8].substring(27));
+            font.drawString(x + 5, y + 50 + 60 * i, buildingMenuText[i + 4]);
+            if (i + 8 == 9) {
+                font.drawString(x + 5, y + 65 + 60 * i, buildingMenuText[i + 8].substring(0, 27));
+                font.drawString(x + 5, y + 75 + 60 * i, buildingMenuText[i + 8].substring(27));
             } else {
                 font.drawString(x + 5, y + 65 + 60 * i, buildingMenuText[i + 8]);
             }
             if (build_Buttons[i].isPressed(gc)) {
-                if (PlayerStats.playerturn[PlayerStats.ID-1]) {
+                if (PlayerStats.playerturn[PlayerStats.ID - 1]) {
                     System.out.println("Building " + buildingMenuText[i]);
                     GameMap.build_buttons[i] = true;
                 } else {
@@ -141,9 +148,9 @@ public class GUI_Overlay {
         for (int i = 0; i < _names.length; i++) {
             graphics.drawString(i + 1 + ") " + _names[i], x + 10, y + 35 + 25 * i);
             regularFont = graphics.getFont();
-            graphics.drawString(_points[i]+"", x+160, y + 35 + 25 * i);
+            graphics.drawString(_points[i] + "", x + 160, y + 35 + 25 * i);
             graphics.setFont(font);
-            graphics.drawString("pts", x+172, y + 37 + 25*i);
+            graphics.drawString("pts", x + 172, y + 37 + 25 * i);
             graphics.setFont(regularFont);
 
         }
@@ -154,15 +161,15 @@ public class GUI_Overlay {
         graphics.setLineWidth(2);
         graphics.drawRect(x, y, 500, 25);
         graphics.drawString("Wool:", x + 5, y + 3);
-        graphics.drawString(String.valueOf(wool),x+80, y+3);
+        graphics.drawString(String.valueOf(wool), x + 80, y + 3);
         graphics.drawString("Ore:", x + 105, y + 3);
-        graphics.drawString(String.valueOf(ore),x+180, y+3);
+        graphics.drawString(String.valueOf(ore), x + 180, y + 3);
         graphics.drawString("Lumber:", x + 205, y + 3);
-        graphics.drawString(String.valueOf(lumber),x+280, y+3);
+        graphics.drawString(String.valueOf(lumber), x + 280, y + 3);
         graphics.drawString("Bricks:", x + 305, y + 3);
-        graphics.drawString(String.valueOf(bricks),x+380, y+3);
+        graphics.drawString(String.valueOf(bricks), x + 380, y + 3);
         graphics.drawString("Grain:", x + 405, y + 3);
-        graphics.drawString(String.valueOf(grain),x+480, y+3);
+        graphics.drawString(String.valueOf(grain), x + 480, y + 3);
         graphics.drawLine(x + 100, y, x + 100, y + 25);
         graphics.drawLine(x + 200, y, x + 200, y + 25);
         graphics.drawLine(x + 300, y, x + 300, y + 25);
@@ -196,7 +203,7 @@ public class GUI_Overlay {
             if (acceptOffer.isPressed(gc)) {
                 System.out.println("Accept");
                 //PlayerStats.tradingResources = tradingReources;
-                PlayerStats.tradingWithyou =  new boolean[6];
+                PlayerStats.tradingWithyou = new boolean[6];
                 PlayerStats.tradingWithyou[PlayerStats.turn] = true;
                 PlayerStats.tradingWithyou[5] = true;
                 tradeWindow = false;
@@ -206,7 +213,7 @@ public class GUI_Overlay {
             if (declineOffer.isPressed(gc)) {
                 System.out.println("Decline");
                 PlayerStats.tradingResources = new int[10];
-                PlayerStats.tradingWithyou =  new boolean[6];
+                PlayerStats.tradingWithyou = new boolean[6];
                 PlayerStats.tradingWithyou[PlayerStats.turn] = true;
                 PlayerStats.tradingWithyou[5] = true;
                 tradeWindow = false;
@@ -256,7 +263,7 @@ public class GUI_Overlay {
             g.fillRect(theWidth / 2 - 200, theHeight / 2 - 200, 400, 450);
             g.setColor(Color.white);
 
-            g.drawString("Dice Roll Percentages:", theWidth/2 - 180, theHeight/2 - 190);
+            g.drawString("Dice Roll Percentages:", theWidth / 2 - 180, theHeight / 2 - 190);
             for (int i = 1; i < 13; i++) {
                 float procent = (float) PlayerStats.rolledDiceStatistics[i - 1] / (float) rolled;
                 percentValue[i - 1] = procent * 120;
@@ -275,18 +282,18 @@ public class GUI_Overlay {
             g.drawString("Resource Types:", theWidth / 2 - 180, theHeight / 2 + 10);
 
             Texture.tileSprites.getSprite(4, 0).draw(theWidth / 2 - 180, theHeight / 2 + 40, 0.4f);
-            g.drawString("Lumber", theWidth / 2 - 110,theHeight/2+60);
-            Texture.tileSprites.getSprite(1, 0).draw(theWidth / 2 - 180,theHeight/2+110,0.4f);
-            g.drawString("Bricks", theWidth / 2 - 110,theHeight/2+130);
-            Texture.tileSprites.getSprite(0, 0).draw(theWidth / 2 - 180,theHeight/2+180,0.4f);
-            g.drawString("Ore", theWidth / 2 - 110,theHeight/2+200);
+            g.drawString("Lumber", theWidth / 2 - 110, theHeight / 2 + 60);
+            Texture.tileSprites.getSprite(1, 0).draw(theWidth / 2 - 180, theHeight / 2 + 110, 0.4f);
+            g.drawString("Bricks", theWidth / 2 - 110, theHeight / 2 + 130);
+            Texture.tileSprites.getSprite(0, 0).draw(theWidth / 2 - 180, theHeight / 2 + 180, 0.4f);
+            g.drawString("Ore", theWidth / 2 - 110, theHeight / 2 + 200);
 
-            Texture.tileSprites.getSprite(3, 0).draw(theWidth / 2+20,theHeight/2+40,0.4f);
-            g.drawString("Wool", theWidth / 2+90,theHeight/2+60);
-            Texture.tileSprites.getSprite(6, 0).draw(theWidth / 2+20,theHeight/2+110,0.4f);
-            g.drawString("Grain", theWidth / 2+90,theHeight/2+130);
-            Texture.tileSprites.getSprite(2, 0).draw(theWidth / 2+20,theHeight/2+180,0.4f);
-            g.drawString("No yield", theWidth / 2+90,theHeight/2+200);
+            Texture.tileSprites.getSprite(3, 0).draw(theWidth / 2 + 20, theHeight / 2 + 40, 0.4f);
+            g.drawString("Wool", theWidth / 2 + 90, theHeight / 2 + 60);
+            Texture.tileSprites.getSprite(6, 0).draw(theWidth / 2 + 20, theHeight / 2 + 110, 0.4f);
+            g.drawString("Grain", theWidth / 2 + 90, theHeight / 2 + 130);
+            Texture.tileSprites.getSprite(2, 0).draw(theWidth / 2 + 20, theHeight / 2 + 180, 0.4f);
+            g.drawString("No yield", theWidth / 2 + 90, theHeight / 2 + 200);
 
             g.setLineWidth(2);
 
@@ -301,6 +308,7 @@ public class GUI_Overlay {
     }
 
     public void DisplayDice(Graphics g, int x, int y, GameMap map, boolean yourTurn, GameContainer gc) {
+        Image[] diceImages;
         int sizeX = 115;
         int sizeY = 115;
         g.setLineWidth(2);
@@ -308,63 +316,22 @@ public class GUI_Overlay {
         g.drawRect(x, y, sizeX, sizeY);
         rollDice.SetPos(x + 5, y + 59);
         rollDice.draw(g);
-        if (yourTurn) {
-            //If it your turn
-            if (!DiceRolled) {
-                State_PlayingWindow.gameInfo = "Your turn! Press 'Roll Dice' to roll the dice";
-                rollDice.AddText("Roll Dice", Color.black);
-            } else {
-                rollDice.AddText("Rolled: " + combinedValue, Color.black);
-            }
-            if (PlayerStats.die1 != 0 && PlayerStats.die2 != 0) {
-                Texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
-                Texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
-            } else {
-                Texture.butt.draw(x + 5, y + 5, 50, 50);
-                Texture.butt.draw(x + 60, y + 5, 50, 50);
-            }
-            if (rollDice.isPressed(gc)) { //Add " && !DiceRolled" after testing!!!!
+        rollDice.AddText(dice.getButtonText(yourTurn, DiceRolled), Color.black);
+        diceImages = dice.getDice(yourTurn);
+        diceImages[0].draw(x + 5, y + 5, 50, 50);
+        diceImages[1].draw(x + 60, y + 5, 50, 50);
 
-                System.out.println("Dice rolled");
-                PlayerStats.diceRoll = true;
-                DiceRolled = true;
-            }
-            if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0) {
-                System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2);
-                die1 = PlayerStats.die1 - 1;
-                die2 = PlayerStats.die2 - 1;
-                combinedValue = die1 + die2 + 2;
-                rolled++;
-                map.addResources(die1+die2);
-                calculateNewDice = false;
-                PlayerStats.diceUsed = true;
-            }
-        } else {
-            //If it isn't your turn
-            if (!calculateNewDice) {
-                rollDice.AddText("Rolled: " + combinedValue, Color.black);
-            } else {
-                rollDice.AddText("Waiting for roll", Color.black);
-            }
-            if (PlayerStats.die1 != 0 && PlayerStats.die2 != 0) {
-                Texture.diceSprites.getSprite(die1, 0).draw(x + 5, y + 5, 50, 50);
-                Texture.diceSprites.getSprite(die2, 0).draw(x + 60, y + 5, 50, 50);
-            } else {
-                Texture.butt.draw(x + 5, y + 5, 50, 50);
-                Texture.butt.draw(x + 60, y + 5, 50, 50);
-            }
-            if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0) {
-                System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2);
-                die1 = PlayerStats.die1-1;
-                die2 = PlayerStats.die2-1;
-                combinedValue = die1 + die2 + 2;
-                rolled++;
-                map.addResources(die1+die2);
-                calculateNewDice = false;
-                PlayerStats.diceUsed = true;
-            }
+        if (rollDice.isPressed(gc)) { //Add " && !DiceRolled" after testing!!!!
+
+            System.out.println("Dice rolled");
+            PlayerStats.diceRoll = true;
+            DiceRolled = true;
         }
+
+        if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0)
+            dice.DiceRolled(map);
     }
+
 
 
     public void OfferWindow(int x, int y, boolean boo, Graphics g, int tradeId, GameContainer gc) {

@@ -122,23 +122,23 @@ public class GameClient extends Listener implements Runnable
 
     void updateCities()
     {
-        if (GameMap.serializedCity != 99)
+        if (GameMap.serializedCity != 0)
         {
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);
-            GameMap.serializedCity = 99;
+            GameMap.serializedCity = 0;
         }
     }
 
     void updateThief()
     {
-        if (GameMap.serializedThief != 99)
+        if (GameMap.serializedThief != 0)
         {
             ClientData clientData = new ClientData();
             clientData.pack();
             network.client.sendUDP(clientData);
-            GameMap.serializedThief = 99;
+            GameMap.serializedThief = 0;
         }
     }
 

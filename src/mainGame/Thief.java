@@ -14,22 +14,14 @@ public class Thief {
     Image thief;
     Circle circle;
 
-    public Point getPoint() {
-        return point;
-    }
-
-    Point point;
-
-    public Thief(Point point){
-        this.point = point;
+    public Thief(Circle circle){
         thief = Texture.thief;
-        circle = new Circle(point.getX(), point.getY(), 20);
+        this.circle = circle;
     }
 
-    public void remove(Tile tile) {
-
-        tile.hasThief = false;
-        State_PlayingWindow.gameInfo = "Place the Thief on a resource tile";
+    public void setThief(Circle circle)
+    {
+        this.circle = circle;
     }
 
     public void render(Graphics g){
@@ -37,10 +29,4 @@ public class Thief {
         g.texture(circle, thief, true);
 
     }
-
-    public void moveThief(Point point)
-    {
-        this.point = point;
-    }
-
 }

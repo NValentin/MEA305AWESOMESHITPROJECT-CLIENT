@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\out\production\MEA305AWESOMESHITPROJECT-CLIENT\mapClasses\GameMap.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapClasses/GameMap.java" afterPath="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/Thief.java" afterPath="$PROJECT_DIR$/src/mainGame/Thief.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -32,22 +34,20 @@
       <file leaf-file-name="GameMap.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26757368">
-              <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.6553288">
+              <caret line="593" column="0" selection-start-line="593" selection-start-column="0" selection-end-line="593" selection-end-column="0" />
               <folding>
                 <element signature="method#findHousePlots#0;class#GameMap#0" expanded="false" />
                 <element signature="method#findRoadPlots#0;class#GameMap#0" expanded="false" />
                 <element signature="method#assignTileVariablesFromLocal#0;class#GameMap#0" expanded="false" />
-                <element signature="e#11496#11504#0" expanded="true" />
+                <element signature="e#11555#11563#0" expanded="true" />
                 <element signature="method#addResources#0;class#GameMap#0" expanded="false" />
                 <element signature="method#removeHousePlot#0;class#GameMap#0" expanded="false" />
                 <element signature="method#removeHouseNeighborPlots#0;class#GameMap#0" expanded="false" />
                 <element signature="method#checkForBuiltHouses#0;class#GameMap#0" expanded="false" />
                 <element signature="method#checkForBuiltRoads#0;class#GameMap#0" expanded="false" />
-                <element signature="method#drawTiles#0;class#GameMap#0" expanded="false" />
                 <element signature="method#drawHousePlots#0;class#GameMap#0" expanded="false" />
                 <element signature="method#drawRoadPlots#0;class#GameMap#0" expanded="false" />
-                <element signature="method#render#0;class#GameMap#0" expanded="false" />
                 <element signature="method#serializeHouse#0;class#GameMap#0" expanded="false" />
                 <element signature="method#deSerializeHouse#0;class#GameMap#0" expanded="false" />
                 <element signature="method#serializeRoad#0;class#GameMap#0" expanded="false" />
@@ -104,8 +104,11 @@
         <entry file="file://$PROJECT_DIR$/src/mainGame/Thief.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-              <folding />
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding>
+                <element signature="e#433#434#0" expanded="true" />
+                <element signature="e#469#470#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -220,8 +223,8 @@
         <option value="$PROJECT_DIR$/src/Network/ClientData.java" />
         <option value="$PROJECT_DIR$/src/Network/GameClient.java" />
         <option value="$PROJECT_DIR$/src/Network/Network.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/Thief.java" />
         <option value="$PROJECT_DIR$/src/mainGame/Dice.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/Thief.java" />
         <option value="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
       </list>
     </option>
@@ -914,13 +917,7 @@
       <workItem from="1449147015464" duration="87000" />
       <workItem from="1449147548293" duration="166000" />
       <workItem from="1449149549657" duration="729000" />
-      <workItem from="1449151970709" duration="5919000" />
-    </task>
-    <task id="LOCAL-00039" summary="No more disco houses, built houses now have proper color corresponding to playerID">
-      <created>1448372996280</created>
-      <option name="number" value="00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1448372996280</updated>
+      <workItem from="1449151970709" duration="6796000" />
     </task>
     <task id="LOCAL-00040" summary="Killed Harry Potter">
       <created>1448445207484</created>
@@ -1210,11 +1207,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449157631386</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Quick fix of thief">
+      <created>1449157906709</created>
+      <option name="number" value="00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1449157906709</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264249000" />
+    <option name="totallyTimeSpent" value="265126000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1290,7 +1293,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Hot fix 1.04 houses are now properly displayed with the proper colors across players" />
     <MESSAGE value="Implemented roads to be sent through server." />
     <MESSAGE value="Implemented turn order check to build stuff" />
     <MESSAGE value="Hotfix for playerturn" />
@@ -1315,7 +1317,8 @@
     <MESSAGE value="Stuff" />
     <MESSAGE value="texture stuff" />
     <MESSAGE value="Fixed thief to be sent over server, and update position when rolling 7" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed thief to be sent over server, and update position when rolling 7" />
+    <MESSAGE value="Quick fix of thief" />
+    <option name="LAST_COMMIT_MESSAGE" value="Quick fix of thief" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1717,14 +1720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/Thief.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/Dice.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1733,24 +1728,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/Thief.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26757368">
-          <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.6553288">
+          <caret line="593" column="0" selection-start-line="593" selection-start-column="0" selection-end-line="593" selection-end-column="0" />
           <folding>
             <element signature="method#findHousePlots#0;class#GameMap#0" expanded="false" />
             <element signature="method#findRoadPlots#0;class#GameMap#0" expanded="false" />
             <element signature="method#assignTileVariablesFromLocal#0;class#GameMap#0" expanded="false" />
-            <element signature="e#11496#11504#0" expanded="true" />
+            <element signature="e#11555#11563#0" expanded="true" />
             <element signature="method#addResources#0;class#GameMap#0" expanded="false" />
             <element signature="method#removeHousePlot#0;class#GameMap#0" expanded="false" />
             <element signature="method#removeHouseNeighborPlots#0;class#GameMap#0" expanded="false" />
             <element signature="method#checkForBuiltHouses#0;class#GameMap#0" expanded="false" />
             <element signature="method#checkForBuiltRoads#0;class#GameMap#0" expanded="false" />
-            <element signature="method#drawTiles#0;class#GameMap#0" expanded="false" />
             <element signature="method#drawHousePlots#0;class#GameMap#0" expanded="false" />
             <element signature="method#drawRoadPlots#0;class#GameMap#0" expanded="false" />
-            <element signature="method#render#0;class#GameMap#0" expanded="false" />
             <element signature="method#serializeHouse#0;class#GameMap#0" expanded="false" />
             <element signature="method#deSerializeHouse#0;class#GameMap#0" expanded="false" />
             <element signature="method#serializeRoad#0;class#GameMap#0" expanded="false" />

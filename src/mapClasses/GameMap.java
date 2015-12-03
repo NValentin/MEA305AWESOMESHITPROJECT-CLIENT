@@ -86,10 +86,13 @@ public class GameMap
             {
                 for (Circle circle : thiefPositions)
                 {
-                    if (circle.contains(Layout.hexToPixel(mapLayout, tile)))
+                    if (circle != null)
                     {
-                        thief = new Thief(new Point(circle.getCenterX(), circle.getCenterY()));
-                        tile.hasThief = true;
+                        if (circle.contains(Layout.hexToPixel(mapLayout, tile)))
+                        {
+                            thief = new Thief(circle);
+                            tile.hasThief = true;
+                        }
                     }
                 }
 
@@ -327,11 +330,6 @@ public class GameMap
                     {
                         type = listOfTileTypes.remove(listOfTileTypes.size() - 1);
                         tile.setTileType(type);
-                        if (tile.getTileType().matches("Desert"))
-                        {
-                            thief = new Thief(new Point(Layout.hexToPixel(mapLayout, tile).getX(), Layout.hexToPixel(mapLayout, tile).getY()));
-                            tile.hasThief = true;
-                        }
                     }
                 }
 
@@ -587,10 +585,10 @@ public class GameMap
     public void update(GameContainer gc)
     {
         while (moveThief)
-            for (Circle circle : thiefPositions)
-                if (circle.contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()) && gc.getInput().isKeyPressed(0))
+            for (int i = 0; i < thiefPositions.length; i++)
+                if (thiefPositions[i].contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()) && gc.getInput().isKeyPressed(0))
                 {
-                    thief.moveThief(new Point(circle.getCenterX(), circle.getCenterY()));
+                    thief.setThief(thiefPositions[i]);
                     moveThief = false;
                 }
 
@@ -654,7 +652,6 @@ public class GameMap
                         Layout.hexToPixel(mapLayout, tile).getY() - 8
                 );
             }
-            tile.hasThief = tmpPoly.contains(thief.getPoint());
         }
     }
 

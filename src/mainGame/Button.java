@@ -48,18 +48,12 @@ public class Button {
         this.texture = texture;
         this.pressed = false;
         this.font = new TrueTypeFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, fontSize), true);
+
+        butShape = new Rectangle(x, y, sizeX, sizeY);
     }
 
     public void draw(Graphics g) {
         g.texture(butShape, texture, true);
-    }
-
-    public Button(int x, int y, int sizeX, int sizeY) {
-        this.x = x;
-        this.y = y;
-        this.sizeX = sizeX;
-        this.sizeY = sizeY;
-        pressed = false;
     }
 
     public void SetPos(int x, int y) {

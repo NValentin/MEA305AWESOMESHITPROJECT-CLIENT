@@ -10,8 +10,10 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 public class State_JoinLobby extends BasicGameState {
 
     Texture texture;
+
     int sizeX = Main.ScreenWidth/4; // Standard width of buttons
     int sizeY = Main.ScreenHeight/10; // Standard height of buttons
+
     boolean checkIfReady = false; // Conditional used to prevent spamming the 'ready' button
     float countdown; // Countdown used to start game
 

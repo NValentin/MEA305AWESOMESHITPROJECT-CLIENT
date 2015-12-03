@@ -177,10 +177,12 @@ public class GUI_Overlay {
             g.fill(new Rectangle(x, y, 400, 300));
             g.setColor(Color.black);
             g.drawString("Trade with " + tradeWithName, x + 10, y + 20);
-            g.drawString("for", x + 150, y + 110);
+            g.drawString("Give", x + 30, y + 50);
+            g.drawString("Get", x + 270, y + 50);
+            g.drawString("for", x + 185, y + 110);
             for (int i = 0; i < 5; i++) {
-                g.drawString(resourceTypes[i] + ":  " + PlayerStats.resourcesTrade[i], x + 25, y + 70 + 20 * i);
-                g.drawString(resourceTypes[i] + ":  " + PlayerStats.resourcesTrade[i + 5], x + 265, y + 70 + 20 * i);
+                g.drawString(resourceTypes[i] + ": " + PlayerStats.resourcesTrade[i], x + 15, y + 70 + 20 * i);
+                g.drawString(resourceTypes[i] + ": " + PlayerStats.resourcesTrade[i + 5], x + 255, y + 70 + 20 * i);
             }
             acceptOffer.SetPos(x + 10, y + 180);
             declineOffer.SetPos(x + 250, y + 180);
@@ -318,11 +320,13 @@ public class GUI_Overlay {
             g.fill(new Rectangle(x, y, 400, 300));
             g.setColor(Color.black);
             g.drawString("Make an offer for " + tradeWithName, x + 10, y + 20);
+            g.drawString("Give", x + 45, y + 50);
+            g.drawString("Get", x + 290, y + 50);
             for (int i = 0; i < 5; i++) {
-                buttons[i].SetPos(x + 90, y + 70 + 20 * i);
-                buttons[i + 5].SetPos(x + 120, y + 70 + 20 * i);
-                buttons[i + 10].SetPos(x + 330, y + 70 + 20 * i);
-                buttons[i + 15].SetPos(x + 360, y + 70 + 20 * i);
+                buttons[i].SetPos(x + 110, y + 70 + 20 * i);
+                buttons[i + 5].SetPos(x + 130, y + 70 + 20 * i);
+                buttons[i + 10].SetPos(x + 350, y + 70 + 20 * i);
+                buttons[i + 15].SetPos(x + 370, y + 70 + 20 * i);
             }
             for (int i = 0; i < 20; i++) {
                 buttons[i].draw(g);
@@ -338,10 +342,10 @@ public class GUI_Overlay {
                     tradingReources[i+5]++;
             }
             for (int i = 0; i < 5; i ++) {
-                g.drawString(resourceTypes[i] + ":  " + tradingReources[i], x + 25, y + 70 + i * 20);
-                g.drawString(resourceTypes[i] + ":  " + tradingReources[i + 5], x + 265, y + 70 + i * 20);
+                g.drawString(resourceTypes[i] + ": " + tradingReources[i], x + 15, y + 70 + i * 20);
+                g.drawString(resourceTypes[i] + ": " + tradingReources[i + 5], x + 255, y + 70 + i * 20);
             }
-            g.drawString("for", x + 170, y + 110);
+            g.drawString("for", x + 185, y + 110);
             acceptOffer.SetPos(x + 10, y + 180);
             declineOffer.SetPos(x + 250, y + 180);
             acceptOffer.draw(g);

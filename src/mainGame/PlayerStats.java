@@ -31,6 +31,7 @@ public class PlayerStats {
     public static int[] resourcesTrade = new int[10];
     public static int targetPlayerTrade;
     public static boolean tradeResourcesToHandle = false;
+    public static boolean adjustMyResources = false;
 
     //Stats for all players
     public static String[] names = new String[]{" "," "," "," "};

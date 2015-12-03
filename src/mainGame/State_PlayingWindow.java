@@ -100,12 +100,13 @@ public class State_PlayingWindow extends BasicGameState
         gui_overlay.OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.offerWindow, g, gc);
         gui_overlay.ShowStats(g, theWidth - 145, 10, gc);
 
-        if (PlayerStats.targetPlayerTrade == PlayerStats.ID) {
+        if (PlayerStats.targetPlayerTrade == PlayerStats.ID || PlayerStats.adjustMyResources) {
             if (PlayerStats.tradeResourcesToHandle) {
                 if (!PlayerStats.resetTradingResources) {
                     gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, GUI_Overlay.popTrade, PlayerStats.names[PlayerStats.turn], g, gc);
                 } else {
-                    Trading.ReAdjustResources(PlayerStats.resourcesTrade);
+                    System.out.println("Trading");
+                    Trading.ReAdjustResources();
                 }
             }
         }

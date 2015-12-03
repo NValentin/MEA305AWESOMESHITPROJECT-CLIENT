@@ -17,8 +17,8 @@ public class ClientData
     public boolean nsTextSent;
     public int[] serializedHouse = new int[]{0,0};
     public int[] serializedRoad = new int[] {0,0};
-    public int serializedCity = 0;
-    public int serializedThief = 0;
+    public int serializedCity = 99;
+    public int serializedThief = 99;
     public boolean endTurn = false, diceRoll, diceUsed;
     public boolean gameEnded = false;
     public boolean sendTrade = false;

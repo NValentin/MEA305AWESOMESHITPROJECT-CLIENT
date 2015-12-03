@@ -2,23 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\out\production\MEA305AWESOMESHITPROJECT-CLIENT\mainGame\FractionalTile$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\out\production\MEA305AWESOMESHITPROJECT-CLIENT\mainGame\FractionalTile.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\out\production\MEA305AWESOMESHITPROJECT-CLIENT\mainGame\Layout$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\out\production\MEA305AWESOMESHITPROJECT-CLIENT\mainGame\Layout.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\out\production\MEA305AWESOMESHITPROJECT-CLIENT\mainGame\OffsetCoord.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\out\production\MEA305AWESOMESHITPROJECT-CLIENT\mainGame\Orientation.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\out\production\MEA305AWESOMESHITPROJECT-CLIENT\mainGame\Tile$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\out\production\MEA305AWESOMESHITPROJECT-CLIENT\mainGame\Tile.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Button.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Button.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/GameMap.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/GameMap.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/House.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/House.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/Layout.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/Layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/OffsetCoord.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/OffsetCoord.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/Orientation.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/Orientation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/Tile.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/Tile.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Texture.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Texture.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/Button.java" afterPath="$PROJECT_DIR$/src/mainGame/Button.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/GUI_Overlay.java" afterPath="$PROJECT_DIR$/src/mainGame/GUI_Overlay.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapClasses/GameMap.java" afterPath="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java" afterPath="$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/State_EndGame.java" afterPath="$PROJECT_DIR$/src/mainGame/State_EndGame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/State_JoinLobby.java" afterPath="$PROJECT_DIR$/src/mainGame/State_JoinLobby.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/State_MainMenu.java" afterPath="$PROJECT_DIR$/src/mainGame/State_MainMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/Texture.java" afterPath="$PROJECT_DIR$/src/mainGame/Texture.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -49,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="118" selection-start-line="36" selection-start-column="118" selection-end-line="36" selection-end-column="118" />
+              <caret line="499" column="54" selection-start-line="499" selection-start-column="54" selection-end-line="499" selection-end-column="54" />
               <folding>
                 <element signature="method#GameMapGameMap#0;class#GameMap#0" expanded="false" />
                 <element signature="method#findHousePlots#0;class#GameMap#0" expanded="false" />
@@ -61,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerStats.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mainGame/PlayerStats.java">
+      <file leaf-file-name="Texture.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mainGame/Texture.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="61" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
+              <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -75,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/src/mainGame/State_PlayingWindow.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding>
                 <element signature="e#4856#4857#0" expanded="true" />
                 <element signature="e#4880#4881#0" expanded="true" />
@@ -88,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+              <caret line="47" column="112" selection-start-line="47" selection-start-column="112" selection-end-line="47" selection-end-column="112" />
               <folding />
             </state>
           </provider>
@@ -98,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/src/mainGame/State_MainMenu.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="92" column="19" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="19" />
+              <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -108,7 +102,7 @@
         <entry file="file://$PROJECT_DIR$/src/mainGame/State_JoinLobby.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="7" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+              <caret line="42" column="112" selection-start-line="42" selection-start-column="112" selection-end-line="42" selection-end-column="112" />
               <folding />
             </state>
           </provider>
@@ -118,7 +112,7 @@
         <entry file="file://$PROJECT_DIR$/src/mainGame/State_EndGame.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="122" column="25" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="25" />
+              <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -127,8 +121,8 @@
       <file leaf-file-name="GUI_Overlay.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mainGame/GUI_Overlay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="205.89655">
-              <caret line="90" column="34" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="34" />
+            <state vertical-scroll-proportion="11.103448">
+              <caret line="70" column="108" selection-start-line="70" selection-start-column="108" selection-end-line="70" selection-end-column="108" />
               <folding />
             </state>
           </provider>
@@ -147,11 +141,11 @@
       <file leaf-file-name="Button.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mainGame/Button.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0489361">
-              <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.57872343">
+              <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
               <folding>
-                <element signature="e#1416#1417#0" expanded="true" />
-                <element signature="e#1466#1467#0" expanded="true" />
+                <element signature="e#1336#1337#0" expanded="true" />
+                <element signature="e#1397#1398#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -204,7 +198,6 @@
         <option value="$PROJECT_DIR$/src/mapClasses/FractionalTile.java" />
         <option value="$PROJECT_DIR$/src/mapClasses/Tile.java" />
         <option value="$PROJECT_DIR$/src/mapClasses/Hex.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/Texture.java" />
         <option value="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" />
         <option value="$PROJECT_DIR$/src/mainGame/PlayerStats.java" />
         <option value="$PROJECT_DIR$/src/mainGame/Road.java" />
@@ -218,13 +211,14 @@
         <option value="$PROJECT_DIR$/src/mapClasses/OffsetCoord.java" />
         <option value="$PROJECT_DIR$/src/mapClasses/Orientation.java" />
         <option value="$PROJECT_DIR$/src/mainGame/House.java" />
-        <option value="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/GUI_Overlay.java" />
         <option value="$PROJECT_DIR$/src/mainGame/State_PlayingWindow.java" />
+        <option value="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/Texture.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/GUI_Overlay.java" />
         <option value="$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/State_MainMenu.java" />
         <option value="$PROJECT_DIR$/src/mainGame/State_EndGame.java" />
         <option value="$PROJECT_DIR$/src/mainGame/State_JoinLobby.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/State_MainMenu.java" />
         <option value="$PROJECT_DIR$/src/mainGame/Button.java" />
       </list>
     </option>
@@ -893,13 +887,7 @@
       <workItem from="1449070691013" duration="2058000" />
       <workItem from="1449073374228" duration="2270000" />
       <workItem from="1449082453085" duration="1249000" />
-      <workItem from="1449130918896" duration="4011000" />
-    </task>
-    <task id="LOCAL-00030" summary="Fixed show card class">
-      <created>1447761708495</created>
-      <option name="number" value="00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1447761708495</updated>
+      <workItem from="1449130918896" duration="6483000" />
     </task>
     <task id="LOCAL-00031" summary="Dno?">
       <created>1447852800177</created>
@@ -1189,11 +1177,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449132809291</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Button hot fix">
+      <created>1449134973844</created>
+      <option name="number" value="00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1449134973845</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="248250000" />
+    <option name="totallyTimeSpent" value="250722000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1269,7 +1263,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Quick bug fix for testing 1.11" />
     <MESSAGE value="Quick bug fix for testing 1.12" />
     <MESSAGE value="Quick bug fix for testing 1.13" />
     <MESSAGE value="Hot fix for player colors" />
@@ -1294,7 +1287,8 @@
     <MESSAGE value="stuff" />
     <MESSAGE value="Resources should now be awarded properly" />
     <MESSAGE value="fixed loooooots of error because of button rework" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed loooooots of error because of button rework" />
+    <MESSAGE value="Button hot fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Button hot fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1452,13 +1446,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/Texture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="49" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -1637,34 +1624,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/PlayerStats.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.92127657">
           <caret line="36" column="61" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/GUI_Overlay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="205.89655">
-          <caret line="90" column="34" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/State_EndGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="122" column="25" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -1672,7 +1635,7 @@
     <entry file="file://$PROJECT_DIR$/src/mainGame/State_PlayingWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding>
             <element signature="e#4856#4857#0" expanded="true" />
             <element signature="e#4880#4881#0" expanded="true" />
@@ -1680,18 +1643,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="118" selection-start-line="36" selection-start-column="118" selection-end-line="36" selection-end-column="118" />
+          <caret line="499" column="54" selection-start-line="499" selection-start-column="54" selection-end-line="499" selection-end-column="54" />
           <folding>
             <element signature="method#GameMapGameMap#0;class#GameMap#0" expanded="false" />
             <element signature="method#findHousePlots#0;class#GameMap#0" expanded="false" />
@@ -1702,10 +1657,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/State_MainMenu.java">
+    <entry file="file://$PROJECT_DIR$/src/mainGame/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="92" column="19" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="19" />
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/Texture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/GUI_Overlay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="11.103448">
+          <caret line="70" column="108" selection-start-line="70" selection-start-column="108" selection-end-line="70" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="112" selection-start-line="47" selection-start-column="112" selection-end-line="47" selection-end-column="112" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/State_EndGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -1713,18 +1700,26 @@
     <entry file="file://$PROJECT_DIR$/src/mainGame/State_JoinLobby.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="7" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+          <caret line="42" column="112" selection-start-line="42" selection-start-column="112" selection-end-line="42" selection-end-column="112" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/State_MainMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/Button.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0489361">
-          <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.57872343">
+          <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
           <folding>
-            <element signature="e#1416#1417#0" expanded="true" />
-            <element signature="e#1466#1467#0" expanded="true" />
+            <element signature="e#1336#1337#0" expanded="true" />
+            <element signature="e#1397#1398#0" expanded="true" />
           </folding>
         </state>
       </provider>

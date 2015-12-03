@@ -4,10 +4,6 @@ import mapClasses.GameMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 
-import java.util.ArrayList;
-
-import mapClasses.Tile;
-
 /**
  * Created by Kingo on 25-Nov-15.
  */
@@ -29,7 +25,6 @@ public class GUI_Overlay {
     Button[] makeNewTrade = new Button[4];
     Button[] buttons = new Button[20];
     Button[] build_Buttons = new Button[4];
-    boolean trade = false;
     boolean tradeWindow = false;
     boolean offerWindow = false;
     boolean showStatsBool;
@@ -56,24 +51,24 @@ public class GUI_Overlay {
     }
 
     public void InitailizeTexture() throws SlickException {
-        accept = new Button(theWidth - 155, theHeight - 30, 25, 25, Texture.accept);
-        decline = new Button(theWidth - 100, theHeight - 30, 25, 25, Texture.decline);
-        acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, Texture.acceptBig, 15);
-        declineOffer = new Button(theWidth / 2 + 50, theHeight / 2 + 30, 100, 25, Texture.declineBig, 15);
-        counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, Texture.counterBig, 15);
-        rollDice = new Button(0, 0, 105, 50, Texture.silverButton, 20);
-        closeStats = new Button(0, 0, 25, 25, Texture.decline);
-        showStats = new Button(0, 0, 140, 35, Texture.silverButton, 20);
-        endTurn = new Button(0,0, 150, 50, Texture.templateButton, 35);
+        accept = new Button(theWidth - 155, theHeight - 30, 25, 25, "accept");
+        decline = new Button(theWidth - 100, theHeight - 30, 25, 25, "decline");
+        acceptOffer = new Button(theWidth / 2 - 190, theHeight / 2 + 30, 100, 25, "acceptBig", 15);
+        declineOffer = new Button(theWidth / 2 + 50, theHeight / 2 + 30, 100, 25, "declineBig", 15);
+        counterOffer = new Button(theWidth / 2 - 65, theHeight / 2 + 30, 100, 25, "counterBig", 15);
+        rollDice = new Button(0, 0, 105, 50, "silverButton", 20);
+        closeStats = new Button(0, 0, 25, 25, "decline");
+        showStats = new Button(0, 0, 140, 35, "silverButton", 20);
+        endTurn = new Button(0,0, 150, 50, "templateButton", 35);
         for (int i = 0; i < 4; i++) {
-            makeNewTrade[i] = new Button(0, 0, 80, 20, Texture.makeNewTrade, 20);
-            build_Buttons[i] = new Button(0, 0, 50, 20, Texture.silverButton, 20);
+            makeNewTrade[i] = new Button(0, 0, 80, 20, "makeNewTrade", 20);
+            build_Buttons[i] = new Button(0, 0, 50, 20, "silverButton", 20);
         }
         for (int i = 0; i < 5; i++) {
-            buttons[i] = new Button(theWidth / 2 - 110, theHeight / 2 - 80 + 20 * i, 20, 20, Texture.decrease);
-            buttons[i + 5] = new Button(theWidth / 2 + 130, theHeight / 2 - 80 + 20 * i, 20, 20, Texture.increase);
-            buttons[i + 10] = new Button(theWidth / 2 - 80, theHeight / 2 - 80 + 20 * i, 20, 20, Texture.decrease);
-            buttons[i + 15] = new Button(theWidth / 2 + 160, theHeight / 2 - 80 + 20 * i, 20, 20, Texture.increase);
+            buttons[i] = new Button(theWidth / 2 - 110, theHeight / 2 - 80 + 20 * i, 20, 20, "decrease");
+            buttons[i + 5] = new Button(theWidth / 2 + 130, theHeight / 2 - 80 + 20 * i, 20, 20, "increase");
+            buttons[i + 10] = new Button(theWidth / 2 - 80, theHeight / 2 - 80 + 20 * i, 20, 20, "decrease");
+            buttons[i + 15] = new Button(theWidth / 2 + 160, theHeight / 2 - 80 + 20 * i, 20, 20, "increase");
         }
     }
 
@@ -88,12 +83,12 @@ public class GUI_Overlay {
             decline.SetPos(x + 115, y + 25);
             accept.draw(graphics);
             decline.draw(graphics);
-            if (accept.isWithin(gc)) {
+            if (accept.isPressed(gc)) {
                 System.out.println("Accept");
                 tradeWindow = true;
                 PlayerStats.tradingWithyou[PlayerStats.turn] = false;
             }
-            if (decline.isWithin(gc)) {
+            if (decline.isPressed(gc)) {
                 System.out.println("Decline");
                 PlayerStats.tradingResources = new int[10];
                 PlayerStats.tradingWithyou =  new boolean[6];
@@ -125,7 +120,7 @@ public class GUI_Overlay {
             } else {
                 font.drawString(x + 5, y + 65 + 60 * i, buildingMenuText[i + 8]);
             }
-            if (build_Buttons[i].isWithin(gc)) {
+            if (build_Buttons[i].isPressed(gc)) {
                 if (PlayerStats.playerturn[PlayerStats.ID-1]) {
                     System.out.println("Building " + buildingMenuText[i]);
                     GameMap.build_buttons[i] = true;
@@ -198,7 +193,7 @@ public class GUI_Overlay {
             acceptOffer.AddText("Accept Offer", Color.black);
             declineOffer.draw(g);
             declineOffer.AddText("Decline Offer", Color.black);
-            if (acceptOffer.isWithin(gc)) {
+            if (acceptOffer.isPressed(gc)) {
                 System.out.println("Accept");
                 //PlayerStats.tradingResources = tradingReources;
                 PlayerStats.tradingWithyou =  new boolean[6];
@@ -208,7 +203,7 @@ public class GUI_Overlay {
                 PlayerStats.refreshResources = false;
                 PlayerStats.tradingWithyou[4] = true;
             }
-            if (declineOffer.isWithin(gc)) {
+            if (declineOffer.isPressed(gc)) {
                 System.out.println("Decline");
                 PlayerStats.tradingResources = new int[10];
                 PlayerStats.tradingWithyou =  new boolean[6];
@@ -236,7 +231,7 @@ public class GUI_Overlay {
             makeNewTrade[i].SetPos(x + 100, y + 40 + 25 * i);
             makeNewTrade[i].draw(g);
             makeNewTrade[i].AddText("Trade", Color.black);
-            if (makeNewTrade[i].isWithin(gc)) {
+            if (makeNewTrade[i].isPressed(gc)) {
                 System.out.println("Trading with " + _names[i]);
                 tradeWithName = _names[i];
                 offerWindow = true;
@@ -251,7 +246,7 @@ public class GUI_Overlay {
         closeStats.SetPos(theWidth / 2 + 170, theHeight / 2 - 195);
         if (showStatsBool) {
             State_PlayingWindow.gameInfo = "Close the window to continue playing";
-            if (closeStats.isWithin(gc)) {
+            if (closeStats.isPressed(gc)) {
                 State_PlayingWindow.gameInfo = "";
                 showStatsBool = false;
             }
@@ -300,7 +295,7 @@ public class GUI_Overlay {
         showStats.AddText("Show Game Info", Color.white);
         if (showStatsBool)
             closeStats.draw(g);
-        if (showStats.isWithin(gc)) {
+        if (showStats.isPressed(gc)) {
             showStatsBool = true;
         }
     }
@@ -328,7 +323,7 @@ public class GUI_Overlay {
                 Texture.butt.draw(x + 5, y + 5, 50, 50);
                 Texture.butt.draw(x + 60, y + 5, 50, 50);
             }
-            if (rollDice.isWithin(gc)) { //Add " && !DiceRolled" after testing!!!!
+            if (rollDice.isPressed(gc)) { //Add " && !DiceRolled" after testing!!!!
 
                 System.out.println("Dice rolled");
                 PlayerStats.diceRoll = true;
@@ -388,13 +383,13 @@ public class GUI_Overlay {
                 buttons[i].draw(g);
             }
             for (int i = 0; i < 5; i++) {
-                if (buttons[i].isWithin(gc) && tradingReources[i] > 0)
+                if (buttons[i].isPressed(gc) && tradingReources[i] > 0)
                     tradingReources[i]--;
-                if (buttons[i+5].isWithin(gc) && tradingReources[i] < State_PlayingWindow.currentResources[i])
+                if (buttons[i+5].isPressed(gc) && tradingReources[i] < State_PlayingWindow.currentResources[i])
                     tradingReources[i]++;
-                if (buttons[i + 10].isWithin(gc) && tradingReources[i+5] > 0)
+                if (buttons[i + 10].isPressed(gc) && tradingReources[i+5] > 0)
                     tradingReources[i + 5]--;
-                if (buttons[i+15].isWithin(gc))
+                if (buttons[i+15].isPressed(gc))
                     tradingReources[i+5]++;
             }
             g.drawString("Wool:  " + tradingReources[0], x + 10, y + 70);
@@ -414,14 +409,14 @@ public class GUI_Overlay {
             acceptOffer.AddText("Send Offer", Color.black);
             declineOffer.draw(g);
             declineOffer.AddText("Cancel", Color.black);
-            if (acceptOffer.isWithin(gc)) {
+            if (acceptOffer.isPressed(gc)) {
                 offerWindow = false;
                 PlayerStats.tradingResources = tradingReources;
                 PlayerStats.tradingWithyou =  new boolean[6];
                 PlayerStats.tradingWithyou[tradeId] = true;
                 PlayerStats.tradingWithyou[4] = true;
             }
-            if (declineOffer.isWithin(gc)) {
+            if (declineOffer.isPressed(gc)) {
                 offerWindow = false;
             }
             g.setColor(Color.white);
@@ -473,7 +468,7 @@ public class GUI_Overlay {
         endTurn.SetPos(x, y);
         endTurn.draw(g);
         endTurn.AddText("End Turn", Color.white);
-        if (endTurn.isWithin(gc)) {
+        if (endTurn.isPressed(gc)) {
             System.out.println("Ending turn");
             PlayerStats.endTurn = true;
             DiceRolled = false;

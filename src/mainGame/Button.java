@@ -20,53 +20,99 @@ public class Button {
     int y;
     int sizeX;
     int sizeY;
-    int ScreenHeight = Main.ScreenHeight;
-    Image texture;
-    boolean pressed;
+    String texture;
     Font font;
     int fontSize = 50;
 
     Rectangle butShape;
 
-    public Button(int x, int y, int sizeX, int sizeY, Image texture) {
+    public Button(int x, int y, int sizeX, int sizeY, String texture) {
         this.x = x;
         this.y = y;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.texture = texture;
-        this.pressed = false;
         font = new TrueTypeFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, fontSize), true);
 
-        butShape = new Rectangle(x, y, sizeX, sizeY);
+        butShape = new Rectangle(this.x, this.y, this.sizeX, this.sizeY);
     }
 
-    public Button(int x, int y, int sizeX, int sizeY, Image texture, int fontSize) {
+    public Button(int x, int y, int sizeX, int sizeY, String texture, int fontSize) {
         this.x = x;
         this.y = y;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.texture = texture;
-        this.pressed = false;
         this.font = new TrueTypeFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, fontSize), true);
 
-        butShape = new Rectangle(x, y, sizeX, sizeY);
+        butShape = new Rectangle(this.x, this.y, this.sizeX, this.sizeY);
     }
 
     public void draw(Graphics g) {
-        g.texture(butShape, texture, true);
+        g.texture(butShape, getButtonTexture(), true);
     }
 
     public void SetPos(int x, int y) {
         this.x = x;
         this.y = y;
+        updateShape();
+    }
+
+    private void updateShape()
+    {
+        butShape.setX(x);
+        butShape.setY(y);
     }
 
     public void AddText(String text, Color color) {
         font.drawString(x + sizeX/2f - font.getWidth(text) / 2f, y + sizeY / 2f - font.getHeight(text) / 2f, text, color);
     }
 
-    public boolean isWithin(GameContainer gc) {
+    public boolean isPressed(GameContainer gc) {
         return gc.getInput().isMousePressed(0) && butShape.contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY());
+    }
+
+    private Image getButtonTexture()
+    {
+        Image tmpTexture;
+
+        switch (texture)
+        {
+            case ("templateButton"):
+                tmpTexture = Texture.templateButton;
+                break;
+            case ("makeNewTrade"):
+                tmpTexture = Texture.makeNewTrade;
+                break;
+            case("increase"):
+                tmpTexture = Texture.increase;
+                break;
+            case ("decrease"):
+                tmpTexture = Texture.decrease;
+                break;
+            case ("acceptBig"):
+                tmpTexture = Texture.acceptBig;
+                break;
+            case ("declineBig"):
+                tmpTexture = Texture.declineBig;
+                break;
+            case ("counterBig"):
+                tmpTexture = Texture.counterBig;
+                break;
+            case ("accept"):
+                tmpTexture = Texture.accept;
+                break;
+            case ("decline"):
+                tmpTexture = Texture.decline;
+                break;
+            case ("silverButton"):
+                tmpTexture = Texture.silverButton;
+                break;
+            default:
+                tmpTexture = Texture.doge;
+                break;
+        }
+        return tmpTexture;
     }
 }
 

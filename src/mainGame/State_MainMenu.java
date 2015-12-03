@@ -31,9 +31,9 @@ public class State_MainMenu extends BasicGameState
         textures.initMainMenuStateTextures(); //Takes textures from the texture class
 
         join = new Button(Main.ScreenWidth / 2 - sizeX / 2, (int) (Main.ScreenHeight * 0.50f),
-                sizeX, sizeY, Texture.buttonTemplate);
+                sizeX, sizeY, "templateButton");
         exit = new Button(Main.ScreenWidth / 2 - sizeX / 2, (int) (Main.ScreenHeight * 0.85f),
-                sizeX, sizeY, Texture.buttonTemplate);
+                sizeX, sizeY, "templateButton");
         firstGame = true; // See above
     }
 
@@ -55,7 +55,7 @@ public class State_MainMenu extends BasicGameState
             System.out.println("Entered Lobby");
         }
 
-        if (join.isWithin(gc))
+        if (join.isPressed(gc))
         {
             if(firstGame) {
                 (new Thread(new GameClient())).start(); // Starts the run method in GameClient when button is clicked
@@ -64,7 +64,7 @@ public class State_MainMenu extends BasicGameState
             sbg.enterState(1, new FadeOutTransition(), new FadeInTransition()); // enters new state when button is clicked
         }
 
-        if (exit.isWithin(gc))
+        if (exit.isPressed(gc))
         {
             System.exit(0); // Terminates program when button is clicked
 

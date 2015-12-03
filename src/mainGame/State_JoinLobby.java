@@ -39,8 +39,8 @@ public class State_JoinLobby extends BasicGameState {
         texture = new Texture();
         texture.initJoinLobbyTextures(); //Takes textures from the texture class
 
-        back = new Button(Main.ScreenWidth/2-sizeX-10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, Texture.templateButton);
-        forward = new Button(Main.ScreenWidth/2+10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, Texture.templateButton);
+        back = new Button(Main.ScreenWidth/2-sizeX-10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, "templateButton");
+        forward = new Button(Main.ScreenWidth/2+10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, "templateButton");
 
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 12), true); // Font for the textfield
@@ -67,7 +67,7 @@ public class State_JoinLobby extends BasicGameState {
             PlayerStats.StartGame=true;
         }
 
-        if(gc.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isWithin(gc)){ // Key used to go back to previous state. Used in testing
+        if(gc.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isPressed(gc)){ // Key used to go back to previous state. Used in testing
             sbg.enterState(0, new FadeOutTransition(), new FadeInTransition());
         }
 
@@ -75,7 +75,7 @@ public class State_JoinLobby extends BasicGameState {
             chatBox.newMessage(lobbyChat.getText(),PlayerStats.name); // Takes the text from the textfield and creates a message from it
             lobbyChat.setText(""); // resets the text in the textfield
         }
-        if(forward.isWithin(gc) && !checkIfReady) { // Marks player as being ready to play
+        if(forward.isPressed(gc) && !checkIfReady) { // Marks player as being ready to play
             PlayerStats.lobbyReady=true;
             checkIfReady = true;
         }

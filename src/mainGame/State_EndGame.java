@@ -57,7 +57,7 @@ public class State_EndGame  extends BasicGameState{
                 java.awt.Font.BOLD, 46), true);
 
         backToMenu = new Button(Main.ScreenWidth / 2 - sizeX / 2, (int) (Main.ScreenHeight * 0.85f),
-                sizeX, sizeY, Texture.buttonTemplate);
+                sizeX, sizeY, "templateButton");
 
         chatBox = new ChatBox();
         endChat = new TextField(gc, chatFont, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
@@ -85,7 +85,7 @@ public class State_EndGame  extends BasicGameState{
             endChat.setText(""); // resets the text in the textfield
         }
 
-        if(backToMenu.isWithin(gc)) { //This was an attempt to reset the game. Currently, it DOES NOT work. The only way out of this screen is closing the game.
+        if(backToMenu.isPressed(gc)) { //This was an attempt to reset the game. Currently, it DOES NOT work. The only way out of this screen is closing the game.
             /*State_PlayingWindow.buildMap = true;
             sbg.getState(2).init(gc, sbg);
             sbg.getState(3).init(gc, sbg);

@@ -1,10 +1,8 @@
 package mainGame;
 
-import Network.GameClient;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.gui.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -46,8 +44,8 @@ public class State_CreatePlayer extends BasicGameState {
         nameField = new TextField(gc, font, Main.ScreenWidth/2-sizeX/2, (int)(Main.ScreenHeight*0.55f), sizeX, (int)(sizeY*0.7)); //Field for name
         nameField.setMaxLength(12); // Sets a max limit to number of characters in the textfield
 
-        back = new Button(Main.ScreenWidth/2-sizeX-10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, Texture.templateButton);
-        forward = new Button(Main.ScreenWidth/2+10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, Texture.templateButton);
+        back = new Button(Main.ScreenWidth/2-sizeX-10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, "templateButton");
+        forward = new Button(Main.ScreenWidth/2+10,(int)(Main.ScreenHeight*0.85f), sizeX, sizeY, "templateButton");
 
     }
 
@@ -68,11 +66,11 @@ public class State_CreatePlayer extends BasicGameState {
             sbg.enterState(2, new FadeOutTransition(), new FadeInTransition());
             System.out.println("Joined Lobby");
         }
-        if (gc.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isWithin(gc)) { // Press Esc or button to return to main menu
+        if (gc.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isPressed(gc)) { // Press Esc or button to return to main menu
             sbg.enterState(0, new FadeOutTransition(), new FadeInTransition());
         }
 
-        if ((forward.isWithin(gc) || gc.getInput().isKeyPressed(Input.KEY_ENTER)) // Press enter or button to enter lobby
+        if ((forward.isPressed(gc) || gc.getInput().isKeyPressed(Input.KEY_ENTER)) // Press enter or button to enter lobby
                 && nameField.getText().length() != 0 && !nameField.getText().substring(0,1).matches(" ")) {
             PlayerStats.name = nameField.getText(); // Updates the player name variable
             sbg.enterState(2, new FadeOutTransition(), new FadeInTransition());

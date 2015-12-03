@@ -497,8 +497,9 @@ public class GameMap
                 tmpPoly.addPoint(point.getX(), point.getY());
 
             Image tmpTexture = tile.returnTextureByType();
-            g.texture(tmpPoly, tmpTexture, true);
             tmpTexture.setFilter(Image.FILTER_LINEAR);
+            g.texture(tmpPoly, tmpTexture, true);
+
             if (tile.getYieldNumber() != 0)
             {
                 g.drawString(String.valueOf(tile.getYieldNumber()),

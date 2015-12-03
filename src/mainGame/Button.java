@@ -70,9 +70,14 @@ public class Button {
 
     public boolean isPressed(GameContainer gc) {
         int counter = 0;
+        boolean wasPressed = false;
+
         if (butShape.contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()) && gc.getInput().isMousePressed(0))
+        {
             System.out.println("Button was pressed : "+counter+" times");
-        return (butShape.contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()) && gc.getInput().isMousePressed(0));
+            wasPressed = true;
+        }
+        return wasPressed;
     }
 
     private Image getButtonTexture()

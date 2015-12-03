@@ -86,7 +86,7 @@ public class State_PlayingWindow extends BasicGameState
 
     @Override
     public void render(GameContainer gc, StateBasedGame stateBG, Graphics g) throws SlickException {
-        //System.out.println("Trade with you? " + PlayerStats.tradingWithyou[4] + " Refresh: " + PlayerStats.refreshResources);
+        Texture.mapBackground.draw(0,0, Main.ScreenWidth, Main.ScreenHeight);
         if (buildMap) {
             map.GameMapGameMap();
             buildMap = false;

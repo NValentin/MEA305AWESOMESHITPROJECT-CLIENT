@@ -586,11 +586,11 @@ public class GameMap
      */
     public void update(GameContainer gc)
     {
-        while (moveThief)
+        if (moveThief)
             for (int i = 0; i < thiefPositions.length; i++)
                 if (thiefPositions[i].contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()) && gc.getInput().isKeyPressed(0))
                 {
-                    thief.setThief(thiefPositions[i]);
+                    serializeThief(i);
                     moveThief = false;
                 }
 
@@ -609,6 +609,12 @@ public class GameMap
         {
             deSerializeCity();
             deSerializedCity = 0;
+        }
+
+        if (deSerializedThief != 0)
+        {
+            deSerializeThief();
+            deSerializedThief = 0;
         }
 
         checkForBuiltHouses(gc);
@@ -844,10 +850,19 @@ public class GameMap
     /**
      * "decodes" the array received from the server, and adds the proper road to the roads arrayList.
      */
-    public void deSerializeRoad()
+    private void deSerializeRoad()
     {
         if (roadPlots[deSerializedRoad[1]] != null)
             addRoad(deSerializedRoad[0], deSerializedRoad[1]);
+    }
+
+    private void serializeThief(int indexPos)
+    {
+        serializedThief = indexPos;
+    }
+    private void deSerializeThief()
+    {
+        thief.setThief(thiefPositions[deSerializedThief]);
     }
 
     /**

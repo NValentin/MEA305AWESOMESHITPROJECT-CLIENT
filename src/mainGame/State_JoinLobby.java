@@ -55,7 +55,6 @@ public class State_JoinLobby extends BasicGameState {
      * @param sbg StateBasedGame component
      *          @see StateBasedGame and Slick2D
      * @param i Update parameter
-     *          @see Update and Slick2D
      * @throws SlickException
      */
     @Override
@@ -66,7 +65,7 @@ public class State_JoinLobby extends BasicGameState {
             PlayerStats.StartGame=true;
         }
 
-        if(gc.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isWithin()){ // Key used to go back to previous state. Used in testing
+        if(gc.getInput().isKeyPressed(Input.KEY_ESCAPE) || back.isWithin(gc)){ // Key used to go back to previous state. Used in testing
             sbg.enterState(0, new FadeOutTransition(), new FadeInTransition());
         }
 
@@ -74,7 +73,7 @@ public class State_JoinLobby extends BasicGameState {
             chatBox.newMessage(lobbyChat.getText(),PlayerStats.name); // Takes the text from the textfield and creates a message from it
             lobbyChat.setText(""); // resets the text in the textfield
         }
-        if(forward.isWithin() && !checkIfReady) { // Marks player as being ready to play
+        if(forward.isWithin(gc) && !checkIfReady) { // Marks player as being ready to play
             PlayerStats.lobbyReady=true;
             checkIfReady = true;
         }
@@ -102,9 +101,9 @@ public class State_JoinLobby extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
             throws SlickException {
         Texture.menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
-        back.draw();
+        back.draw(g);
         back.AddText("Back", Color.white);
-        forward.draw();
+        forward.draw(g);
         forward.AddText("Ready", Color.white);
         g.setColor(Color.white);
         g.setFont(font);

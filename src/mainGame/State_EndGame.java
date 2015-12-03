@@ -72,7 +72,6 @@ public class State_EndGame  extends BasicGameState{
      * @param sbg StateBasedGame component
      *          @see StateBasedGame and Slick2D
      * @param i Update parameter
-     *          @see Update and Slick2D
      * @throws SlickException
      */
     @Override
@@ -83,7 +82,7 @@ public class State_EndGame  extends BasicGameState{
             endChat.setText(""); // resets the text in the textfield
         }
 
-        if(backToMenu.isWithin()) { //This was an attempt to reset the game. Currently, it DOES NOT work. The only way out of this screen is closing the game.
+        if(backToMenu.isWithin(gc)) { //This was an attempt to reset the game. Currently, it DOES NOT work. The only way out of this screen is closing the game.
             /*State_PlayingWindow.buildMap = true;
             sbg.getState(2).init(gc, sbg);
             sbg.getState(3).init(gc, sbg);
@@ -118,7 +117,7 @@ public class State_EndGame  extends BasicGameState{
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 
         Texture.menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
-        backToMenu.draw();
+        backToMenu.draw(g);
         backToMenu.AddText("End Game", Color.white);
 
 

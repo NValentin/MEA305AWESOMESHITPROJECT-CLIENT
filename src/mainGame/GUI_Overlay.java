@@ -79,7 +79,7 @@ public class GUI_Overlay {
         }
     }
 
-    public void TradePopupWindow(int x, int y, boolean boo, String _name, Graphics graphics) throws SlickException {
+    public void TradePopupWindow(int x, int y, boolean boo, String _name, Graphics graphics, GameContainer gc) throws SlickException {
         if (boo) {
             graphics.setColor(Color.black);
             graphics.fill(new Rectangle(x, y, 210, 50));
@@ -88,14 +88,14 @@ public class GUI_Overlay {
             graphics.drawString(_name + " wants to trade", x + 5, y);
             accept.SetPos(x + 60, y + 25);
             decline.SetPos(x + 115, y + 25);
-            accept.draw();
-            decline.draw();
-            if (accept.isWithin()) {
+            accept.draw(graphics);
+            decline.draw(graphics);
+            if (accept.isWithin(gc)) {
                 System.out.println("Accept");
                 tradeWindow = true;
                 PlayerStats.tradingWithyou[PlayerStats.turn] = false;
             }
-            if (decline.isWithin()) {
+            if (decline.isWithin(gc)) {
                 System.out.println("Decline");
                 PlayerStats.tradingResources = new int[10];
                 PlayerStats.tradingWithyou =  new boolean[6];
@@ -107,7 +107,7 @@ public class GUI_Overlay {
         }
     }
 
-    public void BuildingWindow(Graphics g, int x, int y, int sizeX, int sizeY) {
+    public void BuildingWindow(Graphics g, int x, int y, int sizeX, int sizeY, GameContainer gc) {
         g.setColor(Color.white);
         g.drawRect(x, y, sizeX, sizeY);
         g.setColor(Color.black);
@@ -117,7 +117,7 @@ public class GUI_Overlay {
         for (int i = 0; i < 4; i ++) {
             g.drawLine(x, y + 30 + 60 * i, x + sizeX, y + 30 + 60 * i);
             build_Buttons[i].SetPos(x + 135, y + 46 + 60 * i);
-            build_Buttons[i].draw();
+            build_Buttons[i].draw(g);
             build_Buttons[i].AddText("Build", Color.white);
             font.drawString(x + 5, y + 35 + 60 * i, buildingMenuText[i]);
             font.drawString(x + 5, y + 50 + 60 * i, buildingMenuText[i+4]);
@@ -127,7 +127,7 @@ public class GUI_Overlay {
             } else {
                 font.drawString(x + 5, y + 65 + 60 * i, buildingMenuText[i + 8]);
             }
-            if (build_Buttons[i].isWithin()) {
+            if (build_Buttons[i].isWithin(gc)) {
                 if (PlayerStats.playerturn[PlayerStats.ID-1]) {
                     System.out.println("Building " + buildingMenuText[i]);
                     GameMap.build_buttons[i] = true;
@@ -138,7 +138,7 @@ public class GUI_Overlay {
         }
     }
 
-    public void PlayerList(int x, int y, Graphics graphics, String[] _names, int[] _points, int turn) {
+    public void PlayerList(int x, int y, Graphics graphics, String[] _names, int[] _points, int turn, GameContainer gc) {
         graphics.setLineWidth(2);
         graphics.drawString("Players:", x + 10, y + 5);
         graphics.drawString("Score:", x + 140, y + 5);
@@ -157,7 +157,7 @@ public class GUI_Overlay {
         graphics.drawRect(x + 5, y + 32 + 25 * turn, 190, 25);
     }
 
-    public void ResourceBar(int x, int y, Graphics graphics, int wool, int ore, int lumber, int bricks, int grain) {
+    public void ResourceBar(int x, int y, Graphics graphics, int wool, int ore, int lumber, int bricks, int grain, GameContainer gc) {
         graphics.setLineWidth(2);
         graphics.drawRect(x, y, 500, 25);
         graphics.drawString("Wool:", x + 5, y + 3);
@@ -176,7 +176,7 @@ public class GUI_Overlay {
         graphics.drawLine(x + 400, y, x + 400, y + 25);
     }
 
-    public void IncomingTradeWindow(int x, int y, boolean boo, Graphics g) {
+    public void IncomingTradeWindow(int x, int y, boolean boo, Graphics g, GameContainer gc) {
         if (boo) {
             g.setColor(Color.white);
             g.fill(new Rectangle(x, y, 400, 300));
@@ -196,11 +196,11 @@ public class GUI_Overlay {
             acceptOffer.SetPos(x + 10, y + 180);
             declineOffer.SetPos(x + 250, y + 180);
             counterOffer.SetPos(x + 135, y + 180);
-            acceptOffer.draw();
+            acceptOffer.draw(g);
             acceptOffer.AddText("Accept Offer", Color.black);
-            declineOffer.draw();
+            declineOffer.draw(g);
             declineOffer.AddText("Decline Offer", Color.black);
-            if (acceptOffer.isWithin()) {
+            if (acceptOffer.isWithin(gc)) {
                 System.out.println("Accept");
                 //PlayerStats.tradingResources = tradingReources;
                 PlayerStats.tradingWithyou =  new boolean[6];
@@ -210,7 +210,7 @@ public class GUI_Overlay {
                 PlayerStats.refreshResources = false;
                 PlayerStats.tradingWithyou[4] = true;
             }
-            if (declineOffer.isWithin()) {
+            if (declineOffer.isWithin(gc)) {
                 System.out.println("Decline");
                 PlayerStats.tradingResources = new int[10];
                 PlayerStats.tradingWithyou =  new boolean[6];
@@ -224,7 +224,7 @@ public class GUI_Overlay {
         }
     }
 
-    public void TradeWithWindow(int x, int y, Graphics g, String[] _names) {
+    public void TradeWithWindow(int x, int y, Graphics g, String[] _names, GameContainer gc) {
         g.setLineWidth(2);
         g.setColor(Color.white);
         g.fill(new Rectangle(x, y, 200, 150));
@@ -236,9 +236,9 @@ public class GUI_Overlay {
         }
         for (int i = 0; i < _names.length; i++) {
             makeNewTrade[i].SetPos(x + 100, y + 40 + 25 * i);
-            makeNewTrade[i].draw();
+            makeNewTrade[i].draw(g);
             makeNewTrade[i].AddText("Trade", Color.black);
-            if (makeNewTrade[i].isWithin()) {
+            if (makeNewTrade[i].isWithin(gc)) {
                 System.out.println("Trading with " + _names[i]);
                 tradeWithName = _names[i];
                 offerWindow = true;
@@ -248,12 +248,12 @@ public class GUI_Overlay {
         g.setColor(Color.white);
     }
 
-    public void ShowStats(Graphics g, int x, int y) {
+    public void ShowStats(Graphics g, int x, int y, GameContainer gc) {
         showStats.SetPos(x, y);
         closeStats.SetPos(theWidth / 2 + 170, theHeight / 2 - 195);
         if (showStatsBool) {
             State_PlayingWindow.gameInfo = "Close the window to continue playing";
-            if (closeStats.isWithin()) {
+            if (closeStats.isWithin(gc)) {
                 State_PlayingWindow.gameInfo = "";
                 showStatsBool = false;
             }
@@ -298,23 +298,23 @@ public class GUI_Overlay {
             g.setLineWidth(2);
 
         }
-        showStats.draw();
+        showStats.draw(g);
         showStats.AddText("Show Game Info", Color.white);
         if (showStatsBool)
-            closeStats.draw();
-        if (showStats.isWithin()) {
+            closeStats.draw(g);
+        if (showStats.isWithin(gc)) {
             showStatsBool = true;
         }
     }
 
-    public void DisplayDice(Graphics g, int x, int y, GameMap map, boolean yourTurn) {
+    public void DisplayDice(Graphics g, int x, int y, GameMap map, boolean yourTurn, GameContainer gc) {
         int sizeX = 115;
         int sizeY = 115;
         g.setLineWidth(2);
         g.setColor(Color.white);
         g.drawRect(x, y, sizeX, sizeY);
         rollDice.SetPos(x + 5, y + 59);
-        rollDice.draw();
+        rollDice.draw(g);
         if (yourTurn) {
             //If it your turn
             if (!DiceRolled) {
@@ -330,7 +330,7 @@ public class GUI_Overlay {
                 Texture.butt.draw(x + 5, y + 5, 50, 50);
                 Texture.butt.draw(x + 60, y + 5, 50, 50);
             }
-            if (rollDice.isWithin()) { //Add " && !DiceRolled" after testing!!!!
+            if (rollDice.isWithin(gc)) { //Add " && !DiceRolled" after testing!!!!
 
                 System.out.println("Dice rolled");
                 PlayerStats.diceRoll = true;
@@ -374,7 +374,7 @@ public class GUI_Overlay {
     }
 
 
-    public void OfferWindow(int x, int y, boolean boo, Graphics g, int tradeId) {
+    public void OfferWindow(int x, int y, boolean boo, Graphics g, int tradeId, GameContainer gc) {
         if (boo) {
             g.setColor(Color.white);
             g.fill(new Rectangle(x, y, 400, 300));
@@ -387,16 +387,16 @@ public class GUI_Overlay {
                 buttons[i + 15].SetPos(x + 360, y + 70 + 20 * i);
             }
             for (int i = 0; i < 20; i++) {
-                buttons[i].draw();
+                buttons[i].draw(g);
             }
             for (int i = 0; i < 5; i++) {
-                if (buttons[i].isWithin() && tradingReources[i] > 0)
+                if (buttons[i].isWithin(gc) && tradingReources[i] > 0)
                     tradingReources[i]--;
-                if (buttons[i+5].isWithin() && tradingReources[i] < State_PlayingWindow.currentResources[i])
+                if (buttons[i+5].isWithin(gc) && tradingReources[i] < State_PlayingWindow.currentResources[i])
                     tradingReources[i]++;
-                if (buttons[i + 10].isWithin() && tradingReources[i+5] > 0)
+                if (buttons[i + 10].isWithin(gc) && tradingReources[i+5] > 0)
                     tradingReources[i + 5]--;
-                if (buttons[i+15].isWithin())
+                if (buttons[i+15].isWithin(gc))
                     tradingReources[i+5]++;
             }
             g.drawString("Wool:  " + tradingReources[0], x + 10, y + 70);
@@ -412,18 +412,18 @@ public class GUI_Overlay {
             g.drawString("Grain: " + tradingReources[9], x + 250, y + 150);
             acceptOffer.SetPos(x + 10, y + 180);
             declineOffer.SetPos(x + 250, y + 180);
-            acceptOffer.draw();
+            acceptOffer.draw(g);
             acceptOffer.AddText("Send Offer", Color.black);
-            declineOffer.draw();
+            declineOffer.draw(g);
             declineOffer.AddText("Cancel", Color.black);
-            if (acceptOffer.isWithin()) {
+            if (acceptOffer.isWithin(gc)) {
                 offerWindow = false;
                 PlayerStats.tradingResources = tradingReources;
                 PlayerStats.tradingWithyou =  new boolean[6];
                 PlayerStats.tradingWithyou[tradeId] = true;
                 PlayerStats.tradingWithyou[4] = true;
             }
-            if (declineOffer.isWithin()) {
+            if (declineOffer.isWithin(gc)) {
                 offerWindow = false;
             }
             g.setColor(Color.white);
@@ -471,11 +471,11 @@ public class GUI_Overlay {
         }
     }
 
-    public void EndTurn(int x, int y) {
+    public void EndTurn(int x, int y, GameContainer gc, Graphics g) {
         endTurn.SetPos(x, y);
-        endTurn.draw();
+        endTurn.draw(g);
         endTurn.AddText("End Turn", Color.white);
-        if (endTurn.isWithin()) {
+        if (endTurn.isWithin(gc)) {
             System.out.println("Ending turn");
             PlayerStats.endTurn = true;
             DiceRolled = false;

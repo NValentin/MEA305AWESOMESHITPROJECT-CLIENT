@@ -6,6 +6,8 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.*;
+import org.newdawn.slick.geom.Rectangle;
 
 import java.awt.*;
 
@@ -24,6 +26,8 @@ public class Button {
     Font font;
     int fontSize = 50;
 
+    Rectangle butShape;
+
     public Button(int x, int y, int sizeX, int sizeY, Image texture) {
         this.x = x;
         this.y = y;
@@ -32,6 +36,8 @@ public class Button {
         this.texture = texture;
         this.pressed = false;
         font = new TrueTypeFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, fontSize), true);
+
+        butShape = new Rectangle(x, y, sizeX, sizeY);
     }
 
     public Button(int x, int y, int sizeX, int sizeY, Image texture, int fontSize) {
@@ -44,8 +50,8 @@ public class Button {
         this.font = new TrueTypeFont(new java.awt.Font("Times New Roman", java.awt.Font.PLAIN, fontSize), true);
     }
 
-    public void draw() {
-        texture.draw(x, y, sizeX, sizeY);
+    public void draw(Graphics g) {
+        g.texture(butShape, texture, true);
     }
 
     public Button(int x, int y, int sizeX, int sizeY) {
@@ -65,26 +71,8 @@ public class Button {
         font.drawString(x + sizeX/2f - font.getWidth(text) / 2f, y + sizeY / 2f - font.getHeight(text) / 2f, text, color);
     }
 
-    public boolean isWithin() {
-        int posX = Mouse.getX();
-        int posY = Mouse.getY();
-
-        if (!Mouse.isButtonDown(0))
-            pressed = true;
-        if (pressed) {
-            if (Mouse.isButtonDown(0)) {
-                pressed = false;
-                if (posX > x && posX < x + sizeX && posY > ScreenHeight - y - sizeY && posY < ScreenHeight - y) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+    public boolean isWithin(GameContainer gc) {
+        return gc.getInput().isMousePressed(0) && butShape.contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY());
     }
 }
 

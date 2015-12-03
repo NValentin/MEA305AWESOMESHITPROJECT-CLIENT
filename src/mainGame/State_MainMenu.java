@@ -44,7 +44,6 @@ public class State_MainMenu extends BasicGameState
      * @param sbg StateBasedGame component
      *          @see StateBasedGame and Slick2D
      * @param i Update parameter
-     *          @see Update and Slick2D
      * @throws SlickException
      */
     @Override
@@ -56,7 +55,7 @@ public class State_MainMenu extends BasicGameState
             System.out.println("Entered Lobby");
         }
 
-        if (join.isWithin())
+        if (join.isWithin(gc))
         {
             if(firstGame) {
                 (new Thread(new GameClient())).start(); // Starts the run method in GameClient when button is clicked
@@ -65,7 +64,7 @@ public class State_MainMenu extends BasicGameState
             sbg.enterState(1, new FadeOutTransition(), new FadeInTransition()); // enters new state when button is clicked
         }
 
-        if (exit.isWithin())
+        if (exit.isWithin(gc))
         {
             System.exit(0); // Terminates program when button is clicked
 
@@ -90,8 +89,8 @@ public class State_MainMenu extends BasicGameState
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
     {
         Texture.menuBackground.draw(0, 0, Main.ScreenWidth, Main.ScreenHeight);
-        join.draw();
-        exit.draw();
+        join.draw(g);
+        exit.draw(g);
         join.AddText("Join Game", Color.white);
         exit.AddText("Exit", Color.white);
     }

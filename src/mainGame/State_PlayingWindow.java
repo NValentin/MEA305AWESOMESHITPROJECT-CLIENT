@@ -89,24 +89,24 @@ public class State_PlayingWindow extends BasicGameState
             buildMap = false;
         }
         map.render(g);
-        gui_overlay.PlayerList(15, 40, g, PlayerStats.names, PlayerStats.points, PlayerStats.turn);
-        gui_overlay.ResourceBar(Main.ScreenWidth/2-250, 10, g, currentResources[0], currentResources[1], currentResources[2], currentResources[3], currentResources[4]);
-        gui_overlay.BuildingWindow(g, theWidth - 205, theHeight - 275, 200, 270);
-        gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, PlayerStats.tradingWithyou[PlayerStats.ID-1], PlayerStats.names[PlayerStats.turn], g);
-        gui_overlay.IncomingTradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.tradeWindow, g);
-        gui_overlay.OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.offerWindow, g, tradeId);
-        gui_overlay.ShowStats(g, theWidth - 145, 10);
+        gui_overlay.PlayerList(15, 40, g, PlayerStats.names, PlayerStats.points, PlayerStats.turn, gc);
+        gui_overlay.ResourceBar(Main.ScreenWidth/2-250, 10, g, currentResources[0], currentResources[1], currentResources[2], currentResources[3], currentResources[4], gc);
+        gui_overlay.BuildingWindow(g, theWidth - 205, theHeight - 275, 200, 270, gc);
+        gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, PlayerStats.tradingWithyou[PlayerStats.ID-1], PlayerStats.names[PlayerStats.turn], g, gc);
+        gui_overlay.IncomingTradeWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.tradeWindow, g, gc);
+        gui_overlay.OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.offerWindow, g, tradeId, gc);
+        gui_overlay.ShowStats(g, theWidth - 145, 10, gc);
         if (PlayerStats.tradingWithyou[5] && PlayerStats.refreshResources) {
             gui_overlay.HandleTradeRespons();
         } else {
-            gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, PlayerStats.tradingWithyou[PlayerStats.ID-1], PlayerStats.names[PlayerStats.turn], g);
+            gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, PlayerStats.tradingWithyou[PlayerStats.ID-1], PlayerStats.names[PlayerStats.turn], g, gc);
         }
         if (PlayerStats.playerturn[PlayerStats.ID - 1]) {
-            gui_overlay.TradeWithWindow(Main.ScreenWidth - 215, 205, g, PlayerStats.names);
-            gui_overlay.DisplayDice(g, theWidth - 172, 75, map, true);
-            gui_overlay.EndTurn(theWidth - 190, 370);
+            gui_overlay.TradeWithWindow(Main.ScreenWidth - 215, 205, g, PlayerStats.names, gc);
+            gui_overlay.DisplayDice(g, theWidth - 172, 75, map, true, gc);
+            gui_overlay.EndTurn(theWidth - 190, 370, gc, g);
         } else {
-            gui_overlay.DisplayDice(g, theWidth - 172, 75, map, false);
+            gui_overlay.DisplayDice(g, theWidth - 172, 75, map, false, gc);
         }
 
         g.setColor(Color.white);

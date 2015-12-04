@@ -32,6 +32,7 @@ public class PlayerStats {
     public static int targetPlayerTrade;
     public static boolean tradeResourcesToHandle = false;
     public static boolean adjustMyResources = false;
+    public static boolean canGetNewCard = false;
 
     //Stats for all players
     public static String[] names = new String[]{" "," "," "," "};

@@ -16,27 +16,24 @@ import javax.xml.soap.Text;
 public class DevelopmentCard {
     ArrayList<Integer> cardsDrawn = new ArrayList<>();
     ArrayList<Rectangle> cardContainer = new ArrayList<>();
-    boolean canGetNewCard = false;
 
     public DevelopmentCard() { }
 
     public void DrawNewCard() {
         System.out.println("New Card");
         PlayerStats.updateCard = true;
-        canGetNewCard = true;
     }
 
     public void DisplayCards(int x, int y) {
-        if (PlayerStats.updateCard && canGetNewCard) {
+        if (PlayerStats.canGetNewCard) {
             cardsDrawn.add(PlayerStats.cardID);
-            System.out.println("Added card to array");
-            PlayerStats.updateCard = false;
+            System.out.println("Added card to array: " + PlayerStats.cardID);
             cardContainer.add(new Rectangle(x + 50 * (cardContainer.size()), y, 50, 100));
-            canGetNewCard = false;
+            PlayerStats.canGetNewCard = false;
         }
         if (cardsDrawn.size() > 0) {
             for (int i = 0; i < cardsDrawn.size(); i++) {
-                getCardTexture(i).draw(x + 50 * i, y, 50, 100);
+                getCardTexture(cardsDrawn.get(i)).draw(x + 50 * i, y, 50, 100);
             }
         }
     }
@@ -53,13 +50,16 @@ public class DevelopmentCard {
     public void isPressed(GameContainer gc) {
         for (int i = 0; i < cardContainer.size(); i++) {
             if (cardContainer.get(i).contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()) && gc.getInput().isMousePressed(0)) {
-                useCard(cardsDrawn.get(i));
+                System.out.println("Dev card pressed");
+                System.out.println("Card ID:" + (cardsDrawn.get(i)));
+                useCard((cardsDrawn.get(i)));
+                cardsDrawn.remove(i);
             }
         }
     }
 
-    public void useCard(int index) {
-        switch (index) {
+    public void useCard(int cardType) {
+        switch (cardType) {
             case 1:
                 System.out.println("Knight Played");
                 GameMap.moveThief = true;

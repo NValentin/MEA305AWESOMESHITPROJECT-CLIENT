@@ -309,7 +309,7 @@ public class GUI_Overlay {
         diceImages[0].draw(x + 5, y + 5, 50, 50);
         diceImages[1].draw(x + 60, y + 5, 50, 50);
 
-        if (rollDice.isPressed(gc) && !DiceRolled) {
+        if (rollDice.isPressed(gc) && !DiceRolled && State_PlayingWindow.isNormalGameRound) {
 
             System.out.println("Dice rolled");
             PlayerStats.diceRoll = true;

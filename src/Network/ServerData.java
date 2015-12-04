@@ -86,6 +86,7 @@ public class ServerData
         PlayerStats.targetPlayerTrade = targetPlayerTrade;
         PlayerStats.resetTradingResources = resetTradingResources;
         PlayerStats.tradeResourcesToHandle = tradeResourcesToHandle;
+        PlayerStats.canGetNewCard = isCardUpToDate;
         if (PlayerStats.tradeResourcesToHandle && !PlayerStats.resetTradingResources) {
             GUI_Overlay.popTrade = true;
         }

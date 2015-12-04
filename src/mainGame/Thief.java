@@ -11,12 +11,15 @@ import org.newdawn.slick.geom.Point;
  */
 public class Thief {
 
-    Image thief;
     Circle circle;
 
     public Thief(Circle circle){
-        thief = Texture.thief;
         this.circle = circle;
+    }
+
+    public Circle getCircle()
+    {
+        return circle;
     }
 
     public void setThief(Circle circle)
@@ -25,8 +28,8 @@ public class Thief {
     }
 
     public void render(Graphics g){
-        thief.setFilter(Image.FILTER_LINEAR);
-        g.texture(this.circle, thief, true);
+        Texture.thief.setFilter(Image.FILTER_LINEAR);
+        g.texture(circle, Texture.thief, true);
 
     }
 }

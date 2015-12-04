@@ -529,17 +529,6 @@ public class GameMap
      */
     public void update(GameContainer gc)
     {
-        if (moveThief)
-        {
-            for (int i = 0; i < thiefPositions.length; i++)
-                if (thiefPositions[i].contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()) && gc.getInput().isKeyPressed(0))
-                {
-                    System.out.println("i should have moved thief");
-                    serializeThief(i);
-                    moveThief = false;
-                }
-        }
-
         if (deSerializedHouse[1] != 0)
         {
             deSerializeHouse();
@@ -606,6 +595,8 @@ public class GameMap
                         Layout.hexToPixel(mapLayout, tile).getY() - 8
                 );
             }
+            if (!thief.getCircle().contains(tmpPoly.getCenterX(), tmpPoly.getCenterY()))
+                tile.hasThief = false;
         }
     }
 
@@ -715,7 +706,7 @@ public class GameMap
      * @throws SlickException
      * @see Graphics and Slick2d javadoc
      */
-    public void render(Graphics g) throws SlickException
+    public void render(Graphics g, GameContainer gc) throws SlickException
     {
         drawTiles(g);
         drawHousePlots(g);
@@ -740,8 +731,16 @@ public class GameMap
             for (int i = 0; i < thiefPositions.length; i++)
             {
                 if (thiefPositions[i].contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()))
+                {
                     g.fill(thiefPositions[i]);
-                else
+                    if (gc.getInput().isMousePressed(0))
+                    {
+                        System.out.println("i should have moved thief");
+                        serializeThief(i);
+                        moveThief = false;
+                    }
+
+                } else
                     g.draw(thiefPositions[i]);
             }
     }
@@ -812,25 +811,27 @@ public class GameMap
     private void serializeThief(int indexPos)
     {
         if (indexPos < 20)
+        {
+            System.out.println("thief index sent: " + indexPos);
             serializedThief = indexPos;
+        }
+
     }
 
     private void deSerializeThief()
     {
+        System.out.println();
         if (deSerializedThief < 20)
             for (Tile tile : map)
             {
-                for (int i = 0; i < thiefPositions.length; i++)
+                if (thiefPositions[deSerializedThief] != null)
                 {
-                    if (thiefPositions[deSerializedThief] != null)
+                    if (thiefPositions[deSerializedThief].contains(Layout.hexToPixel(mapLayout, tile)))
                     {
-                        if (thiefPositions[deSerializedThief].contains(Layout.hexToPixel(mapLayout, tile)))
-                        {
-                            System.out.println("Should have placed thief from server");
-                            thief = new Thief(thiefPositions[deSerializedThief]);
-                            tile.hasThief = true;
-                            thiefWasPlaced = true;
-                        }
+                        System.out.println("Should have placed thief from server");
+                        thief.setThief(thiefPositions[deSerializedThief]);
+                        tile.hasThief = true;
+                        thiefWasPlaced = true;
                     }
                 }
             }

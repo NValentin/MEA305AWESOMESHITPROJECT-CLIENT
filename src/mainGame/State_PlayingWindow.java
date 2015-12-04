@@ -91,7 +91,7 @@ public class State_PlayingWindow extends BasicGameState
             map.GameMapGameMap();
             buildMap = false;
         }
-        map.render(g);
+        map.render(g, gc);
         gui_overlay.DisplayCards(200, 200, gc);
         gui_overlay.YearOfPlenty(GUI_Overlay.isYearOfPlenty, g, gc);
         gui_overlay.PlayerList(15, 40, g, PlayerStats.names, PlayerStats.points, PlayerStats.turn, gc);

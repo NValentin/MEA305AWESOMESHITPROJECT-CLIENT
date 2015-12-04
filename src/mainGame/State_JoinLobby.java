@@ -82,12 +82,12 @@ public class State_JoinLobby extends BasicGameState {
             checkIfReady = true;
         }
         if(PlayerStats.StartGame) { // Starts the game after countdown reaches 0.5
-            //countdown -= 0.0012f;
-            //if (countdown < 0.5f) {
+            countdown -= 0.0015f;
+            if (countdown < 0.5f) {
             lobbyChat.setLocation(Main.ScreenWidth+200,Main.ScreenHeight+200); //Moves the textfield out of the window. Somehow, if not doing this,
                                                                                //the textfield is in the way of writing text in the next state
                 sbg.enterState(3, new FadeOutTransition(), new FadeInTransition()); // Changes state; starts game
-            //}
+            }
         }
     }
 

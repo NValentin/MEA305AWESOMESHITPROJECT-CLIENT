@@ -22,7 +22,6 @@ public class Dice {
         if (yourTurn) {
             //If you have rolled the dice.
             if (!DiceRolled) {
-                State_PlayingWindow.gameInfo = "Your turn! Press 'Roll Dice' to roll the dice";
                 return "Roll Dice";
             } else {
                 return "Rolled: " + combinedValue;

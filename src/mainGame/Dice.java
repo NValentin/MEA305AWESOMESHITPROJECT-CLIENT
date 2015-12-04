@@ -56,7 +56,7 @@ public class Dice {
             map.addResources(combinedValue);
             calculateNewDice = false;
             PlayerStats.diceUsed = true;
-        if (combinedValue == 7)
+        if (combinedValue == 7 && PlayerStats.playerturn[PlayerStats.ID-1])
             GameMap.moveThief = true;
     }
 

@@ -590,6 +590,7 @@ public class GameMap
             for (int i = 0; i < thiefPositions.length; i++)
                 if (thiefPositions[i].contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()) && gc.getInput().isKeyPressed(0))
                 {
+                    System.out.println("i should have moved thief");
                     serializeThief(i);
                     moveThief = false;
                 }
@@ -875,6 +876,7 @@ public class GameMap
                     {
                         if (thiefPositions[deSerializedThief].contains(Layout.hexToPixel(mapLayout, tile)))
                         {
+                            System.out.println("Should have placed thief from server");
                             thief = new Thief(thiefPositions[deSerializedThief]);
                             tile.hasThief = true;
                             thiefWasPlaced = true;

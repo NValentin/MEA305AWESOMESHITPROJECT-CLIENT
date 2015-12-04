@@ -49,7 +49,7 @@ public class State_JoinLobby extends BasicGameState {
         chatBox = new ChatBox();
         lobbyChat = new TextField(gc, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2); // Textfield for chatBox
 
-        countdown = 6f;
+        countdown = 4f;
 
     }
     /**

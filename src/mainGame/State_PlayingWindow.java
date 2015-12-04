@@ -128,7 +128,7 @@ public class State_PlayingWindow extends BasicGameState
             buildMap = false;
         }
         map.render(g, gc);
-        gui_overlay.DisplayCards(200, 200, gc);
+        gui_overlay.DisplayCards(300, Main.ScreenHeight-75, gc);
         gui_overlay.YearOfPlenty(GUI_Overlay.isYearOfPlenty, g, gc);
         gui_overlay.PlayerList(15, 40, g, PlayerStats.names, PlayerStats.points, PlayerStats.turn, gc);
         gui_overlay.ResourceBar(Main.ScreenWidth/2-250, 10, g, currentResources[0], currentResources[1], currentResources[2], currentResources[3], currentResources[4], gc);

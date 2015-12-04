@@ -16,11 +16,14 @@ public class DevelopmentCard {
 
     public DevelopmentCard() { }
 
+    //when drawing a new development card
     public void DrawNewCard() {
         System.out.println("New Card");
         PlayerStats.updateCard = true;
     }
 
+
+    //Added the cards to your "hand" and displays them, if you have more than 0.
     public void DisplayCards(int x, int y) {
         if (PlayerStats.canGetNewCard) {
             cardsDrawn.add(PlayerStats.cardID);
@@ -35,6 +38,7 @@ public class DevelopmentCard {
         }
     }
 
+    //Displays a big version of the card, if you hover over it.
     public void Hover(GameContainer gc) {
         for (int i = 0; i < cardsDrawn.size(); i++) {
             if (cardContainer.get(i).contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()))
@@ -44,6 +48,7 @@ public class DevelopmentCard {
         }
     }
 
+    //If you press the card
     public void isPressed(GameContainer gc) {
         for (int i = 0; i < cardContainer.size(); i++) {
             if (cardContainer.get(i).contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()) && gc.getInput().isMousePressed(0)) {
@@ -55,6 +60,7 @@ public class DevelopmentCard {
         }
     }
 
+    //Swtich case when you press the card.
     public void useCard(int cardType) {
         switch (cardType) {
             case 1:
@@ -87,13 +93,7 @@ public class DevelopmentCard {
                 break;
             case 8:
                 System.out.println("Road Building Played");
-                int roads = 2;
-                while (roads > 0) {
-                    if (!GameMap.build_buttons[0]) {
-                        GameMap.build_buttons[0] = true;
-                        roads--;
-                    }
-                }
+                //Add build road function
                 break;
             case 9:
                 System.out.println("Monopoly Played");
@@ -105,37 +105,48 @@ public class DevelopmentCard {
         }
     }
 
+    //Switch case that returns the correct texture for the development card
     public Image getCardTexture(int index) {
         Image tmp_tex;
         switch (index) {
             case 1:
+                //Knight texture
                 tmp_tex = Texture.cardSprites.getSprite(0, 0);
                 break;
             case 2:
+                //University texture
                 tmp_tex = Texture.cardSprites.getSprite(5, 0);
                 break;
             case 3:
+                //library Texture
                 tmp_tex = Texture.cardSprites.getSprite(4, 0);
                 break;
             case 4:
+                //Marketplace Texture
                 tmp_tex = Texture.cardSprites.getSprite(0, 1);
                 break;
             case 5:
+                //Parlament Texture
                 tmp_tex = Texture.cardSprites.getSprite(6, 0);
                 break;
             case 6:
+                //Cathedral Texture
                 tmp_tex = Texture.cardSprites.getSprite(5, 0);
                 break;
             case 7:
+                //Year of Plenty texture
                 tmp_tex = Texture.cardSprites.getSprite(3, 0);
                 break;
             case 8:
+                //Road building Texture
                 tmp_tex = Texture.cardSprites.getSprite(2, 0);
                 break;
             case 9:
+                //Monopoly Texture
                 tmp_tex = Texture.cardSprites.getSprite(1, 0);
                 break;
             default:
+                //If no other texture was found
                 tmp_tex = Texture.doge;
                 break;
         }

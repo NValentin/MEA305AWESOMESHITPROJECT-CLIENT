@@ -67,6 +67,7 @@ public class GUI_Overlay {
         card.isPressed(gc);
     }
 
+    //Initailize the textures for all buttons on the GUI for the playing state, from the Texture class.
     public void InitailizeTexture() throws SlickException {
         accept = new Button(theWidth - 155, theHeight - 30, 25, 25, "accept");
         decline = new Button(theWidth - 100, theHeight - 30, 25, 25, "decline");
@@ -95,8 +96,11 @@ public class GUI_Overlay {
         }
     }
 
+    //The trade popup window, that indicates that someone wants to trade with you.
     public void TradePopupWindow(int x, int y, boolean boo, String _name, Graphics graphics, GameContainer gc) throws SlickException {
+        //The the popup should be shown
         if (boo) {
+            //Initail text
             State_PlayingWindow.gameInfo = _name + " wants to trade!";
             graphics.setColor(Color.black);
             graphics.fill(new Rectangle(x, y, 210, 50));
@@ -107,11 +111,13 @@ public class GUI_Overlay {
             decline.SetPos(x + 115, y + 25);
             accept.draw(graphics);
             decline.draw(graphics);
+            //If the player accepts the trade.
             if (accept.isPressed(gc)) {
                 System.out.println("Accept");
                 tradeWindow = true;
                 popTrade = false;
             }
+            //If the player declines that trade
             if (decline.isPressed(gc)) {
                 System.out.println("Decline");
                 State_PlayingWindow.gameInfo = "Trade declined";
@@ -120,6 +126,7 @@ public class GUI_Overlay {
         }
     }
 
+    //The window that shows the building cost for all building options (Roads, house, cities, and developments cards), with buttons that are used to purchased them.
     public void BuildingWindow(Graphics g, int x, int y, int sizeX, int sizeY, GameContainer gc) {
         g.setColor(Color.white);
         g.drawRect(x, y, sizeX, sizeY);
@@ -151,12 +158,14 @@ public class GUI_Overlay {
         }
     }
 
+    //The playerlist, getting names from the server.
     public void PlayerList(int x, int y, Graphics graphics, String[] _names, int[] _points, int turn, GameContainer gc) {
         graphics.setLineWidth(2);
         graphics.drawString("Players:", x + 10, y + 5);
         graphics.drawString("Score:", x + 140, y + 5);
 
         graphics.drawLine(x + 5, y + 25, x + 195, y + 25);
+        //Drawing a rectangle around the player which turn it is.
         graphics.drawRect(x, y, 200, 140);
         for (int i = 0; i < _names.length; i++) {
             graphics.drawString(i + 1 + ") " + _names[i], x + 10, y + 35 + 25 * i);
@@ -170,6 +179,7 @@ public class GUI_Overlay {
         graphics.drawRect(x + 5, y + 32 + 25 * turn, 190, 25);
     }
 
+    //Displaying your current resources.
     public void ResourceBar(int x, int y, Graphics graphics, int wool, int ore, int lumber, int bricks, int grain, GameContainer gc) {
         graphics.setLineWidth(2);
         graphics.drawRect(x, y, 500, 25);
@@ -189,6 +199,7 @@ public class GUI_Overlay {
         graphics.drawLine(x + 400, y, x + 400, y + 25);
     }
 
+    //The trade window that opens after you press accept on the trade popup.
     public void IncomingTradeWindow(int x, int y, boolean boo, Graphics g, GameContainer gc) {
         if (boo) {
             State_PlayingWindow.gameInfo = "Trading with "+tradeWithName;
@@ -211,11 +222,13 @@ public class GUI_Overlay {
             declineOffer.draw(g);
             declineOffer.AddText("Decline Offer", Color.black);
             if (acceptOffer.isPressed(gc)) {
+                //If you accept the trade proposal.
                 System.out.println("Accept");
                 State_PlayingWindow.gameInfo = "Trade accepted";
                 tradeWindow = false;
                 trade.AcceptTrade(PlayerStats.resourcesTrade);
             }
+            //If you decline
             if (declineOffer.isPressed(gc)) {
                 System.out.println("Decline");
                 State_PlayingWindow.gameInfo = "Trade declined";
@@ -226,6 +239,7 @@ public class GUI_Overlay {
         }
     }
 
+    //This window will be shown if it is your turn. Here you can trade with other players.
     public void TradeWithWindow(int x, int y, Graphics g, String[] _names, GameContainer gc) {
         g.setLineWidth(2);
         g.setColor(Color.white);
@@ -251,9 +265,12 @@ public class GUI_Overlay {
         }
     }
 
+
+    //Show dice statistics, tile information ect.
     public void ShowStats(Graphics g, int x, int y, GameContainer gc) {
         showStats.SetPos(x, y);
         closeStats.SetPos(theWidth / 2 + 320, theHeight / 2 - 195);
+        //If the "show stats" buttons is pressed, it will show the stats window.
         if (showStatsBool) {
             State_PlayingWindow.gameInfo = "Close the window by clicking anywhere";
             if (closeStats.isPressed(gc)) {
@@ -327,6 +344,7 @@ public class GUI_Overlay {
         }
     }
 
+    //display the current rolled dice. It gets the dice information from the server.
     public void DisplayDice(Graphics g, int x, int y, GameMap map, boolean yourTurn, GameContainer gc) {
         Image[] diceImages;
         int sizeX = 115;
@@ -340,18 +358,17 @@ public class GUI_Overlay {
         diceImages = dice.getDice(yourTurn);
         diceImages[0].draw(x + 5, y + 5, 50, 50);
         diceImages[1].draw(x + 60, y + 5, 50, 50);
-
+        //If you havn't rolled your dice this turn, and if it is a normal game round, you can  roll the dice
         if (rollDice.isPressed(gc) && !DiceRolled && State_PlayingWindow.isNormalGameRound) {
-
             System.out.println("Dice rolled");
             PlayerStats.diceRoll = true;
             DiceRolled = true;
         }
-
         if (!PlayerStats.diceUsed && PlayerStats.die1 > 0 && PlayerStats.die2 > 0)
             dice.DiceRolled(map);
     }
 
+    //If you play the "Year of Plenty" development card, this window will appear. Here you can get 2 of any resources, that will be added to your current resources.
     public void YearOfPlenty(boolean display, Graphics g, GameContainer gc) {
         if (display) {
             g.setColor(Color.white);
@@ -383,24 +400,20 @@ public class GUI_Overlay {
                 for (int i = 0; i < 5; i++) {
                     State_PlayingWindow.currentResources[i] += tmp_res[i];
                 }
+                //Accept selected resources
                 tmp_res = new int[5];
                 yearOfPlentyTaken = 0;
-                //removeCard
             }
+            //Decline selected resources
             if (yearOfPlenty_Buttons[11].isPressed(gc)) {
                 isYearOfPlenty = false;
                 yearOfPlentyTaken = 0;
                 tmp_res = new int[5];
-                //don't remove card
             }
         }
     }
 
-
-
-
-
-
+    //Window that can be used to make a trade offer for other players. Will appear after you click "trade" on the makeNewTrade window
     public void OfferWindow(int x, int y, boolean boo, Graphics g, GameContainer gc) {
         if (boo) {
             State_PlayingWindow.gameInfo = "Choose resources to trade with "+tradeWithName;
@@ -453,8 +466,10 @@ public class GUI_Overlay {
         }
     }
 
+    //Check for calculating if you have enough resources for puchasing the selected thing (Road, house, city, or development card), and removes the resources from you.
     public void BuildMenuResourceCheck(int index) {
         switch (index) {
+            //Road
             case 0:
                 if (State_PlayingWindow.currentResources[2] > 0 && State_PlayingWindow.currentResources[3] > 0) {
                     State_PlayingWindow.currentResources[2]--;
@@ -464,6 +479,7 @@ public class GUI_Overlay {
                     System.out.println("Not enough resources to build a road");
                 }
                 break;
+            //House
             case 1:
                 if (State_PlayingWindow.currentResources[0] > 0 && State_PlayingWindow.currentResources[2] > 0 && State_PlayingWindow.currentResources[3] > 0 && State_PlayingWindow.currentResources[4] > 0) {
                     State_PlayingWindow.currentResources[0]--;
@@ -475,6 +491,7 @@ public class GUI_Overlay {
                     System.out.println("Not enough resources to build a house");
                 }
                 break;
+            //City
             case 2:
                 if (State_PlayingWindow.currentResources[1] > 2 && State_PlayingWindow.currentResources[4] > 1) {
                     State_PlayingWindow.currentResources[1] -= 3;
@@ -484,6 +501,7 @@ public class GUI_Overlay {
                     System.out.println("Not enough resources to build a city");
                 }
                 break;
+            //Development Card
             case 3:
                 if (State_PlayingWindow.currentResources[0] > 0 && State_PlayingWindow.currentResources[1] > 0 && State_PlayingWindow.currentResources[4] > 0) {
                     State_PlayingWindow.currentResources[0]--;
@@ -494,11 +512,13 @@ public class GUI_Overlay {
                     System.out.println("Not enough resources to buy a development card");
                 }
                 break;
+            //in case of error
             default:
                 System.out.println("Error with building cost");
         }
     }
 
+    //Ending your turn, and handing to the next player.
     public void EndTurn(int x, int y, GameContainer gc, Graphics g) {
         endTurn.SetPos(x, y);
         endTurn.draw(g);

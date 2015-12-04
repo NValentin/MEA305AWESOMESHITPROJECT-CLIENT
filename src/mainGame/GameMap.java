@@ -1,7 +1,8 @@
-package mapClasses;
+package mainGame;
 
 import Network.Network;
-import mainGame.*;
+import mapHexLib.Layout;
+import mapHexLib.Orientation;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.*;
@@ -404,6 +405,11 @@ public class GameMap
         return resourceYieldingTiles;
     }
 
+    /**
+     * Method for adding resources to players that has houses near the tiles giving off resources from
+     * the method tilesYieldingResources
+     * @param diceRoll the combined value of the received dices
+     */
     public void addResources(int diceRoll)
     {
         ArrayList<Tile> tiles = tilesYieldingResource(diceRoll);

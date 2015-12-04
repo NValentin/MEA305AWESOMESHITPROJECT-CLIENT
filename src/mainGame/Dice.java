@@ -16,23 +16,30 @@ public class Dice {
         procentValue = new float[12];
     }
 
+    //Display the text on the "Roll Dice" button
     public String getButtonText(boolean yourTurn, boolean DiceRolled) {
+        //If its your turn
         if (yourTurn) {
+            //If you have rolled the dice.
             if (!DiceRolled) {
                 State_PlayingWindow.gameInfo = "Your turn! Press 'Roll Dice' to roll the dice";
                 return "Roll Dice";
             } else {
                 return "Rolled: " + combinedValue;
             }
+            //If it isn't your turn
         } else {
+            //If the player who turn it is, have rolled the dice
             if (!calculateNewDice) {
                 return "Rolled: " + combinedValue;
             } else {
+                //If he havn't
                 return "Waiting for roll";
             }
         }
     }
 
+    //Return the corrent texture for the dice that were rolled.
     public Image[] getDice(boolean yourTurn) {
         Image[] tmp_Images = new Image[2];
             if (PlayerStats.die1 != 0 && PlayerStats.die2 != 0 ) {
@@ -45,6 +52,7 @@ public class Dice {
         return tmp_Images;
     }
 
+    //When the dice are rolled, this method will save the roll, add reosources and check if it a 7, and should there move the rubber.
     public void DiceRolled(GameMap map) {
             System.out.println("Die 1: " + PlayerStats.die1 + " Die 2: " + PlayerStats.die2);
             die1 = PlayerStats.die1 - 1;
@@ -58,6 +66,7 @@ public class Dice {
             GameMap.moveThief = true;
     }
 
+    //calculate the procentages for the statistics.
     public float getDicePercentages(int index) {
 
         for (int i = 0; i < 12; i++) {

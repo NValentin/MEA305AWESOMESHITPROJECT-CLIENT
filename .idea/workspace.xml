@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="">
+    <list default="true" id="5c3b8bd2-99d6-4787-9780-786aba594a0f" name="Default" comment="Quick fix of thief 11">
+      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\src\mainGame\GatheringResources.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\src\mainGame\ShowCard.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Niels\Documents\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\src\mainGame\TextBox.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/GameMap.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/GameMap.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/ChatBox.java" afterPath="$PROJECT_DIR$/src/mainGame/ChatBox.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/State_PlayingWindow.java" afterPath="$PROJECT_DIR$/src/mainGame/State_PlayingWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/Tile.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/Tile.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -22,9 +24,6 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DaemonCodeAnalyzer">
-    <disable_hints />
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="ExportToHTMLSettings">
     <option name="OUTPUT_DIRECTORY" value="E:\Programming\Github\MEA305AWESOMESHITPROJECT-CLIENT\exportToHTML" />
@@ -34,21 +33,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Network.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Network/Network.java">
+      <file leaf-file-name="State_CreatePlayer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="1224">
-              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServerData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Network/ServerData.java">
+      <file leaf-file-name="Dice.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mainGame/Dice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1564">
-              <caret line="68" column="42" selection-start-line="68" selection-start-column="42" selection-end-line="68" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="59" column="37" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DevelopmentCard.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mainGame/DevelopmentCard.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -57,21 +66,62 @@
       <file leaf-file-name="ChatBox.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mainGame/ChatBox.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.619403" vertical-offset="2658" max-vertical-offset="3570">
-              <caret line="171" column="87" selection-start-line="171" selection-start-column="87" selection-end-line="171" selection-end-column="87" />
+            <state vertical-scroll-proportion="0.1150203">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="State_PlayingWindow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mainGame/State_PlayingWindow.java">
+      <file leaf-file-name="Road.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mainGame/Road.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1961" max-vertical-offset="2380">
-              <caret line="126" column="34" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#675#676#0" expanded="true" />
+                <element signature="e#706#707#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerStats.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mainGame/PlayerStats.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="36" column="61" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUI_Overlay.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mainGame/GUI_Overlay.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mainGame/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="House.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mainGame/House.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -93,6 +143,11 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -108,39 +163,40 @@
         <option value="$PROJECT_DIR$/src/mainGame/GameMap.java" />
         <option value="$PROJECT_DIR$/src/mainGame/MainMenu.java" />
         <option value="$PROJECT_DIR$/src/mainGame/CreateLobbyState.java" />
-        <option value="$PROJECT_DIR$/src/mapClasses/Orientation.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/Button.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/TextBoxBase.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/Main.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/MainMenuState.java" />
         <option value="$PROJECT_DIR$/src/mainGame/ShowCard.java" />
         <option value="$PROJECT_DIR$/src/Network/GatheringResources.java" />
-        <option value="$PROJECT_DIR$/src/mapClasses/FractionalTile.java" />
-        <option value="$PROJECT_DIR$/src/mapClasses/OffsetCoord.java" />
-        <option value="$PROJECT_DIR$/src/mapClasses/Hex.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/Road.java" />
-        <option value="$PROJECT_DIR$/src/mapClasses/Layout.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/TextBoxBase.java" />
         <option value="$PROJECT_DIR$/src/mainGame/JoinLobbyState.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/MainMenuState.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/CreatePlayerState.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/House.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" />
+        <option value="$PROJECT_DIR$/src/mapClasses/FractionalTile.java" />
         <option value="$PROJECT_DIR$/src/mapClasses/Tile.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/GatheringResources.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/Thief.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/PlayingWindowState.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/Main.java" />
+        <option value="$PROJECT_DIR$/src/mapClasses/Hex.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/PlayingWindow.java" />
         <option value="$PROJECT_DIR$/src/mainGame/PlayerStats.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/GUI_Overlay.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/Texture.java" />
-        <option value="$PROJECT_DIR$/src/Network/GameClient.java" />
-        <option value="$PROJECT_DIR$/src/Network/Network.java" />
-        <option value="$PROJECT_DIR$/src/Network/ClientData.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/State_MainMenu.java" />
-        <option value="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
-        <option value="$PROJECT_DIR$/src/Network/ServerData.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/Road.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/PlayingWindowState.java" />
+        <option value="$PROJECT_DIR$/src/mapClasses/FractionalHex.java" />
+        <option value="$PROJECT_DIR$/src/mapClasses/Layout.java" />
+        <option value="$PROJECT_DIR$/src/mapClasses/OffsetCoord.java" />
+        <option value="$PROJECT_DIR$/src/mapClasses/Orientation.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/House.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java" />
         <option value="$PROJECT_DIR$/src/mainGame/State_EndGame.java" />
         <option value="$PROJECT_DIR$/src/mainGame/State_JoinLobby.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/State_MainMenu.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/GUI_Overlay.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/Texture.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/Button.java" />
+        <option value="$PROJECT_DIR$/src/Network/ClientData.java" />
+        <option value="$PROJECT_DIR$/src/Network/GameClient.java" />
+        <option value="$PROJECT_DIR$/src/Network/ServerData.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/Dice.java" />
         <option value="$PROJECT_DIR$/src/mainGame/State_PlayingWindow.java" />
+        <option value="$PROJECT_DIR$/src/Network/Network.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/Thief.java" />
+        <option value="$PROJECT_DIR$/src/mapClasses/GameMap.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/GatheringResources.java" />
         <option value="$PROJECT_DIR$/src/mainGame/ChatBox.java" />
       </list>
     </option>
@@ -156,11 +212,14 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="y" value="1" />
-    <option name="width" value="1367" />
-    <option name="height" value="779" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -227,6 +286,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -319,9 +379,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -332,10 +391,13 @@
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../MEA305AWESOMESHITPROJECT-Server-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/mapClasses" />
     <property name="FullScreen" value="false" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -346,6 +408,120 @@
       <recent name="C:\Users\Bjørn\Desktop\Uni\PoCSS\GitHub\MEA305AWESOMESHITPROJECT-CLIENT" />
       <recent name="C:\Users\Bjørn\Desktop\Uni\PoCSS\GitHub\MEA305AWESOMESHITPROJECT-CLIENT\src\Network" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mapClasses/GameMap.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/mainGame/ChatBox.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/mainGame/State_PlayingWindow.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -370,33 +546,10 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
       <method />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -419,26 +572,34 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <module name="" />
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="depsClasspath" value="false" />
-      <setting name="passParentEnv" value="true" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <setting name="launchBrowser" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JarApplication" factoryName="JAR Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="JAR_PATH" value="$PROJECT_DIR$/lib/kryonet-2.21-all.jar" />
-      <envs />
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -452,6 +613,144 @@
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" value="" />
+      <option name="GLUE" value="" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" value="example.SimpleSlickGame" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="MEA305AWESOMESHITPROJECT-CLIENT" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="JAR_PATH" value="$PROJECT_DIR$/lib/kryonet-2.21-all.jar" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
       <envs />
       <method />
@@ -493,125 +792,10 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="FlashPlayerDebugger.exe" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
       <method />
     </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="FlashPlayerDebugger.exe" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" value="" />
-      <option name="GLUE" value="" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" value="example.SimpleSlickGame" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="MEA305AWESOMESHITPROJECT-CLIENT" />
-      <envs />
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
     <list size="1">
@@ -624,15 +808,6 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SliceManager">
-    <option name="analysisUIOptions">
-      <AnalysisUIOptions />
-    </option>
-  </component>
-  <component name="StructureViewFactory">
-    <option name="AUTOSCROLL_MODE" value="false" />
-    <option name="ACTIVE_ACTIONS" value=",SHOW_PROPERTIES,SHOW_INTERFACES" />
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -687,176 +862,29 @@
       <workItem from="1448456802456" duration="11520000" />
       <workItem from="1448483206855" duration="2437000" />
       <workItem from="1448525419293" duration="15747000" />
-      <workItem from="1448541562169" duration="4175000" />
-      <workItem from="1448545941787" duration="4073000" />
-      <workItem from="1448875476788" duration="296000" />
-      <workItem from="1448875833343" duration="1349000" />
-      <workItem from="1448877199620" duration="2723000" />
-      <workItem from="1448880751793" duration="4935000" />
-      <workItem from="1448885812822" duration="233000" />
-      <workItem from="1448886066524" duration="14000" />
-      <workItem from="1448886089122" duration="2647000" />
-      <workItem from="1448888823069" duration="522000" />
-      <workItem from="1448889354223" duration="5486000" />
-      <workItem from="1448894996365" duration="65000" />
-      <workItem from="1448961171303" duration="245000" />
-      <workItem from="1448961455142" duration="3065000" />
-      <workItem from="1448965065114" duration="5125000" />
-      <workItem from="1448971244413" duration="1986000" />
-      <workItem from="1448979811317" duration="2621000" />
-      <workItem from="1448984721056" duration="107000" />
-      <workItem from="1448985064810" duration="63000" />
-      <workItem from="1448985316155" duration="43000" />
-      <workItem from="1449044052525" duration="56000" />
-      <workItem from="1449044170115" duration="8612000" />
-      <workItem from="1449052799939" duration="650000" />
-      <workItem from="1449053458213" duration="4193000" />
-      <workItem from="1449058726501" duration="6037000" />
-      <workItem from="1449079095613" duration="99000" />
-      <workItem from="1449079247507" duration="1944000" />
-      <workItem from="1449081311052" duration="788000" />
-      <workItem from="1449130430801" duration="3191000" />
-      <workItem from="1449133724933" duration="1266000" />
-      <workItem from="1449135020957" duration="251000" />
-      <workItem from="1449135302532" duration="1797000" />
-      <workItem from="1449137692508" duration="853000" />
-      <workItem from="1449138640163" duration="2151000" />
-      <workItem from="1449145472909" duration="9057000" />
-      <workItem from="1449154585594" duration="2722000" />
-      <workItem from="1449157687982" duration="232000" />
-      <workItem from="1449157930227" duration="874000" />
-      <workItem from="1449158819103" duration="373000" />
-      <workItem from="1449159203125" duration="1265000" />
-      <workItem from="1449160678259" duration="814000" />
-      <workItem from="1449161910434" duration="141000" />
-      <workItem from="1449168715335" duration="1185000" />
-      <workItem from="1449169929575" duration="163000" />
-      <workItem from="1449173511221" duration="13382000" />
-      <workItem from="1449217005072" duration="58000" />
-      <workItem from="1449217107644" duration="958000" />
-      <workItem from="1449218092979" duration="91000" />
-      <workItem from="1449218197888" duration="3208000" />
-      <workItem from="1449221419737" duration="1230000" />
-    </task>
-    <task id="LOCAL-00030" summary="Fixed show card class">
-      <created>1447761708495</created>
-      <option name="number" value="00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1447761708495</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Dno?">
-      <created>1447852800177</created>
-      <option name="number" value="00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1447852800177</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Redid some stuff to have properly implemented the Hexlib, instead of repurpossing and renaming it to fit with Tile. They are now seperate, and Tile extends Hex">
-      <created>1448272666371</created>
-      <option name="number" value="00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1448272666371</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Fixed subclass bug from renaming class FractionalTile to FractionalHex">
-      <created>1448273540742</created>
-      <option name="number" value="00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1448273540742</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Tried to patch gamemap to send it through server.">
-      <created>1448279759448</created>
-      <option name="number" value="00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1448279759448</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Fixed bug in GameMap">
-      <created>1448281496644</created>
-      <option name="number" value="00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1448281496644</updated>
-    </task>
-    <task id="LOCAL-00036" summary="render method will now display available housePlots, and highligth through filling when mouse is inside one.">
-      <created>1448286499265</created>
-      <option name="number" value="00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1448286499265</updated>
-    </task>
-    <task id="LOCAL-00037" summary="GIANT LEAP OF FAITH THAT WE CAN NOW SEND BUILT HOUSES BETWEEN CLIENTS! ARGHHHH!!!">
-      <created>1448367951738</created>
-      <option name="number" value="00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1448367951738</updated>
-    </task>
-    <task id="LOCAL-00038" summary="GIANT LEAP OF FAITH THAT WE CAN NOW SEND BUILT HOUSES BETWEEN CLIENTS! ARGHHHH!!!&#10;&#10;2.0 bug fix">
-      <created>1448369747832</created>
-      <option name="number" value="00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1448369747832</updated>
-    </task>
-    <task id="LOCAL-00039" summary="No more disco houses, built houses now have proper color corresponding to playerID">
-      <created>1448372996280</created>
-      <option name="number" value="00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1448372996280</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Killed Harry Potter">
-      <created>1448445207484</created>
-      <option name="number" value="00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1448445207484</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Bug fixing for multiplayer purpose..">
-      <created>1448445794156</created>
-      <option name="number" value="00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1448445794156</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Bug fixing for multiplayer purpose.. 1.01">
-      <created>1448446263289</created>
-      <option name="number" value="00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1448446263289</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Bug fixing for multiplayer purpose.. 1.02">
-      <created>1448447454486</created>
-      <option name="number" value="00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1448447454486</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Bug fixing for multiplayer purpose.. 2.0&#10;: changed housePlots and roadPlots from Arraylist to Arrays to prevent skipping index positions when removing available plots, now pre-allocates the specific size array and fills it with the positions..">
-      <created>1448483835745</created>
-      <option name="number" value="00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1448483835745</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Just making sure all is up to date for some testing..">
-      <created>1448526978392</created>
-      <option name="number" value="00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1448526978392</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Quick bug fix for testing 1.01">
-      <created>1448528219465</created>
-      <option name="number" value="00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1448528219465</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Quick bug fix for testing 1.02">
-      <created>1448529519908</created>
-      <option name="number" value="00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1448529519908</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Quick bug fix for testing 1.03">
-      <created>1448529830900</created>
-      <option name="number" value="00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1448529830900</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Quick bug fix for testing 1.1">
-      <created>1448538432376</created>
-      <option name="number" value="00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1448538432376</updated>
+      <workItem from="1448541562169" duration="4674000" />
+      <workItem from="1448625585046" duration="1946000" />
+      <workItem from="1448871724653" duration="2834000" />
+      <workItem from="1448874674649" duration="18179000" />
+      <workItem from="1448960309658" duration="4411000" />
+      <workItem from="1448970246977" duration="5183000" />
+      <workItem from="1448985004003" duration="864000" />
+      <workItem from="1448996881464" duration="1396000" />
+      <workItem from="1449043960523" duration="6255000" />
+      <workItem from="1449057810825" duration="122000" />
+      <workItem from="1449058514096" duration="43000" />
+      <workItem from="1449060600122" duration="1809000" />
+      <workItem from="1449070691013" duration="2058000" />
+      <workItem from="1449073374228" duration="2270000" />
+      <workItem from="1449082453085" duration="1249000" />
+      <workItem from="1449130918896" duration="12889000" />
+      <workItem from="1449146380075" duration="220000" />
+      <workItem from="1449147015464" duration="87000" />
+      <workItem from="1449147548293" duration="166000" />
+      <workItem from="1449149549657" duration="729000" />
+      <workItem from="1449151970709" duration="10047000" />
+      <workItem from="1449164638349" duration="774000" />
+      <workItem from="1449216462955" duration="6205000" />
     </task>
     <task id="LOCAL-00050" summary="Quick bug fix for testing 1.11">
       <created>1448539271310</created>
@@ -919,156 +947,276 @@
       <updated>1448545401441</updated>
     </task>
     <task id="LOCAL-00060" summary="Stuff">
-      <created>1448549246484</created>
+      <created>1448545749530</created>
       <option name="number" value="00060" />
       <option name="project" value="LOCAL" />
-      <updated>1448549246486</updated>
+      <updated>1448545749531</updated>
     </task>
-    <task id="LOCAL-00061" summary="Points stuff">
-      <created>1448880718966</created>
+    <task id="LOCAL-00061" summary="Implemented roads to be sent through server.">
+      <created>1448874224266</created>
       <option name="number" value="00061" />
       <option name="project" value="LOCAL" />
-      <updated>1448880718967</updated>
+      <updated>1448874224267</updated>
     </task>
-    <task id="LOCAL-00062" summary="Points stuff">
-      <created>1448880765470</created>
+    <task id="LOCAL-00062" summary="Implemented turn order check to build stuff">
+      <created>1448874963935</created>
       <option name="number" value="00062" />
       <option name="project" value="LOCAL" />
-      <updated>1448880765470</updated>
+      <updated>1448874963936</updated>
     </task>
-    <task id="LOCAL-00063" summary="Game info stuff">
-      <created>1448886107777</created>
+    <task id="LOCAL-00063" summary="Hotfix for playerturn">
+      <created>1448877085995</created>
       <option name="number" value="00063" />
       <option name="project" value="LOCAL" />
-      <updated>1448886107777</updated>
+      <updated>1448877085995</updated>
     </task>
-    <task id="LOCAL-00064" summary="Game info resource stuff">
-      <created>1448889041366</created>
+    <task id="LOCAL-00064" summary="Hotfix for playerturn 2.0">
+      <created>1448877836058</created>
       <option name="number" value="00064" />
       <option name="project" value="LOCAL" />
-      <updated>1448889041369</updated>
+      <updated>1448877836058</updated>
     </task>
-    <task id="LOCAL-00065" summary="Thief stuff">
-      <created>1448895011211</created>
+    <task id="LOCAL-00065" summary="Hotfix for playerturn 2.01">
+      <created>1448880356143</created>
       <option name="number" value="00065" />
       <option name="project" value="LOCAL" />
-      <updated>1448895011212</updated>
+      <updated>1448880356143</updated>
     </task>
-    <task id="LOCAL-00066" summary="Thief stuff">
-      <created>1448961468459</created>
+    <task id="LOCAL-00066" summary="Hotfix for playerturn 2.02 &amp; had changed white player color to magenta.">
+      <created>1448883583877</created>
       <option name="number" value="00066" />
       <option name="project" value="LOCAL" />
-      <updated>1448961468460</updated>
+      <updated>1448883583877</updated>
     </task>
-    <task id="LOCAL-00067" summary="Thief stuff">
-      <created>1448970208977</created>
+    <task id="LOCAL-00067" summary="Made buttons work with what you want to build">
+      <created>1448884984601</created>
       <option name="number" value="00067" />
       <option name="project" value="LOCAL" />
-      <updated>1448970208977</updated>
+      <updated>1448884984601</updated>
     </task>
-    <task id="LOCAL-00068" summary="GameInfo stuff">
-      <created>1448985344115</created>
+    <task id="LOCAL-00068" summary="Stuff">
+      <created>1448886024136</created>
       <option name="number" value="00068" />
       <option name="project" value="LOCAL" />
-      <updated>1448985344116</updated>
+      <updated>1448886024136</updated>
     </task>
-    <task id="LOCAL-00069" summary="Lotsa basic stuff">
-      <created>1449046297459</created>
+    <task id="LOCAL-00069" summary="Hotfix for build buttons">
+      <created>1448887310953</created>
       <option name="number" value="00069" />
       <option name="project" value="LOCAL" />
-      <updated>1449046297461</updated>
+      <updated>1448887310953</updated>
     </task>
-    <task id="LOCAL-00070" summary="Endgame menu stuff&#10;">
-      <created>1449053700966</created>
+    <task id="LOCAL-00070" summary="Hotfix for build buttons &amp; displaying undisplaying where to build specific stuff">
+      <created>1448889326054</created>
       <option name="number" value="00070" />
       <option name="project" value="LOCAL" />
-      <updated>1449053700966</updated>
+      <updated>1448889326055</updated>
     </task>
-    <task id="LOCAL-00071" summary="Comments and stuff">
-      <created>1449058742134</created>
+    <task id="LOCAL-00071" summary="Now only display the roadplots players should be able to build. (Can theoretically build them anywhere though)">
+      <created>1448892137670</created>
       <option name="number" value="00071" />
       <option name="project" value="LOCAL" />
-      <updated>1449058742134</updated>
+      <updated>1448892137670</updated>
     </task>
-    <task id="LOCAL-00072" summary="Comments and stuff 2">
-      <created>1449060818805</created>
+    <task id="LOCAL-00072" summary="Now only display the houseplots players should be able to build. (Can theoretically build them anywhere though)">
+      <created>1448892586128</created>
       <option name="number" value="00072" />
       <option name="project" value="LOCAL" />
-      <updated>1449060818806</updated>
+      <updated>1448892586128</updated>
     </task>
-    <task id="LOCAL-00073" summary="Comments and chat stuff">
-      <created>1449063073759</created>
+    <task id="LOCAL-00073" summary="Made check for players own houses, will no longer display where you can build on every players buildings">
+      <created>1448964722739</created>
       <option name="number" value="00073" />
       <option name="project" value="LOCAL" />
-      <updated>1449063073759</updated>
+      <updated>1448964722740</updated>
     </task>
-    <task id="LOCAL-00074" summary="Comments and chat stuff">
-      <created>1449063100906</created>
+    <task id="LOCAL-00074" summary="Should now be able to upgrade housies to cities">
+      <created>1448971185446</created>
       <option name="number" value="00074" />
       <option name="project" value="LOCAL" />
-      <updated>1449063100906</updated>
+      <updated>1448971185446</updated>
     </task>
-    <task id="LOCAL-00075" summary="Stuff">
-      <created>1449134263041</created>
+    <task id="LOCAL-00075" summary="stuff">
+      <created>1448975094429</created>
       <option name="number" value="00075" />
       <option name="project" value="LOCAL" />
-      <updated>1449134263232</updated>
+      <updated>1448975094429</updated>
     </task>
-    <task id="LOCAL-00076" summary="Stuff">
-      <created>1449154648414</created>
+    <task id="LOCAL-00076" summary="stuff">
+      <created>1449058530522</created>
       <option name="number" value="00076" />
       <option name="project" value="LOCAL" />
-      <updated>1449154648414</updated>
+      <updated>1449058530523</updated>
     </task>
-    <task id="LOCAL-00077" summary="Somewhat flawed colors  in chat">
-      <created>1449217242164</created>
+    <task id="LOCAL-00077" summary="Resources should now be awarded properly">
+      <created>1449131849180</created>
       <option name="number" value="00077" />
       <option name="project" value="LOCAL" />
-      <updated>1449217242165</updated>
+      <updated>1449131849181</updated>
     </task>
-    <task id="LOCAL-00078" summary="Color chat fixed and working!">
-      <created>1449221767800</created>
+    <task id="LOCAL-00078" summary="fixed loooooots of error because of button rework">
+      <created>1449132809291</created>
       <option name="number" value="00078" />
       <option name="project" value="LOCAL" />
-      <updated>1449221767801</updated>
+      <updated>1449132809291</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Button hot fix">
+      <created>1449134973844</created>
+      <option name="number" value="00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1449134973845</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Button hot fix 2">
+      <created>1449137447008</created>
+      <option name="number" value="00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1449137447008</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Button hot fix 3">
+      <created>1449138330725</created>
+      <option name="number" value="00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1449138330725</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Button hot fix 3">
+      <created>1449138356742</created>
+      <option name="number" value="00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1449138356742</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Button hot fix 4">
+      <created>1449138504121</created>
+      <option name="number" value="00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1449138504122</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Resource hot fix">
+      <created>1449142597047</created>
+      <option name="number" value="00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1449142597047</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Stuff">
+      <created>1449146478072</created>
+      <option name="number" value="00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1449146478073</updated>
+    </task>
+    <task id="LOCAL-00086" summary="texture stuff">
+      <created>1449149739580</created>
+      <option name="number" value="00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1449149739580</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Fixed thief to be sent over server, and update position when rolling 7">
+      <created>1449157631385</created>
+      <option name="number" value="00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1449157631386</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Quick fix of thief">
+      <created>1449157906709</created>
+      <option name="number" value="00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1449157906709</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Quick fix of thief 2">
+      <created>1449158783675</created>
+      <option name="number" value="00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1449158783675</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Quick fix of thief 3">
+      <created>1449159173267</created>
+      <option name="number" value="00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1449159173267</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Quick fix of thief 4">
+      <created>1449160612467</created>
+      <option name="number" value="00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1449160612467</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Quick fix of thief 5">
+      <created>1449161850429</created>
+      <option name="number" value="00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1449161850429</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Quick fix of thief 6">
+      <created>1449165207143</created>
+      <option name="number" value="00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1449165207144</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Quick fix of thief 7">
+      <created>1449165395738</created>
+      <option name="number" value="00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1449165395738</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Quick fix of thief 8">
+      <created>1449216723251</created>
+      <option name="number" value="00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1449216723251</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Quick fix of thief 9">
+      <created>1449218018596</created>
+      <option name="number" value="00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1449218018596</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Quick fix of thief 10">
+      <created>1449220358459</created>
+      <option name="number" value="00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1449220358459</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Quick fix of thief 11">
+      <created>1449221226659</created>
+      <option name="number" value="00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1449221226660</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="298360000" />
+    <option name="totallyTimeSpent" value="275356000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="1" width="1367" height="779" extended-state="0" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32089552" sideWeight="0.48854166" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3220339" sideWeight="0.48854166" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32333767" sideWeight="0.311875" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32333767" sideWeight="0.688125" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33880597" sideWeight="0.47" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35071707" sideWeight="0.47" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17838638" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.178125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2496329" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32786885" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285528" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1076,7 +1224,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32700422" sideWeight="0.5338542" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32333767" sideWeight="0.311875" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1088,13 +1236,13 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32333767" sideWeight="0.48854166" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3220339" sideWeight="0.48854166" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32464147" sideWeight="0.49583334" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3220339" sideWeight="0.46614584" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32333767" sideWeight="0.688125" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35071707" sideWeight="0.47" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.144375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.178125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285528" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -1112,39 +1260,36 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="myTodoPanelSettings">
-      <TodoPanelSettings />
-    </option>
-    <MESSAGE value="Quick bug fix for testing 1.01" />
-    <MESSAGE value="Quick bug fix for testing 1.02" />
-    <MESSAGE value="Quick bug fix for testing 1.03" />
-    <MESSAGE value="Quick bug fix for testing 1.1" />
-    <MESSAGE value="Quick bug fix for testing 1.11" />
-    <MESSAGE value="Quick bug fix for testing 1.12" />
-    <MESSAGE value="Quick bug fix for testing 1.13" />
-    <MESSAGE value="Hot fix for player colors" />
-    <MESSAGE value="Hot fix 1.01" />
-    <MESSAGE value="Hot fix 1.02" />
-    <MESSAGE value="Hot fix 1.03" />
-    <MESSAGE value="Hot fix 1.04 houses are now properly displayed with the proper colors across players" />
-    <MESSAGE value="Points stuff" />
-    <MESSAGE value="Game info stuff" />
-    <MESSAGE value="Game info resource stuff" />
-    <MESSAGE value="Thief stuff" />
-    <MESSAGE value="GameInfo stuff" />
-    <MESSAGE value="Lotsa basic stuff" />
-    <MESSAGE value="Endgame menu stuff&#10;" />
-    <MESSAGE value="Comments and stuff" />
-    <MESSAGE value="Comments and stuff 2" />
-    <MESSAGE value="Comments and chat stuff" />
+    <MESSAGE value="Now only display the houseplots players should be able to build. (Can theoretically build them anywhere though)" />
+    <MESSAGE value="Made check for players own houses, will no longer display where you can build on every players buildings" />
+    <MESSAGE value="Should now be able to upgrade housies to cities" />
+    <MESSAGE value="stuff" />
+    <MESSAGE value="Resources should now be awarded properly" />
+    <MESSAGE value="fixed loooooots of error because of button rework" />
+    <MESSAGE value="Button hot fix" />
+    <MESSAGE value="Button hot fix 2" />
+    <MESSAGE value="Button hot fix 3" />
+    <MESSAGE value="Button hot fix 4" />
+    <MESSAGE value="Resource hot fix" />
     <MESSAGE value="Stuff" />
-    <MESSAGE value="Somewhat flawed colors  in chat" />
-    <MESSAGE value="Color chat fixed and working!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Color chat fixed and working!" />
+    <MESSAGE value="texture stuff" />
+    <MESSAGE value="Fixed thief to be sent over server, and update position when rolling 7" />
+    <MESSAGE value="Quick fix of thief" />
+    <MESSAGE value="Quick fix of thief 2" />
+    <MESSAGE value="Quick fix of thief 3" />
+    <MESSAGE value="Quick fix of thief 4" />
+    <MESSAGE value="Quick fix of thief 5" />
+    <MESSAGE value="Quick fix of thief 6" />
+    <MESSAGE value="Quick fix of thief 7" />
+    <MESSAGE value="Quick fix of thief 8" />
+    <MESSAGE value="Quick fix of thief 9" />
+    <MESSAGE value="Quick fix of thief 10" />
+    <MESSAGE value="Quick fix of thief 11" />
+    <option name="LAST_COMMIT_MESSAGE" value="Quick fix of thief 11" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1155,104 +1300,71 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="47" column="55" selection-start-line="47" selection-start-column="55" selection-end-line="47" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/util/ResourceLoader.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34700856" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.34700856">
           <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/Image.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.9259257" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="-4.9259257">
           <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/font/Glyph.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7630923" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="-0.7630923">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/tileTexture_Sheet.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/ShowCard.java">
+    <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/geom/ShapeRenderer.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29905277" vertical-offset="0" max-vertical-offset="0">
-          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+        <state vertical-scroll-proportion="-6.0740743">
+          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1261,260 +1373,406 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mapClasses/Orientation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mapClasses/OffsetCoord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/state/GameState.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32832617" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.32832617">
           <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_65/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3326572">
+          <caret line="900" column="0" selection-start-line="900" selection-start-column="0" selection-end-line="900" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/mainGame.Main">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>mainGame.Main</OriginalElement>
+          <nodes>
+            <node x="" y="">mainGame.Main</node>
+            <node x="" y="">org.newdawn.slick.InputListener</node>
+            <node x="" y="">org.newdawn.slick.Game</node>
+            <node x="" y="">org.newdawn.slick.KeyListener</node>
+            <node x="" y="">org.newdawn.slick.state.StateBasedGame</node>
+            <node x="" y="">org.newdawn.slick.ControllerListener</node>
+            <node x="" y="">org.newdawn.slick.ControlledInputReciever</node>
+            <node x="" y="">org.newdawn.slick.MouseListener</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="197.0" y="193.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/map_background.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mapClasses/Hex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mapClasses/FractionalHex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.035564855" vertical-offset="0" max-vertical-offset="0">
-          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/House.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1370193" vertical-offset="224" max-vertical-offset="867">
-          <caret line="44" column="30" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mapClasses/Tile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6730769" vertical-offset="740" max-vertical-offset="1921">
-          <caret line="73" column="9" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/kryonet-2.21-all.jar!/com/esotericsoftware/kryo/io/Input.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35449734" vertical-offset="2178" max-vertical-offset="12359">
-          <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/kryonet-2.21-all.jar!/com/esotericsoftware/kryonet/Client.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35449734" vertical-offset="3368" max-vertical-offset="10013">
-          <caret line="246" column="0" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/AngelCodeFont.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.56" vertical-offset="6749" max-vertical-offset="7140">
-          <caret line="441" column="0" selection-start-line="441" selection-start-column="0" selection-end-line="441" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/GatheringResources.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
-          <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/Road.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4230171" vertical-offset="0" max-vertical-offset="643">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/GameContainer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.80306906" vertical-offset="5415" max-vertical-offset="5831">
-          <caret line="450" column="0" selection-start-line="450" selection-start-column="0" selection-end-line="450" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/state/StateBasedGame.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3529412" vertical-offset="3789" max-vertical-offset="4828">
-          <caret line="265" column="0" selection-start-line="265" selection-start-column="0" selection-end-line="265" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/TextBox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="867">
-          <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/geom/ShapeRenderer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3529412" vertical-offset="3364" max-vertical-offset="3927">
-          <caret line="233" column="0" selection-start-line="233" selection-start-column="0" selection-end-line="233" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/GUI_Overlay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1734" max-vertical-offset="8296">
-          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/Button.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="440" max-vertical-offset="1173">
-          <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/Texture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32692307" vertical-offset="1428" max-vertical-offset="2771">
-          <caret line="96" column="55" selection-start-line="96" selection-start-column="55" selection-end-line="96" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Network/GameClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.9639423" vertical-offset="2219" max-vertical-offset="2635">
-          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/State_MainMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700">
-          <caret line="62" column="34" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33173078" vertical-offset="185" max-vertical-offset="629">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/Thief.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-          <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="9843" max-vertical-offset="15487">
-          <caret line="618" column="0" selection-start-line="618" selection-start-column="0" selection-end-line="618" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mapClasses/Layout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1224">
-          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Network/Network.java">
+    <entry file="file://$PROJECT_DIR$/src/mapClasses/OffsetCoord.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="678" max-vertical-offset="1190">
-          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/State_JoinLobby.java">
+    <entry file="file://$PROJECT_DIR$/src/mapClasses/Orientation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.818408" vertical-offset="0" max-vertical-offset="2669">
-          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Network/ServerData.java">
+    <entry file="file://$PROJECT_DIR$/resources/dice_sheet.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mapClasses/Tile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="1564">
-          <caret line="68" column="42" selection-start-line="68" selection-start-column="42" selection-end-line="68" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="7" selection-start-line="54" selection-start-column="7" selection-end-line="54" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/tileTexture_Sheet.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Network/GameClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="131" column="5" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Network/ClientData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="639" max-vertical-offset="1054">
-          <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/PlayerStats.java">
+    <entry file="file://$PROJECT_DIR$/src/Network/ServerData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40963855" vertical-offset="34" max-vertical-offset="952">
-          <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="63" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
+          <folding>
+            <element signature="e#863#872#0" expanded="true" />
+            <element signature="e#1841#1850#0" expanded="true" />
+            <element signature="e#1934#1942#0" expanded="true" />
+            <element signature="e#1950#1958#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Network/Network.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java">
+    <entry file="file://$PROJECT_DIR$/src/mapClasses/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.5036144" vertical-offset="321" max-vertical-offset="1768">
-          <caret line="87" column="41" selection-start-line="87" selection-start-column="41" selection-end-line="87" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="585" column="0" selection-start-line="585" selection-start-column="0" selection-end-line="585" selection-end-column="0" />
+          <folding>
+            <element signature="method#checkForBuiltHouses#0;class#GameMap#0" expanded="false" />
+            <element signature="method#checkForBuiltRoads#0;class#GameMap#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/mapClasses">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>mapClasses</OriginalElement>
+          <nodes>
+            <node x="" y="">mapClasses.Orientation</node>
+            <node x="" y="">mapClasses.GameMap</node>
+            <node x="" y="">mapClasses.Layout</node>
+            <node x="" y="">mapClasses.FractionalHex</node>
+            <node x="" y="">mapClasses.Hex</node>
+            <node x="" y="">mapClasses.OffsetCoord</node>
+            <node x="" y="">mapClasses.Tile</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="185.0" y="133.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/Network">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>Network</OriginalElement>
+          <nodes>
+            <node x="" y="">Network.ServerData</node>
+            <node x="" y="">Network.Network</node>
+            <node x="" y="">Network.GameClient</node>
+            <node x="" y="">Network.ClientData</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="95.0" y="93.5" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement />
+          <nodes>
+            <node x="" y="">com</node>
+            <node x="" y="">netscape</node>
+            <node x="" y="">oracle</node>
+            <node x="" y="">org</node>
+            <node x="" y="">moo</node>
+            <node x="" y="">sun</node>
+            <node x="" y="">META-INF</node>
+            <node x="" y="">jdk</node>
+            <node x="" y="">mainGame</node>
+            <node x="" y="">java</node>
+            <node x="" y="">javax</node>
+            <node x="" y="">Network</node>
+            <node x="" y="">mapClasses</node>
+            <node x="" y="">javafx</node>
+            <node x="" y="">net</node>
+            <node x="" y="">ibxm</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="217.5" y="219.5" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/mainGame">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>mainGame</OriginalElement>
+          <nodes>
+            <node x="" y="">mainGame.ShowCard</node>
+            <node x="" y="">mainGame.Dice</node>
+            <node x="" y="">mainGame.ChatBox</node>
+            <node x="" y="">mainGame.State_EndGame</node>
+            <node x="" y="">mainGame.State_PlayingWindow</node>
+            <node x="" y="">mainGame.DevelopmentCard</node>
+            <node x="" y="">mainGame.GatheringResources</node>
+            <node x="" y="">mainGame.Road</node>
+            <node x="" y="">mainGame.Main</node>
+            <node x="" y="">mainGame.Thief</node>
+            <node x="" y="">mainGame.GUI_Overlay</node>
+            <node x="" y="">mainGame.PlayerStats</node>
+            <node x="" y="">mainGame.Texture</node>
+            <node x="" y="">mainGame.Trading</node>
+            <node x="" y="">mainGame.State_MainMenu</node>
+            <node x="" y="">mainGame.Button</node>
+            <node x="" y="">mainGame.House</node>
+            <node x="" y="">mainGame.State_CreatePlayer</node>
+            <node x="" y="">mainGame.State_JoinLobby</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.7854609929078015" x="452.0880361173814" y="312.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/Button.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+          <folding>
+            <element signature="method#getButtonTexture#0;class#Button#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/Trading.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/DevelopmentCard.java">
+    <entry file="file://$PROJECT_DIR$/src/mainGame/Thief.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.539759" vertical-offset="1173" max-vertical-offset="2516">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="1" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <folding>
+            <element signature="e#302#303#0" expanded="true" />
+            <element signature="e#338#339#0" expanded="true" />
+            <element signature="e#375#376#0" expanded="true" />
+            <element signature="e#404#405#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/Texture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="111" column="51" selection-start-line="111" selection-start-column="51" selection-end-line="111" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/State_PlayingWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="93" column="24" selection-start-line="93" selection-start-column="24" selection-end-line="93" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/State_MainMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="38" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/State_JoinLobby.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="35" selection-start-line="84" selection-start-column="35" selection-end-line="84" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/State_EndGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2960199" vertical-offset="1734" max-vertical-offset="2686">
-          <caret line="109" column="7" selection-start-line="109" selection-start-column="7" selection-end-line="109" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/Road.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#675#676#0" expanded="true" />
+            <element signature="e#706#707#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/State_PlayingWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/mainGame/PlayerStats.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1961" max-vertical-offset="2380">
-          <caret line="126" column="34" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="61" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/House.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/GUI_Overlay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/Dice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="37" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/DevelopmentCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/ChatBox.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.619403" vertical-offset="2658" max-vertical-offset="3570">
-          <caret line="171" column="87" selection-start-line="171" selection-start-column="87" selection-end-line="171" selection-end-column="87" />
+        <state vertical-scroll-proportion="0.1150203">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1522,9 +1780,81 @@
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>MEA305AWESOMESHITPROJECT-CLIENT</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>lib</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

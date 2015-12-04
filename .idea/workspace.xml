@@ -12,8 +12,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/Network/ServerData.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/Network/ServerData.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/State_PlayingWindow.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/State_PlayingWindow.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Tile.class" afterPath="$PROJECT_DIR$/out/production/MEA305AWESOMESHITPROJECT-CLIENT/mainGame/Tile.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/Main.java" afterPath="$PROJECT_DIR$/src/mainGame/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Network/Network.java" afterPath="$PROJECT_DIR$/src/Network/Network.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mainGame/ChatBox.java" afterPath="$PROJECT_DIR$/src/mainGame/ChatBox.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MEA305AWESOMESHITPROJECT-CLIENT.iws" />
@@ -55,11 +54,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mainGame/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.70577615" vertical-offset="0" max-vertical-offset="731">
-              <caret line="28" column="68" selection-start-line="28" selection-start-column="68" selection-end-line="28" selection-end-column="68" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChatBox.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/mainGame/ChatBox.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="2.168207" vertical-offset="0" max-vertical-offset="3655">
+              <caret line="69" column="77" selection-start-line="69" selection-start-column="77" selection-end-line="69" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -162,7 +171,6 @@
         <option value="$PROJECT_DIR$/src/mainGame/State_EndGame.java" />
         <option value="$PROJECT_DIR$/src/mainGame/State_JoinLobby.java" />
         <option value="$PROJECT_DIR$/src/mainGame/State_CreatePlayer.java" />
-        <option value="$PROJECT_DIR$/src/mainGame/ChatBox.java" />
         <option value="$PROJECT_DIR$/src/mainGame/GUI_Overlay.java" />
         <option value="$PROJECT_DIR$/src/mainGame/PlayerStats.java" />
         <option value="$PROJECT_DIR$/src/mainGame/State_PlayingWindow.java" />
@@ -171,6 +179,7 @@
         <option value="$PROJECT_DIR$/src/Network/GameClient.java" />
         <option value="$PROJECT_DIR$/src/Network/Network.java" />
         <option value="$PROJECT_DIR$/src/mainGame/Main.java" />
+        <option value="$PROJECT_DIR$/src/mainGame/ChatBox.java" />
       </list>
     </option>
   </component>
@@ -879,13 +888,7 @@
       <workItem from="1449228988423" duration="1752000" />
       <workItem from="1449230771803" duration="1748000" />
       <workItem from="1449232793948" duration="2348000" />
-      <workItem from="1449235166891" duration="985000" />
-    </task>
-    <task id="LOCAL-00037" summary="GIANT LEAP OF FAITH THAT WE CAN NOW SEND BUILT HOUSES BETWEEN CLIENTS! ARGHHHH!!!">
-      <created>1448367951738</created>
-      <option name="number" value="00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1448367951738</updated>
+      <workItem from="1449235166891" duration="1345000" />
     </task>
     <task id="LOCAL-00038" summary="GIANT LEAP OF FAITH THAT WE CAN NOW SEND BUILT HOUSES BETWEEN CLIENTS! ARGHHHH!!!&#10;&#10;2.0 bug fix">
       <created>1448369747832</created>
@@ -1175,11 +1178,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449235701451</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Comments stuff">
+      <created>1449236158215</created>
+      <option name="number" value="00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1449236158215</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="310575000" />
+    <option name="totallyTimeSpent" value="310935000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="5" width="1378" height="744" extended-state="0" />
@@ -1572,14 +1581,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainGame/ChatBox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.7994723" vertical-offset="1270" max-vertical-offset="3587">
-          <caret line="204" column="5" selection-start-line="204" selection-start-column="5" selection-end-line="204" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/PlayerStats.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31398416" vertical-offset="0" max-vertical-offset="1071">
@@ -1647,8 +1648,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mainGame/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70577615" vertical-offset="0" max-vertical-offset="731">
-          <caret line="28" column="68" selection-start-line="28" selection-start-column="68" selection-end-line="28" selection-end-column="68" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainGame/ChatBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.168207" vertical-offset="0" max-vertical-offset="3655">
+          <caret line="69" column="77" selection-start-line="69" selection-start-column="77" selection-end-line="69" selection-end-column="77" />
           <folding />
         </state>
       </provider>

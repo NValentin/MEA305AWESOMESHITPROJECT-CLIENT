@@ -48,23 +48,27 @@ public class ChatBox {
 
         try {
 
-            for (int i = 0; i < PlayerStats.names.length; i++) {
-                if (PlayerStats.textToRender[0].contains(PlayerStats.names[i] + ": ")) {
+            for (int i = 0; i < PlayerStats.names.length; i++) { // Check string for all player names
+                if (PlayerStats.textToRender[0].contains(PlayerStats.names[i] + ": ")) { // If it contains a name
                     font.drawString(10, Main.ScreenHeight - 100, PlayerStats.textToRender[0].substring(0,
-                            PlayerStats.textToRender[0].indexOf(": ")), PlayerStats.playerColors[i + 1]);
-                    font.drawString(10 + fontWidth[i]/*PlayerStats.textToRender[0].substring(0, PlayerStats.textToRender[0].indexOf(": ")).length()*/,
-                            Main.ScreenHeight - 100,
+                            PlayerStats.textToRender[0].indexOf(": ")), PlayerStats.playerColors[i + 1]); // Draw the name in the player's color
+                    font.drawString(10 + fontWidth[i], // At this x
+                            Main.ScreenHeight - 100, // And this y
+
+                            // And write the rest of the string, starting at the x coordinate where the name ends
                             PlayerStats.textToRender[0].substring(PlayerStats.textToRender[0].lastIndexOf(": "), PlayerStats.textToRender[0].length()));
 
+                    // Draw the other (sub)strings of textToRender
                     font.drawString(10, Main.ScreenHeight - 80, PlayerStats.textToRender[1]);
                     font.drawString(10, Main.ScreenHeight - 60, PlayerStats.textToRender[2]);
                     break;
                 }
             }
 
+            // This loop basically does the same as the one above it, but for the oldText strings.
+            // If it finds a name in a string, it prints that in color, then the rest of the string in white.
+            // If it doesn't find a name, it just prints the string in white.
             for (int i = 0; i < chatLength; i++) {
-
-                //font.drawString(10, Main.ScreenHeight - 120 - 20 * i, PlayerStats.oldText[i]); //Worst case scenario, THIS works, outcomment rest
 
                 if(PlayerStats.oldText[i].contains(PlayerStats.names[0]+": ")) {
 

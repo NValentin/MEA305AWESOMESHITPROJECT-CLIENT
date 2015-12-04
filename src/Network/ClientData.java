@@ -3,6 +3,10 @@ package Network;
 import mainGame.PlayerStats;
 import mainGame.GameMap;
 
+/**
+ * This class is what is sent to the server, and contains everything meant to be seen and accessed by other clients.
+ * Prior to sending, the pack() method is called, copying static variables from PlayerStats.
+ */
 public class ClientData
 {
     public String nsname;

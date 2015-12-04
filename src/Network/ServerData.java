@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by Bjørn on 16-11-2015.
+ * This class is what is received from the server, and contains everything meant to be seen and accessed from other clients.
+ * The method unpack() is called when data is received, which copies variables from here to PlayerStats, for the client to use
  */
 public class ServerData
 {

@@ -5,6 +5,7 @@ package mainGame;
  */
 public class Trading {
 
+    //Method for when making a new trade.
     public void MakeNewTrade(int[] resources) {
         PlayerStats.resourcesTrade = resources;
         PlayerStats.resetTradingResources = false;
@@ -12,6 +13,7 @@ public class Trading {
         PlayerStats.sendTrade = true;
     }
 
+    //Method for when the player make the final accept of the trade, and the resources will be added the the two trading players current resources.
     public void AcceptTrade(int[] resources) {
         PlayerStats.resourcesTrade = resources;
         PlayerStats.resetTradingResources = true;
@@ -22,12 +24,14 @@ public class Trading {
         System.out.println("Send trade back to: " + (PlayerStats.turn + 1));
     }
 
+    //If the receiving player at any point declines the trade.
     public void DeclineTrade(boolean refresh) {
         PlayerStats.resetTradingResources = true;
         PlayerStats.sendTrade = true;
         PlayerStats.tradeResourcesToHandle = false;
     }
 
+    //After the receiving play have accepted the trade, this method will run on both clients, and readjust the resources.
     public static void ReAdjustResources() {
         System.out.println("-------Accpeted the trade----------------------");
         System.out.println("-------Old Resources---------------------------");

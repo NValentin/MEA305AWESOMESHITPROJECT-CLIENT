@@ -137,21 +137,28 @@ public class State_PlayingWindow extends BasicGameState
         gui_overlay.OfferWindow(theWidth / 2 - 200, theHeight / 2 - 150, gui_overlay.offerWindow, g, gc);
         gui_overlay.ShowStats(g, theWidth - 145, 10, gc);
 
+        //After a playing initate a new trade for a player, these if statements will check, if it is the corrent player, that gets the trade request.
         if (PlayerStats.targetPlayerTrade == PlayerStats.ID || PlayerStats.adjustMyResources) {
+            //If there are a new trade to handdle
             if (PlayerStats.tradeResourcesToHandle) {
+                //If it is a new trade, or if it is a returning trade, that should readjusted these players current resources.
                 if (!PlayerStats.resetTradingResources) {
+                    //Displaying the trade popop window
                     gui_overlay.TradePopupWindow(theWidth - 215, theHeight - 55, GUI_Overlay.popTrade, PlayerStats.names[PlayerStats.turn], g, gc);
                 } else {
+                    //Readjusting the players resources.
                     System.out.println("Trading");
                     Trading.ReAdjustResources();
                 }
             }
         }
+        //If it is currently this clients turn, the trade with window, roll dice, and end turn buttons will be displayed.
         if (PlayerStats.playerturn[PlayerStats.ID - 1]) {
             gui_overlay.TradeWithWindow(Main.ScreenWidth - 215, 205, g, PlayerStats.names, gc);
             gui_overlay.DisplayDice(g, theWidth - 172, 75, map, true, gc);
             gui_overlay.EndTurn(theWidth - 190, 370, gc, g);
         } else {
+            //If it isn't that clients turn, it will only display what have been rolled.
             gui_overlay.DisplayDice(g, theWidth - 172, 75, map, false, gc);
         }
 

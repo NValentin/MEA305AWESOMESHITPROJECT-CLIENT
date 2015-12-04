@@ -26,6 +26,7 @@ public class Button {
 
     Rectangle butShape;
 
+    //Constructor for the buttons class. The x and y position of the button, and the size and texture of it.
     public Button(int x, int y, int sizeX, int sizeY, String texture) {
         this.x = x;
         this.y = y;
@@ -37,6 +38,7 @@ public class Button {
         butShape = new Rectangle(this.x, this.y, this.sizeX, this.sizeY);
     }
 
+    //An overloaded version of the constructor for the button with font size, if the font size shouldn't be 50.
     public Button(int x, int y, int sizeX, int sizeY, String texture, int fontSize) {
         this.x = x;
         this.y = y;
@@ -48,26 +50,31 @@ public class Button {
         butShape = new Rectangle(this.x, this.y, this.sizeX, this.sizeY);
     }
 
+    //Method for displaying the buttons
     public void draw(Graphics g) {
         g.texture(butShape, getButtonTexture(), true);
     }
 
+    //For moving the buttons to another place
     public void SetPos(int x, int y) {
         this.x = x;
         this.y = y;
         updateShape();
     }
 
+    //Updading the shape, if some of the stats have altered.
     private void updateShape()
     {
         butShape.setX(x);
         butShape.setY(y);
     }
 
+    //Adding text to the button
     public void AddText(String text, Color color) {
         font.drawString(x + sizeX/2f - font.getWidth(text) / 2f, y + sizeY / 2f - font.getHeight(text) / 2f, text, color);
     }
 
+    //Method for handling if the buttons is pressed.
     public boolean isPressed(GameContainer gc) {
         boolean wasPressed = false;
 
@@ -78,6 +85,7 @@ public class Button {
         return wasPressed;
     }
 
+    //Method for getting the corrent texture for the class.
     private Image getButtonTexture()
     {
         Image tmpTexture;

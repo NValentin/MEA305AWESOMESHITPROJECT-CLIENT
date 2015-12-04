@@ -1,6 +1,7 @@
 package mainGame;
 
 import mapClasses.GameMap;
+import org.lwjgl.Sys;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 
@@ -133,10 +134,7 @@ public class GUI_Overlay {
             if (build_Buttons[i].isPressed(gc)) {
                 if (PlayerStats.playerturn[PlayerStats.ID - 1]) {
                     System.out.println("Building " + buildingMenuText[i]);
-                    GameMap.build_buttons[i] = true;
-                    if (i == 3) {
-                        card.DrawNewCard();
-                    }
+                    BuildMenuREsourceCheck(i);
                 } else {
                     System.out.println("Can't build when its not your turn");
                 }
@@ -226,6 +224,7 @@ public class GUI_Overlay {
         for (int i = 0; i < _names.length; i++) {
             g.drawString(_names[i], x + 10, y + 40 + 25 * i);
         }
+        g.setColor(Color.white);
         for (int i = 0; i < _names.length; i++) {
             makeNewTrade[i].SetPos(x + 100, y + 40 + 25 * i);
             makeNewTrade[i].draw(g);
@@ -238,7 +237,6 @@ public class GUI_Overlay {
                 State_PlayingWindow.tradeId = i;
             }
         }
-        g.setColor(Color.white);
     }
 
     public void ShowStats(Graphics g, int x, int y, GameContainer gc) {
@@ -330,7 +328,9 @@ public class GUI_Overlay {
             g.setColor(Color.black);
             g.drawString("Choose any two resources: " + (2 - yearOfPlentyTaken) + " left", Main.ScreenWidth / 2 - 140, Main.ScreenHeight / 2 - 70);
             for (int i = 0; i < 5; i++) {
+                g.setColor(Color.black);
                 g.drawString(resourceTypes[i] + ": " + tmp_res[i], Main.ScreenWidth / 2 - 145, Main.ScreenHeight / 2 - 45 + i * 20);
+                g.setColor(Color.white);
                 yearOfPlenty_Buttons[i].draw(g);
                 yearOfPlenty_Buttons[i + 5].draw(g);
                 if (yearOfPlenty_Buttons[i].isPressed(gc) && tmp_res[i] > 0) {
@@ -384,6 +384,7 @@ public class GUI_Overlay {
                 buttons[i + 10].SetPos(x + 350, y + 70 + 20 * i);
                 buttons[i + 15].SetPos(x + 370, y + 70 + 20 * i);
             }
+            g.setColor(Color.white);
             for (int i = 0; i < 20; i++) {
                 buttons[i].draw(g);
             }
@@ -397,10 +398,6 @@ public class GUI_Overlay {
                 if (buttons[i+15].isPressed(gc))
                     tradingReources[i+5]++;
             }
-            for (int i = 0; i < 5; i ++) {
-                g.drawString(resourceTypes[i] + ": " + tradingReources[i], x + 15, y + 70 + i * 20);
-                g.drawString(resourceTypes[i] + ": " + tradingReources[i + 5], x + 255, y + 70 + i * 20);
-            }
             g.drawString("for", x + 185, y + 110);
             acceptOffer.SetPos(x + 10, y + 180);
             declineOffer.SetPos(x + 250, y + 180);
@@ -408,6 +405,11 @@ public class GUI_Overlay {
             acceptOffer.AddText("Send Offer", Color.black);
             declineOffer.draw(g);
             declineOffer.AddText("Cancel", Color.black);
+            g.setColor(Color.black);
+            for (int i = 0; i < 5; i ++) {
+                g.drawString(resourceTypes[i] + ": " + tradingReources[i], x + 15, y + 70 + i * 20);
+                g.drawString(resourceTypes[i] + ": " + tradingReources[i + 5], x + 255, y + 70 + i * 20);
+            }
             if (acceptOffer.isPressed(gc)) {
                 offerWindow = false;
                 trade.MakeNewTrade(tradingReources);
@@ -416,6 +418,52 @@ public class GUI_Overlay {
                 offerWindow = false;
             }
             g.setColor(Color.white);
+        }
+    }
+
+    public void BuildMenuREsourceCheck(int index) {
+        switch (index) {
+            case 0:
+                if (State_PlayingWindow.currentResources[2] > 0 && State_PlayingWindow.currentResources[3] > 0) {
+                    State_PlayingWindow.currentResources[2]--;
+                    State_PlayingWindow.currentResources[3]--;
+                    GameMap.build_buttons[0] = true;
+                } else {
+                    System.out.println("Not enough resources to build a road");
+                }
+                break;
+            case 1:
+                if (State_PlayingWindow.currentResources[0] > 0 && State_PlayingWindow.currentResources[2] > 0 && State_PlayingWindow.currentResources[3] > 0 && State_PlayingWindow.currentResources[4] > 0) {
+                    State_PlayingWindow.currentResources[0]--;
+                    State_PlayingWindow.currentResources[2]--;
+                    State_PlayingWindow.currentResources[3]--;
+                    State_PlayingWindow.currentResources[4]--;
+                    GameMap.build_buttons[1] = true;
+                } else {
+                    System.out.println("Not enough resources to build a house");
+                }
+                break;
+            case 2:
+                if (State_PlayingWindow.currentResources[1] > 2 && State_PlayingWindow.currentResources[4] > 1) {
+                    State_PlayingWindow.currentResources[1] -= 3;
+                    State_PlayingWindow.currentResources[4] -= 2;
+                    GameMap.build_buttons[2] = true;
+                } else {
+                    System.out.println("Not enough resources to build a city");
+                }
+                break;
+            case 3:
+                if (State_PlayingWindow.currentResources[0] > 0 && State_PlayingWindow.currentResources[1] > 0 && State_PlayingWindow.currentResources[4] > 0) {
+                    State_PlayingWindow.currentResources[0]--;
+                    State_PlayingWindow.currentResources[1]--;
+                    State_PlayingWindow.currentResources[4]--;
+                    card.DrawNewCard();
+                } else {
+                    System.out.println("Not enough resources to buy a development card");
+                }
+                break;
+            default:
+                System.out.println("Error with building cost");
         }
     }
 

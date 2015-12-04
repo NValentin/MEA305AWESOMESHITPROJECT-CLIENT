@@ -25,6 +25,12 @@ public class Main extends StateBasedGame
         appgc.start();
     }
 
+    /**
+     * This methods calls the init methods for all listed gameStates
+     * @param container GameContainer component
+     *          @see GameContainer and Slick2D
+     * @throws SlickException
+     */
     @Override
     public void initStatesList(GameContainer container) throws SlickException
     {

@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.util.ArrayList;
 
+/**
+ * This class handles data transmission from the server
+ */
 public class Network extends Listener
 {
 
@@ -23,6 +26,10 @@ public class Network extends Listener
     public static ArrayList<String> serverListOfTypes;
     public static ArrayList<Integer> serverListOfYieldNumbers;
 
+    /**
+     * This method is what connects the client to the server.
+     * The first many lines is the types of data the server needs to be set up for translating
+     */
     public void connect()
     {
         client = new Client(16384, 2048);
@@ -49,6 +56,13 @@ public class Network extends Listener
         }
     }
 
+    /**
+     * This method listens for server packets.
+     * When an instance of ServerData is received, it updates all the client variables with data from the server
+     * @param c Connection component
+     *          @See Connection and Kryonet
+     * @param o Object received from the server
+     */
     @Override
     public void received(Connection c, Object o)
     {

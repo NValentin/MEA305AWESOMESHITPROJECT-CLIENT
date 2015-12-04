@@ -1,6 +1,7 @@
 package Network;
 
 import com.esotericsoftware.kryonet.Connection;
+import mainGame.GUI_Overlay;
 import mainGame.PlayerStats;
 
 import java.util.ArrayList;
@@ -84,5 +85,8 @@ public class ServerData
         PlayerStats.targetPlayerTrade = targetPlayerTrade;
         PlayerStats.resetTradingResources = resetTradingResources;
         PlayerStats.tradeResourcesToHandle = tradeResourcesToHandle;
+        if (PlayerStats.tradeResourcesToHandle && !PlayerStats.resetTradingResources) {
+            GUI_Overlay.popTrade = true;
+        }
     }
 }

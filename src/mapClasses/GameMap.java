@@ -552,8 +552,17 @@ public class GameMap
             deSerializedThief = 99;
         }
 
-        checkForBuiltHouses(gc);
-        checkForBuiltRoads(gc);
+        if (!State_PlayingWindow.isNormalGameRound)
+        {
+            checkForBuiltHouses(gc);
+            checkForBuiltRoads(gc);
+        }
+        if (GUI_Overlay.DiceRolled && State_PlayingWindow.isNormalGameRound)
+        {
+            checkForBuiltHouses(gc);
+            checkForBuiltRoads(gc);
+        }
+
 
         if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[2])
             for (int i = 0; i < houses.size(); i++)

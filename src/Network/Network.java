@@ -4,6 +4,7 @@ import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import mainGame.PlayerStats;
+import mainGame.State_PlayingWindow;
 import mapClasses.GameMap;
 
 import java.io.IOException;
@@ -62,9 +63,9 @@ public class Network extends Listener
             GameMap.deSerializedHouse = serverData.serializedHouse;
             GameMap.deSerializedRoad = serverData.serializedRoad;
             GameMap.deSerializedCity = serverData.serializedCity;
-
-            System.out.println(serverData.serializedThief);
             GameMap.deSerializedThief = serverData.serializedThief;
+
+            State_PlayingWindow.isNormalGameRound = serverData.isNormalGameRound;
 
             PlayerStats.playerturn = serverData.playerturn;
             PlayerStats.die1 = serverData.die1;

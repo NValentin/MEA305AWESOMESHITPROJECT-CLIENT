@@ -34,6 +34,8 @@ public class State_PlayingWindow extends BasicGameState
     String chatText = "";
     Font font;
 
+    public static boolean isNormalGameRound = false;
+
     static String gameInfo = "";
 
     Boolean tradingOut = false;

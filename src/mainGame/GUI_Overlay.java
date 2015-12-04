@@ -1,7 +1,6 @@
 package mainGame;
 
 import mapClasses.GameMap;
-import org.lwjgl.Sys;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 
@@ -134,7 +133,7 @@ public class GUI_Overlay {
             if (build_Buttons[i].isPressed(gc)) {
                 if (PlayerStats.playerturn[PlayerStats.ID - 1]) {
                     System.out.println("Building " + buildingMenuText[i]);
-                    BuildMenuREsourceCheck(i);
+                    BuildMenuResourceCheck(i);
                 } else {
                     System.out.println("Can't build when its not your turn");
                 }
@@ -421,7 +420,7 @@ public class GUI_Overlay {
         }
     }
 
-    public void BuildMenuREsourceCheck(int index) {
+    public void BuildMenuResourceCheck(int index) {
         switch (index) {
             case 0:
                 if (State_PlayingWindow.currentResources[2] > 0 && State_PlayingWindow.currentResources[3] > 0) {

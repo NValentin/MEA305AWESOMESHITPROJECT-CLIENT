@@ -97,6 +97,7 @@ public class GUI_Overlay {
 
     public void TradePopupWindow(int x, int y, boolean boo, String _name, Graphics graphics, GameContainer gc) throws SlickException {
         if (boo) {
+            State_PlayingWindow.gameInfo = _name + " wants to trade!";
             graphics.setColor(Color.black);
             graphics.fill(new Rectangle(x, y, 210, 50));
             graphics.setColor(Color.white);
@@ -113,6 +114,7 @@ public class GUI_Overlay {
             }
             if (decline.isPressed(gc)) {
                 System.out.println("Decline");
+                State_PlayingWindow.gameInfo = "Trade declined";
                 popTrade = false;
             }
         }
@@ -189,6 +191,7 @@ public class GUI_Overlay {
 
     public void IncomingTradeWindow(int x, int y, boolean boo, Graphics g, GameContainer gc) {
         if (boo) {
+            State_PlayingWindow.gameInfo = "Trading with "+tradeWithName;
             g.setColor(Color.white);
             g.fill(new Rectangle(x, y, 400, 300));
             g.setColor(Color.black);
@@ -209,11 +212,13 @@ public class GUI_Overlay {
             declineOffer.AddText("Decline Offer", Color.black);
             if (acceptOffer.isPressed(gc)) {
                 System.out.println("Accept");
+                State_PlayingWindow.gameInfo = "Trade accepted";
                 tradeWindow = false;
                 trade.AcceptTrade(PlayerStats.resourcesTrade);
             }
             if (declineOffer.isPressed(gc)) {
                 System.out.println("Decline");
+                State_PlayingWindow.gameInfo = "Trade declined";
                 tradeWindow = false;
                 trade.DeclineTrade(true);
             }
@@ -250,7 +255,7 @@ public class GUI_Overlay {
         showStats.SetPos(x, y);
         closeStats.SetPos(theWidth / 2 + 320, theHeight / 2 - 195);
         if (showStatsBool) {
-            State_PlayingWindow.gameInfo = "Close the window to continue playing";
+            State_PlayingWindow.gameInfo = "Close the window by clicking anywhere";
             if (closeStats.isPressed(gc)) {
                 State_PlayingWindow.gameInfo = "";
                 showStatsBool = false;
@@ -318,6 +323,7 @@ public class GUI_Overlay {
         }
         if (showStatsBool && gc.getInput().isMousePressed(0)){
             showStatsBool = false;
+            State_PlayingWindow.gameInfo = "";
         }
     }
 
@@ -397,6 +403,7 @@ public class GUI_Overlay {
 
     public void OfferWindow(int x, int y, boolean boo, Graphics g, GameContainer gc) {
         if (boo) {
+            State_PlayingWindow.gameInfo = "Choose resources to trade with "+tradeWithName;
             g.setColor(Color.white);
             g.fill(new Rectangle(x, y, 400, 300));
             g.setColor(Color.black);

@@ -33,6 +33,8 @@ public class State_PlayingWindow extends BasicGameState
     String chatText = "";
     Font font;
 
+    int tmpTurn;
+
     public static boolean isNormalGameRound = false;
 
     static String gameInfo = "";
@@ -82,6 +84,14 @@ public class State_PlayingWindow extends BasicGameState
         if(gameContainer.getInput().isKeyPressed(Input.KEY_4)) {
             gameChat.setLocation(Main.ScreenWidth+200,Main.ScreenHeight+200);
             stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
+        }
+        if(tmpTurn != PlayerStats.turn && PlayerStats.turn != PlayerStats.ID){
+            gameInfo = PlayerStats.names[PlayerStats.turn]+"'s turn";
+            tmpTurn = PlayerStats.turn;
+        }
+        if(tmpTurn != PlayerStats.turn && PlayerStats.turn == PlayerStats.ID){
+            gameInfo = "Your turn! Press 'Roll Dice' to roll the dice";
+            tmpTurn = PlayerStats.turn;
         }
     }
 

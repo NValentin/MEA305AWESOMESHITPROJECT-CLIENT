@@ -66,9 +66,7 @@ public class ServerData
         PlayerStats.longestRoad = longestRoad;
         PlayerStats.turn = turn;
         PlayerStats.StartGame = StartGame;
-        if(textToRender[0] != "") {
             PlayerStats.textToRender = textToRender;
-        }
         if(oldText[0] != null) {
             PlayerStats.oldText = oldText;
         }

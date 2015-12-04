@@ -3,6 +3,11 @@ package mainGame;
 import com.esotericsoftware.kryonet.Connection;
 import org.newdawn.slick.Color;
 
+/**
+ * A class created for storing all the playerStats.
+ * Since the Kryonet server doesn't work well with static variables, these are all copied to non-static values in ClientData,
+ * and converted from non-static values in ServerData
+ */
 public class PlayerStats {
 
     // Personal stats

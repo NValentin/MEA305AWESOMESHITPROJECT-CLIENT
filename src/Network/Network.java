@@ -64,7 +64,6 @@ public class Network extends Listener
             GameMap.deSerializedRoad = serverData.serializedRoad;
             GameMap.deSerializedCity = serverData.serializedCity;
             GameMap.deSerializedThief = serverData.serializedThief;
-
             State_PlayingWindow.isNormalGameRound = serverData.isNormalGameRound;
 
             PlayerStats.playerturn = serverData.playerturn;

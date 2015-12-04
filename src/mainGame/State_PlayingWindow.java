@@ -9,9 +9,6 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 
-/**
- * Created by Kingo on 30-10-2015.
- */
 public class State_PlayingWindow extends BasicGameState
 {
     Texture textures;
@@ -42,8 +39,16 @@ public class State_PlayingWindow extends BasicGameState
     Boolean tradingOut = false;
     Boolean tradingIn = false;
 
+    /**
+     * Initiation method. creates/assigns variables and objects
+     * @param gc GameContainer component
+     *          @see GameContainer and Slick2D
+     * @param sbg StateBasedGame component
+     *          @see StateBasedGame and Slick2D
+     * @throws SlickException
+     */
     @Override
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
+    public void init(GameContainer gc, StateBasedGame sbg)
             throws SlickException
     {
         gui_overlay = new GUI_Overlay();
@@ -55,17 +60,26 @@ public class State_PlayingWindow extends BasicGameState
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 12), true);
         chatBox = new ChatBox();
-        gameChat = new TextField(gameContainer, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
+        gameChat = new TextField(gc, font, 5, Main.ScreenHeight-sizeY/2-5, Main.ScreenWidth/5, sizeY/2);
     }
 
+    /**
+     * Update method. Listens for conditionals
+     * @param gc GameContainer component
+     *          @see GameContainer and Slick2D
+     * @param sbg StateBasedGame component
+     *          @see StateBasedGame and Slick2D
+     * @param i Update parameter
+     * @throws SlickException
+     */
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException
+    public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException
     {
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_ESCAPE)){
-            stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+        if(gc.getInput().isKeyPressed(Input.KEY_ESCAPE)){
+            sbg.enterState(2, new FadeOutTransition(), new FadeInTransition());
         }
-        map.update(gameContainer);
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_3)) {
+        map.update(gc);
+        if(gc.getInput().isKeyPressed(Input.KEY_3)) { // Method used for quickly changing game states. Used in testing
             if (yourTurn) {
                 yourTurn = false;
                 System.out.println(yourTurn);
@@ -75,33 +89,39 @@ public class State_PlayingWindow extends BasicGameState
             }
         }
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_ENTER) && gameChat.getText()!="") {
+        if(gc.getInput().isKeyPressed(Input.KEY_ENTER) && gameChat.getText()!="") { // Updates chat
             chatText = gameChat.getText();
             chatBox.newMessage(chatText, PlayerStats.name);
             gameChat.setText("");
         }
 
-        if(gameContainer.getInput().isKeyPressed(Input.KEY_4)) {
+        if(gc.getInput().isKeyPressed(Input.KEY_4)) { // Method used for quickly changing game states. Used in testing
             gameChat.setLocation(Main.ScreenWidth+200,Main.ScreenHeight+200);
-            stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
+            sbg.enterState(4, new FadeOutTransition(), new FadeInTransition());
         }
-        if(tmpTurn != PlayerStats.turn && PlayerStats.turn != PlayerStats.ID){
+        if(tmpTurn != PlayerStats.turn && PlayerStats.turn != PlayerStats.ID-1){ // Writes turn info in the game window
             gameInfo = PlayerStats.names[PlayerStats.turn]+"'s turn";
             tmpTurn = PlayerStats.turn;
         }
-        if(tmpTurn != PlayerStats.turn && PlayerStats.turn == PlayerStats.ID && isNormalGameRound){
-            gameInfo = "Your turn! Press 'Roll Dice' to roll the dice";
-            tmpTurn = PlayerStats.turn;
-        }
-
-        if(tmpTurn != PlayerStats.turn && PlayerStats.turn == PlayerStats.ID && !isNormalGameRound){
-            gameInfo = "Your turn! Place a House and a Road";
+        else if(tmpTurn != PlayerStats.turn && PlayerStats.turn == PlayerStats.ID-1){ // Writes turn info in the game window
+            System.out.println(isNormalGameRound);
+            gameInfo = "Your turn!";
             tmpTurn = PlayerStats.turn;
         }
     }
 
+    /**
+     * Render method. Renders elements in the game window
+     @param gc GameContainer component
+      *          @see GameContainer and Slick2D
+     * @param sbg StateBasedGame component
+     *          @see StateBasedGame and Slick2D
+     * @param g Graphics component
+     *          @see Graphics and slick2D
+     * @throws SlickException
+     */
     @Override
-    public void render(GameContainer gc, StateBasedGame stateBG, Graphics g) throws SlickException {
+    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         Texture.mapBackground.draw(0,0, Main.ScreenWidth, Main.ScreenHeight);
         if (buildMap) {
             map.GameMapGameMap();

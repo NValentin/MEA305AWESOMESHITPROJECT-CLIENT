@@ -172,6 +172,10 @@ public class ChatBox {
         PlayerStats.textSent = true; // Tell the server that a message has been created
     }
 
+    /**
+     * Method for updating the old messages array. Not currently in use, since it was moved to the server. Could still be useful
+     * in a case with no server connection
+     */
     public void updateOldMessages(){
          if(textToRender[1] == ""){ //If there was one line of text..
             for (int i = chatLength-1; i>0; i--){
@@ -198,8 +202,5 @@ public class ChatBox {
             oldText[1] = textToRender[1];
             oldText[0] = textToRender[2];
         }
-    }
-    void displayText(){
-
     }
 }

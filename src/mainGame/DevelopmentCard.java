@@ -3,12 +3,9 @@ package mainGame;
 import java.awt.*;
 import java.util.ArrayList;
 
-import mapClasses.GameMap;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
-
-import javax.xml.soap.Text;
 
 /**
  * Created by Kingo on 02-12-2015.

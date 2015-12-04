@@ -1,10 +1,8 @@
-package mapClasses;
+package mainGame;
 
-import mainGame.Texture;
+import mapHexLib.Hex;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-
-import java.util.ArrayList;
 
 /**
  * This "Tile"-class, extends class Hex, from the DIY Hex Library from author of:
@@ -25,7 +23,7 @@ public class Tile extends Hex
      * @param r represents Y.
      * @param s represents Z.
      */
-    Tile(int q, int r, int s)
+    public Tile(int q, int r, int s)
     {
         super(q, r, s);
 

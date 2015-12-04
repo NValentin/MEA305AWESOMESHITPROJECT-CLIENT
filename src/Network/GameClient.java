@@ -3,11 +3,7 @@ package Network;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.minlog.Log;
 import mainGame.PlayerStats;
-import mapClasses.GameMap;
-import org.lwjgl.Sys;
-
-import java.util.HashMap;
-import java.util.Map;
+import mainGame.GameMap;
 
 public class GameClient extends Listener implements Runnable
 {

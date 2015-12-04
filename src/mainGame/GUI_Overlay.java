@@ -1,8 +1,13 @@
 package mainGame;
 
-import mapClasses.GameMap;
 import org.newdawn.slick.*;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Font;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
+
+import java.awt.*;
 
 /**
  * Created by Kingo on 25-Nov-15.
@@ -36,6 +41,7 @@ public class GUI_Overlay {
     String tradeWithName = "";
     Button endTurn;
     Font font;
+    Font infoFont;
     Font regularFont;
     String[] resourceTypes = new String[]{"Wool   ", "Ore    ", "Lumber ", "Brick  ", "Grain  "};
 
@@ -45,6 +51,8 @@ public class GUI_Overlay {
         trade = new Trading();
         font = new TrueTypeFont(new java.awt.Font("Verdana",
                 java.awt.Font.PLAIN, 10), true);
+        infoFont = new TrueTypeFont(new java.awt.Font("Verdana",
+                java.awt.Font.BOLD, 12), true);
 
         try {
             InitailizeTexture();
@@ -89,6 +97,7 @@ public class GUI_Overlay {
 
     public void TradePopupWindow(int x, int y, boolean boo, String _name, Graphics graphics, GameContainer gc) throws SlickException {
         if (boo) {
+            State_PlayingWindow.gameInfo = _name + " wants to trade!";
             graphics.setColor(Color.black);
             graphics.fill(new Rectangle(x, y, 210, 50));
             graphics.setColor(Color.white);
@@ -105,6 +114,7 @@ public class GUI_Overlay {
             }
             if (decline.isPressed(gc)) {
                 System.out.println("Decline");
+                State_PlayingWindow.gameInfo = "Trade declined";
                 popTrade = false;
             }
         }
@@ -181,6 +191,7 @@ public class GUI_Overlay {
 
     public void IncomingTradeWindow(int x, int y, boolean boo, Graphics g, GameContainer gc) {
         if (boo) {
+            State_PlayingWindow.gameInfo = "Trading with "+tradeWithName;
             g.setColor(Color.white);
             g.fill(new Rectangle(x, y, 400, 300));
             g.setColor(Color.black);
@@ -201,11 +212,13 @@ public class GUI_Overlay {
             declineOffer.AddText("Decline Offer", Color.black);
             if (acceptOffer.isPressed(gc)) {
                 System.out.println("Accept");
+                State_PlayingWindow.gameInfo = "Trade accepted";
                 tradeWindow = false;
                 trade.AcceptTrade(PlayerStats.resourcesTrade);
             }
             if (declineOffer.isPressed(gc)) {
                 System.out.println("Decline");
+                State_PlayingWindow.gameInfo = "Trade declined";
                 tradeWindow = false;
                 trade.DeclineTrade(true);
             }
@@ -240,48 +253,63 @@ public class GUI_Overlay {
 
     public void ShowStats(Graphics g, int x, int y, GameContainer gc) {
         showStats.SetPos(x, y);
-        closeStats.SetPos(theWidth / 2 + 170, theHeight / 2 - 195);
+        closeStats.SetPos(theWidth / 2 + 320, theHeight / 2 - 195);
         if (showStatsBool) {
-            State_PlayingWindow.gameInfo = "Close the window to continue playing";
+            State_PlayingWindow.gameInfo = "Close the window by clicking anywhere";
             if (closeStats.isPressed(gc)) {
                 State_PlayingWindow.gameInfo = "";
                 showStatsBool = false;
             }
             g.setColor(Color.white);
-            g.drawRect(theWidth / 2 - 200, theHeight / 2 - 200, 400, 450);
+            g.drawRect(theWidth / 2 - 350, theHeight / 2 - 200, 700, 450);
             g.setColor(Color.black);
-            g.fillRect(theWidth / 2 - 200, theHeight / 2 - 200, 400, 450);
+            g.fillRect(theWidth / 2 - 350, theHeight / 2 - 200, 700, 450);
             g.setColor(Color.white);
 
-            g.drawString("Dice Roll Percentages:", theWidth / 2 - 180, theHeight / 2 - 190);
+            g.drawString("Players:", theWidth / 2 - 340, theHeight / 2 - 190);
+            for(int i = 0; i<PlayerStats.names.length; i++) {
+                //draw names
+                infoFont.drawString(theWidth / 2 - 340, theHeight / 2 - 160 + 95*i, PlayerStats.names[i], PlayerStats.playerColors[i+1]);
+                //draw resources
+                infoFont.drawString(theWidth / 2 - 340, theHeight / 2 - 143 + 95*i, "Resources: "+PlayerStats.resourcesOnHand[i], Color.white);
+                //draw cards
+                infoFont.drawString(theWidth / 2 - 340, theHeight / 2 - 126 + 95*i, "Cards on Hand: "+PlayerStats.cardsOnHand[i], Color.white);
+                //draw knights played
+                infoFont.drawString(theWidth / 2 - 340, theHeight / 2 - 109 + 95*i, "Knights Played: "+PlayerStats.knightsPlayed[i], Color.white);
+                //draw points
+                infoFont.drawString(theWidth / 2 - 340, theHeight / 2 - 92 + 95*i, "Points: "+PlayerStats.points[i]+"", Color.white);
+            }
+
+            g.drawString("Dice Roll Percentages:", theWidth / 2 - 30, theHeight / 2 - 190);
             for (int i = 1; i < 13; i++) {
                 g.setLineWidth(2);
                 if (i < 10) {
-                    g.drawString(String.valueOf(i), theWidth / 2 - 205 + i * 30, theHeight / 2 - 25);
+                    g.drawString(String.valueOf(i), theWidth / 2 - 55 + i * 30, theHeight / 2 - 25);
                 } else {
-                    g.drawString(String.valueOf(i), theWidth / 2 - 209 + i * 30, theHeight / 2 - 25);
+                    g.drawString(String.valueOf(i), theWidth / 2 - 59 + i * 30, theHeight / 2 - 25);
                 }
                 g.setLineWidth(10);
-                g.drawLine(theWidth / 2 - 200 + i * 30, theHeight / 2 - 40, theWidth / 2 - 200 + i * 30, theHeight / 2 - 40 - dice.getDicePercentages(i-1));
+                g.drawLine(theWidth / 2 - 50 + i * 30, theHeight / 2 - 40, theWidth / 2 - 50 + i * 30, theHeight / 2 - 40 - dice.getDicePercentages(i-1));
             }
 
             g.setLineWidth(4);
-            g.drawLine(theWidth / 2 - 195, theHeight / 2, theWidth / 2 + 195, theHeight / 2);
-            g.drawString("Resource Types:", theWidth / 2 - 180, theHeight / 2 + 10);
+            g.drawLine(theWidth / 2 - 40, theHeight / 2, theWidth / 2 + 345, theHeight / 2);
+            g.drawLine(theWidth / 2 - 40, theHeight / 2 - 195, theWidth / 2 - 40, theHeight / 2 + 245);
+            g.drawString("Resource Types:", theWidth / 2 - 30, theHeight / 2 + 10);
 
-            Texture.tileSprites.getSprite(4, 0).draw(theWidth / 2 - 180, theHeight / 2 + 40, 0.4f);
-            g.drawString("Lumber", theWidth / 2 - 110, theHeight / 2 + 60);
-            Texture.tileSprites.getSprite(1, 0).draw(theWidth / 2 - 180, theHeight / 2 + 110, 0.4f);
-            g.drawString("Bricks", theWidth / 2 - 110, theHeight / 2 + 130);
-            Texture.tileSprites.getSprite(0, 0).draw(theWidth / 2 - 180, theHeight / 2 + 180, 0.4f);
-            g.drawString("Ore", theWidth / 2 - 110, theHeight / 2 + 200);
+            Texture.tileSprites.getSprite(4, 0).draw(theWidth / 2 - 30, theHeight / 2 + 40, 0.4f);
+            g.drawString("Lumber", theWidth / 2 + 40, theHeight / 2 + 60);
+            Texture.tileSprites.getSprite(1, 0).draw(theWidth / 2 - 30, theHeight / 2 + 110, 0.4f);
+            g.drawString("Bricks", theWidth / 2 + 40, theHeight / 2 + 130);
+            Texture.tileSprites.getSprite(0, 0).draw(theWidth / 2 - 30, theHeight / 2 + 180, 0.4f);
+            g.drawString("Ore", theWidth / 2 + 40, theHeight / 2 + 200);
 
-            Texture.tileSprites.getSprite(3, 0).draw(theWidth / 2 + 20, theHeight / 2 + 40, 0.4f);
-            g.drawString("Wool", theWidth / 2 + 90, theHeight / 2 + 60);
-            Texture.tileSprites.getSprite(6, 0).draw(theWidth / 2 + 20, theHeight / 2 + 110, 0.4f);
-            g.drawString("Grain", theWidth / 2 + 90, theHeight / 2 + 130);
-            Texture.tileSprites.getSprite(2, 0).draw(theWidth / 2 + 20, theHeight / 2 + 180, 0.4f);
-            g.drawString("No yield", theWidth / 2 + 90, theHeight / 2 + 200);
+            Texture.tileSprites.getSprite(3, 0).draw(theWidth / 2 + 170, theHeight / 2 + 40, 0.4f);
+            g.drawString("Wool", theWidth / 2 + 240, theHeight / 2 + 60);
+            Texture.tileSprites.getSprite(6, 0).draw(theWidth / 2 + 170, theHeight / 2 + 110, 0.4f);
+            g.drawString("Grain", theWidth / 2 + 240, theHeight / 2 + 130);
+            Texture.tileSprites.getSprite(2, 0).draw(theWidth / 2 + 170, theHeight / 2 + 180, 0.4f);
+            g.drawString("No yield", theWidth / 2 + 240, theHeight / 2 + 200);
 
             g.setLineWidth(2);
 
@@ -292,6 +320,10 @@ public class GUI_Overlay {
             closeStats.draw(g);
         if (showStats.isPressed(gc)) {
             showStatsBool = true;
+        }
+        if (showStatsBool && gc.getInput().isMousePressed(0)){
+            showStatsBool = false;
+            State_PlayingWindow.gameInfo = "";
         }
     }
 
@@ -371,6 +403,7 @@ public class GUI_Overlay {
 
     public void OfferWindow(int x, int y, boolean boo, Graphics g, GameContainer gc) {
         if (boo) {
+            State_PlayingWindow.gameInfo = "Choose resources to trade with "+tradeWithName;
             g.setColor(Color.white);
             g.fill(new Rectangle(x, y, 400, 300));
             g.setColor(Color.black);

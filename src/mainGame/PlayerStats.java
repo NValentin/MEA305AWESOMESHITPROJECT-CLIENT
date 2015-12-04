@@ -39,6 +39,7 @@ public class PlayerStats {
     public static int[] points = new int[]{0,0,0,0};
     public static int[] knightsPlayed = new int[]{0,0,0,0};
     public static int[] resourcesOnHand = new int[]{0,0,0,0};
+    public static int[] cardsOnHand = new int[]{0,0,0,0};
     public static boolean[] lobbyReadyAll = new boolean[]{true,false,false,false};
     public static int [] longestRoad = new int[]{0,0,0,0};
     public static int turn;

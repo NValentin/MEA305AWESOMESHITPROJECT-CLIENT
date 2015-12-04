@@ -475,6 +475,8 @@ public class GUI_Overlay {
                     State_PlayingWindow.currentResources[2]--;
                     State_PlayingWindow.currentResources[3]--;
                     GameMap.build_buttons[0] = true;
+                } else if (!State_PlayingWindow.isNormalGameRound) {
+                    GameMap.build_buttons[0] = true;
                 } else {
                     System.out.println("Not enough resources to build a road");
                 }
@@ -487,7 +489,9 @@ public class GUI_Overlay {
                     State_PlayingWindow.currentResources[3]--;
                     State_PlayingWindow.currentResources[4]--;
                     GameMap.build_buttons[1] = true;
-                } else {
+                }  else if (!State_PlayingWindow.isNormalGameRound) {
+                    GameMap.build_buttons[1] = true;
+                }else {
                     System.out.println("Not enough resources to build a house");
                 }
                 break;

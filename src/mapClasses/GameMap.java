@@ -476,36 +476,9 @@ public class GameMap
     {
         if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[1])
         {
-            boolean addHouse = false;
-
             for (int i = 0; i < housePlots.length; i++)
             {
-                if (playersNumOfHouses <= 2)
-                {
-
-                    if (checkMouseOverHousePlot(i) && gc.getInput().isMousePressed(0) && housePlots[i] != null)
-                    {
-                        addHouse = true;
-                    }
-                } else
-                {
-                    if (!roads.isEmpty() && housePlots[i] != null)
-                        for (Road road : roads)
-                            if (road.getPlayerID() == PlayerStats.ID)
-                            {
-                                Line roadLine = road.getRoadLine();
-                                Circle c1 = new Circle(roadLine.getX1(), roadLine.getY1(), 5);
-                                Circle c2 = new Circle(roadLine.getX2(), roadLine.getY2(), 5);
-                                if (housePlots[i].intersects(c1) || housePlots[i].intersects(c2))
-                                {
-                                    if (checkMouseOverHousePlot(i) && gc.getInput().isMousePressed(0) && housePlots[i] != null)
-                                    {
-                                        addHouse = true;
-                                    }
-                                }
-                            }
-                }
-                if (addHouse)
+                if (checkMouseOverHousePlot(i) && gc.getInput().isMousePressed(0) && housePlots[i] != null)
                 {
                     serializeHouse(i);
                     if (!Network.isConnected)
@@ -514,10 +487,10 @@ public class GameMap
                     }
                     hasHouse = true;
                     build_buttons[1] = false;
-                    addHouse = false;
                 }
             }
         }
+
     }
 
     /**
@@ -530,37 +503,9 @@ public class GameMap
     {
         if (PlayerStats.playerturn[PlayerStats.ID - 1] && build_buttons[0] && hasHouse)
         {
-            boolean addRoad = false;
             for (int i = 0; i < roadPlots.length; i++)
             {
-                if (!houses.isEmpty() && roadPlots[i] != null)
-                {
-                    for (House house : houses)
-                    {
-                        if (house.getHouseCircle().intersects(roadPlots[i]) && house.getPlayerID() == PlayerStats.ID)
-                        {
-                            if (checkOverRoadPlot(i) && gc.getInput().isMousePressed(0))
-                            {
-                                addRoad = true;
-
-                            }
-                        }
-                    }
-                }
-                if (!roads.isEmpty() && roadPlots[i] != null)
-                    for (Road road : roads)
-                        if (road.getPlayerID() == PlayerStats.ID)
-                        {
-                            Line roadLine = road.getRoadLine();
-                            Circle c1 = new Circle(roadLine.getX1(), roadLine.getY1(), 5);
-                            Circle c2 = new Circle(roadLine.getX2(), roadLine.getY2(), 5);
-                            if (c1.intersects(roadPlots[i]) || c2.intersects(roadPlots[i]))
-                                if (checkOverRoadPlot(i) && gc.getInput().isMousePressed(0))
-                                {
-                                    addRoad = true;
-                                }
-                        }
-                if (addRoad)
+                if (checkOverRoadPlot(i) && gc.getInput().isMousePressed(0))
                 {
                     serializeRoad(i);
                     if (!Network.isConnected)
@@ -568,11 +513,9 @@ public class GameMap
                         addRoad(i, 1);
                     }
                     build_buttons[0] = false;
-                    addRoad = false;
                 }
             }
         }
-
     }
 
     /**
@@ -587,6 +530,7 @@ public class GameMap
     public void update(GameContainer gc)
     {
         if (moveThief)
+        {
             for (int i = 0; i < thiefPositions.length; i++)
                 if (thiefPositions[i].contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()) && gc.getInput().isKeyPressed(0))
                 {
@@ -594,6 +538,7 @@ public class GameMap
                     serializeThief(i);
                     moveThief = false;
                 }
+        }
 
         if (deSerializedHouse[1] != 0)
         {
@@ -792,8 +737,13 @@ public class GameMap
             }
 
         if (moveThief)
-            for (Circle circle : thiefPositions)
-                g.draw(circle);
+            for (int i = 0; i < thiefPositions.length; i++)
+            {
+                if (thiefPositions[i].contains(Mouse.getX(), Main.ScreenHeight - Mouse.getY()))
+                    g.fill(thiefPositions[i]);
+                else
+                    g.draw(thiefPositions[i]);
+            }
     }
 
     /**

@@ -35,6 +35,7 @@ public class Texture
     public static Image butt;
     public static Image doge;
 
+    //Universaly used texture.
     Texture() throws SlickException
     {
         butt = new Image("resources/butt.png");
@@ -44,6 +45,7 @@ public class Texture
 
     }
 
+    //textures used in the main menu.
     void initMainMenuStateTextures()
     {
         try
@@ -59,6 +61,7 @@ public class Texture
         }
     }
 
+    //textures used in the join lobby state.
     void initJoinLobbyTextures()
     {
         try
@@ -74,6 +77,8 @@ public class Texture
             e.printStackTrace();
         }
     }
+
+    //Textures used in the Create state
     void initCreatePlayerTextures()
     {
         try
@@ -89,6 +94,7 @@ public class Texture
         }
     }
 
+    //textures used in the Playing window
     void initPlayingWindowTextures()
     {
         try
@@ -143,6 +149,8 @@ public class Texture
             e.printStackTrace();
         }
     }
+
+    //textures used in the end game state.
     void initEndGameTextures()
     {
         try

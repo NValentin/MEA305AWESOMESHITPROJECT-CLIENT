@@ -15,7 +15,7 @@ public class State_PlayingWindow extends BasicGameState
     int theWidth = Main.ScreenWidth;
     int theHeight = Main.ScreenHeight;
     GUI_Overlay gui_overlay;
-    public static int[] currentResources = new int[] {5, 5, 5, 5, 5};
+    public static int[] currentResources = new int[5];
     boolean yourTurn = false;
     public static int tradeId = 0;
 

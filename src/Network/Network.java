@@ -5,7 +5,7 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import mainGame.PlayerStats;
 import mainGame.State_PlayingWindow;
-import mapClasses.GameMap;
+import mainGame.GameMap;
 
 import java.io.IOException;
 import java.net.InetAddress;

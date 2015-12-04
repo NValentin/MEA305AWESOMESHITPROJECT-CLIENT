@@ -1,9 +1,7 @@
 package Network;
 
-import com.tinyline.svg.SVGAnimationElem;
 import mainGame.PlayerStats;
-import mapClasses.GameMap;
-import org.newdawn.slick.Game;
+import mainGame.GameMap;
 
 public class ClientData
 {

@@ -1,4 +1,4 @@
-package mapClasses;
+package mapHexLib;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Part of DIY Hex-library from Author of: http://www.redblobgames.com/grids/hexagons/
  * Methods are derived directly from library, documentation comments if not.
  */
-class Hex
+public class Hex
 {
     /**
      * A hex have cubical coordinates, instead of pixel coordinates, to better understand where each hex is
@@ -16,7 +16,7 @@ class Hex
      * @param r represents Y.
      * @param s represents Z.
      */
-    Hex(int q, int r, int s)
+    public Hex(int q, int r, int s)
     {
         this.q = q;
         this.r = r;

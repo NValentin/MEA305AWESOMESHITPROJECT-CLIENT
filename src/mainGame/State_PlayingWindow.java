@@ -89,8 +89,13 @@ public class State_PlayingWindow extends BasicGameState
             gameInfo = PlayerStats.names[PlayerStats.turn]+"'s turn";
             tmpTurn = PlayerStats.turn;
         }
-        if(tmpTurn != PlayerStats.turn && PlayerStats.turn == PlayerStats.ID){
+        if(tmpTurn != PlayerStats.turn && PlayerStats.turn == PlayerStats.ID && isNormalGameRound){
             gameInfo = "Your turn! Press 'Roll Dice' to roll the dice";
+            tmpTurn = PlayerStats.turn;
+        }
+
+        if(tmpTurn != PlayerStats.turn && PlayerStats.turn == PlayerStats.ID && !isNormalGameRound){
+            gameInfo = "Your turn! Place a House and a Road";
             tmpTurn = PlayerStats.turn;
         }
     }

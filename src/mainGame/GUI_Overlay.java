@@ -10,7 +10,7 @@ import org.newdawn.slick.geom.Rectangle;
 public class GUI_Overlay {
     public static boolean popTrade = true;
 
-    boolean DiceRolled;
+    public static boolean DiceRolled;
     String[] buildingMenuText = new String[]{"Road", "House", "City", "Development Card", "Gives 0 Victory Points", "Gives 1 Victory Points", "Gives 2 Victory Points", "Gives ? Victory Points", "1 Lumber and 1 Brink", "1 Lumber, 1 Wool, 1 Grain, and 1 Brick", "3 Ore and 2 Grin", "1 Wool, 1 Ore, and 1 Grain"};
 
     int theWidth = Main.ScreenWidth;
@@ -309,7 +309,7 @@ public class GUI_Overlay {
         diceImages[0].draw(x + 5, y + 5, 50, 50);
         diceImages[1].draw(x + 60, y + 5, 50, 50);
 
-        if (rollDice.isPressed(gc)) { //Add " && !DiceRolled" after testing!!!!
+        if (rollDice.isPressed(gc) && !DiceRolled) {
 
             System.out.println("Dice rolled");
             PlayerStats.diceRoll = true;

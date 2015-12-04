@@ -123,8 +123,10 @@ public class State_PlayingWindow extends BasicGameState
         chatBox.render(g, gc);
         gameChat.render(gc, g);
 
+        g.setFont(new TrueTypeFont(new java.awt.Font("Verdana",
+                java.awt.Font.BOLD, 12), true));
         g.getFont().getWidth(gameInfo);
-        g.drawString(gameInfo,theWidth/2-g.getFont().getWidth(gameInfo)/2,theHeight-40);
+        g.drawString(gameInfo,theWidth/2-g.getFont().getWidth(gameInfo)/2,theHeight/7);
     }
 
     @Override

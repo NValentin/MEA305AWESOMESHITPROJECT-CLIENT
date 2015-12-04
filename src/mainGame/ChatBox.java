@@ -108,12 +108,17 @@ public class ChatBox {
         } catch (Exception e) {}
     }
 
+    /**
+     *
+     * @param chatText Text to be rendered in a new message
+     * @param name name of the player creating the message
+     */
     public void newMessage(String chatText, String name){
 
         //updateOldMessages();
-        int mark = 0;
-        int mark2 = 0;
-        String text = name+": "+chatText;
+        int mark = 0; // Represents the number of the final character in the first line
+        int mark2 = 0; // Represents the number of the final character in the second line
+        String text = name+": "+chatText; // Text to be rendered, name + message
 
         if(text.length()<=TEXTBOXWIDTH) { // If there is only one line of text
 
@@ -123,55 +128,48 @@ public class ChatBox {
 
 
         } else if (text.length()>TEXTBOXWIDTH && text.length()<=TEXTBOXWIDTH*2) { // If there are two lines of text
-            //if (text.charAt(TEXTBOXWIDTH) != ' ') {
-                for (int i = TEXTBOXWIDTH; i<= text.length(); i++) {
-                    if (i==text.length()){
-                        textToRender[0] = text.substring(0,text.length());
-                        textToRender[1] = "";
-                        textToRender[2] = "";
-                    }
-                    else if (text.charAt(i)==' ') {
-                        mark = i;
-                        textToRender[0] = text.substring(0,mark);
-                        textToRender[1] = text.substring(mark+1,text.length());
-                        textToRender[2] = "";
-                        break;
-                    }
+            for (int i = TEXTBOXWIDTH; i <= text.length(); i++) {
+                if (i == text.length()) { // If the text is precisely long enough to be longer than the set line width, but only with one word
+                    textToRender[0] = text.substring(0, text.length());
+                    textToRender[1] = "";
+                    textToRender[2] = "";
+                } else if (text.charAt(i) == ' ') { // Else if the code runs into a space, it splits the text in two lines
+                    mark = i;
+                    textToRender[0] = text.substring(0, mark);
+                    textToRender[1] = text.substring(mark + 1, text.length());
+                    textToRender[2] = "";
+                    break;
                 }
-            //}
-
+            }
         } else if (text.length()>TEXTBOXWIDTH*2) { // If there are three or more lines of text
-            //if (text.charAt(TEXTBOXWIDTH) != ' ') {
                 for (int i = TEXTBOXWIDTH; i < TEXTBOXWIDTH * 2; i++) {
-                    if (text.charAt(i) == ' ') {
+                    if (text.charAt(i) == ' ') { //Creates the first line in a three-line sentence
                         mark = i;
-                        textToRender[0] = text.substring(0,mark);
+                        textToRender[0] = text.substring(0, mark);
                         break;
                     }
                 }
-            //}
-            //if (text.charAt(mark + TEXTBOXWIDTH) != ' ') {
                 for (int i = mark + TEXTBOXWIDTH; i <= text.length(); i++) {
-                    if (i==text.length()){
+                    if (i==text.length()){ // If the second line is precisely long enough to be longer than the set line width, but only with one word
                         textToRender[1] = text.substring(mark+1,text.length());
                         textToRender[2] = "";
                         break;
                     }
-                    else if (text.charAt(i) == ' ') {
+                    else if (text.charAt(i) == ' ') { // If a space is found after the set line width, creates the last two lines of text
                         mark2 = i;
                         textToRender[1] = text.substring(mark+1,mark2);
                         if(text.length()<mark2+1+TEXTBOXWIDTH){
                             textToRender[2] = text.substring(mark2+1, text.length());
                         } else if(text.length()>mark2+1+TEXTBOXWIDTH){
-                            textToRender[2] = text.substring(mark2+1, mark2+1+TEXTBOXWIDTH);
+                            textToRender[2] = text.substring(mark2+1, mark2+1+TEXTBOXWIDTH); // Messages longer than this are cut at this point
                         }
                         break;
                     }
                 }
             //}
         }
-        PlayerStats.textPackage = textToRender;
-        PlayerStats.textSent = true;
+        PlayerStats.textPackage = textToRender; // Update the PlayerStats text arrays with the message
+        PlayerStats.textSent = true; // Tell the server that a message has been created
     }
 
     public void updateOldMessages(){

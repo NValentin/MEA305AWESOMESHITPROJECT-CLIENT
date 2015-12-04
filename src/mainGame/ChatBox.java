@@ -1,113 +1,107 @@
 package mainGame;
 
 import org.newdawn.slick.*;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.Font;
-import org.newdawn.slick.Graphics;
-
-import java.awt.*;
 
 public class ChatBox {
-    Font font;
+    Font font; // Font used for chat messages
 
     int chatLength = 10;
     static final int TEXTBOXWIDTH = 30;
 
     String textToRender[];
     String oldText[];
+    int fontWidth[] = new int[4];
 
+    /**
+     * Constructor for the chatbox. Creates instances of arrays and font.
+     */
     public ChatBox(){
 
         font = new TrueTypeFont(new java.awt.Font("Verdana",
-                java.awt.Font.BOLD, 12), true);
+                java.awt.Font.BOLD, 12), true); // Font used for chat messages
 
-        textToRender = new String[3];
-        oldText = new String[chatLength];
+        textToRender = new String[3]; // Bottom three lines of chat text, the 'current' message
+        oldText = new String[chatLength]; // Array of old messages, updated on the server
     }
 
+    /**
+     * Render method. Renders elements in the game window
+     * @param g Graphics component
+     *          @see Graphics and slick2D
+     * @param gc GameContainer component
+     *          @see GameContainer and Slick2D
+     */
     public void render(Graphics g, GameContainer gc) {
 
-        g.setColor(new Color(50, 50, 50, 200));
-        g.fillRect(5, Main.ScreenHeight / 2, Main.ScreenWidth / 5, Main.ScreenHeight);
-        g.setColor(Color.white);
-        g.setFont(font);
-        Font fontMetrics = g.getFont();
+        g.setColor(new Color(50, 50, 50, 200)); //Dark grey, opaque color. Used for..
+        g.fillRect(5, Main.ScreenHeight / 2, Main.ScreenWidth / 5, Main.ScreenHeight); // -the chat window
+        g.setColor(Color.white); // Text color
+        g.setFont(font); // Chat font
+        Font fontMetrics = g.getFont(); // fontMetrics is used for calculating the width of names in pixels
+
+        // Int width of player names
+        fontWidth[0] = fontMetrics.getWidth(PlayerStats.names[0]);
+        fontWidth[1] = fontMetrics.getWidth(PlayerStats.names[1]);
+        fontWidth[2] = fontMetrics.getWidth(PlayerStats.names[2]);
+        fontWidth[3] = fontMetrics.getWidth(PlayerStats.names[3]);
+
 
         try {
-
-            int fontWidth0 = fontMetrics.getWidth(PlayerStats.textToRender[0].substring(0, PlayerStats.textToRender[0].indexOf(": ")));
-            font.drawString(10 + fontWidth0/*PlayerStats.textToRender[0].substring(0, PlayerStats.textToRender[0].indexOf(": ")).length()*/,
-                    Main.ScreenHeight - 100,
-                    PlayerStats.textToRender[0].substring(PlayerStats.textToRender[0].lastIndexOf(": "), PlayerStats.textToRender[0].length()));
-
-            font.drawString(10, Main.ScreenHeight - 80, PlayerStats.textToRender[1]);
-            font.drawString(10, Main.ScreenHeight - 60, PlayerStats.textToRender[2]);
 
             for (int i = 0; i < PlayerStats.names.length; i++) {
                 if (PlayerStats.textToRender[0].contains(PlayerStats.names[i] + ": ")) {
                     font.drawString(10, Main.ScreenHeight - 100, PlayerStats.textToRender[0].substring(0,
                             PlayerStats.textToRender[0].indexOf(": ")), PlayerStats.playerColors[i + 1]);
+                    font.drawString(10 + fontWidth[i]/*PlayerStats.textToRender[0].substring(0, PlayerStats.textToRender[0].indexOf(": ")).length()*/,
+                            Main.ScreenHeight - 100,
+                            PlayerStats.textToRender[0].substring(PlayerStats.textToRender[0].lastIndexOf(": "), PlayerStats.textToRender[0].length()));
+
+                    font.drawString(10, Main.ScreenHeight - 80, PlayerStats.textToRender[1]);
+                    font.drawString(10, Main.ScreenHeight - 60, PlayerStats.textToRender[2]);
                     break;
                 }
             }
 
-            for (int i = chatLength-1; i >= 0; i--) {
+            for (int i = 0; i < chatLength; i++) {
 
-                if(PlayerStats.oldText[i].contains(PlayerStats.names[0])) {
-                    int fontWidth1 = fontMetrics.getWidth(PlayerStats.oldText[i].substring(0, PlayerStats.oldText[i].indexOf(": ")));
+                //font.drawString(10, Main.ScreenHeight - 120 - 20 * i, PlayerStats.oldText[i]); //Worst case scenario, THIS works, outcomment rest
+
+                if(PlayerStats.oldText[i].contains(PlayerStats.names[0]+": ")) {
 
                     font.drawString(10, Main.ScreenHeight - 120 - 20 * i,
                             PlayerStats.oldText[i].substring(0, PlayerStats.oldText[i].indexOf(": ")), PlayerStats.playerColors[0 + 1]);
 
-                    font.drawString(10+fontWidth1, Main.ScreenHeight - 120 - 20 * i,
+                    font.drawString(10+fontWidth[0], Main.ScreenHeight - 120 - 20 * i,
                             PlayerStats.oldText[i].substring(PlayerStats.oldText[i].lastIndexOf(": "),PlayerStats.oldText[i].length()));
-                    break;
 
-
-                } else if(PlayerStats.oldText[i].contains(PlayerStats.names[1])) {
-                    int fontWidth2 = fontMetrics.getWidth(PlayerStats.oldText[i].substring(0, PlayerStats.oldText[i].indexOf(": ")));
+                } else if(PlayerStats.oldText[i].contains(PlayerStats.names[1]+": ")) {
 
                     font.drawString(10, Main.ScreenHeight - 120 - 20 * i,
                             PlayerStats.oldText[i].substring(0, PlayerStats.oldText[i].indexOf(": ")), PlayerStats.playerColors[1 + 1]);
 
-                    font.drawString(10+fontWidth2, Main.ScreenHeight - 120 - 20 * i,
+                    font.drawString(10+fontWidth[1], Main.ScreenHeight - 120 - 20 * i,
                             PlayerStats.oldText[i].substring(PlayerStats.oldText[i].lastIndexOf(": "),PlayerStats.oldText[i].length()));
-                    break;
 
 
-                } else if(PlayerStats.oldText[i].contains(PlayerStats.names[2])) {
-                    int fontWidth3 = fontMetrics.getWidth(PlayerStats.oldText[i].substring(0, PlayerStats.oldText[i].indexOf(": ")));
+                } else if(PlayerStats.oldText[i].contains(PlayerStats.names[2]+": ")) {
 
                     font.drawString(10, Main.ScreenHeight - 120 - 20 * i,
                             PlayerStats.oldText[i].substring(0, PlayerStats.oldText[i].indexOf(": ")), PlayerStats.playerColors[2 + 1]);
 
-                    font.drawString(10+fontWidth3, Main.ScreenHeight - 120 - 20 * i,
+                    font.drawString(10+fontWidth[2], Main.ScreenHeight - 120 - 20 * i,
                             PlayerStats.oldText[i].substring(PlayerStats.oldText[i].lastIndexOf(": "),PlayerStats.oldText[i].length()));
-                    break;
 
 
-                } else if(PlayerStats.oldText[i].contains(PlayerStats.names[3])) {
-                    int fontWidth4 = fontMetrics.getWidth(PlayerStats.oldText[i].substring(0, PlayerStats.oldText[i].indexOf(": ")));
+                } else if(PlayerStats.oldText[i].contains(PlayerStats.names[3]+": ")) {
 
                     font.drawString(10, Main.ScreenHeight - 120 - 20 * i,
                             PlayerStats.oldText[i].substring(0, PlayerStats.oldText[i].indexOf(": ")), PlayerStats.playerColors[3 + 1]);
 
-                    font.drawString(10+fontWidth4, Main.ScreenHeight - 120 - 20 * i,
+                    font.drawString(10+fontWidth[3], Main.ScreenHeight - 120 - 20 * i,
                             PlayerStats.oldText[i].substring(PlayerStats.oldText[i].lastIndexOf(": "),PlayerStats.oldText[i].length()));
-                    break;
                 } else {
                     font.drawString(10, Main.ScreenHeight - 120 - 20 * i, PlayerStats.oldText[i]);
-                    break;
                 }
-
-            /*for (int i = 0; i < PlayerStats.names.length; i++) {
-                for (int j = 0; j < chatLength; j++) {
-                    if (PlayerStats.oldText[j].contains(PlayerStats.names[i])) {
-                        font.drawString(10, Main.ScreenHeight - 120 - 20 * j,
-                                PlayerStats.oldText[j].substring(0, PlayerStats.oldText[j].indexOf(": ")), PlayerStats.playerColors[i + 1]);
-                    }
-                }*/
-
             }
 
 

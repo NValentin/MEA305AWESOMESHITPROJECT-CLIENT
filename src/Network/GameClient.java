@@ -5,12 +5,18 @@ import com.esotericsoftware.minlog.Log;
 import mainGame.PlayerStats;
 import mainGame.GameMap;
 
+/**
+ * This class handles data transmission to the server.
+ */
 public class GameClient extends Listener implements Runnable
 {
     static Network network = new Network();
     boolean nameSent = false;
     boolean lobbyReady = false;
 
+    /**
+     * Run is called, when a player first presses join game. This method establishes the connection with the server.
+     */
     @Override
     public void run()
     {
@@ -26,6 +32,10 @@ public class GameClient extends Listener implements Runnable
         //System.exit(0);
     }
 
+    /**
+     * Standard update method. Runs methods and checks for conditionals, updates accordingly.
+     * The following methods are all various instances in which data needs to be sent to the server, in order to update the game
+     */
     public void update()
     {
         if (!nameSent)
